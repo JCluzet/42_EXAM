@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/06/21 00:23:40 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/06/21 00:30:13 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	start(t_exam *exam)
     int ret;
     exam->start = -10;
     blank();
-    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n Which exam would you like to test?\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2   \x1B[31mSOON\x1B[37m\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\nEnter your choice: \n");
+    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n\n Which exam would you like to test?\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2   \x1B[31mSOON\x1B[37m\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\nEnter your choice: \n");
     ret = get_next_line(0, &buf);
     while (atoi(buf) < 1 || atoi(buf) > 1)
 	{
@@ -42,7 +42,7 @@ int	start(t_exam *exam)
 	}
     exam->exam_type = atoi(buf);
     blank();
-	printf("\x1B[37mExam \x1B[32m%d\x1B[37m take 2 hours.\n\nKeep this terminal in a corner of your\nscreen, and work on a new window.\n\n  > When you are ready, click on the\n\x1B[37mreturn button to start the exam\x1B[37m.", exam->exam_type);
+	printf("\x1B[37mExam \x1B[32m%d\x1B[37m take 2 hours.\n\n\n\nKeep this terminal in a corner of yourscreen, and work on \na new window.\n\n\n\n\n\n  > When you are ready, click on the\n\x1B[37mreturn button to start the exam\x1B[37m.", exam->exam_type);
     scanf("%c",&ch);
 	int cpt = LIMIT;
     time_t prv;
