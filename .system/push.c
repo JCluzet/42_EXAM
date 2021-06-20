@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/06/21 00:02:33 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/06/21 00:14:16 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int push(t_exam *exam)
     	printf("\n\x1B[32mexit\x1B[37m to left");
     	printf("\n\x1B[32mtime\x1B[37m to know the remaining time\n\n");
     	display_end(exam->depart);
+		exam->nbfail++;
 		if (exam->failuretime == 0)
 			exam->failuretime = 15;
 		exam->failuretime = exam->failuretime * FAILURE_TIME;
@@ -92,7 +93,7 @@ int		success_exam(t_exam *exam)
     int minutes;
 	time_t arrivee;
 	blank();
-	printf("\x1B[32mCongratulation!\x1B[37m You have completed the exam %d ! \n\n",exam->exam_type);
+	printf("\x1B[32mCongratulation!\x1B[37m You have completed the exam \x1B[31m%d with %d fail\x1B[37m \n\n",exam->exam_type, exam->nbfail);
 	time(&arrivee);
     seconds = difftime(exam->depart, arrivee);
     hours = seconds / 3600;

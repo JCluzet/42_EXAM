@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/06/21 00:08:14 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/06/21 00:15:19 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int main(int argc, char **argv)
 	t_exam examm;
 	remove("a.out");
     examm.midlev = 0;
+    examm.nbfail = 0;
     examm.failuretime = 0.0;
     examm.timeend = 0;
 
@@ -122,7 +123,7 @@ int		dispatcheur(t_exam *exam, char *buf)
     if (ft_strcmp(buf, "exit") == 0)
     {
         blank();
-        printf("You finish the exam with a score of \x1B[32m%.02f\x1B[37m %%\n", exam->level);
+        printf("You finish the exam with a score of \x1B[32m%.02f\x1B[37m %% and \x1B[31m%d fail\x1B[37m\n", exam->level, exam->nbfail);
             time(&arrivee);
             seconds = difftime(exam->depart, arrivee);
             hours = seconds / 3600;
