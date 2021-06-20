@@ -7,3 +7,5 @@
 	rm -r traceback
 	}	&>/dev/null
 	rm -r .subject/$1/$fichier
+
+# Shuffle to randomize the project, then copie subject/exercice.c and the tester.sh

@@ -3,3 +3,5 @@
 	{
 		rm -rf trace
 	}	&>/dev/null
+
+## When a level is success, we delete files
