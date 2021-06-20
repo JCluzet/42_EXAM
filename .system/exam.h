@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/19 22:21:03 by jocluzet          #+#    #+#             */
-/*   Updated: 2021/06/20 22:25:39 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/06/20 23:58:41 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct	s_exam
 }				t_exam;
 
 int				start(t_exam *exam);
+void   			blank(void) ;
 int				push(t_exam *exam);
 int				generate_subject(t_exam *exam);
 int				success_exam(t_exam *exam);

@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/06/20 22:26:23 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/06/21 00:00:54 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int push(t_exam *exam)
     clock_t target;
     char spin[] = "\\|/-";
     printf(" ");
-	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	blank();
     while(v < n) {
         printf("\b%c", spin[i]);
         fflush(stdout);
@@ -37,7 +37,7 @@ int push(t_exam *exam)
         while (clock() < target);
     }
 	system("sh .system/verif/tester.sh");
-	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	blank();
 
     if ((file = ((fopen(".system/verif/passed", "r")))))
     {
@@ -53,7 +53,8 @@ int push(t_exam *exam)
 		s_sleep(3);
 		if (exam->level == XP_TO_FINISH)
 			success_exam(exam);
-		printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\x1B[32mCongratulation!\x1B[37m A new subject is now created.\n\n       Current Grade : \x1B[32m%.2f\x1B[37m %%\n\n", exam->level);
+		blank();
+		printf("\x1B[32mCongratulation!\x1B[37m A new subject is now created.\n\n       Current Grade : \x1B[32m%.2f\x1B[37m %%\n\n", exam->level);
     	printf("\x1B[32mhelp\x1B[37m to get some help");
     	printf("\n\x1B[32mpush\x1B[37m to get corrected");
     	printf("\n\x1B[32mexit\x1B[37m to left");
@@ -66,7 +67,8 @@ int push(t_exam *exam)
 	{
 		printf("\n\x1B[31m#######    #    ### #           #    ##\n#         # #    #  #          ###  #\n#        #   #   #  #           #  #\n#####   #     #  #  #              #\n#       #######  #  #           #  #\n#       #     #  #  #          ###  #\n#       #     # ### #######     #    ##\x1B[37m\n\n");
 		s_sleep(3);
-		printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\x1B[37mFind the trace in the file \x1B[31m> traceback\x1B[37m\n\n       Current Grade : \x1B[32m%.2f\x1B[37m %%\n\n", exam->level);
+		blank();
+		printf("\x1B[37mFind the trace in the file \x1B[31m> traceback\x1B[37m\n\n       Current Grade : \x1B[32m%.2f\x1B[37m %%\n\n", exam->level);
    		printf("\x1B[32mhelp\x1B[37m to get some help");
     	printf("\n\x1B[32mpush\x1B[37m to get corrected");
     	printf("\n\x1B[32mexit\x1B[37m to left");
@@ -89,7 +91,8 @@ int		success_exam(t_exam *exam)
     int hours;
     int minutes;
 	time_t arrivee;
-	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\x1B[32mCongratulation!\x1B[37m You have completed the exam %d ! \n\n",exam->exam_type);
+	blank();
+	printf("\x1B[32mCongratulation!\x1B[37m You have completed the exam %d ! \n\n",exam->exam_type);
 	time(&arrivee);
     seconds = difftime(exam->depart, arrivee);
     hours = seconds / 3600;

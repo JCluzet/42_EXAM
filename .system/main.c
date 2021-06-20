@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/06/20 22:27:28 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/06/20 23:58:56 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	start(t_exam *exam)
     char    ch;
     int ret;
     exam->start = -10;
-    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    printf("\x1B[37m          42EXAM\n\n Which pool exam would you like to test?\n\n  \x1B[32m1\x1B[37m - Exam week 1\n  \x1B[32m2\x1B[37m - Exam week 2   \x1B[31mSOON\x1B[37m\n  \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n  \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\nEnter your choice: \n");
+    blank();
+    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n Which exam would you like to test?\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2   \x1B[31mSOON\x1B[37m\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\nEnter your choice: \n");
     ret = get_next_line(0, &buf);
     while (atoi(buf) < 1 || atoi(buf) > 1)
 	{
@@ -40,7 +40,8 @@ int	start(t_exam *exam)
 		ret = get_next_line(0, &buf);
 	}
     exam->exam_type = atoi(buf);
-	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\x1B[37mExam \x1B[32m%d\x1B[37m take 2 hours.\n\nKeep this terminal in a corner of your screen, and work on a new window.\n  > When you are ready, click on the return button.", exam->exam_type);
+    blank();
+	printf("\x1B[37mExam \x1B[32m%d\x1B[37m take 2 hours.\n\nKeep this terminal in a corner of your screen, and work on a new window.\n  > When you are ready, click on the return button.", exam->exam_type);
     scanf("%c",&ch);
 	int cpt = LIMIT;
     time_t prv;
@@ -49,7 +50,7 @@ int	start(t_exam *exam)
     while(cpt > 0)
     {
         prv = crt;
-		printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		blank();
         printf("%d\n", cpt);
         do
         {
@@ -83,8 +84,12 @@ void instruction(t_exam *exam)
     while (1)
 	{
 		if (dispatcheur(exam, buf) == -1)
+        {
+            header(exam);
+            printf("%s\n", buf);
 			printf("   └--> Error | Unknown argument, type help \n");
-		ret = get_next_line(0, &buf);
+        }
+        ret = get_next_line(0, &buf);
 	}
 }
 
@@ -116,7 +121,8 @@ int		dispatcheur(t_exam *exam, char *buf)
 		return (time_left(exam->depart, exam));
     if (ft_strcmp(buf, "exit") == 0)
     {
-        printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nYou finish the exam with a score of \x1B[32m%.02f\x1B[37m %%\n", exam->level);
+        blank();
+        printf("You finish the exam with a score of \x1B[32m%.02f\x1B[37m %%\n", exam->level);
             time(&arrivee);
             seconds = difftime(exam->depart, arrivee);
             hours = seconds / 3600;
@@ -131,7 +137,8 @@ int		dispatcheur(t_exam *exam, char *buf)
         time(&exam->timestart);
         if (exam->timeend <= exam->timestart)
         {
-            printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\x1B[31mAre you sure you want to have your exercise corrected?  \x1B[37m\n   > Enter 'y' to continue\n\n");
+            blank();
+            printf("\x1B[31mAre you sure you want to have your exercise corrected?  \x1B[37m\n   > Enter 'y' to continue\n\n");
             scanf ("    %c", &ch);
             if (ch == 'y')
             {
@@ -163,7 +170,7 @@ int		dispatcheur(t_exam *exam, char *buf)
 
 int    help(t_exam *exam)
 {
-    printf("\n\n\n\n\n\n\n\n\n\n\n");
+    blank();
     printf("\n\x1B[32mpush\x1B[37m to have your project corrected");
     printf("\n\x1B[32mexit\x1B[37m to abandon");
     printf("\n\x1B[32mtime\x1B[37m to know the remaining time\n\n");
@@ -180,7 +187,8 @@ int    help(t_exam *exam)
 
 void header(t_exam *exam)
 {
-    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n      Current Grade : \x1B[32m%.2f\x1B[37m %%\n\n", exam->level);
+    blank();
+    printf("      Current Grade : \x1B[32m%.2f\x1B[37m %%\n\n", exam->level);
     printf("\n\x1B[32mhelp\x1B[37m to get some help");
     printf("\n\x1B[32mpush\x1B[37m to get corrected");
     printf("\n\x1B[32mexit\x1B[37m to left");
@@ -197,7 +205,8 @@ int time_left(time_t depart, t_exam *exam)
     int hours;
     int minutes;
 
-    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n      Current Grade : \x1B[32m%.2f\x1B[37m %%\n\n", exam->level);
+    blank();
+    printf("      Current Grade : \x1B[32m%.2f\x1B[37m %%\n\n", exam->level);
     printf("\n\x1B[32mhelp\x1B[37m to get some help");
     printf("\n\x1B[32mpush\x1B[37m to get corrected");
     printf("\n\x1B[32mexit\x1B[37m to left");
@@ -217,7 +226,7 @@ void display_end(time_t depart)
     struct tm * t;
 
     t = localtime(&depart);
-    printf("End time : \x1B[32m%02uh%02u\x1B[37m\n", t->tm_hour, t->tm_min);
+    printf("Ending time : \x1B[32m%02uh%02u\x1B[37m\n", t->tm_hour, t->tm_min);
 }
 
 void s_sleep(int seconds) {
@@ -228,4 +237,9 @@ void s_sleep(int seconds) {
     while(current_time-start_time+1 <= seconds) {
         current_time = time(NULL);
     }
+}
+
+void    blank(void)
+{
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 }
