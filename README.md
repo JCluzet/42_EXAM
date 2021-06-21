@@ -2,8 +2,6 @@
  ## A program almost identical to the 42 pool EXAMS
 
  A program almost identical to the 42 pool EXAMS (for practice)
- 
- ## ⚠️ You MUST have coreutils install for random subject >> brew install coreutils 
 
  <img width="638" alt="Capture d’écran 2021-06-20 à 23 22 40" src="https://user-images.githubusercontent.com/55356071/122689121-b86efd00-d220-11eb-8138-a884334afd1c.png">
 
