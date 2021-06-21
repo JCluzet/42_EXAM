@@ -1,10 +1,11 @@
-	# fichier=$(ls .subject/$1 | shuf -n1) // Remove shuf for dependencies
-
 	nb=$(jot -r 1 1 "$(ls .subject/$1 | wc -l)")
 	fichier=$(ls .subject/$1 | sed -n "$nb"p)
 
-	# echo "$fichier"
-
+	{
+	cd .system/
+	mkdir verif
+	cd ..	
+	} &>/dev/null
 	cp -r .subject/$1/$fichier/subject.en.txt subject.en.txt
 	cp -r .subject/$1/$fichier/*.c .system/verif/
 	cp -r .subject/$1/$fichier/tester.sh .system/verif/
