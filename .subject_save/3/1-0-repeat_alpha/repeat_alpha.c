@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   repeat_alpha.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fwuensch <fwuensch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 14:55:21 by fwuensch          #+#    #+#             */
-/*   Updated: 2017/07/14 14:59:21 by fwuensch         ###   ########.fr       */
+/*   Updated: 2021/06/24 02:55:20 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
+int		putchar(char c)
+{
+	write(1, &c, 1);
+}
 
 int		letter_count(char c)
 {
