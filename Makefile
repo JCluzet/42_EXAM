@@ -6,12 +6,13 @@
 #    By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/21 01:05:24 by jcluzet           #+#    #+#              #
-#    Updated: 2021/06/20 22:40:02 by jcluzet          ###   ########.fr        #
+#    Updated: 2021/07/02 04:06:05 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 all:
-	@echo "\033[33m      Type > /make help for some help"
+	@make reset
+	@gcc .system/main.c .system/push.c .system/generate_subject.c .system/GNL/get_next_line.c .system/GNL/get_next_line_utils.c && ./a.out
 
 exam:
 	@make reset
@@ -26,6 +27,7 @@ clean:
 
 reset:
 	@rm -rf .subject
+	@rm .system/name
 	@cp -r .subject_save .subject
 	@rm -rf .system/verif/*
 	@rm -rf rendu/
