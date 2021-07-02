@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/06/21 00:06:03 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/07/02 04:20:41 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	generate_subject(t_exam *exam)
 {
+	FILE* fichier = NULL;
+
 	system("mkdir rendu");
 	if (exam->folder_num == 1)
 		system("sh .system/generatesub.sh 1");
@@ -35,5 +37,11 @@ int	generate_subject(t_exam *exam)
 		system("sh .system/generatesub.sh 9");
 	if (exam->folder_num == 10)
 		system("sh .system/generatesub.sh 10");
+    fichier = fopen(".system/verif/nameofex", "r");
+    if (fichier != NULL)
+    {
+        fgets(exam->nameofex, 30, fichier);
+        fclose(fichier);
+    }
 	return (0);
 }

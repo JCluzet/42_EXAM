@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/19 22:21:03 by jocluzet          #+#    #+#             */
-/*   Updated: 2021/06/21 00:11:23 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/07/02 04:19:50 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct	s_exam
 	int 		start;
 	int			midlev;
 	int			failuretime;
+	char		nameofex[30];
 	float 		level;
 	int			nbfail;
 	time_t		timestart, timeend;

@@ -9,7 +9,7 @@
 	cp -r .subject/$1/$fichier/subject.en.txt subject.en.txt
 	cp -r .subject/$1/$fichier/*.c .system/verif/
 	cp -r .subject/$1/$fichier/tester.sh .system/verif/
-	printf ${fichier:4} > .system/name
+	printf ${fichier:4} > .system/verif/nameofex
 	# chmod 777 .system/verif/nameofex.txt
 	{
 	rm -r traceback

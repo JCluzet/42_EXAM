@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/07/02 04:11:50 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/07/02 04:22:01 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ int	start(t_exam *exam)
 		}
     }
     exam->depart = time(&exam->depart) + 7200;
-    header(exam);
     if (exam->exam_type == 1)
         exam->folder_num = 1;
     if (exam->exam_type == 2)
@@ -92,6 +91,7 @@ void instruction(t_exam *exam)
     char				*buf;
     int ret;
 
+    header(exam);
     ret = get_next_line(0, &buf);
     while (1)
 	{
@@ -182,10 +182,7 @@ int		dispatcheur(t_exam *exam, char *buf)
 
 int    help(t_exam *exam)
 {
-    blank();
-    printf("\n\x1B[32mpush\x1B[37m to have your project corrected");
-    printf("\n\x1B[32mexit\x1B[37m to abandon");
-    printf("\n\x1B[32mtime\x1B[37m to know the remaining time\n\n");
+    header(exam);
     printf("\n\x1B[32m        EXPLANATION : \x1B[37m");
     printf("\n\n     ⚠️  You have to work from a new window to keep this one \x1B[32mavailable\x1B[37m\n");
     printf("\n     📝 A random subject named \x1B[32msubject.en.txt\x1B[37m has been generated");
@@ -199,20 +196,9 @@ int    help(t_exam *exam)
 
 void header(t_exam *exam)
 {
-    FILE* fichier = NULL;
-    char chaine[30] = "cannot detect name";
-
-    fichier = fopen(".system/name", "r");
-    if (fichier != NULL)
-    {
-        fgets(chaine, 30, fichier);
-        fclose(fichier);
-    }
-    else
-        printf("\nOh dear, something went wrong with read()! %s\n", strerror(errno));
     blank();
     printf("      Current Grade : \x1B[32m%.2f\x1B[37m %%\n", exam->level);
-    printf("         Working on : \x1B[32m%s\x1B[37m\n", chaine);
+    printf("         Working on : \x1B[32m%s\x1B[37m\n", exam->nameofex);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
     printf("\nType \x1B[32mpush\x1B[37m to get corrected");
     printf("\nType \x1B[32mexit\x1B[37m to left");
@@ -228,13 +214,7 @@ int time_left(time_t depart, t_exam *exam)
     int hours;
     int minutes;
 
-    blank();
-    printf("      Current Grade : \x1B[32m%.2f\x1B[37m %%\n\n", exam->level);
-    printf("\n\x1B[32mhelp\x1B[37m to get some help");
-    printf("\n\x1B[32mpush\x1B[37m to get corrected");
-    printf("\n\x1B[32mexit\x1B[37m to left");
-    printf("\n\x1B[32mtime\x1B[37m to know the remaining time\n\n");
-
+    header(exam);
     time(&arrivee);
     seconds = difftime(depart, arrivee);
     hours = seconds / 3600;
