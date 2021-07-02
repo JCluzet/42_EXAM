@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 14:55:21 by fwuensch          #+#    #+#             */
-/*   Updated: 2021/07/02 20:39:01 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/07/02 22:34:01 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		ft_putchar(char c);
 int		ft_putchar(char c)
 {
 	write(1, &c, 1);
+	return(0);
 }
 
 int		letter_count(char c)
@@ -47,4 +48,5 @@ int		main(int ac, char **av)
 		}
 	}
 	ft_putchar('\n');
+	return(0);
 }

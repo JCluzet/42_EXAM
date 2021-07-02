@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/07/02 15:24:25 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/07/02 22:41:54 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,15 @@ int push(t_exam *exam)
 		if (exam->level == XP_TO_FINISH)
 			success_exam(exam);
 		blank();
-		printf("\x1B[32mCongratulation!\x1B[37m A new subject is now created.\n\n       Current Grade : \x1B[32m%.2f\x1B[37m %%\n\n", exam->level);
-    	printf("\x1B[32mhelp\x1B[37m to get some help");
-    	printf("\n\x1B[32mpush\x1B[37m to get corrected");
-    	printf("\n\x1B[32mexit\x1B[37m to left");
-    	printf("\n\x1B[32mtime\x1B[37m to know the remaining time\n\n");
-    	display_end(exam->depart);
+		printf("\x1B[32mCongratulation!\x1B[37m A new subject is now created.\n\n");
 		generate_subject(exam);
+		printf("    CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[37m\n\n", exam->level);
+    printf("   CURRENT PROJECT\n   ---> \x1B[32m%s\x1B[37m\n", exam->nameofex);
+    printf("\nType \x1B[32mhelp\x1B[37m to get some help");
+    printf("\nType \x1B[32mpush\x1B[37m to get corrected");
+    printf("\nType \x1B[32mexit\x1B[37m to left");
+    printf("\nType \x1B[32mtime\x1B[37m to know the remaining time\n\n");
+    	display_end(exam->depart);
 		exam->failuretime = 0;
 	}
 	else
@@ -67,11 +69,13 @@ int push(t_exam *exam)
 		printf("\n\x1B[31m#######    #    ### #           #    ##\n#         # #    #  #          ###  #\n#        #   #   #  #           #  #\n#####   #     #  #  #              #\n#       #######  #  #           #  #\n#       #     #  #  #          ###  #\n#       #     # ### #######     #    ##\x1B[37m\n\n");
 		s_sleep(3);
 		blank();
-		printf("\x1B[37mFind the trace in the file \x1B[31m> traceback\x1B[37m\n\n       Current Grade : \x1B[32m%.2f\x1B[37m %%\n\n", exam->level);
-   		printf("\x1B[32mhelp\x1B[37m to get some help");
-    	printf("\n\x1B[32mpush\x1B[37m to get corrected");
-    	printf("\n\x1B[32mexit\x1B[37m to left");
-    	printf("\n\x1B[32mtime\x1B[37m to know the remaining time\n\n");
+		printf("\x1B[37mFind the trace in the file \x1B[31m> traceback\x1B[37m\n\n");
+		printf("    CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[37m\n\n", exam->level);
+    printf("   CURRENT PROJECT\n   ---> \x1B[32m%s\x1B[37m\n", exam->nameofex);
+    printf("\nType \x1B[32mhelp\x1B[37m to get some help");
+    printf("\nType \x1B[32mpush\x1B[37m to get corrected");
+    printf("\nType \x1B[32mexit\x1B[37m to left");
+    printf("\nType \x1B[32mtime\x1B[37m to know the remaining time\n\n");
     	display_end(exam->depart);
 		exam->nbfail++;
 		if (exam->failuretime == 0)

@@ -3,34 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ulstr.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 15:11:26 by angavrel          #+#    #+#             */
-/*   Updated: 2017/07/14 15:28:42 by fwuensch         ###   ########.fr       */
+/*   Updated: 2021/07/02 22:47:29 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
 int		main(int ac, char **av)
 {
+	int		index;
+
+	index = 0;
 	if (ac == 2)
 	{
-		while (*av[1])
+		while (av[1][index] != '\0')
 		{
-			if (*av[1] >= 'A' && *av[1] <= 'Z')
-			{
-				*av[1] += 32;
-				write(1, av[1], 1);
-			}
-			else if (*av[1] >= 'a' && *av[1] <= 'z')
-			{
-				*av[1] -= 32;
-				write(1, av[1], 1);
-			}
-			av[1]++;
+			if (av[1][index] >= 'A' && av[1][index] <= 'Z')
+				ft_putchar(av[1][index] - 'A' + 'a');
+			else if (av[1][index] >= 'a' && av[1][index] <= 'z')
+				ft_putchar(av[1][index] - 'a' + 'A');
+			else
+				ft_putchar(av[1][index]);
+			index++;
 		}
 	}
-	write(1, "\n", 1);
-	return (1);
+	ft_putchar('\n');
+	return (0);
 }
