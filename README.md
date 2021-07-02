@@ -3,7 +3,7 @@
 
  A program almost identical to the 42 pool EXAMS (for practice)
 
- <img width="638" alt="Capture d’écran 2021-06-20 à 23 22 40" src="https://user-images.githubusercontent.com/55356071/122689121-b86efd00-d220-11eb-8138-a884334afd1c.png">
+<img width="638" alt="122689121-b86efd00-d220-11eb-8138-a884334afd1c" src="https://user-images.githubusercontent.com/55356071/124315905-036c0700-db75-11eb-9921-4f4315100974.png">
 
  ## Practice like for the 42 exam 🏊‍♂️
 
