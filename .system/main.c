@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/07/02 15:48:49 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/07/02 20:33:01 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ int	start(t_exam *exam)
     int ret;
     exam->start = -10;
     blank();
-    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n\n Which exam would you like to test?\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2   \x1B[31mSOON\x1B[37m\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\nEnter your choice: \n");
+    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n\n Which exam would you like to test?\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\nEnter your choice: \n");
     ret = get_next_line(0, &buf);
-    while (atoi(buf) < 1 || atoi(buf) > 1)
+    while (atoi(buf) < 1 || atoi(buf) > 2)
 	{
-		printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter a number from 1 to 1\n");
+		printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter a number from 1 to 2\n");
 		ret = get_next_line(0, &buf);
 	}
     exam->exam_type = atoi(buf);
@@ -142,7 +142,7 @@ int		dispatcheur(t_exam *exam, char *buf)
         if (ch == 'y')
         {
             blank();
-            printf("🎉 You finish the exam with a score of \x1B[32m%.02f\x1B[37m %% and \x1B[31m%d fail\x1B[37m\n", exam->level, exam->nbfail);
+            printf("🎉 You exit the exam with a score of \x1B[32m%.02f\x1B[37m %% and \x1B[31m%d fail\x1B[37m\n", exam->level, exam->nbfail);
             time(&arrivee);
             seconds = difftime(exam->depart, arrivee);
             hours = seconds / 3600;
