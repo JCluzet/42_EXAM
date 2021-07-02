@@ -6,13 +6,15 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/14 14:55:21 by fwuensch          #+#    #+#             */
-/*   Updated: 2021/06/24 02:55:20 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/07/02 20:39:01 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int		putchar(char c)
+int		ft_putchar(char c);
+
+int		ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
