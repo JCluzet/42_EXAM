@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/06/21 00:14:16 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/07/02 15:24:25 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int push(t_exam *exam)
 	int v = 0;
     clock_t target;
     char spin[] = "\\|/-";
-    printf(" ");
 	blank();
     while(v < n) {
         printf("\b%c", spin[i]);

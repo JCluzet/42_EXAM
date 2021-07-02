@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/07/02 04:22:01 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/07/02 15:48:49 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	start(t_exam *exam)
     ret = get_next_line(0, &buf);
     while (atoi(buf) < 1 || atoi(buf) > 1)
 	{
-		printf("   └--> Error | Unknown argument, enter a number from 1 to 1\n");
+		printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter a number from 1 to 1\n");
 		ret = get_next_line(0, &buf);
 	}
     exam->exam_type = atoi(buf);
@@ -92,15 +92,18 @@ void instruction(t_exam *exam)
     int ret;
 
     header(exam);
+    write(1, "\n$ > ", 5);
     ret = get_next_line(0, &buf);
     while (1)
 	{
 		if (dispatcheur(exam, buf) == -1)
         {
             header(exam);
+            write(1, "\n$ > ", 5);
             printf("%s\n", buf);
-			printf("   └--> Error | Unknown argument, type help \n");
+			printf("     └--> \x1B[31mError\x1B[37m | type \x1B[32mhelp\x1B[37m/\x1B[32mpush\x1B[37m/\x1B[32mtime\x1B[37m/\x1B[32mexit\x1B[37m or start working on a NEW window.\n");
         }
+        write(1, "\n$ > ", 5);
         ret = get_next_line(0, &buf);
 	}
 }
@@ -133,24 +136,35 @@ int		dispatcheur(t_exam *exam, char *buf)
 		return (time_left(exam->depart, exam));
     if (ft_strcmp(buf, "exit") == 0)
     {
-        blank();
-        printf("You finish the exam with a score of \x1B[32m%.02f\x1B[37m %% and \x1B[31m%d fail\x1B[37m\n", exam->level, exam->nbfail);
+        printf("\n\n\x1B[31m   ⚠️  Warning: You're about to END your exam.\n   \x1B[32m%.02f%%\x1B[31m will be you're final score and you will not be able to go back.\x1B[37m\n\n", exam->level);
+        printf("      > Enter 'y' to confirm exit\n\n");
+        scanf ("%c", &ch);
+        if (ch == 'y')
+        {
+            blank();
+            printf("🎉 You finish the exam with a score of \x1B[32m%.02f\x1B[37m %% and \x1B[31m%d fail\x1B[37m\n", exam->level, exam->nbfail);
             time(&arrivee);
             seconds = difftime(exam->depart, arrivee);
             hours = seconds / 3600;
             minutes = (seconds - (hours * 3600)) / 60;
             sec = seconds - (hours * 3600) - (minutes * 60);
             printf("\n\x1B[37mHere is your remaining time: \x1B[32m%d H %d M %d S\n\n\x1B[37m", hours, minutes, sec);
-        system("make reset");
-        exit(0);
+            system("make reset");
+            exit(0);
+            return(0);
+        }
+        else
+        {
+            header(exam);
+            return(0);
+        }
     }
     if (ft_strcmp(buf, "push") == 0)
     {
         time(&exam->timestart);
         if (exam->timeend <= exam->timestart)
         {
-            blank();
-            printf("\x1B[31mAre you sure you want to have your exercise corrected?  \x1B[37m\n   > Enter 'y' to continue\n\n");
+            printf("\n\n\x1B[31m   ⚠️  Warning: The more you try to get the same project corrected, \n   the longer you will have to wait to get it \x1B[37mcorrected\x1B[37m.\n  \x1B[37m\n      > Enter 'y' to get corrected\n\n");
             scanf ("    %c", &ch);
             if (ch == 'y')
             {
@@ -170,10 +184,10 @@ int		dispatcheur(t_exam *exam, char *buf)
             {
                 minfail = secondfail / 60;
                 secondfail = secondfail - (minfail * 60);
-                printf("\n You must wait\x1B[31m %dmin and %dsec \x1B[37m to have your level corrected\n\n", minfail, secondfail);
+                printf("\n   ⌛️ You must wait\x1B[31m %dmin and %dsec \x1B[37m to have your level corrected\n", minfail, secondfail);
             }
             else
-                printf("\n You must wait \x1B[31m %dsec \x1B[37m to have your level corrected\n\n", secondfail);
+                printf("\n You must wait\x1B[31m  %dsec  \x1B[37mto have your level corrected\n", secondfail);
         return(0);
         }
     }
@@ -197,8 +211,9 @@ int    help(t_exam *exam)
 void header(t_exam *exam)
 {
     blank();
-    printf("      Current Grade : \x1B[32m%.2f\x1B[37m %%\n", exam->level);
-    printf("         Working on : \x1B[32m%s\x1B[37m\n", exam->nameofex);
+    printf("    CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[37m\n\n", exam->level);
+    // printf(" Current Grade : \x1B[32m%.2f\x1B[37m%%\n\n", exam->level);
+    printf("   CURRENT PROJECT\n   ---> \x1B[32m%s\x1B[37m\n", exam->nameofex);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
     printf("\nType \x1B[32mpush\x1B[37m to get corrected");
     printf("\nType \x1B[32mexit\x1B[37m to left");
@@ -220,7 +235,7 @@ int time_left(time_t depart, t_exam *exam)
     hours = seconds / 3600;
     minutes = (seconds - (hours * 3600)) / 60;
     sec = seconds - (hours * 3600) - (minutes * 60);
-    printf("\n\x1B[37mTime left : \x1B[32m%d H %d M %d S\n\n\x1B[37m", hours, minutes, sec);
+    printf("\n\x1B[37mTime left : \x1B[32m%d H %d M %d S\x1B[37m\n", hours, minutes, sec);
     return(0);
 }
 

@@ -6,7 +6,7 @@
 #    By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2021/06/20 19:05:17 by jcluzet          ###   ########.fr        #
+#    Updated: 2021/07/02 15:54:19 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -145,6 +145,32 @@ cd ../../rendu
 {
 gcc -o final $FILE
 ./final "AAAAaaaaaaaaAa" | cat -e > finalexam     #TESTING
+mv finalexam ../.system/verif/
+rm final
+}  &>/dev/null
+cd ../.system/verif
+DIFF=$(diff sourcexam finalexam)
+if [ "$DIFF" != "" ]
+then
+		index=$(($index + 1))
+		cat sourcexam >> traceback
+		if [ -e finalexam ]
+		then
+		cat finalexam >> traceback
+		else
+		echo "" >> traceback
+		fi
+		echo "-------" >> traceback
+fi
+rm finalexam
+
+gcc -o source $FILE
+./source "AAAAaaaaaaaaAa" "test" | cat -e > sourcexam    #TESTING
+rm source
+cd ../../rendu
+{
+gcc -o final $FILE
+./final "AAAAaaaaaaaaAa" "test" | cat -e > finalexam     #TESTING
 mv finalexam ../.system/verif/
 rm final
 }  &>/dev/null
