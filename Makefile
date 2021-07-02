@@ -6,7 +6,7 @@
 #    By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/21 01:05:24 by jcluzet           #+#    #+#              #
-#    Updated: 2021/07/02 04:06:05 by jcluzet          ###   ########.fr        #
+#    Updated: 2021/07/02 04:12:37 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,6 @@ clean:
 
 reset:
 	@rm -rf .subject
-	@rm .system/name
 	@cp -r .subject_save .subject
 	@rm -rf .system/verif/*
 	@rm -rf rendu/

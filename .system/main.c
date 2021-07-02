@@ -6,11 +6,13 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/07/02 03:01:45 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/07/02 04:11:50 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "exam.h"
+# include <errno.h>
+# include <string.h>
 # define LIMIT   5
 
 int main(int argc, char **argv)
@@ -197,14 +199,25 @@ int    help(t_exam *exam)
 
 void header(t_exam *exam)
 {
+    FILE* fichier = NULL;
+    char chaine[30] = "cannot detect name";
+
+    fichier = fopen(".system/name", "r");
+    if (fichier != NULL)
+    {
+        fgets(chaine, 30, fichier);
+        fclose(fichier);
+    }
+    else
+        printf("\nOh dear, something went wrong with read()! %s\n", strerror(errno));
     blank();
-    printf("      Current Grade : \x1B[32m%.2f\x1B[37m %%\n\n", exam->level);
-    printf("\n\x1B[32mhelp\x1B[37m to get some help");
-    printf("\n\x1B[32mpush\x1B[37m to get corrected");
-    printf("\n\x1B[32mexit\x1B[37m to left");
-    printf("\n\x1B[32mtime\x1B[37m to know the remaining time\n\n");
+    printf("      Current Grade : \x1B[32m%.2f\x1B[37m %%\n", exam->level);
+    printf("         Working on : \x1B[32m%s\x1B[37m\n", chaine);
+    printf("\nType \x1B[32mhelp\x1B[37m to get some help");
+    printf("\nType \x1B[32mpush\x1B[37m to get corrected");
+    printf("\nType \x1B[32mexit\x1B[37m to left");
+    printf("\nType \x1B[32mtime\x1B[37m to know the remaining time\n\n");
     display_end(exam->depart);
-    // time_left(exam->depart);
 }
 
 int time_left(time_t depart, t_exam *exam)
