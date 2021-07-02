@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/06/21 00:30:13 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/07/02 03:01:45 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,16 @@ int	start(t_exam *exam)
 	}
     exam->exam_type = atoi(buf);
     blank();
-	printf("\x1B[37mExam \x1B[32m%d\x1B[37m take 2 hours.\n\n\n\nKeep this terminal in a corner of yourscreen, and work on \na new window.\n\n\n\n\n\n  > When you are ready, click on the\n\x1B[37mreturn button to start the exam\x1B[37m.", exam->exam_type);
+    printf("\n\x1B[32m        EXPLANATION : \x1B[37m");
+    printf("\n\n     ⚠️  You have to work from a new window to keep this one \x1B[32mavailable\x1B[37m\n");
+    printf("\n     📝 A random subject named \x1B[32msubject.en.txt\x1B[37m will be generated");
+    printf("\n         > You must write your project in the folder : \x1B[32mrendu\x1B[37m");
+    printf("\n\n     🎓 Once completed, you can push/correct your project with : \x1B[32mpush\x1B[37m");
+    printf("\n         If your level is validated, you move on to the next level 🎉");
+    printf("\n         If not, you have to start again ❌");
+    printf("\n\n     ⌛️ Warning: The more you try to get the same project corrected, \n     the longer you will have to wait to get it \x1B[32mcorrected\x1B[37m.\n\n");
+    printf("\n\x1B[37m     Exam \x1B[32m%d\x1B[37m take 2 hours.", exam->exam_type);
+	printf("\n\n       > When you are ready, click on the\n       \x1B[37mreturn button to start the exam\x1B[37m.");
     scanf("%c",&ch);
 	int cpt = LIMIT;
     time_t prv;
@@ -175,14 +184,14 @@ int    help(t_exam *exam)
     printf("\n\x1B[32mpush\x1B[37m to have your project corrected");
     printf("\n\x1B[32mexit\x1B[37m to abandon");
     printf("\n\x1B[32mtime\x1B[37m to know the remaining time\n\n");
-    printf("\n\x1B[32m   EXPLANATION : \x1B[37m");
-    printf("\n\n     You have to work from a new window to keep this one \x1B[32mavailable\x1B[37m.");
-    printf("\n     A subject has been generated named : \x1B[32msubject.en.txt\x1B[37m.");
-    printf("\n     You must write your project in the folder : \x1B[32mrendu\x1B[37m.");
-    printf("\n     Once completed, you can push/correct your project with : \x1B[32mpush\x1B[37m.");
-    printf("\n     If your level is validated, you move on to the next level.");
-    printf("\n     If not, you have to start again.");
-    printf("\n     Warning: The more you try to get the same project corrected, the longer you will have to wait to get it \x1B[32mcorrected\x1B[37m.\n\n");
+    printf("\n\x1B[32m        EXPLANATION : \x1B[37m");
+    printf("\n\n     ⚠️  You have to work from a new window to keep this one \x1B[32mavailable\x1B[37m\n");
+    printf("\n     📝 A random subject named \x1B[32msubject.en.txt\x1B[37m has been generated");
+    printf("\n         > You must write your project in the folder : \x1B[32mrendu\x1B[37m");
+    printf("\n\n     🎓 Once completed, you can push/correct your project with : \x1B[32mpush\x1B[37m");
+    printf("\n         If your level is validated, you move on to the next level 🎉");
+    printf("\n         If not, you have to start again ❌");
+    printf("\n\n     ⌛️ Warning: The more you try to get the same project corrected, \n     the longer you will have to wait to get it \x1B[32mcorrected\x1B[37m.\n\n");
     return(0);
 }
 
