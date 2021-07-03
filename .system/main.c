@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/07/03 15:16:33 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/07/03 15:18:37 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,7 +200,7 @@ int    help(t_exam *exam)
     printf("\n\x1B[32m        EXPLANATION : \x1B[37m");
     printf("\n\n     ⚠️  You have to work from a new window to keep this one \x1B[32mavailable\x1B[37m\n");
     printf("\n     📝 A random subject named \x1B[32msubject.en.txt\x1B[37m has been generated");
-    printf("\n         > You must write your file (example.c) in the folder : \x1B[32mrendu\x1B[37m");
+    printf("\n         > You must write %s.c directly in the folder : \x1B[32mrendu\x1B[37m", exam->nameofex);
     printf("\n\n     🎓 Once completed, you can push/correct your project with : \x1B[32mpush\x1B[37m");
     printf("\n         If your level is validated, you move on to the next level 🎉");
     printf("\n         If not, you have to start again ❌");
