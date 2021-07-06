@@ -6,7 +6,7 @@
 /*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/07/03 15:18:37 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/07/07 00:10:45 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	start(t_exam *exam)
 {
     char				*buf;
     char    ch;
+    int hour;
     int ret;
     exam->start = -10;
     blank();
@@ -43,6 +44,8 @@ int	start(t_exam *exam)
 		ret = get_next_line(0, &buf);
 	}
     exam->exam_type = atoi(buf);
+    if (exam->exam_type == 1 || exam->exam_type == 2)
+        hour = 4;
     blank();
     printf("\n\x1B[32m        EXPLANATION : \x1B[37m");
     printf("\n\n     ⚠️  You have to work from a new window to keep this one \x1B[32mavailable\x1B[37m\n");
@@ -52,7 +55,7 @@ int	start(t_exam *exam)
     printf("\n         If your level is validated, you move on to the next level 🎉");
     printf("\n         If not, you have to start again ❌");
     printf("\n\n     ⌛️ Warning: The more you try to get the same project corrected, \n     the longer you will have to wait to get it \x1B[32mcorrected\x1B[37m.\n\n");
-    printf("\n\x1B[37m     Exam \x1B[32m%d\x1B[37m take 2 hours.", exam->exam_type);
+    printf("\n\x1B[37m     Exam \x1B[32m%d\x1B[37m take 4 hours.", exam->exam_type);
 	printf("\n\n       > When you are ready, click on the\n       \x1B[37mreturn button to start the exam\x1B[37m.");
     scanf("%c",&ch);
 	int cpt = LIMIT;
@@ -72,7 +75,7 @@ int	start(t_exam *exam)
         cpt--;
 		}
     }
-    exam->depart = time(&exam->depart) + 7200;
+    exam->depart = time(&exam->depart) + hour * 3600;
     if (exam->exam_type == 1)
         exam->folder_num = 1;
     if (exam->exam_type == 2)
