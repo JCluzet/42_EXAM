@@ -21,3 +21,5 @@
  # Launch in ONE COMMAND : 
 
  ## git clone https://github.com/JCluzet/42_EXAM.git && cd 42_EXAM && make exam
+ 
+ 👋🏼 If you encounter any problems when launching the game or if you have any questions, don't hesitate to send me an e-mail : jcluzet@student.42.fr
