@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   generate_subject.c                                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/07/02 04:20:41 by jcluzet          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 # include "exam.h"
 
 int	generate_subject(t_exam *exam)
@@ -37,11 +25,26 @@ int	generate_subject(t_exam *exam)
 		system("sh .system/generatesub.sh 9");
 	if (exam->folder_num == 10)
 		system("sh .system/generatesub.sh 10");
-    fichier = fopen(".system/verif/nameofex", "r");
-    if (fichier != NULL)
-    {
-        fgets(exam->nameofex, 30, fichier);
-        fclose(fichier);
-    }
+	
+	FILE *plop;
+	plop = popen("ls .system/verif | grep .c", "r");
+	char buffer[100];
+	fgets(buffer, 30, plop);
+	pclose(plop);
+	int i = 0;
+	while (buffer[i])
+	{
+		exam->nameofex[i] = buffer[i];
+		i++;
+	}
+	exam->nameofex[i] = '\0';
+	// nameofex = 
+    // fichier = fopen(".system/verif/nameofex", "w");
+    // if (fichier != NULL)
+    // {
+    //     fgets(exam->nameofex, 30, fichier);
+	// 	printf("SUBJEC >> %s", exam->nameofex);
+    //     fclose(fichier);
+    // }
 	return (0);
 }

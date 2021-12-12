@@ -31,7 +31,7 @@ typedef struct	s_exam
 	int 		start;
 	int			midlev;
 	int			failuretime;
-	char		nameofex[30];
+	char		nameofex[100];
 	float 		level;
 	int			nbfail;
 	time_t		timestart, timeend;
