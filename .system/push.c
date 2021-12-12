@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
+/*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/07/02 22:41:54 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/12/12 21:39:10 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int push(t_exam *exam)
 		printf("    CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[37m\n\n", exam->level);
     printf("   CURRENT PROJECT\n   ---> \x1B[32m%s\x1B[37m\n", exam->nameofex);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
-    printf("\nType \x1B[32mpush\x1B[37m to get corrected");
+    printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
     printf("\nType \x1B[32mexit\x1B[37m to left");
     printf("\nType \x1B[32mtime\x1B[37m to know the remaining time\n\n");
     	display_end(exam->depart);
@@ -73,7 +73,7 @@ int push(t_exam *exam)
 		printf("    CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[37m\n\n", exam->level);
     printf("   CURRENT PROJECT\n   ---> \x1B[32m%s\x1B[37m\n", exam->nameofex);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
-    printf("\nType \x1B[32mpush\x1B[37m to get corrected");
+    printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
     printf("\nType \x1B[32mexit\x1B[37m to left");
     printf("\nType \x1B[32mtime\x1B[37m to know the remaining time\n\n");
     	display_end(exam->depart);

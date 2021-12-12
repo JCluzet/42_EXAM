@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/12/12 20:23:58 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/12/12 21:41:09 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int start(t_exam *exam)
     printf("\n\n     ⚠️  You have to work from a new window to keep this one \x1B[32mavailable\x1B[37m\n");
     printf("\n     📝 A random subject named \x1B[32msubject.en.txt\x1B[37m will be generated");
     printf("\n         > You must write your file (example.c) in the folder : \x1B[32mrendu\x1B[37m");
-    printf("\n\n     🎓 Once completed, you can push/correct your project with : \x1B[32mpush\x1B[37m");
+    printf("\n\n     🎓 Once completed, you can push/correct your project with : \x1B[32mgrademe\x1B[37m");
     printf("\n         If your level is validated, you move on to the next level 🎉");
     printf("\n         If not, you have to start again ❌");
     printf("\n\n     ⌛️ Warning: The more you try to get the same project corrected, \n     the longer you will have to wait to get it \x1B[32mcorrected\x1B[37m.\n\n");
@@ -123,7 +123,7 @@ void instruction(t_exam *exam)
             header(exam);
             write(1, "\n$ > ", 5);
             printf("%s\n", buf);
-            printf("     └--> \x1B[31mError\x1B[37m | type \x1B[32mhelp\x1B[37m/\x1B[32mpush\x1B[37m/\x1B[32mtime\x1B[37m/\x1B[32mexit\x1B[37m or start working on a NEW window.\n");
+            printf("     └--> \x1B[31mError\x1B[37m | type \x1B[32mhelp\x1B[37m/\x1B[32mgrademe\x1B[37m/\x1B[32mtime\x1B[37m/\x1B[32mexit\x1B[37m or start working on a NEW window.\n");
         }
         write(1, "\n$ > ", 5);
         ret = get_next_line(0, &buf);
@@ -180,12 +180,12 @@ int dispatcheur(t_exam *exam, char *buf)
             return (0);
         }
     }
-    if (ft_strcmp(buf, "push") == 0)
+    if (ft_strcmp(buf, "grademe") == 0)
     {
         time(&exam->timestart);
         if (exam->timeend <= exam->timestart)
         {
-            printf("\n\n\x1B[31m   ⚠️  Warning: The more you try to get the same project corrected, \n   the longer you will have to wait to get it \x1B[37mcorrected\x1B[37m.\n  \x1B[37m\n      > Enter 'y' to get corrected\n\n");
+            printf("\nNice reminder : Here you don't need to use GIT.\nBut remember that during the exam you will have to use it to push your project !\n\n\x1B[31m   ⚠️  Warning: The more you try to get the same project corrected, \n   the longer you will have to wait to get it \x1B[37mcorrected\x1B[37m.\n  \x1B[37m\n      > Enter 'y' to get corrected\n\n");
             scanf("    %c", &ch);
             if (ch == 'y')
             {
@@ -222,7 +222,7 @@ int help(t_exam *exam)
     printf("\n\n     ⚠️  You have to work from a new window to keep this one \x1B[32mavailable\x1B[37m\n");
     printf("\n     📝 A random subject named \x1B[32msubject.en.txt\x1B[37m has been generated");
     printf("\n         > You must write %s.c directly in the folder : \x1B[32mrendu\x1B[37m", exam->nameofex);
-    printf("\n\n     🎓 Once completed, you can push/correct your project with : \x1B[32mpush\x1B[37m");
+    printf("\n\n     🎓 Once completed, you can push/correct your project with : \x1B[32mgrademe\x1B[37m");
     printf("\n         If your level is validated, you move on to the next level 🎉");
     printf("\n         If not, you have to start again ❌");
     printf("\n\n     ⌛️ Warning: The more you try to get the same project corrected, \n     the longer you will have to wait to get it \x1B[32mcorrected\x1B[37m.\n\n");
@@ -235,7 +235,7 @@ void header(t_exam *exam)
     printf("    CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[37m\n\n", exam->level);
     printf("   CURRENT PROJECT\n   ---> \x1B[32m%s\x1B[37m\n", exam->nameofex);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
-    printf("\nType \x1B[32mpush\x1B[37m to get corrected");
+    printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
     printf("\nType \x1B[32mexit\x1B[37m to left");
     printf("\nType \x1B[32mtime\x1B[37m to know the remaining time\n\n");
     display_end(exam->depart);
