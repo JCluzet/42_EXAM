@@ -3,35 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
+/*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/07/07 00:10:45 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/12/12 20:23:58 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "exam.h"
-# include <errno.h>
-# include <string.h>
-# define LIMIT   5
+#include "exam.h"
+#include <errno.h>
+#include <string.h>
+#define LIMIT 5
+
+int checkjot()
+{
+    int result;
+    result = system("jot -r 1 1");
+    if (result != 0)
+    {
+        printf("\nHi ! We need to use the JOT function in order to randomize the subject.\n\nClick on any button to start the installation of this package.\n");
+        getchar();
+        system("sudo apt-get install jot");
+        result = system("jot -r 1 1");
+        if (result != 0)
+        {
+            printf("Unable to install JOT package.\n\n Please try by yourself with 'sudo apt-get install jot'\n\n");
+            return (-1);
+        }
+    }
+    return (0);
+}
 
 int main(int argc, char **argv)
 {
-	t_exam examm;
-	remove("a.out");
+    t_exam examm;
+    remove("a.out");
     examm.midlev = 0;
     examm.nbfail = 0;
     examm.failuretime = 0.0;
     examm.timeend = 0;
 
-	if (argc == 1)
-		start(&examm);
+    if (argc == 1 && checkjot() != -1)
+        start(&examm);
 }
 
-int	start(t_exam *exam)
+int start(t_exam *exam)
 {
-    char				*buf;
-    char    ch;
+    char *buf;
+    char ch;
     int hour;
     int ret;
     exam->start = -10;
@@ -39,10 +58,10 @@ int	start(t_exam *exam)
     printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n\n Which exam would you like to test?\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\nEnter your choice: \n");
     ret = get_next_line(0, &buf);
     while (atoi(buf) < 1 || atoi(buf) > 2)
-	{
-		printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter a number from 1 to 2\n");
-		ret = get_next_line(0, &buf);
-	}
+    {
+        printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter a number from 1 to 2\n");
+        ret = get_next_line(0, &buf);
+    }
     exam->exam_type = atoi(buf);
     if (exam->exam_type == 1 || exam->exam_type == 2)
         hour = 4;
@@ -56,24 +75,24 @@ int	start(t_exam *exam)
     printf("\n         If not, you have to start again ❌");
     printf("\n\n     ⌛️ Warning: The more you try to get the same project corrected, \n     the longer you will have to wait to get it \x1B[32mcorrected\x1B[37m.\n\n");
     printf("\n\x1B[37m     Exam \x1B[32m%d\x1B[37m take 4 hours.", exam->exam_type);
-	printf("\n\n       > When you are ready, click on the\n       \x1B[37mreturn button to start the exam\x1B[37m.");
-    scanf("%c",&ch);
-	int cpt = LIMIT;
+    printf("\n\n       > When you are ready, click on the\n       \x1B[37mreturn button to start the exam\x1B[37m.");
+    scanf("%c", &ch);
+    int cpt = LIMIT;
     time_t prv;
     time_t crt = time(NULL);
 
-    while(cpt > 0)
+    while (cpt > 0)
     {
         prv = crt;
-		blank();
+        blank();
         printf("%d\n", cpt);
         do
         {
             crt = time(NULL);
-        } while(crt == prv);
-		{
-        cpt--;
-		}
+        } while (crt == prv);
+        {
+            cpt--;
+        }
     }
     exam->depart = time(&exam->depart) + hour * 3600;
     if (exam->exam_type == 1)
@@ -91,38 +110,37 @@ int	start(t_exam *exam)
 
 void instruction(t_exam *exam)
 {
-    char				*buf;
+    char *buf;
     int ret;
 
     header(exam);
     write(1, "\n$ > ", 5);
     ret = get_next_line(0, &buf);
     while (1)
-	{
-		if (dispatcheur(exam, buf) == -1)
+    {
+        if (dispatcheur(exam, buf) == -1)
         {
             header(exam);
             write(1, "\n$ > ", 5);
             printf("%s\n", buf);
-			printf("     └--> \x1B[31mError\x1B[37m | type \x1B[32mhelp\x1B[37m/\x1B[32mpush\x1B[37m/\x1B[32mtime\x1B[37m/\x1B[32mexit\x1B[37m or start working on a NEW window.\n");
+            printf("     └--> \x1B[31mError\x1B[37m | type \x1B[32mhelp\x1B[37m/\x1B[32mpush\x1B[37m/\x1B[32mtime\x1B[37m/\x1B[32mexit\x1B[37m or start working on a NEW window.\n");
         }
         write(1, "\n$ > ", 5);
         ret = get_next_line(0, &buf);
-	}
+    }
 }
 
-int		ft_strcmp(char *s1, char *s2)
+int ft_strcmp(char *s1, char *s2)
 {
-	int i;
+    int i;
 
-	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-		i++;
-	return (s1[i] - s2[i]);
+    i = 0;
+    while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+        i++;
+    return (s1[i] - s2[i]);
 }
 
-
-int		dispatcheur(t_exam *exam, char *buf)
+int dispatcheur(t_exam *exam, char *buf)
 {
     char ch;
     time_t arrivee;
@@ -133,15 +151,15 @@ int		dispatcheur(t_exam *exam, char *buf)
     int hours;
     int minutes;
 
-	if (ft_strcmp(buf, "help") == 0)
-		return (help(exam));
+    if (ft_strcmp(buf, "help") == 0)
+        return (help(exam));
     if (ft_strcmp(buf, "time") == 0)
-		return (time_left(exam->depart, exam));
+        return (time_left(exam->depart, exam));
     if (ft_strcmp(buf, "exit") == 0)
     {
         printf("\n\n\x1B[31m   ⚠️  Warning: You're about to END your exam.\n   \x1B[32m%.02f%%\x1B[31m will be you're final score and you will not be able to go back.\x1B[37m\n\n", exam->level);
         printf("      > Enter 'y' to confirm exit\n\n");
-        scanf ("%c", &ch);
+        scanf("%c", &ch);
         if (ch == 'y')
         {
             blank();
@@ -154,12 +172,12 @@ int		dispatcheur(t_exam *exam, char *buf)
             printf("\n\x1B[37mHere is your remaining time: \x1B[32m%d H %d M %d S\n\n\x1B[37m", hours, minutes, sec);
             system("make reset");
             exit(0);
-            return(0);
+            return (0);
         }
         else
         {
             header(exam);
-            return(0);
+            return (0);
         }
     }
     if (ft_strcmp(buf, "push") == 0)
@@ -168,16 +186,16 @@ int		dispatcheur(t_exam *exam, char *buf)
         if (exam->timeend <= exam->timestart)
         {
             printf("\n\n\x1B[31m   ⚠️  Warning: The more you try to get the same project corrected, \n   the longer you will have to wait to get it \x1B[37mcorrected\x1B[37m.\n  \x1B[37m\n      > Enter 'y' to get corrected\n\n");
-            scanf ("    %c", &ch);
+            scanf("    %c", &ch);
             if (ch == 'y')
             {
                 push(exam);
-                return(0);
+                return (0);
             }
             else
             {
                 header(exam);
-                return(0);
+                return (0);
             }
         }
         else
@@ -191,13 +209,13 @@ int		dispatcheur(t_exam *exam, char *buf)
             }
             else
                 printf("\n You must wait\x1B[31m  %dsec  \x1B[37mto have your level corrected\n", secondfail);
-        return(0);
+            return (0);
         }
     }
-	return (-1);
+    return (-1);
 }
 
-int    help(t_exam *exam)
+int help(t_exam *exam)
 {
     header(exam);
     printf("\n\x1B[32m        EXPLANATION : \x1B[37m");
@@ -208,7 +226,7 @@ int    help(t_exam *exam)
     printf("\n         If your level is validated, you move on to the next level 🎉");
     printf("\n         If not, you have to start again ❌");
     printf("\n\n     ⌛️ Warning: The more you try to get the same project corrected, \n     the longer you will have to wait to get it \x1B[32mcorrected\x1B[37m.\n\n");
-    return(0);
+    return (0);
 }
 
 void header(t_exam *exam)
@@ -238,28 +256,30 @@ int time_left(time_t depart, t_exam *exam)
     minutes = (seconds - (hours * 3600)) / 60;
     sec = seconds - (hours * 3600) - (minutes * 60);
     printf("\n\x1B[37mTime left : \x1B[32m%d H %d M %d S\x1B[37m\n", hours, minutes, sec);
-    return(0);
+    return (0);
 }
 
 void display_end(time_t depart)
 {
-    struct tm * t;
+    struct tm *t;
 
     t = localtime(&depart);
     printf("Ending time : \x1B[32m%02uh%02u\x1B[37m\n", t->tm_hour, t->tm_min);
 }
 
-void s_sleep(int seconds) {
+void s_sleep(int seconds)
+{
     time_t start_time = 0;
     time_t current_time = 0;
 
     start_time = time(NULL);
-    while(current_time-start_time+1 <= seconds) {
+    while (current_time - start_time + 1 <= seconds)
+    {
         current_time = time(NULL);
     }
 }
 
-void    blank(void)
+void blank(void)
 {
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 }
