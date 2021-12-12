@@ -1,3 +1,5 @@
+#!bin/bash
+
 	nb=$(jot -r 1 1 "$(ls .subject/$1 | wc -l)")
 	fichier=$(ls .subject/$1 | sed -n "$nb"p)
 
