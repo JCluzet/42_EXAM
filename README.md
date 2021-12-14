@@ -5,6 +5,9 @@
 
 <img width="638" alt="122689121-b86efd00-d220-11eb-8138-a884334afd1c" src="https://user-images.githubusercontent.com/55356071/124315905-036c0700-db75-11eb-9921-4f4315100974.png">
 
+## ⚠️ This project is only available on MAC (the real exam will be on Mac anyway)
+###     ➡ On Linux, your subject will be correctly drawn at random but you will not be able to get a valid correction.
+
  ## Practice like for the 42 exam 🏊‍♂️
 
  ### - Subject drawn at random ✔️
