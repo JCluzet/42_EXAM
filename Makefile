@@ -3,19 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+         #
+#    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/21 01:05:24 by jcluzet           #+#    #+#              #
-#    Updated: 2021/07/02 04:12:37 by jcluzet          ###   ########.fr        #
+#    Updated: 2021/12/29 18:16:58 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 all:
 	@make reset
+	@cp -r .subject_save .subject
 	@gcc .system/main.c .system/push.c .system/generate_subject.c .system/GNL/get_next_line.c .system/GNL/get_next_line_utils.c && ./a.out
 
 exam:
 	@make reset
+	@cp .subject_save .subject
 	@gcc .system/main.c .system/push.c .system/generate_subject.c .system/GNL/get_next_line.c .system/GNL/get_next_line_utils.c && ./a.out
 
 help:
@@ -27,7 +29,7 @@ clean:
 
 reset:
 	@rm -rf .subject
-	@cp -r .subject_save .subject
+	@rm -rf subject.fr.txt
 	@rm -rf .system/verif/*
 	@rm -rf rendu/
 	@rm -rf subject.en.txt
