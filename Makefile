@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/21 01:05:24 by jcluzet           #+#    #+#              #
-#    Updated: 2021/12/29 18:16:58 by jcluzet          ###   ########.fr        #
+#    Updated: 2021/12/30 14:54:08 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,10 @@ help:
 
 clean:
 	@echo "\033[33m      Type > /make help for some help"
+
+update:
+	@git stash
+	@git pull
 
 reset:
 	@rm -rf .subject
