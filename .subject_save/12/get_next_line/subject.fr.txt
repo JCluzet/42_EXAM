@@ -1,0 +1,34 @@
+Assignment name  : get_next_line
+Expected files   : get_next_line.c get_next_line.h
+Allowed functions: read, free, malloc
+--------------------------------------------------------------------------------
+
+Ecrivez une fonction qui stocke, dans le paramètre "line", une ligne lue depuis le "file descriptor" 0.
+
+La fonction sera prototypée comme suit : int get_next_line(char **line);
+
+Votre fonction ne doit pas faire de fuite mémoire.
+
+Ce que nous appelons une "ligne lue" est une succession de 0 à n caractères qui se termine par un '\n' (code ascii 0x0a) ou une Fin De Fichier (EOF).
+
+La chaine de caractères stockée dans "line" ne doit pas contenir de '\n'.
+
+Le paramètre de la fonction est l'adresse d'un pointeur sur caractère et il servira à sauvegarder la ligne lue.
+
+La valeur de retour sera 1, 0 ou -1 en fonction respectivement de, si on a lu une ligne, si on a fini de lire (ce qui veut dire que read a retourné 0), ou si une erreur est arrivée.
+
+Si votre fonction atteint une "fin de fichier" (EOF), vous devez stocker le "buffer" actuel dans "line", si le "buffer" est vide "line" devrait pointer vers une chaine de caractère vide.
+
+Si votre fonction atteint une "fin de fichier" (EOF), a part le dernier "buffer" stocké dans "line", elle ne doit conserver aucun espace memoire alloué par malloc.
+
+Le contenu de "line" devra pouvoir être libéré grâce à la fonction free.
+
+Un appel en boucle de get_next_line vous permettra donc de lire l'entièreté du texte disponible via un "file descriptor", une ligne à la fois. Tout ceci, peu importe la taille du texte ou d'une de ses lignes.
+
+Assurez-vous que votre fonction marche correctement si vous lisez depuis un fichier, l'entrée standard, une redirection, etc...
+
+Sachez que aucun autre appel ne sera fait sur le "file descriptor" entre 2 appels à votre fonction get_next_line.
+
+Pour finir, sachez que le comportement de votre get_next_line sera indeterminé si nous l'utilisons sur un contenu binaire.
+
+Nous vous encourageons à utiliser le fichier test.sh afin de tester votre get_next_line.

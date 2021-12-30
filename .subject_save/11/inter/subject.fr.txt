@@ -1,0 +1,23 @@
+Assignment name  : inter
+Expected files   : inter.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Écrire un programme qui prend en paramètres deux chaînes de caractères et qui
+affiche sans doublon les caractères communs aux deux chaînes.
+
+L'affichage se fera dans l'ordre d'apparition dans la premiere chaîne.
+L'affichage doit être suivi d'un '\n'.
+
+Si le nombre de paramètres transmis est différent de 2, le programme affiche
+'\n'.
+
+Exemples:
+$>./inter "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+padinto$
+$>./inter ddf6vewg64f gtwthgdwthdwfteewhrtag6h4ffdhsd | cat -e
+df6ewg4$
+$>./inter "rien" "cette phrase ne cache rien" | cat -e
+rien$
+$>./inter | cat -e
+$
