@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/12/12 21:39:10 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/12/30 14:52:30 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@ int push(t_exam *exam)
     {
 		printf("\n\x1B[32m\n #####  #     #  #####   #####  #######  #####   #####\n#     # #     # #     # #     # #       #     # #     #\n#       #     # #       #       #       #       #\n #####  #     # #       #       #####    #####   #####\n      # #     # #       #       #             #       #\n#     # #     # #     # #     # #       #     # #     #\n #####   #####   #####   #####  #######  #####   #####  \x1B[37m\n\n");
 		exam->midlev++;
-		if (exam->midlev == 2)
+		if (exam->midlev == exam->exbylvl)
 		{
 			exam->midlev = 0;
 			exam->folder_num++;
 		}
-		exam->level += XP_BY_LEVEL;
+		exam->level += exam->xpperex;
 		system("sh .system/passed.sh");
 		s_sleep(3);
-		if (exam->level == XP_TO_FINISH)
+		if (exam->level == 100)
 			success_exam(exam);
 		blank();
 		printf("\x1B[32mCongratulation!\x1B[37m A new subject is now created.\n\n");

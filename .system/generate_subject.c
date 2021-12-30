@@ -25,7 +25,10 @@ int	generate_subject(t_exam *exam)
 		system("sh .system/generatesub.sh 9");
 	if (exam->folder_num == 10)
 		system("sh .system/generatesub.sh 10");
-	
+	if (exam->folder_num == 11)
+		system("sh .system/generatesub.sh 11");
+	if (exam->folder_num == 12)
+		system("sh .system/generatesub.sh 12");
 	FILE *plop;
 	plop = popen("ls .system/verif | grep .c", "r");
 	char buffer[100];
@@ -38,13 +41,5 @@ int	generate_subject(t_exam *exam)
 		i++;
 	}
 	exam->nameofex[i] = '\0';
-	// nameofex = 
-    // fichier = fopen(".system/verif/nameofex", "w");
-    // if (fichier != NULL)
-    // {
-    //     fgets(exam->nameofex, 30, fichier);
-	// 	printf("SUBJEC >> %s", exam->nameofex);
-    //     fclose(fichier);
-    // }
 	return (0);
 }

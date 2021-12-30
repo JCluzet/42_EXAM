@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exam.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcluzet <jo@cluzet.fr>                     +#+  +:+       +#+        */
+/*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/19 22:21:03 by jocluzet          #+#    #+#             */
-/*   Updated: 2021/07/02 04:19:50 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/12/30 14:52:58 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define EXAM_H
 
 # define FAILURE_TIME 1.9
-# define XP_BY_LEVEL 12.5
-# define XP_TO_FINISH 100
 
 # include <stdarg.h>
 # include <stdlib.h>
@@ -29,6 +27,8 @@ typedef struct	s_exam
 	time_t		depart, arrivee;
 	char *		heure;
 	int 		start;
+	int 		exbylvl;
+	float		xpperex;
 	int			midlev;
 	int			failuretime;
 	char		nameofex[100];

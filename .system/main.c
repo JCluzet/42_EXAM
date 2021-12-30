@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/12/13 18:51:42 by jcluzet          ###   ########.fr       */
+/*   Updated: 2021/12/30 14:49:54 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,26 @@ int start(t_exam *exam)
     int ret;
     exam->start = -10;
     blank();
-    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n\n Which exam would you like to test?\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\nEnter your choice: \n");
+    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n\n Which exam would you like to test?\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     \x1B[32m5\x1B[37m - Exam Rank 02  \x1B[31mSTUDENT EXAM\x1B[37m \n\nEnter your choice: \n");
     ret = get_next_line(0, &buf);
-    while (atoi(buf) < 1 || atoi(buf) > 2)
+    while ((atoi(buf) < 1 || atoi(buf) > 2) && atoi(buf) != 5)
     {
         printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter a number from 1 to 2\n");
         ret = get_next_line(0, &buf);
     }
     exam->exam_type = atoi(buf);
     if (exam->exam_type == 1 || exam->exam_type == 2)
+    {
+        exam->xpperex = 12.5;
+        exam->exbylvl = 2;
         hour = 4;
+    }
+    if (exam->exam_type == 5)
+    {
+        exam->xpperex = 50.0;
+        exam->exbylvl = 1;
+        hour = 3;
+    }
     blank();
     printf("\n\x1B[32m        EXPLANATION : \x1B[37m");
     printf("\n\n     ⚠️  You have to work from a new window to keep this one \x1B[32mavailable\x1B[37m\n");
@@ -75,13 +85,15 @@ int start(t_exam *exam)
     printf("\n         If your level is validated, you move on to the next level 🎉");
     printf("\n         If not, you have to start again ❌");
     printf("\n\n     ⌛️ Warning: The more you try to get the same project corrected, \n     the longer you will have to wait to get it \x1B[32mcorrected\x1B[37m.\n\n");
-    printf("\n\x1B[37m     Exam \x1B[32m%d\x1B[37m take 4 hours.", exam->exam_type);
+    printf("\n\x1B[37m     Exam \x1B[32m%d\x1B[37m take %d hours.", exam->exam_type, hour);
     printf("\n\n       > When you are ready, click on the\n       \x1B[37mreturn button to start the exam\x1B[37m.");
     scanf("%c", &ch);
     int cpt = LIMIT;
     time_t prv;
     time_t crt = time(NULL);
 
+
+ // timer to start exam
     while (cpt > 0)
     {
         prv = crt;
@@ -95,6 +107,7 @@ int start(t_exam *exam)
             cpt--;
         }
     }
+
     exam->depart = time(&exam->depart) + hour * 3600;
     if (exam->exam_type == 1)
         exam->folder_num = 1;
@@ -104,6 +117,8 @@ int start(t_exam *exam)
         exam->folder_num = 5;
     if (exam->exam_type == 4)
         exam->folder_num = 7;
+    if (exam->exam_type == 5)
+        exam->folder_num = 11;
     generate_subject(exam);
     instruction(exam);
     return 0;
@@ -222,7 +237,7 @@ int help(t_exam *exam)
     printf("\n\x1B[32m        EXPLANATION : \x1B[37m");
     printf("\n\n     ⚠️  You have to work from a new window to keep this one \x1B[32mavailable\x1B[37m\n");
     printf("\n     📝 A random subject named \x1B[32msubject.en.txt\x1B[37m has been generated");
-    printf("\n         > You must write %s.c directly in the folder : \x1B[32mrendu\x1B[37m", exam->nameofex);
+    printf("\n         > You must write %s         directly in the folder : \x1B[32mrendu\x1B[37m", exam->nameofex);
     printf("\n\n     🎓 Once completed, you can push/correct your project with : \x1B[32mgrademe\x1B[37m");
     printf("\n         If your level is validated, you move on to the next level 🎉");
     printf("\n         If not, you have to start again ❌");
