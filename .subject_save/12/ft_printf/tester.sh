@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2021/12/29 18:10:45 by jcluzet          ###   ########.fr        #
+#    Updated: 2021/12/30 17:01:27 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,12 @@ then
 fi
 
 cd .system/verif
-gcc -o source $FILE $MAIN
+gcc -Wall -Wextra -Werror  -o source $FILE $MAIN
 ./source | cat -e > sourcexam       #TESTING
 rm source
 cd ../../rendu
 {
-gcc -o final $FILE $MAIN1
+gcc -Wall -Wextra -Werror  -o final $FILE $MAIN1
 }  &>../.system/verif/traceback
 {
 ./final | cat -e > finalexam        #TESTING

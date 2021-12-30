@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2021/12/29 18:07:02 by jcluzet          ###   ########.fr        #
+#    Updated: 2021/12/30 17:01:18 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,12 @@ then
 fi
 
 cd .system/verif
-gcc -o source $FILE $MAIN
+gcc -Wall -Wextra -Werror  -o source $FILE $MAIN
 ./source < get_next_line.c | cat -e > sourcexam       #TESTING
 rm source
 cd ../../rendu
 {
-gcc -o final $FILE $MAIN1
+gcc -Wall -Wextra -Werror  -o final $FILE $MAIN1
 }  &>../.system/verif/traceback
 {
 ./final < get_next_line.c | cat -e > finalexam        #TESTING
@@ -55,14 +55,14 @@ rm finalexam
 
 
 
-gcc -o source $FILE $MAIN
+gcc -Wall -Wextra -Werror  -o source $FILE $MAIN
 touch test
 ./source < test | cat -e > sourcexam    #TESTING
 rm test
 rm source
 cd ../../rendu
 {
-gcc -o final $FILE $MAIN1
+gcc -Wall -Wextra -Werror  -o final $FILE $MAIN1
 touch test
 ./final < test | cat -e > finalexam     #TESTING
 mv finalexam ../.system/verif/

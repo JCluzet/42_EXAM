@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2021/12/29 17:51:28 by jcluzet          ###   ########.fr        #
+#    Updated: 2021/12/30 17:01:55 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,12 @@ then
 fi
 
 cd .system/verif
-gcc -o source $FILE
+gcc -Wall -Wextra -Werror  -o source $FILE
 ./source | cat -e > sourcexam       #TESTING
 rm source
 cd ../../rendu
 {
-gcc -o final $FILE
+gcc -Wall -Wextra -Werror  -o final $FILE
 }  &>../.system/verif/traceback
 {
 ./final | cat -e > finalexam        #TESTING
@@ -52,12 +52,12 @@ rm finalexam
 
 
 
-gcc -o source $FILE
+gcc -Wall -Wextra -Werror  -o source $FILE
 ./source "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e > sourcexam    #TESTING
 rm source
 cd ../../rendu
 {
-gcc -o final $FILE
+gcc -Wall -Wextra -Werror  -o final $FILE
 ./final "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e > finalexam     #TESTING
 mv finalexam ../.system/verif/
 rm final
@@ -80,12 +80,12 @@ rm finalexam
 
 
 
-gcc -o source $FILE
+gcc -Wall -Wextra -Werror  -o source $FILE
 ./source ddf6vewg64f gtwthgdwthdwfteewhrtag6h4ffdhsd | cat -e > sourcexam    #TESTING
 rm source
 cd ../../rendu
 {
-gcc -o final $FILE
+gcc -Wall -Wextra -Werror  -o final $FILE
 ./final ddf6vewg64f gtwthgdwthdwfteewhrtag6h4ffdhsd | cat -e > finalexam     #TESTING
 mv finalexam ../.system/verif/
 rm final
@@ -109,12 +109,12 @@ rm finalexam
 
 
 
-gcc -o source $FILE
+gcc -Wall -Wextra -Werror  -o source $FILE
 ./source "zz sent le poney" | cat -e > sourcexam    #TESTING
 rm source
 cd ../../rendu
 {
-gcc -o final $FILE
+gcc -Wall -Wextra -Werror  -o final $FILE
 ./final "zz sent le poney" | cat -e > finalexam     #TESTING
 mv finalexam ../.system/verif/
 rm final
@@ -138,12 +138,12 @@ rm finalexam
 
 
 
-gcc -o source $FILE
+gcc -Wall -Wextra -Werror  -o source $FILE
 ./source "rien" "cette phrase ne cache rien" | cat -e > sourcexam    #TESTING
 rm source
 cd ../../rendu
 {
-gcc -o final $FILE
+gcc -Wall -Wextra -Werror  -o final $FILE
 ./final "rien" "cette phrase ne cache rien" | cat -e > finalexam     #TESTING
 mv finalexam ../.system/verif/
 rm final
@@ -164,12 +164,12 @@ then
 fi
 rm finalexam
 
-gcc -o source $FILE
+gcc -Wall -Wextra -Werror  -o source $FILE
 ./source "AAAAaaaaaaaaAa" "test" | cat -e > sourcexam    #TESTING
 rm source
 cd ../../rendu
 {
-gcc -o final $FILE
+gcc -Wall -Wextra -Werror  -o final $FILE
 ./final "AAAAaaaaaaaaAa" "test" | cat -e > finalexam     #TESTING
 mv finalexam ../.system/verif/
 rm final
