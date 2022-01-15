@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/12/30 14:49:54 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/15 23:34:16 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ int start(t_exam *exam)
     int ret;
     exam->start = -10;
     blank();
-    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n\n Which exam would you like to test?\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     \x1B[32m5\x1B[37m - Exam Rank 02  \x1B[31mSTUDENT EXAM\x1B[37m \n\nEnter your choice: \n");
+    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m5\x1B[37m - Exam Rank 02\n     \x1B[32m6\x1B[37m - Exam Rank 03\n\nEnter your choice: \n");
     ret = get_next_line(0, &buf);
-    while ((atoi(buf) < 1 || atoi(buf) > 2) && atoi(buf) != 5)
+    while ((atoi(buf) < 1 || atoi(buf) > 2) && atoi(buf) != 5 && atoi(buf) != 6 )
     {
-        printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter a number from 1 to 2\n");
+        printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter number 1,2,5,6\n");
         ret = get_next_line(0, &buf);
     }
     exam->exam_type = atoi(buf);
@@ -76,6 +76,12 @@ int start(t_exam *exam)
         exam->exbylvl = 1;
         hour = 3;
     }
+    if (exam->exam_type == 6)
+    {
+        exam->xpperex = 100.0;
+        exam->exbylvl = 1;
+        hour = 3;
+    }
     blank();
     printf("\n\x1B[32m        EXPLANATION : \x1B[37m");
     printf("\n\n     ⚠️  You have to work from a new window to keep this one \x1B[32mavailable\x1B[37m\n");
@@ -85,6 +91,7 @@ int start(t_exam *exam)
     printf("\n         If your level is validated, you move on to the next level 🎉");
     printf("\n         If not, you have to start again ❌");
     printf("\n\n     ⌛️ Warning: The more you try to get the same project corrected, \n     the longer you will have to wait to get it \x1B[32mcorrected\x1B[37m.\n\n");
+    printf("\n     📌 Nice reminder : Here you don't need to use GIT.\n         Remember that during the exam you will have to use it to push your project !\n\n");
     printf("\n\x1B[37m     Exam \x1B[32m%d\x1B[37m take %d hours.", exam->exam_type, hour);
     printf("\n\n       > When you are ready, click on the\n       \x1B[37mreturn button to start the exam\x1B[37m.");
     scanf("%c", &ch);
@@ -119,6 +126,8 @@ int start(t_exam *exam)
         exam->folder_num = 7;
     if (exam->exam_type == 5)
         exam->folder_num = 11;
+    if (exam->exam_type == 6)
+        exam->folder_num = 13;
     generate_subject(exam);
     instruction(exam);
     return 0;
@@ -249,7 +258,7 @@ void header(t_exam *exam)
 {
     blank();
     printf("    CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[3m\n\n", exam->level);
-    printf("   CURRENT PROJECT\n   ---> \x1B[32m%s\x1B[37m\n", exam->nameofex);
+    printf("   CURRENT PROJECT\n   ---> \x1B[32m%s      \x1B[37mfor :\x1B[32m %.2f\x1B[37m XP 🧪 \n\n", exam->nameofex, exam->xpperex);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
     printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
     printf("\nType \x1B[32mexit\x1B[37m to left");

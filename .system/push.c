@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/12/30 14:52:30 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/16 00:00:48 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int push(t_exam *exam)
 		if (exam->level == 100)
 			success_exam(exam);
 		blank();
-		printf("\x1B[32mCongratulation!\x1B[37m A new subject is now created.\n\n");
+		printf("\x1B[32mCongratulation!\x1B[37m Your work as been saved in success/ folder. A new subject is now created.\n\n");
 		generate_subject(exam);
 		printf("    CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[37m\n\n", exam->level);
     printf("   CURRENT PROJECT\n   ---> \x1B[32m%s\x1B[37m\n", exam->nameofex);
@@ -96,7 +96,7 @@ int		success_exam(t_exam *exam)
     int minutes;
 	time_t arrivee;
 	blank();
-	printf("\x1B[32mCongratulation!\x1B[37m You have completed the exam \x1B[31m%d with %d fail\x1B[37m \n\n",exam->exam_type, exam->nbfail);
+	printf("\x1B[32mCongratulation!\x1B[37m You have completed the exam \x1B[31m%d with %d fail\x1B[37m \nYour work as been saved in success folder.\n\n",exam->exam_type, exam->nbfail);
 	time(&arrivee);
     seconds = difftime(exam->depart, arrivee);
     hours = seconds / 3600;

@@ -5,6 +5,7 @@ int	generate_subject(t_exam *exam)
 	FILE* fichier = NULL;
 
 	system("mkdir rendu");
+
 	if (exam->folder_num == 1)
 		system("sh .system/generatesub.sh 1");
 	if (exam->folder_num == 2)
@@ -29,6 +30,8 @@ int	generate_subject(t_exam *exam)
 		system("sh .system/generatesub.sh 11");
 	if (exam->folder_num == 12)
 		system("sh .system/generatesub.sh 12");
+	if (exam->folder_num == 13)
+		system("sh .system/generatesub.sh 13");
 	FILE *plop;
 	plop = popen("ls .system/verif | grep .c", "r");
 	char buffer[100];

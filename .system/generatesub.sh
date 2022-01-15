@@ -1,5 +1,5 @@
 #!bin/bash
-
+printf "Generating subject...\n"
 	nb=$(jot -r 1 1 "$(ls .subject/$1 | wc -l)")
 	fichier=$(ls .subject/$1 | sed -n "$nb"p)
 
@@ -10,8 +10,7 @@
 	} &>/dev/null
 	cp -r .subject/$1/$fichier/subject.en.txt subject.en.txt
 	cp -r .subject/$1/$fichier/subject.fr.txt subject.fr.txt
-	cp -r .subject/$1/$fichier/*.c .system/verif/
-	cp -r .subject/$1/$fichier/tester.sh .system/verif/
+	cp -r .subject/$1/$fichier/* .system/verif/
 	printf ${fichier:4} > .system/verif/nameofex
 	# chmod 777 .system/verif/nameofex.txt
 	{

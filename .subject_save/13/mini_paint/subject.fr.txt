@@ -1,0 +1,65 @@
+Assignment name  : mini_paint
+Expected files   : *.c *.h
+Allowed functions: fopen, fread, fscanf, fclose, write, malloc, calloc, realloc, free, memset, powf, sqrtf
+--------------------------------------------------------------------------------------
+
+Ecrire un programme qui prendra en parametre un "fichier d'operations" et affichera le resultat dans le terminal
+
+Votre programme ne prendra qu un seul argument, ce sera le chemin vers le "fichier d'operations"
+Si votre programme recoit 0 ou plus de 1 argument il devra afficher "Error: argument" suivi d'un \n dans STDOUT
+
+$> ./mini_paint | cat -e
+Error: argument$
+$> ./mini_paint do not fear mathematics | cat -e
+Error: argument$
+$> 
+
+Si votre programme rencontre un probleme quand il ouvre ou bien lit le "fichier d'operation", il devra écrire "Error: Operation file corrupted" suivi d'un \n dans STDOUT
+
+Le "fichier d'operation" sera composé d'une opération par ligne
+Si une ligne n'est pas correct, alors c'est qu'un probleme vient d'avoir lieu
+Si votre programme à un probleme il doit renvoyer 1
+Si votre programme n'a pas rencontré de probleme, il doit renvoyer 0
+La derniere ligne du fichier ne sera pas forcement terminée par un \n
+Les lignes doivent etre lu dans l'ordre et par consequent les operations doivent etre executées dans le meme ordre
+Il doit y avoir au moins un espace entre chaque variable d'une ligne
+
+WIDTH HEIGHT BACKGROUND_CHAR
+Cette ligne sera toujours la premiere ligne du fichier et elle definie la zone dites "de dessin". Votre programme ne devrait rien afficher en dehors de cette "zone de dessin". Cette ligne ne sera presente qu une fois.
+- WIDTH: doit etre un int tel que 0 < WIDTH <= 300, C est le nombre de caractères horizontaux utilisés pour la zone de dessin
+- HEIGHT: doit etre un int tel que 0 < HEIGHT <= 300, C est le nombre de caractères verticaux utilisés pour la zone de dessin
+- BACKGROUND_CHAR: Par defaut toutes la "zone de dessin" est rempli avec BACKGROUND_CHAR
+
+c X Y RADIUS CHAR
+Cette operation fera dessiné un cercle vide, ou seulement la bordure du cercle est dessinée
+- c: le caractère c
+- X: un float, la position horizontale du centre du cercle
+- Y: un float, la position verticale du centre du cercle
+- RADIUS: un float positif different de 0, le rayon du cercle
+- CHAR: un char, le caractère utilisé pour dessiner le cercle
+
+C X Y RADIUS  CHAR
+Cette operation fera dessiné un cercle plein
+- C: le caractère C
+- X: un float, la position horizontale du centre du cercle
+- Y: un float, la position verticale du centre du cercle
+- RADIUS: un float positif different de 0, le rayon du cercle
+- CHAR: un char, le caractère utilisé pour dessiner le cercle
+
+La "zone de dessin" est divisé en rectangle qui peuvent chacun contenir un seul caractère (c'est parce qu'on est dans un terminal...) nous les appelerons pixel
+Pour faciliter les calculs nous n'utiliserons que le coin en haut à gauche d'un pixel pour savoir si celui ci est dans un cercle ou pas
+Si le coin en haut a gauche d'un pixel est à une distance inferieur ou égale au rayon d'un cercle, il fait alors parti de ce cercle
+De plus:
+	Si le coin en haut a gauche d'un pixel est à une distance superieure ou egale à 1 de la bordure d un cercle celui ci ne fait pas parti d'un cercle vide
+	Si le coin en haut a gauche d'un pixel est à une distance inferieur à 1 de la bordure d'un cercle, il fait alors parti d'un cercle vide
+
+Vous devriez regarder l'image fournie tout en lisant les prochaines lignes. Cette image represente le terminal. Nous avons fait une "zone de dessin" avec un WIDTH à 5 et une HEIGHT à 3
+Nous avons écrit une lettre différente par caractère dans la "zone de dessin" afin de faciliter les explications.
+- Si vous voulez effectuer l'operation: C 1.5 1.5 1 0 @ (le cercle rose)
+-- Cela fera que les caractères 'b', 'c', 'B', 'C' dans l'image seront remplacés par '@'
+
+Vous trouverez our_mini_paint afin de vous aider à tester ainsi que des fichiers operation_file.example
+
+Astuce:
+Si 2 points définis par (Xa, Ya) et (Xb, Yb)
+Pour calculer la distance entre les deux points il suffit d'utiliser la formule suivante: srqt((Xa - Xb) * (Xa - Xb) + (Ya - Yb) * (Ya - Yb))
