@@ -32,10 +32,13 @@ int	generate_subject(t_exam *exam)
 		system("sh .system/generatesub.sh 12");
 	if (exam->folder_num == 13)
 		system("sh .system/generatesub.sh 13");
+	if (exam->folder_num == 14)
+		system("sh .system/generatesub.sh 14");
 	FILE *plop;
-	plop = popen("ls .system/verif | grep .c", "r");
+	plop = popen("ls .system/verif | grep .c | grep -v subject", "r");
 	char buffer[100];
 	fgets(buffer, 30, plop);
+	printf("%s\n", buffer);
 	pclose(plop);
 	int i = 0;
 	while (buffer[i])

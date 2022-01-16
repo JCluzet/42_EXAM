@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/01/15 23:34:16 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/16 17:28:00 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ int start(t_exam *exam)
     int ret;
     exam->start = -10;
     blank();
-    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m5\x1B[37m - Exam Rank 02\n     \x1B[32m6\x1B[37m - Exam Rank 03\n\nEnter your choice: \n");
+    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m5\x1B[37m - Exam Rank 02\n     \x1B[32m6\x1B[37m - Exam Rank 03\n     \x1B[32m7\x1B[37m - Exam Rank 04\n\nEnter your choice: \n");
     ret = get_next_line(0, &buf);
-    while ((atoi(buf) < 1 || atoi(buf) > 2) && atoi(buf) != 5 && atoi(buf) != 6 )
+    while ((atoi(buf) < 1 || atoi(buf) > 2) && atoi(buf) != 5 && atoi(buf) != 6 && atoi(buf) != 7)
     {
-        printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter number 1,2,5,6\n");
+        printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter number 1,2,5,6, 7\n");
         ret = get_next_line(0, &buf);
     }
     exam->exam_type = atoi(buf);
@@ -76,7 +76,7 @@ int start(t_exam *exam)
         exam->exbylvl = 1;
         hour = 3;
     }
-    if (exam->exam_type == 6)
+    if (exam->exam_type == 6 || exam->exam_type == 7)
     {
         exam->xpperex = 100.0;
         exam->exbylvl = 1;
@@ -128,6 +128,8 @@ int start(t_exam *exam)
         exam->folder_num = 11;
     if (exam->exam_type == 6)
         exam->folder_num = 13;
+    if (exam->exam_type == 7)
+        exam->folder_num = 14;
     generate_subject(exam);
     instruction(exam);
     return 0;
