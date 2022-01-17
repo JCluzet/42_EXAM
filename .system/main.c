@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/01/17 00:09:20 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/18 00:39:17 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,6 @@
 #include <errno.h>
 #include <string.h>
 #define LIMIT 5
-
-int checkjot()
-{
-    int result;
-    result = system("jot -r 1 1");
-    if (result != 0)
-    {
-        printf("\nHi ! We need to use the JOT function in order to randomize the subject.\n\nClick on any button to start the installation of this package.\n");
-        getchar();
-        system("sudo apt-get install jot");
-        result = system("jot -r 1 1");
-        if (result != 0)
-        {
-            printf("Unable to install JOT package.\n\n Please try by yourself with 'sudo apt-get install jot'\n\n");
-            return (-1);
-        }
-    }
-    return (0);
-}
 
 int main(int argc, char **argv)
 {

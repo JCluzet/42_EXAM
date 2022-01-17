@@ -1,7 +1,19 @@
 #!bin/bash
-	nb=$(jot -r 1 1 "$(ls .subject/$1 | wc -l)")
-	fichier=$(ls .subject/$1 | sed -n "$nb"p)
+	gen=$(ls .subject/$1 | wc -l)
+	if [ $gen -eq 0 ]
+	then
+		echo "No subject found"
+		exit 1
+	fi
+	nb=$(($RANDOM % $gen))
+	if [ $nb -eq 0 ]
+	then
+		nb=1
+	fi
+	echo "HERE IS THE $nb FILE" 
 
+	fichier=$(ls .subject/$1 | sed -n "$nb"p)
+	echo $fichier
 	{
 	cd .system/
 	mkdir verif
