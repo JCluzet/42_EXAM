@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/01/18 00:39:17 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/18 00:40:22 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(int argc, char **argv)
     examm.timeend = 0;
     examm.level = 0;
 
-    if (argc == 1 && checkjot() != -1)
+    if (argc == 1)
         start(&examm);
 }
 
