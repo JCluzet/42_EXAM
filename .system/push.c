@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/01/16 00:00:48 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/17 02:01:15 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ int push(t_exam *exam)
 		if (exam->level == 100)
 			success_exam(exam);
 		blank();
-		printf("\x1B[32mCongratulation!\x1B[37m Your work as been saved in success/ folder. A new subject is now created.\n\n");
+		printf("\x1B[32mCongratulation!\x1B[37m Your work as been saved in \x1B[32msuccess/\x1B[37m folder.\n A new subject is now created.\n\n");
 		generate_subject(exam);
 		printf("    CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[37m\n\n", exam->level);
-    printf("   CURRENT PROJECT\n   ---> \x1B[32m%s\x1B[37m\n", exam->nameofex);
+    printf("   CURRENT PROJECT\n   ---> \x1B[32m%s      \x1B[37mfor :\x1B[32m %.2f\x1B[37m XP 🧪 \n\n", exam->nameofex, exam->xpperex);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
     printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
     printf("\nType \x1B[32mexit\x1B[37m to left");
@@ -69,9 +69,11 @@ int push(t_exam *exam)
 		printf("\n\x1B[31m#######    #    ### #           #    ##\n#         # #    #  #          ###  #\n#        #   #   #  #           #  #\n#####   #     #  #  #              #\n#       #######  #  #           #  #\n#       #     #  #  #          ###  #\n#       #     # ### #######     #    ##\x1B[37m\n\n");
 		s_sleep(3);
 		blank();
-		printf("\x1B[37mFind the trace in the file \x1B[31m> traceback\x1B[37m\n\n");
+		if (exam->trace)
+			printf("Normally the traceback is not available for this exam at 42\nbut since it is a training, it is available here :)");
+		printf("\n\n\x1B[37mFind the trace in the file \x1B[31m> traceback\x1B[37m\n\n");
 		printf("    CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[37m\n\n", exam->level);
-    printf("   CURRENT PROJECT\n   ---> \x1B[32m%s\x1B[37m\n", exam->nameofex);
+    printf("   CURRENT PROJECT\n   ---> \x1B[32m%s      \x1B[37mfor :\x1B[32m %.2f\x1B[37m XP 🧪 \n\n", exam->nameofex, exam->xpperex);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
     printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
     printf("\nType \x1B[32mexit\x1B[37m to left");

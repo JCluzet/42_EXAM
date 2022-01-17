@@ -3,6 +3,16 @@ Expected files   : get_next_line.c get_next_line.h
 Allowed functions: read, free, malloc
 --------------------------------------------------------------------------------
 
+---------
+42_EXAM : CE SUJET N'EST PAS LE DERNIER.
+42_EXAM NE PREND EN COMPTE QUE CETTE VERSION 2021.
+POUR INFO VOICI LES CHANGEMENTS SUR LA VERSION 2022 :
+
+- Le prototype change et devient : char *get_next_line(int fd); > doit renvoyer la ligne lue
+- La ligne lue doit contenir le \n de fin.
+- La moulinette peut maintenant verifier que vous utilisez BUFFER_SIZE a la compilation. 
+----------
+
 Write a function will store, in the parameter "line", a line that has been read from the file descriptor 0.
 
 Your function must be prototyped as follows: int get_next_line(char **line);

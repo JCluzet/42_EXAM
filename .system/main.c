@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/01/16 17:28:00 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/17 00:09:20 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,21 @@ int start(t_exam *exam)
         exam->xpperex = 12.5;
         exam->exbylvl = 2;
         hour = 4;
+        exam->trace = 0;
     }
     if (exam->exam_type == 5)
     {
         exam->xpperex = 50.0;
         exam->exbylvl = 1;
         hour = 3;
+        exam->trace = 1;
     }
     if (exam->exam_type == 6 || exam->exam_type == 7)
     {
         exam->xpperex = 100.0;
         exam->exbylvl = 1;
         hour = 3;
+        exam->trace = 1;
     }
     blank();
     printf("\n\x1B[32m        EXPLANATION : \x1B[37m");
