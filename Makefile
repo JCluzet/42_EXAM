@@ -17,7 +17,7 @@ all:
 
 exam:
 	@make reset
-	@cp .subject_save .subject
+	@cp -r .subject_save .subject
 	@gcc .system/main.c .system/push.c .system/generate_subject.c .system/GNL/get_next_line.c .system/GNL/get_next_line_utils.c && ./a.out
 
 help:
