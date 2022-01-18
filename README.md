@@ -1,7 +1,7 @@
 # 42_EXAM 🎓
- ## A program almost identical to the 42 pool EXAMS
+ ## A program almost identical to the 42 pool EXAMS & 42 STUDENT RANK 02 & 03 & 04
 
- A program almost identical to the 42 pool EXAMS (for practice)
+ A program almost identical to the 42 pool EXAMS and STUD EXAM (for practice)
 
 <img width="638" alt="122689121-b86efd00-d220-11eb-8138-a884334afd1c" src="https://user-images.githubusercontent.com/55356071/124315905-036c0700-db75-11eb-9921-4f4315100974.png">
 
@@ -12,10 +12,9 @@
 
  ### - Subject drawn at random ✔️
  ### - Exponential waiting for a correction ✔️
- ### - 2 hours maximum ✔️
+ ### - X Hours maximum ✔️
  ### - Automatic correction (without internet) ✔️
  ### - Traceback available ✔️
- ###
 
  ![ezgif-3-7491ee7550ee](https://user-images.githubusercontent.com/55356071/122689110-a1c8a600-d220-11eb-82e2-70531e91c4d9.gif)
 
