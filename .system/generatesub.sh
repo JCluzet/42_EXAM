@@ -19,6 +19,10 @@
 	cp -r .subject/$1/$fichier/subject.en.txt subject.en.txt
 	cp -r .subject/$1/$fichier/subject.fr.txt subject.fr.txt > /dev/null
 	cp -r .subject/$1/$fichier/* .system/verif/
+	{
+		cp -r .subject/$1/$fichier/our_micro_paint our_micro_paint
+		cp -r .subject/$1/$fichier/our_mini_paint our_mini_paint
+	}	&>/dev/null
 	printf ${fichier:4} > .system/verif/nameofex
 	# chmod 777 .system/verif/nameofex.txt
 	{
