@@ -5,6 +5,7 @@ Respirez.
 Faites des tests simple pour vous assurer que vous avez bien compris ce que vous avez fait.
 
 Vous devez compiler avec -D BUFFERSIZE=x
+evitez de define la taille du buffer dans votre .c
 
 Lisez et relisez votre sujet, il n'est pas la pour rien.
 

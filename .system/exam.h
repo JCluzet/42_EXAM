@@ -6,14 +6,14 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/19 22:21:03 by jocluzet          #+#    #+#             */
-/*   Updated: 2022/01/23 19:05:42 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/23 19:44:33 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXAM_H
 # define EXAM_H
 
-# define FAILURE_TIME 0
+# define FAILURE_TIME 1.9
 
 # include <stdarg.h>
 # include <stdlib.h>
