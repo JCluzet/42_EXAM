@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 16:29:19 by jcluzet           #+#    #+#             */
-/*   Updated: 2021/12/29 18:00:28 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/23 17:07:10 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int get_next_line(char **line);
+char *get_next_line(int fd);
 
 int
 	main(void)
@@ -22,14 +22,12 @@ int
 	int		r;
 	char	*line;
 
-	line = NULL;
-	while ((r = get_next_line(&line)) > 0)
+	while ((line = get_next_line(0)) != NULL)
 	{
-		printf("%s\n", line);
+		printf("%s", line);
 		free(line);
 		line = NULL;
 	}
 	printf("%s", line);
 	free(line);
-	line = NULL;
 }

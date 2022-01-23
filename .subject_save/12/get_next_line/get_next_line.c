@@ -1,203 +1,141 @@
-# include <unistd.h>
-# include <stdlib.h>
+#include <unistd.h>
+#include <stdlib.h>
 
-typedef struct	s_str
+int     ft_strlen(char *str)
 {
-	char			*content;
-	struct s_str	*next;
-}				t_str;
-
-static int
-	ft_strlen(char const *str)
-{
-	int	i;
+    int	i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i])
 		i++;
 	return (i);
 }
 
-static char
-	*ft_strdup(char const *str)
+char    *ft_strjoin(char *remains, char *buffer)
 {
-	char	*cpy;
-	int		i;
+    char *array;
+    unsigned int size;
+    int i;
+    int j;
 
-	if (!str)
-		return (NULL);
-	if (!(cpy = (char*)malloc(sizeof(*cpy) * (ft_strlen(str) + 1))))
-		return (NULL);
-	i = 0;
-	while (str[i])
+    if (!remains && !buffer)
+        return (NULL);
+    size = ft_strlen(remains) + ft_strlen(buffer);
+    if (!(array = (char *)malloc(sizeof(char) * (size + 1))))
+        return (NULL);
+    i = 0;
+    j = 0;
+    if (remains)
+    {
+        while (remains[i])
+        {
+            array[j] = remains[i];
+            i++;
+            j++;
+        }
+        i = 0;
+    }
+    while (buffer[i])
+    {
+        array[j] = buffer[i];
+        i++;
+        j++;
+    }
+    array[size] = '\0';
+    free((void *)remains);
+    return (array);
+}
+
+char    *push_line(char *remains)
+{
+    int i;
+    char *array;
+
+    i = 0;
+    while (remains[i] && remains[i] != '\n')
+        i++;
+	if(remains[i] == '\n')
+		i++;
+    if (!(array = (char *)malloc(sizeof(char) * (i + 1))))
+        return (NULL);
+    i = 0;
+    while (remains[i] && remains[i] != '\n')
+    {
+        array[i] = remains[i];
+        i++;
+    }
+	if (remains[i] == '\n')
 	{
-		cpy[i] = str[i];
+		array[i] = '\n';
+		array[i + 1] = '\0';
+		return(array);
+	}
+    array[i] = '\0';
+    return (array);
+}
+
+char    *cut_next_line(char *remains)
+{
+    int i;
+    int j;
+    char *array;
+
+    i = 0;
+    j = 0;
+    while (remains[i] && remains[i] != '\n')
+        i++;
+    if (!remains[i])
+    {
+        free(remains);
+        return (NULL);
+    }
+    if (!(array = (char *)malloc(sizeof(char) * (ft_strlen(remains) - i + 1))))
+        return (NULL);
+    i++;
+    while (remains[i])
+    {
+        array[j] = remains[i];
+        i++;
+        j++;
+    }
+    array[j] = '\0';
+    free(remains);
+    return (array);
+}
+int ft_strchr(char *line)
+{
+	int i = 0;
+	while(line[i])
+	{
+		if (line[i] == '\n')
+			return(1);
 		i++;
 	}
-	cpy[i] = 0;
-	return (cpy);
+	return(0);
 }
 
-static int
-	ft_strchr(char const *str, char c)
+char     *get_next_line(int fd)
 {
-	int	i;
+    if (BUFFER_SIZE <= 0)
+        return (NULL);
+    char buffer[BUFFER_SIZE + 1];
+    static char *remains;
+	char *line;
+    int count;
 
-	i = 0;
-	while (str[i])
-		if (str[i++] == c)
-			return (1);
-	return (0);
+    count = 1;
+    while (!ft_strchr(buffer) && count != 0)
+    {
+        if ((count = read(fd, buffer, BUFFER_SIZE)) == (-1))
+            return (NULL);
+        buffer[count] = '\0';
+        remains = ft_strjoin(remains, buffer);
+    }
+    line = push_line(remains);
+    remains = cut_next_line(remains);
+	if(line[0] == '\0')
+		return(NULL);
+    return(line);
 }
-
-static t_str
-	*str_add(t_str **str, char *content)
-{
-	t_str	*new;
-	t_str	*tmp;
-
-	if (!content)
-		return (NULL);
-	if (!(new = (t_str*)malloc(sizeof(*new))))
-		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	if (!*str)
-		*str = new;
-	else
-	{
-		tmp = *str;
-		while ((*str)->next)
-			*str = (*str)->next;
-		(*str)->next = new;
-		*str = tmp;
-	}
-	return (new);
-}
-
-static int
-	str_strchr(t_str *str, char c)
-{
-	while (str)
-	{
-		if (ft_strchr(str->content, c))
-			return (1);
-		str = str->next;
-	}
-	return (0);
-}
-
-static int
-	str_length(t_str *str)
-{
-	int	total;
-	int	i;
-
-	total = 0;
-	while (str)
-	{
-		i = 0;
-		while (str->content[i] && str->content[i] != '\n')
-			i++;
-		total += i;
-		if (str->content[i] == '\n')
-			return (total);
-		str = str->next;
-	}
-	return (total);
-}
-
-static int
-	str_write(t_str **str, char **line)
-{
-	char	*ltmp;
-	t_str	*tmp;
-	int		length;
-	int		i, j;
-
-	length = str_length(*str);
-	if (!(ltmp = (char*)malloc(sizeof(*str) * (length + 1))))
-		return (0);
-	ltmp[length] = 0;
-	*line = ltmp;
-	j = 0;
-	while (*str)
-	{
-		i = 0;
-		while ((*str)->content[i] && (*str)->content[i] != '\n')
-			(*line)[j++] = (*str)->content[i++];
-		(*line)[j] = 0;
-		if ((*str)->content[i++] == '\n')
-		{
-			j = 0;
-			while ((*str)->content[i])
-				(*str)->content[j++] = (*str)->content[i++];
-			(*str)->content[j] = 0;
-			return (1);
-		}
-		else
-		{
-			tmp = (*str)->next;
-			free((*str)->content);
-			free(*str);
-			*str = tmp;
-		}
-	}
-	return (1);
-}
-
-static int
-	str_clear(t_str **str)
-{
-	t_str	*next;
-
-	while (*str)
-	{
-		next = (*str)->next;
-		free((*str)->content);
-		free(*str);
-		*str = next;
-	}
-	return (0);
-}
-
-static int
-	read_file(t_str **str)
-{
-	char	buffer[129];
-	int		r;
-	int		total;
-
-	total = 0;
-	while ((r = read(0, buffer, 128)) > 0)
-	{
-		buffer[r] = 0;
-		if (!str_add(str, ft_strdup(buffer)))
-			return (-1);
-		if (ft_strchr(buffer, '\n'))
-			return (1);
-	}
-	return (total > 0);
-}
-
-int
-	get_next_line(char **line)
-{
-	static t_str	*buffer = NULL;
-	int				read_ret;
-	
-	read_ret = 1;
-	if (!buffer || !str_strchr(buffer, '\n'))
-		read_ret = read_file(&buffer);
-	if (read_ret < 0)
-		return (str_clear(&buffer) | -1);
-	if (!str_write(&buffer, line))
-		return (str_clear(&buffer) | -1);
-	read_ret = 1;
-	if (!buffer || !str_strchr(buffer, '\n'))
-		read_ret = read_file(&buffer);
-	if (read_ret < 0)
-		return (str_clear(&buffer) | -1);
-	return (!!buffer);
-}
-
