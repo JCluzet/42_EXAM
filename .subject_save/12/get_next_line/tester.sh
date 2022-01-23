@@ -6,13 +6,13 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/01/23 17:08:17 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/01/23 19:24:16 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FILE='get_next_line.c'
-MAIN='main.c'
-MAIN1='../.system/verif/main.c'
+MAIN='mainboc.c'
+MAIN1='../.system/verif/mainstud.c'
 
 index=0
 
@@ -21,23 +21,31 @@ then
     rm traceback
 fi
 
-cp .system/verif/test rendu/
+cp .subject_save/12/get_next_line/test .
 
 cd .system/verif
-gcc -Wall -Wextra -Werror  -o source $FILE -D BUFFER_SIZE=3 $MAIN
-./source < test | cat -e > sourcexam       #TESTING
-rm source
+cp test ../../rendu/test
+gcc -Wall -Wextra -Werror -o boc $FILE -D BUFFER_SIZE=3 $MAIN
+./boc < test | cat -e > sourcexam       #TESTING
+rm boc
 cd ../../rendu
 {
-gcc -Wall -Wextra -Werror  -o final $FILE -D BUFFER_SIZE=3 $MAIN1
+gcc -Wall -Wextra -Werror -o stud $FILE -D BUFFER_SIZE=3 $MAIN1 # our
 }  &>../.system/verif/traceback
 {
-./final < test | cat -e > finalexam        #TESTING
+./stud < test | cat -e > finalexam        #TESTING
 mv finalexam ../.system/verif/
-rm final
+mv studleak ../.system/verif/studleak
+rm stud
 }  &>/dev/null
+
 cd ../.system/verif
+{
+cat studleak | tail -n 4 | tail -c 37 > leakstud
+cat bocleak | tail -n 4 | tail -c 37 > leakboc
+} &>/dev/null
 DIFF=$(diff sourcexam finalexam)
+DIFF1=$(diff leakstud leakboc)
 echo "" >> traceback
 if [ "$DIFF" != "" ]
 then
@@ -53,202 +61,22 @@ then
 		echo '\n' >> traceback
 		echo "-------" >> traceback
 fi
-rm finalexam
-
-cd .system/verif
-gcc -Wall -Wextra -Werror  -o source $FILE -D BUFFER_SIZE=0 $MAIN
-./source < test | cat -e > sourcexam       #TESTING
-rm source
-cd ../../rendu
-{
-gcc -Wall -Wextra -Werror  -o final $FILE -D BUFFER_SIZE=0 $MAIN1
-}  &>../.system/verif/traceback
-{
-./final < test | cat -e > finalexam        #TESTING
-mv finalexam ../.system/verif/
-rm final
-}  &>/dev/null
-cd ../.system/verif
-DIFF=$(diff sourcexam finalexam)
-echo "" >> traceback
-if [ "$DIFF" != "" ]
+if [ "$DIFF1" != "" ]
 then
 		index=$(($index + 1))
-		cat sourcexam >> traceback
-		echo '\n' >> traceback
-		if [ -e finalexam ]
-		then
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
-		echo '\n' >> traceback
-		echo "-------" >> traceback
-fi
-rm finalexam
-
-cd .system/verif
-gcc -Wall -Wextra -Werror  -o source $FILE $MAIN
-./source < test | cat -e > sourcexam       #TESTING
-rm source
-cd ../../rendu
-{
-gcc -Wall -Wextra -Werror  -o final $FILE $MAIN1
-}  &>../.system/verif/traceback
-{
-./final < test | cat -e > finalexam        #TESTING
-mv finalexam ../.system/verif/
-rm final
-}  &>/dev/null
-cd ../.system/verif
-DIFF=$(diff sourcexam finalexam)
-echo "" >> traceback
-if [ "$DIFF" != "" ]
-then
-		index=$(($index + 1))
-		cat sourcexam >> traceback
-		echo '\n' >> traceback
-		if [ -e finalexam ]
-		then
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
-		echo '\n' >> traceback
-		echo "-------" >> traceback
-fi
-rm finalexam
-
-cd .system/verif
-gcc -Wall -Wextra -Werror  -o source $FILE -D BUFFER_SIZE=1 $MAIN
-./source < test | cat -e > sourcexam       #TESTING
-rm source
-cd ../../rendu
-{
-gcc -Wall -Wextra -Werror  -o final $FILE -D BUFFER_SIZE=1 $MAIN1
-}  &>../.system/verif/traceback
-{
-./final < test | cat -e > finalexam        #TESTING
-mv finalexam ../.system/verif/
-rm final
-}  &>/dev/null
-cd ../.system/verif
-DIFF=$(diff sourcexam finalexam)
-echo "" >> traceback
-if [ "$DIFF" != "" ]
-then
-		index=$(($index + 1))
-		cat sourcexam >> traceback
-		echo '\n' >> traceback
-		if [ -e finalexam ]
-		then
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
-		echo '\n' >> traceback
-		echo "-------" >> traceback
-fi
-rm finalexam
-
-cd .system/verif
-gcc -Wall -Wextra -Werror  -o source $FILE -D BUFFER_SIZE=1000 $MAIN
-./source < test | cat -e > sourcexam       #TESTING
-rm source
-cd ../../rendu
-{
-gcc -Wall -Wextra -Werror  -o final $FILE -D BUFFER_SIZE=1000 $MAIN1
-}  &>../.system/verif/traceback
-{
-./final < test | cat -e > finalexam        #TESTING
-mv finalexam ../.system/verif/
-rm final
-}  &>/dev/null
-cd ../.system/verif
-DIFF=$(diff sourcexam finalexam)
-echo "" >> traceback
-if [ "$DIFF" != "" ]
-then
-		index=$(($index + 1))
-		cat sourcexam >> traceback
-		echo '\n' >> traceback
-		if [ -e finalexam ]
-		then
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
-		echo '\n' >> traceback
-		echo "-------" >> traceback
-fi
-rm finalexam
-
-
-gcc -Wall -Wextra -Werror  -o source $FILE -D BUFFER_SIZE=2 $MAIN
-touch houne
-./source < houne | cat -e > sourcexam    #TESTING
-rm houne
-rm source
-cd ../../rendu
-{
-gcc -Wall -Wextra -Werror  -o final $FILE -D BUFFER_SIZE=2 $MAIN1
-touch houne
-./final < houne | cat -e > finalexam     #TESTING
-mv finalexam ../.system/verif/
-rm houne
-rm final
-}  &>/dev/null
-cd ../.system/verif
-DIFF=$(diff sourcexam finalexam)
-echo "" >> traceback
-if [ "$DIFF" != "" ]
-then
-		index=$(($index + 1))
-		cat sourcexam >> traceback
-		echo '\n' >> traceback
-		if [ -e finalexam ]
-		then
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
+		echo "Leakage detected\n" >> traceback
+		{
+		cat studleak >> traceback
+		} &>/dev/null
 		echo '\n' >> traceback
 		echo "-------" >> traceback
 fi
 
-gcc -Wall -Wextra -Werror  -o source $FILE -D BUFFER_SIZE=0 $MAIN
-touch houne
-./source < houne | cat -e > sourcexam    #TESTING
-rm houne
-rm source
-cd ../../rendu
 {
-gcc -Wall -Wextra -Werror  -o final $FILE -D BUFFER_SIZE=0 $MAIN1
-touch houne
-./final < houne | cat -e > finalexam     #TESTING
-mv finalexam ../.system/verif/
-rm houne
-rm final
-}  &>/dev/null
-cd ../.system/verif
-DIFF=$(diff sourcexam finalexam)
-echo "" >> traceback
-if [ "$DIFF" != "" ]
-then
-		index=$(($index + 1))
-		cat sourcexam >> traceback
-		echo '\n' >> traceback
-		if [ -e finalexam ]
-		then
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
-		echo '\n' >> traceback
-		echo "-------" >> traceback
-fi
-
-rm rendu/test
+rm studleak
+rm bocleak
+rm ../../../rendu/test
+} &>/dev/null
 
 if [ $index -eq 0 ]
 then
@@ -257,4 +85,4 @@ fi
 {
 mv traceback ../../traceback
 }	&>/dev/null
-rm sourcexam
+#rm sourcexam

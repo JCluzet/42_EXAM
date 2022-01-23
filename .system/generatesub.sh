@@ -17,7 +17,9 @@
 	cd ..
 	} &>/dev/null
 	cp -r .subject/$1/$fichier/subject.en.txt subject.en.txt
-	cp -r .subject/$1/$fichier/subject.fr.txt subject.fr.txt > /dev/null
+	{
+		cp -r .subject/$1/$fichier/subject.fr.txt subject.fr.txt
+	} &>/dev/null
 	cp -r .subject/$1/$fichier/* .system/verif/
 	{
 		cp -r .subject/$1/$fichier/our_micro_paint our_micro_paint

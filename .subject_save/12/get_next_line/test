@@ -4,7 +4,6 @@ Si vous voyez ceci, vous avez échoué à l'exercice précédent.
 Respirez.
 Faites des tests simple pour vous assurer que vous avez bien compris ce que vous avez fait.
 
-Votre BUFFER_SIZE ne doit pas etre DEFINE dans votre code. 
 Vous devez compiler avec -D BUFFERSIZE=x
 
 Lisez et relisez votre sujet, il n'est pas la pour rien.

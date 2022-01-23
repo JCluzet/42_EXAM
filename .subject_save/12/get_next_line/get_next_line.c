@@ -118,6 +118,10 @@ int ft_strchr(char *line)
 
 char     *get_next_line(int fd)
 {
+    if (fd < 0 || read(fd, NULL, 0) < 0)
+    {
+        return (NULL);
+    }
     if (BUFFER_SIZE <= 0)
         return (NULL);
     char buffer[BUFFER_SIZE + 1];
@@ -136,6 +140,9 @@ char     *get_next_line(int fd)
     line = push_line(remains);
     remains = cut_next_line(remains);
 	if(line[0] == '\0')
-		return(NULL);
+    {
+        free(line);
+        return (NULL);
+    }
     return(line);
 }

@@ -1,7 +1,10 @@
 	rm -rf .system/verif/*
+	{
 	mkdir .system/saves
 	mkdir success
 	cp -r rendu/* success/
+	} &>/dev/null
+
 	rm -rf rendu/
 	{
 		rm -rf trace

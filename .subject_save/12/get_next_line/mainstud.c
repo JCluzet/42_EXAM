@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mainstud.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 16:29:19 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/01/23 17:07:10 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/23 18:37:14 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ char *get_next_line(int fd);
 int
 	main(void)
 {
-	int		r;
 	char	*line;
 
 	while ((line = get_next_line(0)) != NULL)
@@ -30,4 +29,6 @@ int
 	}
 	printf("%s", line);
 	free(line);
+	system("leaks stud > studleak");
+	return(0);
 }
