@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/19 22:21:03 by jocluzet          #+#    #+#             */
-/*   Updated: 2022/01/23 20:39:08 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/23 21:17:57 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct	s_exam
 	char *		heure;
 	int 		start;
 	int 		exbylvl;
+	int 		notime;
 	float		xpperex;
 	int			trace;
 	int			midlev;

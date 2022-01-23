@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/01/23 20:47:41 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/23 21:22:11 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int main(int argc, char **argv)
     t_exam examm;
     remove("a.out");
     examm.midlev = 0;
+    examm.notime = 0;
     examm.nbfail = 0;
     examm.failuretime = 0.0;
     examm.timeend = 0;
@@ -40,11 +41,11 @@ int start(t_exam *exam)
     int ret;
     exam->start = -10;
     blank();
-    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m5\x1B[37m - Exam Rank 02\n     \x1B[32m6\x1B[37m - Exam Rank 03\n     \x1B[32m7\x1B[37m - Exam Rank 04\n\nEnter your choice: \n");
+    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m5\x1B[37m - Exam Rank 02\n     \x1B[32m6\x1B[37m - Exam Rank 03\n     \x1B[32m7\x1B[37m - Exam Rank 04\n\n     |  BONUS PART  |\n      --------------\n\n     \x1B[32m8\x1B[37m - Student Specific Exam\n\nEnter your choice: \n");
     ret = get_next_line(0, &buf);
-    while ((atoi(buf) < 1 || atoi(buf) > 2) && atoi(buf) != 5 && atoi(buf) != 6 && atoi(buf) != 7)
+    while ((atoi(buf) < 1 || atoi(buf) > 2) && atoi(buf) != 5 && atoi(buf) != 6 && atoi(buf) != 7 && atoi(buf) != 8)
     {
-        printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter number 1,2,5,6, 7\n");
+        printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter number 1,2,5,6,7,8\n");
         ret = get_next_line(0, &buf);
     }
     exam->exam_type = atoi(buf);
@@ -68,6 +69,74 @@ int start(t_exam *exam)
         exam->exbylvl = 1;
         hour = 3;
         exam->trace = 1;
+    }
+    if (exam->exam_type == 8)
+    {
+        blank();
+        printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam Rank 02 -> INTER.c\n\n     \x1B[32m2\x1B[37m - Exam Rank 02 -> UNION.c\n\n     \x1B[32m3\x1B[37m - Exam Rank 02 -> GET_NEXT_LINE.c\n\n     \x1B[32m4\x1B[37m - Exam Rank 02 -> FT_PRINTF.c\n\n     \x1B[32m5\x1B[37m - Exam Rank 03 -> MICRO_PAINT.c\n\n     \x1B[32m6\x1B[37m - Exam Rank 03 -> MINI_PAINT.c\n\n     \x1B[32m7\x1B[37m - Exam Rank 04 -> MICROSHELL.c\n\nEnter your choice: \n");
+        ret = get_next_line(0, &buf);
+        while (atoi(buf) < 1 || atoi(buf) > 7)
+        {
+            printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter number 1,2,3,4,5,6\n");
+            ret = get_next_line(0, &buf);
+        }
+        exam->exam_type = atoi(buf);
+        exam->xpperex = 100.00;
+        exam->exbylvl = 1;
+        hour = 3;
+        exam->trace = 1;
+        if (exam->exam_type == 1)
+        {
+            system("rm -rf .subject/11/union");
+            exam->folder_num = 11;
+        }
+        if (exam->exam_type == 2)
+        {
+            system("rm -rf .subject/11/inter");
+            exam->folder_num = 11;
+        }
+        if (exam->exam_type == 3)
+        {
+            system("rm -rf .subject/12/ft_printf");
+            exam->folder_num = 12;
+        }
+        if (exam->exam_type == 4)
+        {
+            system("rm -rf .subject/12/get_next_line/");
+            exam->folder_num = 12;
+        }
+        if (exam->exam_type == 5)
+        {
+            system("rm -rf .subject/13/mini_paint");
+            exam->folder_num = 13;
+        }
+        if (exam->exam_type == 6)
+        {
+            system("rm -rf .subject/13/micro_paint");
+            exam->folder_num = 13;
+        }
+        if (exam->exam_type == 7)
+        {
+            system("rm -rf .subject/14/microshell");
+            exam->folder_num = 14;
+        }
+    }
+    else
+    {
+    if (exam->exam_type == 1)
+        exam->folder_num = 1;
+    if (exam->exam_type == 2)
+        exam->folder_num = 3;
+    if (exam->exam_type == 3)
+        exam->folder_num = 5;
+    if (exam->exam_type == 4)
+        exam->folder_num = 7;
+    if (exam->exam_type == 5)
+        exam->folder_num = 11;
+    if (exam->exam_type == 6)
+        exam->folder_num = 13;
+    if (exam->exam_type == 7)
+        exam->folder_num = 14;
     }
     blank();
     printf("\n\x1B[32m        EXPLANATION : \x1B[37m");
@@ -103,20 +172,6 @@ int start(t_exam *exam)
     }
 
     exam->depart = time(&exam->depart) + hour * 3600;
-    if (exam->exam_type == 1)
-        exam->folder_num = 1;
-    if (exam->exam_type == 2)
-        exam->folder_num = 3;
-    if (exam->exam_type == 3)
-        exam->folder_num = 5;
-    if (exam->exam_type == 4)
-        exam->folder_num = 7;
-    if (exam->exam_type == 5)
-        exam->folder_num = 11;
-    if (exam->exam_type == 6)
-        exam->folder_num = 13;
-    if (exam->exam_type == 7)
-        exam->folder_num = 14;
     generate_subject(exam);
     instruction(exam);
     return 0;
@@ -165,6 +220,11 @@ int dispatcheur(t_exam *exam, char *buf)
 
     if (ft_strcmp(buf, "help") == 0)
         return (help(exam));
+    if (ft_strcmp(buf, "remove_time") == 0)
+    {
+        exam->notime = 1;
+        printf("Time is now removed.\n");
+    }
     if (ft_strcmp(buf, "time") == 0)
         return (time_left(exam->depart, exam));
     if (ft_strcmp(buf, "exit") == 0)
@@ -195,7 +255,7 @@ int dispatcheur(t_exam *exam, char *buf)
     if (ft_strcmp(buf, "grademe") == 0)
     {
         time(&exam->timestart);
-        if (exam->timeend <= exam->timestart)
+        if (exam->timeend <= exam->timestart || exam->notime)
         {
             printf("\nNice reminder : Here you don't need to use GIT.\nBut remember that during the exam you will have to use it to push your project !\n\n\x1B[31m   ⚠️  Warning: The more you try to get the same project corrected, \n   the longer you will have to wait to get it \x1B[37mcorrected\x1B[37m.\n  \x1B[37m\n      > Enter 'y' to get corrected\n\n");
             scanf("    %c", &ch);
