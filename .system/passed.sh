@@ -6,5 +6,9 @@
 	{
 		rm -rf trace
 	}	&>/dev/null
+	rm -rf subject.fr.txt subject.en.txt
+	{
+		&>/dev/null
+	}
 
 ## When a level is success, we delete files
