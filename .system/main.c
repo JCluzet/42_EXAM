@@ -6,14 +6,17 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/01/18 00:40:22 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/23 20:47:41 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exam.h"
 #include <errno.h>
+# include <readline/history.h>
+# include <readline/readline.h>
 #include <string.h>
 #define LIMIT 5
+
 
 int main(int argc, char **argv)
 {
@@ -125,19 +128,17 @@ void instruction(t_exam *exam)
     int ret;
 
     header(exam);
-    write(1, "\n$ > ", 5);
-    ret = get_next_line(0, &buf);
     while (1)
     {
+        buf = readline("\n\033[32m$ ➜ \033[00m  ");
         if (dispatcheur(exam, buf) == -1)
         {
             header(exam);
-            write(1, "\n$ > ", 5);
-            printf("%s\n", buf);
+            printf("\n\033[32m$ ➜\033[00m  %s \n", buf);
             printf("     └--> \x1B[31mError\x1B[37m | type \x1B[32mhelp\x1B[37m/\x1B[32mgrademe\x1B[37m/\x1B[32mtime\x1B[37m/\x1B[32mexit\x1B[37m or start working on a NEW window.\n");
         }
-        write(1, "\n$ > ", 5);
-        ret = get_next_line(0, &buf);
+        else
+            add_history(buf);
     }
 }
 

@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/19 22:21:03 by jocluzet          #+#    #+#             */
-/*   Updated: 2022/01/23 19:44:33 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/23 20:39:08 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # define FAILURE_TIME 1.9
 
 # include <stdarg.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <time.h>
