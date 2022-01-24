@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/01/23 21:22:11 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/01/24 23:02:53 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ int start(t_exam *exam)
         }
         if (exam->exam_type == 7)
         {
-            system("rm -rf .subject/14/microshell");
             exam->folder_num = 14;
         }
     }
