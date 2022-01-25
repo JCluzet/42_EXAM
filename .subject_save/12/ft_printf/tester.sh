@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2021/12/30 17:01:27 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/01/25 22:24:27 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,16 +40,19 @@ echo "" >> traceback
 if [ "$DIFF" != "" ]
 then
 		index=$(($index + 1))
+		echo "<--------------~-~-~-~-~-~-~-~-~------------>" >> traceback
 		cat sourcexam >> traceback
 		echo '\n' >> traceback
 		if [ -e finalexam ]
 		then
+		echo "<--------------~-~-~-~-~-~-~-~-~------------>\n\n" >> traceback
+		echo "<--------------~-~-~-~-~-~-~-~-~------------>" >> traceback
 		cat finalexam >> traceback
 		else
 		echo "" >> traceback
 		fi
 		echo '\n' >> traceback
-		echo "-------" >> traceback
+		echo "<--------------~-~-~-~-~-~-~-~-~------------>" >> traceback
 fi
 rm finalexam
 
