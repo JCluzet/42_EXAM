@@ -125,6 +125,7 @@ char     *get_next_line(int fd)
     if (BUFFER_SIZE <= 0)
         return (NULL);
     char buffer[BUFFER_SIZE + 1];
+    buffer[0] = '\0';
     static char *remains;
 	char *line;
     int count;
