@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/01/30 01:07:12 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/01/30 01:10:19 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ rm sourcexam
 rm a.out
 rm test.sh
 
-cd .system/verif
+cd ../.system/verif
 
 #mv .system/tester.sh .system/verif/tester.sh
 
