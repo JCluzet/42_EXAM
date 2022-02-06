@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/02/06 06:47:05 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/02/06 06:55:33 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,13 @@ int		success_exam(t_exam *exam)
     int minutes;
 	time_t arrivee;
 	blank();
-	printf("\x1B[32mCongratulation!\x1B[37m You have completed the exam \x1B[31m%d with %d fail\x1B[37m \nYour work as been saved in success folder.\n\n",exam->exam_type, exam->nbfail);
+	printf("\x1B[32mCongratulation!\x1B[37m You have completed the exam %d with \x1B[31m%d fail\x1B[37m \nYour work as been saved in success folder.\n\n",exam->exam_type, exam->nbfail);
 	time(&arrivee);
     seconds = difftime(exam->depart, arrivee);
     hours = seconds / 3600;
     minutes = (seconds - (hours * 3600)) / 60;
     sec = seconds - (hours * 3600) - (minutes * 60);
-    printf("\n\x1B[37mWith: \x1B[32m%d H %d M %d S  \x1B[37m time left.", hours, minutes, sec);
+    printf("\n\x1B[37mWith: \x1B[32m%d H %d M %d S  \x1B[37m time left.\n", hours, minutes, sec);
     system("make reset");
     exit(0);
 }
