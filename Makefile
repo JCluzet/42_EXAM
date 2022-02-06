@@ -13,12 +13,12 @@
 all:
 	@make reset
 	@cp -r .subject_save .subject
-	@gcc -lreadline .system/main.c .system/push.c .system/generate_subject.c .system/GNL/get_next_line.c .system/GNL/get_next_line_utils.c && ./a.out
+	@gcc .system/main.c .system/push.c .system/generate_subject.c .system/GNL/get_next_line.c .system/GNL/get_next_line_utils.c -lreadline && ./a.out
 
 exam:
 	@make reset
 	@cp -r .subject_save .subject
-	@gcc -lreadline .system/main.c .system/push.c .system/generate_subject.c .system/GNL/get_next_line.c .system/GNL/get_next_line_utils.c && ./a.out
+	@gcc  .system/main.c .system/push.c .system/generate_subject.c .system/GNL/get_next_line.c .system/GNL/get_next_line_utils.c -lreadline && ./a.out
 
 help:
 	@echo "\x1B[37mType \x1B[32m> /make exam \x1B[37mto start the exam"
