@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/01/17 02:01:15 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/02/06 06:47:05 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int push(t_exam *exam)
         target = clock() + (clock_t)INTERVAL;
         while (clock() < target);
     }
-	system("sh .system/verif/tester.sh");
+	system("bash .system/verif/tester.sh");
 	blank();
 
     if ((file = ((fopen(".system/verif/passed", "r")))))
@@ -48,7 +48,7 @@ int push(t_exam *exam)
 			exam->folder_num++;
 		}
 		exam->level += exam->xpperex;
-		system("sh .system/passed.sh");
+		system("bash .system/passed.sh");
 		s_sleep(3);
 		if (exam->level == 100)
 			success_exam(exam);
