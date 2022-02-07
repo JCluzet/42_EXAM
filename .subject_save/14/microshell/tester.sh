@@ -34,7 +34,7 @@ sh test.sh | cat -e > sourcexam       #TESTING VRAI
 } &>/dev/null
 {
 gcc -Wall -Wextra -Werror $FILE
-}  &>../.system/verif/traceback
+}  &>sourcexam
 {
 sh test.sh | cat -e > finalexam        #TESTING STUD
 rm a.out
