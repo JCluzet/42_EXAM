@@ -25,7 +25,7 @@ cp .subject_save/12/get_next_line/test .
 
 cd .system/verif
 cp test ../../rendu/test
-gcc -Wall -Wextra -Werror -o boc $FILE -D BUFFER_SIZE=3 $MAIN
+gcc -o boc $FILE -D BUFFER_SIZE=3 $MAIN
 ./boc < test | cat -e > sourcexam       #TESTING
 rm boc
 cd ../../rendu
