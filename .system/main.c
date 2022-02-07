@@ -154,22 +154,6 @@ int start(t_exam *exam)
     time_t prv;
     time_t crt = time(NULL);
 
-
- // timer to start exam
-    while (cpt > 0)
-    {
-        prv = crt;
-        blank();
-        printf("%d\n", cpt);
-        do
-        {
-            crt = time(NULL);
-        } while (crt == prv);
-        {
-            cpt--;
-        }
-    }
-
     exam->depart = time(&exam->depart) + hour * 3600;
     generate_subject(exam);
     instruction(exam);
