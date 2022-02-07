@@ -87,7 +87,7 @@ rm ../../../rendu/test
 
 cd .system/verif
 cp test ../../rendu/test
-gcc -Wall -Wextra -Werror -o boc $FILE -D BUFFER_SIZE=1232 $MAIN
+gcc -o boc $FILE -D BUFFER_SIZE=1232 $MAIN
 ./boc < test | cat -e > sourcexam       #TESTING
 rm boc
 cd ../../rendu
