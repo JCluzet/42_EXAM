@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/01/24 23:02:53 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/02/08 17:23:47 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -284,16 +284,69 @@ int help(t_exam *exam)
     return (0);
 }
 
+char *strsub(char *s, unsigned int start, size_t len)
+{
+    char *s2;
+    size_t i;
+
+    i = 0;
+    s2 = malloc(sizeof(char) * (len + 1));
+    while (i < len)
+    {
+        s2[i] = s[start + i];
+        i++;
+    }
+    s2[i] = '\0';
+    return (s2);
+}
+
+char *ftt_strjoin(char *str, char *str1)
+{
+    char *s;
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    s = malloc(sizeof(char) * (strlen(str) + strlen(str1) + 1));
+    while (str[i] != '\0')
+    {
+        s[i] = str[i];
+        i++;
+    }
+    while (str1[j] != '\0')
+    {
+        s[i + j] = str1[j];
+        j++;
+    }
+    s[i + j] = '\0';
+    return (s);
+}
+
 void header(t_exam *exam)
 {
     blank();
+    char *str;
+    // get the pwd start with ~/
+    char *pwd = getcwd(NULL, 0);
+    char *home = getenv("HOME");
+    // if home is in pwd, replace it by ~
+    if (strstr(pwd, home) != NULL)
+    {
+        str = strsub(pwd, strlen(home) + 1, strlen(pwd) - strlen(home) - 1);
+        str = ftt_strjoin("~/", str);
+    }
+    free(pwd);
     printf("    CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[3m\n\n", exam->level);
     printf("   CURRENT PROJECT\n   ---> \x1B[32m%s      \x1B[37mfor :\x1B[32m %.2f\x1B[37m XP 🧪 \n\n", exam->nameofex, exam->xpperex);
+    printf("\x1B[5m\x1B[4mAssignement \x1B[0;m : %s/rendu/%s", str, exam->nameofex);
+    printf("\x1B[5m\x1B[4mSubject\x1B[0;m      : %s/subject.*.txt\n\n\n", str);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
     printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
     printf("\nType \x1B[32mexit\x1B[37m to left");
     printf("\nType \x1B[32mtime\x1B[37m to know the remaining time\n\n");
     display_end(exam->depart);
+    free(str);
 }
 
 int time_left(time_t depart, t_exam *exam)
