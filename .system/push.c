@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/02/08 17:39:02 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/02/08 17:44:48 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int push(t_exam *exam)
     clock_t target;
     char spin[] = "\\|/-";
 	blank();
-	printf ("waiting...\n");
+	printf ("(10 sec is fast, 20 sec is expected, 1 min is anormal)\n\nwaiting...\n");
     while(v < n) {
 		temp = rand() % 10 + 2;
         if (temp > 8 && i > 1)
