@@ -55,8 +55,10 @@ char    *push_line(char *remains)
 
     i = 0;
     while (remains[i] && remains[i] != '\n')
+	{
         i++;
-	if(remains[i] == '\n')
+	}	
+if(remains[i] == '\n')
 		i++;
     if (!(array = (char *)malloc(sizeof(char) * (i + 1))))
         return (NULL);
