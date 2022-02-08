@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/02/08 01:23:59 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/02/08 01:28:12 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int push(t_exam *exam)
 
     if ((file = ((fopen(".system/verif/passed", "r")))))
     {
-		printf("\n\x1B[32m >>>>>>>> \x1B[1mFAILURE\x1B[5m <<<<<<<<< \x1B[37m\n\n");
+		printf("\n\x1B[32m >>>>>>>> \x1B[1m\x1B[5mSUCCESS\033[0;m \x1B[32m<<<<<<<<< \x1B[37m\n\n");
 		exam->midlev++;
 		if (exam->midlev == exam->exbylvl)
 		{
@@ -49,7 +49,7 @@ int push(t_exam *exam)
 		}
 		exam->level += exam->xpperex;
 		system("bash .system/passed.sh");
-		s_sleep(3);
+		s_sleep(4);
 		if (exam->level == 100)
 			success_exam(exam);
 		blank();
@@ -66,7 +66,7 @@ int push(t_exam *exam)
 	}
 	else
 	{
-		printf("\n\x1B[31m <<<<<<<<<< \x1B[1mFAILURE\x1B[5m >>>>>>>>>> \x1B[37m\n\n");
+		printf("\n\x1B[31m <<<<<<<<<< \x1B[1m\x1B[5mFAILURE\033[0;m \x1B[31m>>>>>>>>>> \x1B[37m\n\n");
 		s_sleep(3);
 		blank();
 		if (exam->trace)
