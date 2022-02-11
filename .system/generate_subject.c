@@ -1,10 +1,16 @@
 # include "exam.h"
+#include <string.h>
 
 int	generate_subject(t_exam *exam)
 {
 	FILE* fichier = NULL;
 
 	system("mkdir rendu");
+	char *str;
+	str = malloc(sizeof(char) * 300);
+	// sprintf(str, "bash ./system/generatesub.sh %d", exam->folder_num);
+	// printf ("HERE > %s\n", str);
+	// system(str);
 
 	if (exam->folder_num == 1)
 		system("bash .system/generatesub.sh 1");
@@ -34,8 +40,26 @@ int	generate_subject(t_exam *exam)
 		system("bash .system/generatesub.sh 13");
 	if (exam->folder_num == 14)
 		system("bash .system/generatesub.sh 14");
+	if (exam->folder_num == 15)
+		system("bash .system/generatesub.sh 15");
+	if (exam->folder_num == 16)
+		system("bash .system/generatesub.sh 16");
+	if (exam->folder_num == 17)	
+		system("bash .system/generatesub.sh 17");
 	FILE *plop;
-	plop = popen("ls .system/verif | grep .c | grep -v subject", "r");
+	if ((exam->folder_num < 18) && (exam->folder_num > 14))
+	{
+		// if folder_num == 15 plop is cpp_module00
+		if (exam->folder_num == 15)
+			strcpy(exam->nameofex, "cpp_module00");
+		if (exam->folder_num == 16)
+			strcpy(exam->nameofex, "cpp_module01");
+		if (exam->folder_num == 17)
+			strcpy(exam->nameofex, "cpp_module02");
+	}
+	else
+	{
+		plop = popen("ls .system/verif | grep .c | grep -v subject", "r");
 	char buffer[100];
 	fgets(buffer, 30, plop);
 	pclose(plop);
@@ -46,5 +70,6 @@ int	generate_subject(t_exam *exam)
 		i++;
 	}
 	exam->nameofex[i] = '\0';
+	}
 	return (0);
 }

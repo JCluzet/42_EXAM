@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/02/08 17:51:57 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/02/11 21:23:02 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int push(t_exam *exam)
 		exam->level += exam->xpperex;
 		system("bash .system/passed.sh");
 		s_sleep(4);
-		if (exam->level == 100)
+		if (exam->level > 99.8)
 			success_exam(exam);
 		printf("\x1B[32mCongratulation!\x1B[37m Your work as been saved in \x1B[32msuccess/\x1B[37m folder.\n A new subject is now created.\n\n");
 		generate_subject(exam);
@@ -116,9 +116,9 @@ int push(t_exam *exam)
     }
     free(pwd);
     printf("    CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[3m\n\n", exam->level);
-    printf("   CURRENT PROJECT\n   ---> \x1B[32m%s      \x1B[37mfor :\x1B[32m %.2f\x1B[37m XP 🧪 \n\n", exam->nameofex, exam->xpperex);
-    printf("\x1B[5m\x1B[4mAssignement\x1B[0;m  : %s/rendu/%s", str, exam->nameofex);
-    printf("\x1B[5m\x1B[4m\x1B[37mSubject\x1B[0;m      : %s/subject.*.txt\n\n\n\x1B[37m", str);
+    printf("   CURRENT PROJECT\n   ---> \x1B[33m%s      \x1B[37m\n   for :\x1B[32m %.2f\x1B[37m XP 🧪 \n\n", exam->nameofex, exam->xpperex);
+    printf("\x1B[5mAssignement\x1B[0;m  : %s/rendu/", str);
+    printf("\n\x1B[5m\x1B[37mSubject\x1B[0;m      : %s/subject.en.txt\n\n\n\x1B[37m", str);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
     printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
     printf("\nType \x1B[32mexit\x1B[37m to left");
@@ -147,9 +147,9 @@ int push(t_exam *exam)
     }
     free(pwd);
     printf("    CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[3m\n\n", exam->level);
-    printf("   CURRENT PROJECT\n   ---> \x1B[32m%s      \x1B[37mfor :\x1B[32m %.2f\x1B[37m XP 🧪 \n\n", exam->nameofex, exam->xpperex);
-    printf("\x1B[5m\x1B[4mAssignement\x1B[0;m  : %s/rendu/%s", str, exam->nameofex);
-    printf("\x1B[5m\x1B[4m\x1B[37mSubject\x1B[0;m      : %s/subject.*.txt\n\n\n\x1B[37m", str);
+    printf("   CURRENT PROJECT\n   ---> \x1B[33m%s      \x1B[37m\n   for :\x1B[32m %.2f\x1B[37m XP 🧪 \n\n", exam->nameofex, exam->xpperex);
+    printf("\x1B[5mAssignement\x1B[0;m  : %s/rendu/", str);
+    printf("\n\x1B[5m\x1B[37mSubject\x1B[0;m      : %s/subject.en.txt\n\n\n\x1B[37m", str);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
     printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
     printf("\nType \x1B[32mexit\x1B[37m to left");
