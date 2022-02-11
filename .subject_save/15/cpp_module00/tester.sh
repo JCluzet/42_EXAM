@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/02/11 21:41:51 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/11 21:49:07 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,12 @@ cd ../../rendu
 {
 clang++ -Wall -Wextra -Werror -std=c++98 -o final Warlock.cpp $MAIN1
 }  &>../.system/verif/traceback
+# if there is a traceback file, exit this script
+if [ -e ../.system/verif/traceback ]
+then
+	mv ../.system/verif/traceback ../traceback
+	exit 1
+fi
 {
 ./final | cat -e > finalexam        #TESTING
 mv finalexam ../.system/verif/
