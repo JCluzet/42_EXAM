@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/02/11 20:56:53 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/02/12 00:35:28 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ int start(t_exam *exam)
     if (exam->exam_type == 9) // Specific exam
     {
         blank();
-        printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam Rank 02 -> INTER.c\n\n     \x1B[32m2\x1B[37m - Exam Rank 02 -> UNION.c\n\n     \x1B[32m3\x1B[37m - Exam Rank 02 -> GET_NEXT_LINE.c\n\n     \x1B[32m4\x1B[37m - Exam Rank 02 -> FT_PRINTF.c\n\n     \x1B[32m5\x1B[37m - Exam Rank 03 -> MICRO_PAINT.c\n\n     \x1B[32m6\x1B[37m - Exam Rank 03 -> MINI_PAINT.c\n\n     \x1B[32m7\x1B[37m - Exam Rank 04 -> MICROSHELL.c\n\nEnter your choice: \n");
+        printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam Rank 02 -> INTER.c\n\n     \x1B[32m2\x1B[37m - Exam Rank 02 -> UNION.c\n\n     \x1B[32m3\x1B[37m - Exam Rank 02 -> GET_NEXT_LINE.c\n\n     \x1B[32m4\x1B[37m - Exam Rank 02 -> FT_PRINTF.c\n\n     \x1B[32m5\x1B[37m - Exam Rank 03 -> MICRO_PAINT.c\n\n     \x1B[32m6\x1B[37m - Exam Rank 03 -> MINI_PAINT.c\n\n     \x1B[32m7\x1B[37m - Exam Rank 04 -> MICROSHELL.c\n\n     \x1B[32m8\x1B[37m - Exam Rank 05 -> CPP_MODULE00\n\n     \x1B[32m9\x1B[37m - Exam Rank 05 -> CPP_MODULE01\n\     \x1B[32m10\x1B[37m - Exam Rank 05 -> CPP_MODULE02\n\nnEnter your choice: \n");
         ret = get_next_line(0, &buf);
-        while (atoi(buf) < 1 || atoi(buf) > 7)
+        while (atoi(buf) < 1 || atoi(buf) > 10)
         {
-            printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter number 1,2,3,4,5,6\n");
+            printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter number 1,2,3,4,5,6,7,8,9,10\n");
             ret = get_next_line(0, &buf);
         }
         exam->exam_type = atoi(buf);
@@ -125,6 +125,18 @@ int start(t_exam *exam)
         if (exam->exam_type == 7)
         {
             exam->folder_num = 14;
+        }
+        if (exam->exam_type == 8)
+        {
+            exam->folder_num = 15;
+        }
+        if (exam->exam_type == 9)
+        {
+            exam->folder_num = 16;
+        }
+        if (exam->exam_type == 10)
+        {
+            exam->folder_num = 17;
         }
     }
     else
