@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/21 01:05:24 by jcluzet           #+#    #+#              #
-#    Updated: 2022/01/23 20:44:32 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/14 17:48:42 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,6 @@ reset:
 	@rm -rf rendu/
 	@rm -rf subject.en.txt
 	@rm -rf traceback
-	@git pull
 
 fclean:
 	@echo "\033[33m      Type > /make help for some help"
