@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/02/12 00:38:20 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/02/14 17:57:08 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int main(int argc, char **argv)
 {
     t_exam examm;
     remove("a.out");
+    system("bash .system/maj.sh");
     examm.midlev = 0;
     examm.notime = 0;
     examm.nbfail = 0;
