@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/01/23 19:43:32 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/02/17 15:00:04 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,6 @@ rm ../../../rendu/test
 
 
 
-cd .system/verif
 cp test ../../rendu/test
 gcc -o boc $FILE -D BUFFER_SIZE=1232 $MAIN
 ./boc < test | cat -e > sourcexam       #TESTING
@@ -154,7 +153,6 @@ rm ../../../rendu/test
 
 
 
-cd .system/verif
 cp test ../../rendu/test
 gcc -Wall -Wextra -Werror -o boc $FILE -D BUFFER_SIZE=0 $MAIN
 ./boc < test | cat -e > sourcexam       #TESTING
