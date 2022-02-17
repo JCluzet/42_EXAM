@@ -1,5 +1,7 @@
 # 42_EXAM 🎓
  ## A program almost identical to the 42 pool EXAMS & STUDENT EXAM RANK 02 & 03 & 04
+ 
+ # NEW ! 42_EXAM is now part of ➡️  GRADEME.FR 📡
 
  A program almost identical to the 42 pool EXAMS and STUD EXAM (for practice)
 
