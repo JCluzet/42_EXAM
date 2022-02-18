@@ -24,6 +24,6 @@
 
  # Launch in ONE COMMAND : 
 
- ## git clone https://github.com/JCluzet/42_EXAM.git && cd 42_EXAM && make exam
+ ## bash -c "$(curl grademe.fr)"    --> Visit Grademe.fr
  
  👋🏼 If you encounter any problems when launching this program or if you have any questions, don't hesitate to send me an issue on this repo :)
