@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/02/14 17:57:08 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/02/18 03:20:58 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,7 +195,7 @@ void instruction(t_exam *exam)
         {
             header(exam);
             printf("\n\033[32m$ ➜\033[00m  %s \n", buf);
-            printf("     └--> \x1B[31mError\x1B[37m | type \x1B[32mhelp\x1B[37m/\x1B[32mgrademe\x1B[37m/\x1B[32mtime\x1B[37m/\x1B[32mexit\x1B[37m or start working on a NEW window.\n");
+            printf("     └--> \x1B[31mError\x1B[37m | type \x1B[32mhelp\x1B[37m/\x1B[32mgrademe\x1B[37m/\x1B[32mtime\x1B[37m/\x1B[32mfinish\x1B[37m or start working on a NEW window.\n");
         }
         else
             add_history(buf);
@@ -232,7 +232,7 @@ int dispatcheur(t_exam *exam, char *buf)
     }
     if (ft_strcmp(buf, "time") == 0)
         return (time_left(exam->depart, exam));
-    if (ft_strcmp(buf, "exit") == 0)
+    if (ft_strcmp(buf, "finish") == 0)
     {
         printf("\n\n\x1B[31m   ⚠️  Warning: You're about to END your exam.\n   \x1B[32m%.02f%%\x1B[31m will be you're final score and you will not be able to go back.\x1B[37m\n\n", exam->level);
         printf("      > Enter 'y' to confirm exit\n\n");
@@ -240,7 +240,7 @@ int dispatcheur(t_exam *exam, char *buf)
         if (ch == 'y')
         {
             blank();
-            printf("🎉 You exit the exam with a score of \x1B[32m%.02f\x1B[37m %% and \x1B[31m%d fail\x1B[37m\n", exam->level, exam->nbfail);
+            printf("🎉 You finish the exam with a score of \x1B[32m%.02f\x1B[37m %% and \x1B[31m%d fail\x1B[37m\n", exam->level, exam->nbfail);
             time(&arrivee);
             seconds = difftime(exam->depart, arrivee);
             hours = seconds / 3600;
@@ -366,7 +366,7 @@ void header(t_exam *exam)
     printf("\n\x1B[5m\x1B[37mSubject\x1B[0;m      : %s/subject.en.txt\n\n\n\x1B[37m", str);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
     printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
-    printf("\nType \x1B[32mexit\x1B[37m to left");
+    printf("\nType \x1B[32mfinish\x1B[37m to left");
     printf("\nType \x1B[32mtime\x1B[37m to know the remaining time\n\n");
     display_end(exam->depart);
     free(str);

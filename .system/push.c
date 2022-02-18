@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/02/17 15:12:41 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/02/18 03:25:06 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,9 @@ int push(t_exam *exam)
         target = clock() + (clock_t)INTERVAL;
         while (clock() < target);
     }
+    
 	system("bash .system/verif/tester.sh");
-	blank();
+    printf ("\n");
 
     if ((file = ((fopen(".system/verif/passed", "r")))))
     {
@@ -121,7 +122,7 @@ int push(t_exam *exam)
     printf("\n\x1B[5m\x1B[37mSubject\x1B[0;m      : %s/subject.en.txt\n\n\n\x1B[37m", str);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
     printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
-    printf("\nType \x1B[32mexit\x1B[37m to left");
+    printf("\nType \x1B[32mfinish\x1B[37m to left");
     printf("\nType \x1B[32mtime\x1B[37m to know the remaining time\n\n");
     display_end(exam->depart);
     free(str);
@@ -131,7 +132,7 @@ int push(t_exam *exam)
 	{
 		printf("\n\x1B[31m <<<<<<<<<< \x1B[1m\x1B[5mFAILURE\033[0;m \x1B[31m>>>>>>>>>> \x1B[37m\n\n");
 		s_sleep(3);
-		blank();
+        printf ("\n");
 		if (exam->trace)
 			printf("Normally the traceback is not available for this exam at 42\nbut since it is a training, it is available here :)");
 		printf("\n\n\x1B[37mFind the trace in the file \x1B[31m> traceback\x1B[37m\n\n");
@@ -152,7 +153,7 @@ int push(t_exam *exam)
     printf("\n\x1B[5m\x1B[37mSubject\x1B[0;m      : %s/subject.en.txt\n\n\n\x1B[37m", str);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
     printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
-    printf("\nType \x1B[32mexit\x1B[37m to left");
+    printf("\nType \x1B[32mfinish\x1B[37m to left");
     printf("\nType \x1B[32mtime\x1B[37m to know the remaining time\n\n");
     display_end(exam->depart);
     free(str);
