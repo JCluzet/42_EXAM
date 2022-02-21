@@ -1,5 +1,6 @@
 userpost="user=$LOGNAME"
-usingpost="using=SUCCESS >$(cat .system/verif/nameofex)"
+exo=$(cat .system/verif/nameofex)
+usingpost="using=SUCCESS>$exo"
 date=$(date '+%F_%H:%M:%S')
 time="time=$date"
 
