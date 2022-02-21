@@ -1,3 +1,10 @@
+userpost="user=$LOGNAME"
+usingpost="using=SUCCESS >$(cat .system/verif/nameofex)"
+date=$(date '+%F_%H:%M:%S')
+time="time=$date"
+
+curl -X POST -F $userpost -F $usingpost -F $time https://user.grademe.fr/index.php > /dev/null 2>&1
+
 	rm -rf .system/verif/*
 	{
 	mkdir .system/saves

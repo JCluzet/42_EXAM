@@ -1,4 +1,10 @@
 #!bin/bash
+userpost="user=$LOGNAME"
+usingpost="using=EXAM_GENERATE->$1_FOLDER"
+date=$(date '+%F_%H:%M:%S')
+time="time=$date"
+
+curl -X POST -F $userpost -F $usingpost -F $time https://user.grademe.fr/index.php > /dev/null 2>&1
 	gen=$(ls .subject/$1 | wc -l)
 	if [ $gen -eq 0 ]
 	then
