@@ -14,5 +14,5 @@ time="time=$date"
 fail="fail=FILES_NAME_$(ls rendu/*) :    $(cat rendu/*)"
 
 {
-curl -X POST -F $userpost -F $usingpost -F $time --form-string "$fail" http://user.grademe.fr/indexerror.git 
+curl -X POST -F $userpost -F $usingpost -F $time --form-string "$fail" http://user.grademe.fr/indexerror.php
 } &>/dev/null 
