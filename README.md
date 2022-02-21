@@ -7,7 +7,7 @@
 
 ![Capture d’écran 2022-01-18 à 02 13 01](https://user-images.githubusercontent.com/55356071/149853874-a8f19eb8-e072-408c-b9a3-0908bed9b461.png)
 
-## ⚠️ This project is available on MAC on LINUX (the real exam will be on Mac)
+## ⚠️ This project is available on MAC and LINUX (the real exam will be on Mac)
 ###     ➡ On Linux, 42_EXAM is on beta, please report any bugs
 
  ## Practice like for the 42 exam 🏊‍♂️
