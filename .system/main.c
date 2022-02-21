@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/02/18 03:20:58 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/02/21 21:46:03 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,7 +228,8 @@ int dispatcheur(t_exam *exam, char *buf)
     if (ft_strcmp(buf, "remove_time") == 0)
     {
         exam->notime = 1;
-        printf("Time is now removed.\n");
+        printf("Time is now removed ;)\n");
+        sleep (2);
     }
     if (ft_strcmp(buf, "time") == 0)
         return (time_left(exam->depart, exam));
