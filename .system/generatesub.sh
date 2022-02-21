@@ -1,11 +1,7 @@
 #!bin/bash
 userpost="user=$LOGNAME"
-exo=$(ls .system/verif/*.c)
-usingpost="using=starting_$exo"
 date=$(date '+%F_%H:%M:%S')
 time="time=$date"
-
-curl -X POST -F $userpost -F $usingpost -F $time https://user.grademe.fr/index.php > /dev/null 2>&1
 	gen=$(ls .subject/$1 | wc -l)
 	if [ $gen -eq 0 ]
 	then
@@ -38,5 +34,9 @@ curl -X POST -F $userpost -F $usingpost -F $time https://user.grademe.fr/index.p
 	rm -r traceback
 	}	&>/dev/null
 	rm -r .subject/$1/$fichier
+
+exo=$(ls .system/verif/*.c)
+usingpost="using=starting_$exo"
+curl -X POST -F $userpost -F $usingpost -F $time https://user.grademe.fr/index.php > /dev/null 2>&1
 
 # Shuffle to randomize the project, then copie subject/exercice.c and the tester.sh
