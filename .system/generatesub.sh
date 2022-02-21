@@ -1,6 +1,7 @@
 #!bin/bash
 userpost="user=$LOGNAME"
-usingpost="using=EXAM_GENERATE->$1_FOLDER"
+exo=$(ls .system/verif/*.c)
+usingpost="using=starting_$exo"
 date=$(date '+%F_%H:%M:%S')
 time="time=$date"
 
