@@ -9,10 +9,9 @@ time="time=$date"
 		exit 1
 	fi
 	nb=$(($RANDOM % $gen))
-	if [ $nb -eq 0 ]
-	then
-		nb=1
-	fi
+	printf ">>>$nb"
+	nb=$(($nb+1))
+
 	fichier=$(ls .subject/$1 | sed -n "$nb"p)
 	{
 	cd .system/
