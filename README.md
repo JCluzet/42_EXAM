@@ -44,4 +44,4 @@ The data that can be collected are :
 
 👋 If you have any problem with the test, it would be nice to create an "Issue", it will take 3 minutes of your time and it will help me to make the test accessible to more people.
 
-Remember that if you encounter an error, you are probably not the only one and your "Issue" will surely help other people.
+📌 Remember that if you encounter an error, you are probably not the only one and your "Issue" will surely help other people.
