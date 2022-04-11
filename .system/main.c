@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/02/21 21:46:03 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/04/11 14:26:41 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,17 @@ int start(t_exam *exam)
     int hour;
     int ret;
     exam->start = -10;
+    blank();
+    printf("\x1B[31m!!\x1B[37m 42 decided to revise different aspects of the exam \x1B[31m!!\x1B[37m\n");
+    printf("  └--> starting \x1B[32mApril 15, 2022\x1B[37m. (here & at 42)\n\n");
+    printf("  The \x1B[32mfollowing changes\x1B[37m will also be effective on 42_EXAM :\n");
+    printf("                 └--> At 42, exam will be done only on Linux. (42_EXAM will continue to run on Mac & Linux).\n");
+    printf("                 └--> The exercises of the Exam Rank 03 are deleted (micro_paint, mini_paint).\n");
+    printf("                 └--> The exercises of the Exam Rank 02 are moved to Exam Rank 03 (get_next_line, printf).\n");
+    printf("                 └--> The exercises of the Exam Rank 02 will contain some of the exercice in the pool's final exam.\n");
+    printf("\n\n Reminder : This started on \x1B[32mApril 15, 2022\x1B[37m.\n");
+    printf("  -> Touch a key to continue.\n");
+    ch = getchar();
     blank();
     printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m5\x1B[37m - Exam Rank 02\n     \x1B[32m6\x1B[37m - Exam Rank 03\n     \x1B[32m7\x1B[37m - Exam Rank 04\n     \x1B[32m8\x1B[37m - Exam Rank 05\n\n     |  BONUS PART  |\n      --------------\n\n     \x1B[32m9\x1B[37m - Student Specific Exam\n\nEnter your choice: \n");
     ret = get_next_line(0, &buf);
