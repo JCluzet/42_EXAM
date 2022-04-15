@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/04/11 14:26:41 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/04/16 00:48:10 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int start(t_exam *exam)
 {
     char *buf;
     char ch;
+    int april;
     int hour;
     int ret;
     exam->start = -10;
@@ -48,10 +49,23 @@ int start(t_exam *exam)
     printf("                 └--> At 42, exam will be done only on Linux. (42_EXAM will continue to run on Mac & Linux).\n");
     printf("                 └--> The exercises of the Exam Rank 03 are deleted (micro_paint, mini_paint).\n");
     printf("                 └--> The exercises of the Exam Rank 02 are moved to Exam Rank 03 (get_next_line, printf).\n");
-    printf("                 └--> The exercises of the Exam Rank 02 will contain some of the exercice in the pool's final exam.\n");
-    printf("\n\n Reminder : This started on \x1B[32mApril 15, 2022\x1B[37m.\n");
-    printf("  -> Touch a key to continue.\n");
-    ch = getchar();
+    printf("                 └--> The exercises of the Exam Rank 02 will contain some of the exercice in the pool's final exam.\n\n");
+    printf("  -> Please select a exam type to continue.\n");
+    printf("             └--> \x1B[32m1\x1B[37m : \x1B[32mNEW\x1B[37m exam after April 15\n");
+    printf("             └--> \x1B[32m2\x1B[37m : \x1B[31mOLD\x1B[37m exam before April 15\n");
+    printf("\nEnter your choice : (1 or 2)\n");
+    buf = readline("");
+    // while choice is not 1 or 2
+    while (buf[0] != '1' && buf[0] != '2')
+    {
+        printf("\x1B[31m!!\x1B[37m Please enter a valid choice.\x1B[31m!!\x1B[37m\n");
+        buf = readline("");
+    }
+    if (buf[0] == '1')
+        april = 1;
+    else
+        april = 0;
+    // ch = getchar();
     blank();
     printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m5\x1B[37m - Exam Rank 02\n     \x1B[32m6\x1B[37m - Exam Rank 03\n     \x1B[32m7\x1B[37m - Exam Rank 04\n     \x1B[32m8\x1B[37m - Exam Rank 05\n\n     |  BONUS PART  |\n      --------------\n\n     \x1B[32m9\x1B[37m - Student Specific Exam\n\nEnter your choice: \n");
     ret = get_next_line(0, &buf);
@@ -61,6 +75,28 @@ int start(t_exam *exam)
         ret = get_next_line(0, &buf);
     }
     exam->exam_type = atoi(buf);
+
+    if (april)
+    {
+        if (exam->exam_type == 5)
+        {
+                blank();
+    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m5\x1B[37m - Exam Rank 02\n     \x1B[32m6\x1B[37m - Exam Rank 03\n     \x1B[32m7\x1B[37m - Exam Rank 04\n     \x1B[32m8\x1B[37m - Exam Rank 05\n\n     |  BONUS PART  |\n      --------------\n\n     \x1B[32m9\x1B[37m - Student Specific Exam\n\nEnter your choice: \n");
+            printf("\n\x1B[31m\x1B[37mSorry, the NEW ExamRank02 is on working....\x1B[31m\x1B[37m\n");
+            // sleep (3);
+                            // blank();
+    // printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m5\x1B[37m - Exam Rank 02\n     \x1B[32m6\x1B[37m - Exam Rank 03\n     \x1B[32m7\x1B[37m - Exam Rank 04\n     \x1B[32m8\x1B[37m - Exam Rank 05\n\n     |  BONUS PART  |\n      --------------\n\n     \x1B[32m9\x1B[37m - Student Specific Exam\n\nEnter your choice: \n");
+            // buf = readline("");
+    ret = get_next_line(0, &buf);
+    while ((atoi(buf) < 1 || atoi(buf) > 2) && atoi(buf) != 6 && atoi(buf) != 7 && atoi(buf) != 8 && atoi(buf) != 9)
+    {
+        printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter number 1,2,6,7,8, 9\n");
+        ret = get_next_line(0, &buf);
+    }
+        }
+        if (exam->exam_type == 6)
+              exam->exam_type = 5;
+    }
     if (exam->exam_type == 1 || exam->exam_type == 2)
     {
         exam->xpperex = 12.5;
