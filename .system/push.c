@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/02/21 21:52:19 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/05/10 22:22:20 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,8 @@ int push(t_exam *exam)
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
     printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
     printf("\nType \x1B[32mfinish\x1B[37m to left");
-    printf("\nType \x1B[32mtime\x1B[37m to know the remaining time\n\n");
+    printf("\nType \x1B[32mtime\x1B[37m to know the remaining time");
+    printf("\nType \x1B[32mfeedback\x1B[37m to let a feedback (report a problem)\n\n");
     display_end(exam->depart);
     free(str);
 		exam->failuretime = 0;

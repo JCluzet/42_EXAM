@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/04/16 00:48:10 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/05/10 22:57:56 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,49 @@
 # include <readline/readline.h>
 #include <string.h>
 #define LIMIT 5
+
+int fstrlen(char *cmd)
+{
+    int i;
+    while (cmd[i])
+        i++;
+    return (i);
+}
+
+char    *fstrjoin(char *remains, char *buffer)
+{
+    char *array;
+    unsigned int size;
+    int i;
+    int j;
+
+    if (!remains && !buffer)
+        return (NULL);
+    size = fstrlen(remains) + fstrlen(buffer);
+    if (!(array = (char *)malloc(sizeof(char) * (size + 1))))
+        return (NULL);
+    i = 0;
+    j = 0;
+    if (remains)
+    {
+        while (remains[i])
+        {
+            array[j] = remains[i];
+            i++;
+            j++;
+        }
+        i = 0;
+    }
+    while (buffer[i])
+    {
+        array[j] = buffer[i];
+        i++;
+        j++;
+    }
+    array[size] = '\0';
+    // free((void *)remains);
+    return (array);
+}
 
 
 int main(int argc, char **argv)
@@ -238,11 +281,12 @@ void instruction(t_exam *exam)
     while (1)
     {
         buf = readline("\n\033[32m$ ➜ \033[00m  ");
+        add_history(buf);
         if (dispatcheur(exam, buf) == -1)
         {
             header(exam);
             printf("\n\033[32m$ ➜\033[00m  %s \n", buf);
-            printf("     └--> \x1B[31mError\x1B[37m | type \x1B[32mhelp\x1B[37m/\x1B[32mgrademe\x1B[37m/\x1B[32mtime\x1B[37m/\x1B[32mfinish\x1B[37m or start working on a NEW window.\n");
+            printf("     └--> \x1B[31mError\x1B[37m | type \x1B[32mhelp\x1B[37m/\x1B[32mgrademe\x1B[37m/\x1B[32mtime\x1B[37m/\x1B[32mfinish\x1B[37m/\x1B[32mfeedback\x1B[37m or start working on a NEW window.\n");
         }
         else
             add_history(buf);
@@ -277,6 +321,37 @@ int dispatcheur(t_exam *exam, char *buf)
         exam->notime = 1;
         printf("Time is now removed ;)\n");
         sleep (2);
+    }
+    if (ft_strcmp(buf, "feedback") == 0)
+    {
+        printf("\033[37mEnter your \033[32mfeedback\033[37m:  ");
+        char *buf2 = readline("");
+        if (buf2[0] != '\0')
+        {
+            printf("\033[37mWould you like to be contacted regarding this feedback? (y/n)\033[00m\n");
+            char *buf3 = readline("");
+            char *str = NULL;
+            if (buf3[0] == 'y')
+            {
+                str = fstrjoin("bash .system/feedback.sh ", buf2);
+                str = fstrjoin(str, " yes");
+                // printf("YEre command : %s\n", str);
+                system(str);
+                // system("pwd");
+            }
+            else 
+            {
+                str = fstrjoin("bash .system/feedback.sh ", buf2);
+                str = fstrjoin(str, " no");
+                system(str);
+            }
+            printf("\033[32mYour feedback has just been sent ❤️ \033[00m\n");
+        }
+        else 
+        {
+            printf("\033[31mFeedback is empty.\033[00m\n");
+        }
+        return(0);
     }
     if (ft_strcmp(buf, "time") == 0)
         return (time_left(exam->depart, exam));
@@ -415,7 +490,8 @@ void header(t_exam *exam)
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
     printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
     printf("\nType \x1B[32mfinish\x1B[37m to left");
-    printf("\nType \x1B[32mtime\x1B[37m to know the remaining time\n\n");
+    printf("\nType \x1B[32mtime\x1B[37m to know the remaining time");
+    printf("\n\x1B[31m NEW \x1B[32mfeedback\x1B[37m to report a problem or questions\n\n");
     display_end(exam->depart);
     free(str);
 }
