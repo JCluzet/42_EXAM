@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/05/10 17:39:42 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/05/10 17:51:52 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ clang++ -Wall -Wextra -Werror -std=c++98 -o source $MAIN Warlock.cpp
 rm source
 cd ../../rendu
 {
-clang++ -Wall -Wextra -Werror -std=c++98 -o final $MAIN1 "*.cpp"
+clang++ -Wall -Wextra -Werror -std=c++98 -o final $MAIN1 Warlock.cpp
 }  &>../.system/verif/traceback
 # if there is a traceback file, exit this script
 if [ -e ../.system/verif/traceback ]
@@ -58,7 +58,7 @@ then
 		fi
 		echo '\n' >> traceback
 		echo "<--------------~-~-~-~-~-~-~-~-~------------>" >> traceback
-		echo "Little reminder: Compilation is made with WILDCARDS *.cpp (Please remove all main or useless file in rendu folder)" >> traceback
+		echo "Little reminder: Here you must have a Warlock.cpp & Warlock.hpp files." >> traceback
 fi
 rm finalexam
 
