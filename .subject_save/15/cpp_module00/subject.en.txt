@@ -1,4 +1,4 @@
-Assignment name  : cpp_module_00
+Assignment name  : (put your files in rendu folder)
 Expected files   : Warlock.cpp Warlock.hpp
 --------------------------------------------------------------------------------
 
