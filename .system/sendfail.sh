@@ -13,6 +13,7 @@ fi
 usingpost="using=[EX_$exo$exo1][42_EXAM][OS_$os][FAIL] : "
 date=$(date '+%F_%H:%M:%S')
 time="time=$date"
-fail="fail=FILES_NAME_$(ls rendu/*) :    $(cat rendu/*)"
-
+{
+fail="fail=FILES_NAME_$(ls rendu/) :    $(find rendu/ -type f -exec cat {} +)"
+} &>/dev/null 
 curl -X POST -F $userpost -F $usingpost -F $time --form-string "$fail" -F "$clust" http://user.grademe.fr/indexerror.php > /dev/null 2>&1
