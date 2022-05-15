@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/05/15 21:24:27 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/05/15 21:42:42 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,20 +46,20 @@ if [ "$DIFF" != "" ]
 then
 		index=$(($index + 1))
 		echo "<-------------- OUR OUTPUT ------------>" >> traceback
-		cat sourcexam >> traceback
-		# echo '\n' >> traceback
-		if [ -e finalexam ]
-		then
-		echo "<-------------- MUST BE : ------------>\n\n" >> traceback
 		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
 		# echo '\n' >> traceback
+		if [ "$(cat finalexam)" != "" ]
+		then
+		echo "<-------------- MUST BE : ------------>" >> traceback
+		cat sourcexam >> traceback
 		echo "<--------------    DIFF :   ------------>" >> traceback
 		# echo "DIFF : " >> traceback
 		echo "$DIFF" >> traceback
-		echo "Little reminder: Here you must have a Warlock.cpp & Warlock.hpp files." >> traceback
+		else
+		echo "Compilation Error stop." >> traceback
+		printf "\nLittle reminder: Here you must have a Warlock.cpp & Warlock.hpp files." >> traceback
+		fi
+		# echo '\n' >> traceback
 fi
 rm finalexam
 

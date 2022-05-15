@@ -1,5 +1,7 @@
 userpost="user=$LOGNAME"
+{
 exo=$(ls .system/verif/*.c)
+} &>/dev/null
 usingpost="using=SUCCESS>$exo"
 date=$(date '+%F_%H:%M:%S')
 time="time=$date"

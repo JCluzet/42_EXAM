@@ -9,7 +9,7 @@ time="time=$date"
 		exit 1
 	fi
 	nb=$(($RANDOM % $gen))
-	printf ">>>$nb"
+	# printf ">>>$nb"
 	nb=$(($nb+1))
 
 	fichier=$(ls .subject/$1 | sed -n "$nb"p)
@@ -33,8 +33,9 @@ time="time=$date"
 	rm -r traceback
 	}	&>/dev/null
 	rm -r .subject/$1/$fichier
-
+{
 exo=$(ls .system/verif/*.c)
+} &>/dev/null
 usingpost="using=starting_$exo"
 curl -X POST -F $userpost -F $usingpost -F $time https://user.grademe.fr/index.php > /dev/null 2>&1
 
