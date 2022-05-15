@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/05/10 17:51:52 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/05/15 19:41:49 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,11 +29,11 @@ cd ../../rendu
 clang++ -Wall -Wextra -Werror -std=c++98 -o final $MAIN1 Warlock.cpp
 }  &>../.system/verif/traceback
 # if there is a traceback file, exit this script
-if [ -e ../.system/verif/traceback ]
-then
-	mv ../.system/verif/traceback ../traceback
-	exit 1
-fi
+# if [ -e ../.system/verif/traceback ]
+# then
+# 	mv ../.system/verif/traceback ../traceback
+# 	exit 1
+# fi
 {
 ./final | cat -e > finalexam        #TESTING
 mv finalexam ../.system/verif/
@@ -41,7 +41,7 @@ rm final
 }  &>/dev/null
 cd ../.system/verif
 DIFF=$(diff sourcexam finalexam)
-echo "" >> traceback
+# echo "" >> traceback
 if [ "$DIFF" != "" ]
 then
 		index=$(($index + 1))

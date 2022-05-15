@@ -5,6 +5,9 @@
 #include "Polymorph.hpp"
 #include "TargetGenerator.hpp"
 #include "Fireball.hpp"
+#include "ATarget.hpp"
+#include "ASpell.hpp"
+#include "SpellBook.hpp"
 
 int main()
 {

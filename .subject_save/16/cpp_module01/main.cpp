@@ -1,6 +1,8 @@
 #include "Warlock.hpp"
 #include "Fwoosh.hpp"
 #include "Dummy.hpp"
+#include "ATarget.hpp"
+#include "ASpell.hpp"
 
 int main()
 {
