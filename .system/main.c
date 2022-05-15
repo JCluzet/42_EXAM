@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/05/10 22:57:56 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/05/16 00:24:07 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ int start(t_exam *exam)
         exam->xpperex = 33.3;
         exam->exbylvl = 1;
         hour = 3;
-        exam->trace = 1;
+        exam->trace = 0;
     }
     if (exam->exam_type == 9) // Specific exam
     {
