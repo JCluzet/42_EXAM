@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/05/15 21:48:13 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/05/16 00:29:55 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int push(t_exam *exam)
 
     if ((file = ((fopen(".system/verif/passed", "r")))))
     {
+        system("bash .system/beautiful_grade.sh 0");
 		printf("\n\x1B[32m >>>>>>>> \x1B[1m\x1B[5mSUCCESS\033[0;m \x1B[32m<<<<<<<<< \x1B[37m\n\n");
 		exam->midlev++;
 		if (exam->midlev == exam->exbylvl)
@@ -132,7 +133,8 @@ int push(t_exam *exam)
 	else
 	{
         system("bash .system/sendfail.sh");
-		printf("\n\x1B[31m <<<<<<<<<< \x1B[1m\x1B[5mFAILURE\033[0;m \x1B[31m>>>>>>>>>> \x1B[37m\n\n");
+        system("bash .system/beautiful_grade.sh");
+		// printf("\n\x1B[31m <<<<<<<<<< \x1B[1m\x1B[5mFAILURE\033[0;m \x1B[31m>>>>>>>>>> \x1B[37m\n\n");
 		s_sleep(3);
         printf ("\n");
 		if (exam->trace)
