@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/05/15 21:19:23 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/05/15 21:24:27 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ then
 		index=$(($index + 1))
 		echo "<-------------- OUR OUTPUT ------------>" >> traceback
 		cat sourcexam >> traceback
-		echo '\n' >> traceback
+		# echo '\n' >> traceback
 		if [ -e finalexam ]
 		then
 		echo "<-------------- MUST BE : ------------>\n\n" >> traceback
