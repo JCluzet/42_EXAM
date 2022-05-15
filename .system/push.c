@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/05/15 19:41:12 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/05/15 21:48:13 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,9 @@ int push(t_exam *exam)
 		s_sleep(4);
 		if (exam->level > 99.8)
 			success_exam(exam);
-		printf("\x1B[32mCongratulation!\x1B[37m Your work as been saved in \x1B[32msuccess/\x1B[37m folder.\n A new subject is now created.\n\n");
 		generate_subject(exam);
     blank();
+		printf("\x1B[32mCongratulation!\x1B[37m Your work as been saved in \x1B[32msuccess/\x1B[37m folder.\n A new subject is now created.\n\n");
     char *str;
     // get the pwd start with ~/
     char *pwd = getcwd(NULL, 0);
