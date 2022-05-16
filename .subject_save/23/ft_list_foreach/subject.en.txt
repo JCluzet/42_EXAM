@@ -1,5 +1,5 @@
 Assignment name  : ft_list_foreach
-Expected files   : ft_list_foreach.c, ft_list.h
+Expected files   : ft_list_foreach.c
 Allowed functions: 
 --------------------------------------------------------------------------------
 
@@ -14,8 +14,7 @@ The function pointed to by f will be used as follows:
 
 (*f)(list_ptr->data);
 
-You must use the following structure, and turn it in as a file called
-ft_list.h:
+You must use the following structure, and turn it in your file ft_list_foreach.c :
 
 typedef struct    s_list
 {
