@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/05/16 17:29:02 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/05/16 17:30:54 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ DIFF=$(diff sourcexam finalexam)
 if [ "$DIFF" != "" ]
 then
         echo "----------------8<-------------[ START TEST " >> traceback
-        printf "        💻 TEST ➪ ./a.out "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9"" >> traceback
+        printf "        💻 TEST\n./a.out ${@:2}\n" >> traceback
         printf "        🔎 YOUR OUTPUT:\n" >> traceback
         cat finalexam >> traceback
 		if [ -e final ]
