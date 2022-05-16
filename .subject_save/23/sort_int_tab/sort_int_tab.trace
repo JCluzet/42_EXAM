@@ -1,0 +1,75 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e1z1r8p2.42.us.org
+Darwin 17.5.0 x86_64
+$> date
+Sun Sep  1 13:57:06 PDT 2019
+$> gcc --version
+Configured with: --prefix=/Library/Developer/CommandLineTools/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 9.1.0 (clang-902.0.39.1)
+Target: x86_64-apple-darwin17.5.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+$> clang --version
+Apple LLVM version 9.1.0 (clang-902.0.39.1)
+Target: x86_64-apple-darwin17.5.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2019/c-exam-alone-in-the-dark-beginner/practice-exam_20190901/evjohnst3
+
+= Git history ==================================================================
+$> git -C /var/folders/s0/2w5tj40s4s9dwbwh_4ws70640000gp/T/tmpQ61CHA/user log --pretty='%H - %an, %ad : %s'
+5d730e1e660f0abbcb963456b9c8d9615ac95b3f - Evan Johnston, Sun Sep 1 13:55:16 2019 -0700 : .
+1b0d75eaa5e10ae9e0a25d0e1a18e51caf38494b - Evan Johnston, Sun Sep 1 13:55:15 2019 -0700 : .
+78b707c1f25a9e1bc1292501c27e06e73efe85cb - Evan Johnston, Sun Sep 1 13:53:15 2019 -0700 : .
+8bec511894ad6be0e20e330d4d41061e6c644b29 - Evan Johnston, Sun Sep 1 13:53:13 2019 -0700 : .
+de39c4811874ce6af7ead2f160be36f252d2c925 - Evan Johnston, Sun Sep 1 13:51:13 2019 -0700 : .
+b854618190a2265a90b5ff349a44a3c62eac530f - Evan Johnston, Sun Sep 1 13:51:11 2019 -0700 : .
+49245e4e7a9a65a57ff317b39d376deb096386ff - Evan Johnston, Sun Sep 1 13:49:10 2019 -0700 : .
+e06ae6afb561711db6a44cf52df33a99ff337ded - Evan Johnston, Sun Sep 1 13:47:07 2019 -0700 : .
+689a606d17265272c31678b8d9a210f0141e0f10 - Evan Johnston, Sun Sep 1 13:46:55 2019 -0700 : .
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/s0/2w5tj40s4s9dwbwh_4ws70640000gp/T/tmpQ61CHA/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  2085 Sep  1 13:57 __GIT_HISTORY
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  1 13:57 ft_atoi
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  1 13:57 ft_atoi_base
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  1 13:57 ft_print_numbers
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  1 13:57 ft_strcpy
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  1 13:57 sort_int_tab
+
+/var/folders/s0/2w5tj40s4s9dwbwh_4ws70640000gp/T/tmpQ61CHA/user/ft_atoi:
+total 8
+-rw-r--r--  1 deepthought  deepthought  450 Sep  1 13:57 ft_atoi.c
+
+/var/folders/s0/2w5tj40s4s9dwbwh_4ws70640000gp/T/tmpQ61CHA/user/ft_atoi_base:
+total 8
+-rw-r--r--  1 deepthought  deepthought  923 Sep  1 13:57 ft_atoi_base.c
+
+/var/folders/s0/2w5tj40s4s9dwbwh_4ws70640000gp/T/tmpQ61CHA/user/ft_print_numbers:
+total 8
+-rw-r--r--  1 deepthought  deepthought  231 Sep  1 13:57 ft_print_numbers.c
+
+/var/folders/s0/2w5tj40s4s9dwbwh_4ws70640000gp/T/tmpQ61CHA/user/ft_strcpy:
+total 8
+-rw-r--r--  1 deepthought  deepthought  455 Sep  1 13:57 ft_strcpy.c
+
+/var/folders/s0/2w5tj40s4s9dwbwh_4ws70640000gp/T/tmpQ61CHA/user/sort_int_tab:
+total 8
+-rw-r--r--  1 deepthought  deepthought  844 Sep  1 13:57 sort_int_tab.c
+ 
+= sort_int_tab =================================================================
+$> gcc -Wextra -Wall -Werror main.c sort_int_tab.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./7ulzyay32rng14cz4jkajcdp
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+Grade: 1
+
+= Final grade: 1 ===============================================================

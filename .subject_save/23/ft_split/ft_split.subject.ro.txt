@@ -1,0 +1,15 @@
+Exercitiu : ft_split
+Fisier de iesire  : ft_split.c
+Functii autorizate : malloc
+--------------------------------------------------------------------------------
+
+Scrieti o functie ce ia ca parametru un sir de caractere si pe care il separa 
+in cuvinte, ce vor fi returnate sub forma unui tablou siruri terminate cu NULL.
+
+Numim "cuvant" o portiune a a sirului de caractere delimitate de fie de spatii 
+si/sau tabulatoare, fie de inceputul/sfarsitul sirului.
+
+Functia va trebui sa aiba urmatorul prototip:
+
+char    **ft_split(char *str);
+

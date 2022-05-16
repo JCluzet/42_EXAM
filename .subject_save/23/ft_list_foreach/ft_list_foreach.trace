@@ -1,0 +1,126 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e1z2r9p37.42.us.org
+Darwin 17.4.0 x86_64
+$> date
+Mon Sep  2 11:21:46 PDT 2019
+$> gcc --version
+Configured with: --prefix=/Library/Developer/CommandLineTools/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+$> clang --version
+Apple LLVM version 9.1.0 (clang-902.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2019/c-exam-alone-in-the-dark-beginner/practice-exam_20190902/evjohnst10
+
+= Git history ==================================================================
+$> git -C /var/folders/cg/psrddwr92c75kvt7h_fkwcq00000gp/T/tmp0WDXdl/user log --pretty='%H - %an, %ad : %s'
+1b86587b2b53a79354a3c1920f82723d388e34c7 - Evan Johnston, Mon Sep 2 11:19:57 2019 -0700 : .
+dccff206070f9ce99aaa2a925868e272787d2f37 - Evan Johnston, Mon Sep 2 11:19:55 2019 -0700 : .
+7086ee59cdc13fadd6575f0a2e0f03d6df2f49da - Evan Johnston, Mon Sep 2 11:17:54 2019 -0700 : .
+80ecbbca0e98631ad6f52e8b04fc615475ad68e7 - Evan Johnston, Mon Sep 2 11:17:53 2019 -0700 : .
+febc3c00231c51793ee345cca7982a4848009c70 - Evan Johnston, Mon Sep 2 11:15:52 2019 -0700 : .
+bbdec39ee0ef13b2dfe8415f6e0b857e1320c613 - Evan Johnston, Mon Sep 2 11:15:50 2019 -0700 : .
+ecc21a04484e4bf365d8fa814c00e11446bfb8f1 - Evan Johnston, Mon Sep 2 11:13:50 2019 -0700 : .
+123d5825b1ef16cc74fb994dc33f7bbcf1d84f13 - Evan Johnston, Mon Sep 2 11:13:49 2019 -0700 : .
+cd5a8cd8b7d9469b1881b0e25a76aaa5c2229c0d - Evan Johnston, Mon Sep 2 11:13:37 2019 -0700 : .
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/cg/psrddwr92c75kvt7h_fkwcq00000gp/T/tmp0WDXdl/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  2064 Sep  2 11:21 __GIT_HISTORY
+drwxr-xr-x  4 deepthought  deepthought   136 Sep  2 11:21 ft_list_foreach
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  2 11:21 ft_strpbrk
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  2 11:21 ft_swap
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  2 11:21 only_z
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  2 11:21 tab_mult
+
+/var/folders/cg/psrddwr92c75kvt7h_fkwcq00000gp/T/tmp0WDXdl/user/ft_list_foreach:
+total 16
+-rw-r--r--  1 deepthought  deepthought   102 Sep  2 11:21 ft_list.h
+-rw-r--r--  1 deepthought  deepthought  1126 Sep  2 11:21 ft_list_foreach.c
+
+/var/folders/cg/psrddwr92c75kvt7h_fkwcq00000gp/T/tmp0WDXdl/user/ft_strpbrk:
+total 8
+-rw-r--r--  1 deepthought  deepthought  755 Sep  2 11:21 ft_strpbrk.c
+
+/var/folders/cg/psrddwr92c75kvt7h_fkwcq00000gp/T/tmp0WDXdl/user/ft_swap:
+total 8
+-rw-r--r--  1 deepthought  deepthought  103 Sep  2 11:21 ft_swap.c
+
+/var/folders/cg/psrddwr92c75kvt7h_fkwcq00000gp/T/tmp0WDXdl/user/only_z:
+total 8
+-rw-r--r--  1 deepthought  deepthought  104 Sep  2 11:21 only_z.c
+
+/var/folders/cg/psrddwr92c75kvt7h_fkwcq00000gp/T/tmp0WDXdl/user/tab_mult:
+total 8
+-rw-r--r--  1 deepthought  deepthought  632 Sep  2 11:21 tab_mult.c
+ 
+= ft_list_foreach ==============================================================
+$> gcc -Wextra -Wall -Werror main.c ft_list_foreach.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./fhijxczn427qp7zpjmlq1bod 
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./f6xup0f2d4lu2z0w7ke0cjkq "4PgFv"
+$> diff -U 3 user_output_test2 test2.output | cat -e
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./yop65k6lvi4r771i2a6ehob9 "JPA"
+$> diff -U 3 user_output_test3 test3.output | cat -e
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./heuqj5xs0pucy29few5e2ds4 "m6t0pzwEusqZO5PA 3ySL506Fzcih m7H 8T0cWiUJCeYxX H2Y TWQNdlm2uKb 0w6"
+$> diff -U 3 user_output_test4 test4.output | cat -e
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./758ytlt6shiabplxx7m09h7p "Qy8mJljXu 0D7VE 4Pge1KhtYQ h9BtSHy4YUXu 8J5BZCyrD PCASm"
+$> diff -U 3 user_output_test5 test5.output | cat -e
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./jdvd6loy23f2l2lbp2tx2vsd "aXPdBrwYez7D" "5aSq6MsikZKA8UF" "cEY2sZhTUaet" "EC0" "Zu0zWvh9n5mXk1E" "9H8l2" "Egc" "ejGn8g6ySP" "uaH0eon" "SLD7bs6rlh1Ao" "JA7QgGTecbvjtaBE" "rdwVlfAizNOKF" "u1nJKXAqwrYc"
+$> diff -U 3 user_output_test6 test6.output | cat -e
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./ak62dljq5hqsgmtkfoiezsnl "nlVqKGdzg5E" "3cC" "khIjfsRSv074Z9rub" "SiYQ2GyqH3" "gA4XuqKQjyDbh" "h2bodzQqcGst" "OoYiU" "1iP7Z9erbnxTJqj" "akFMQCVu8Yh2p" "3eM" "g8UDtQVfI9wMz" "UJEVdGD9k" "p2OogXjk0mJunA" "N3Mb6Y0wW7E" "QbVo6wcTO3vFqmDys" "fauiCjde48skD3oIT" "txIi7rc5b" "nvFswe0OaX3WTom4L"
+$> diff -U 3 user_output_test7 test7.output | cat -e
+
+Diff OK :D
+= Test 8 ===================================================
+$> ./pmry8j27d62k8266dl7h7cod "WSsLAIx8" "ZvjDdfxcGJ0Fe" "M3F" "mp4K7QaT2dj0PCUXk" "ypR2MoanD5Nr6BVI" "1R6sgeBSI7ACPt" "W4EdcV3" "p0O16z" "AI6" "IQzndxRlYG" "knHNc" "Lsy3cEDgwo" "Le9gZSP2t4EXUHJC" "AZ5mVvslSO" "mdX3lBWAq98FHC" "5ZWkyUEKMr" "a7LVc8" "7tXybiUgc"
+$> diff -U 3 user_output_test8 test8.output | cat -e
+
+Diff OK :D
+= Test 9 ===================================================
+$> ./e94xhmk5k61i2l54ue5malps "F31PIYtsQwE CPBkJ4jxv HpEijIrY xjS9X EJv Wc6U08EXK5P9dbrQ rjVZxoECSe skbF4l5I7 DBiQ w21g3j0Z ADOBorX7tH bcwri6z32qgXRYx4F QM5 KV1XRZ7sGcUm" "5fAbEQ08WGL6qzsUw SYkpdrcFMAzj E9lAxvpY lBK7fEVdq1 Pbjl7smVSOF964nDf GBj V8ij1fMPBuGyws 1xekT2VOmYMc4iW G8RmeKzBP Zg7xU lR2W6h 0SDj HSNK 4TV3agK UhC9KyqZ7ur HRb4JpMDkFyt1T6c A9Q2dYTFhkXq0r" "dSnNfJATEceB0s IbcMf8LGtF5 tmPej9A5uv jofkN8dbAlYK j0YI68sJRWMrqO xaZymoROS6MwbY tVGTEls3dKgBIiX5 Qgr13tP" "MEb qdCxj170RM j9gTN zEaUPgY4D9K UDhIEJ TBMYl bJ38Y7MfeQn usOJ2tKjR9VZ7 Dzpg oPg1ZJXcuzrQA KJeY63gy7N5R C39Y7KTodhJQ N6LBtXaTeiwUGYPb jybMef" "JnPoeDLVWUOYA Bg3S2fD MquPjpCvUHWk vsf ClugdqeP RLOWF1efJzwoYjHA ybVg9mwUua38 Ujr9mE XPeZCQSwG zRIcSF e5OLmrNHz41P 1dneXWbSfoi9 eLt8WgUfzI qUj39vDkInO 84cuC0tkQsgavp7 byYHEfNTeS cMUVray3pKsfn5wA" "nYuXzAMD09VPy nKMraPT yKc hnWAtfV71 iIQYFBcNjyUq7Tw6V NepSA6b0x24CwQg 56cK VWAo1bjY3DRelKa or6pVw3ymxk" "zDfqsH7 gwea Z3PAGbeirF vXhq 1myHvXC cFnwGU0W4yVJ 6xJvSuHdjUO2 mYA8HiGKC vbsUuXtGB" "bB6hp9WtEaVvy vnCG2fjboEke0rai vyjsTLYC IoFCJwEK2izVUl6Qj CeIAbJM oNIXmFO B20gotWDrqlEQ7I8b HcaoN RvHYfNk15Cd WfJ4pdzgO6 UrvieVPC5mMswGbl U4m dS1FrLjca WAJmcB5zf8Q2 2fbGrwW6Skv" "cN37fdqH 83CIR07QoM G3ohIyHt85ms7uN xN8eQ0OdWtJ 1fX9QdS4vVFY HGEdlVIMhg pIP7YCWRraDi185oA w9KM" "K9I4VPbM FgRvYH oxjWK6cGzwNR R7wWQDp tJ72F4pIab"
+$> diff -U 3 user_output_test9 test9.output | cat -e
+
+Diff OK :D
+= Test 10 ==================================================
+$> ./m0kzeq58rjv4wryeo1mhtzyk "AB6 x3SesEb kjcLIo8CsweizdMu YRb 1jYe0RMw52SV OlSdPb9Vj rC5JW6yixOnIHS84 kvnNAt2JLDrEbYXIM PTNpyiA l1wYu5N09byiWL RWV9GbXZFv2K0Jn 80bAXNKzcqGm37 60dkvyALKarxlTzM 9IS3wApB B38AstQe41JGnx jZWcDT8hlf3JPA ay98N7gMV2x63AiRO" "gjNrihKd9wxRUHBl HWMdYqGAX XPTnf8jqGy lFVkjb snZNtU tvPKmNV0YjU nWcj3yHI7RTXl 6yoaRH1BFdzx pUMgybwkHT9J6hS7"
+$> diff -U 3 user_output_test10 test10.output | cat -e
+
+Diff OK :D
+= Test 11 ==================================================
+$> ./hoyh37n6q8e542t00mu9cg9n "z2asm6P f74aF FIy 6xM8J9U5ediFL tOVPnqy3Lp1s psSakBdHi0IW1" "h4UJfgrSB 2YP3tjZQ rBPDQ1q BhGJz7NLIk SjTCHc5mfunbLGdwB" "XUP KNcAyID05Gw3C6P rf7n k0UFVGxagCM SVjOsekwZCy 3uVlr6FkH PL4VuHwaN0r8dzWv QjD nhAo2 O0rZpG9TdYqR8 Bx7 gRuw 49HXdMTwaiZ2zGsSQ ilhIe XCSwgVfUpRPB" "CznF GWTwFgbXaZ 9YdIelTwWt7qJy8h YH54MD1QybX xV53bveWyTJN9H6M 0KNRz68vbsmgxnjA jTB impbcReV NqGe0xh hMav7fYiHD oZO1yMFmvx CsVmcp4BTw0 r1eVxEMRIk 8ZpxIN0BYG fzrG7Jbh8eSvkaM vHU0 FnPCk"
+$> diff -U 3 user_output_test11 test11.output | cat -e
+
+Diff OK :D
+Grade: 1
+
+= Final grade: 1 ===============================================================
