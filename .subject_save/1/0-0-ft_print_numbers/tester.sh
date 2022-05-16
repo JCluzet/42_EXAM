@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/05/16 14:50:02 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/05/16 16:47:07 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,4 +23,4 @@ if [ -e .system/verif/traceback ];then
 	exit 1
 fi
 
-touch passed;
+touch .system/verif/passed;
