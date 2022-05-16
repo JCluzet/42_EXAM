@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/05/16 00:24:07 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/05/16 15:09:43 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <readline/readline.h>
 #include <string.h>
 #define LIMIT 5
+#define NEW02 1
 
 int fstrlen(char *cmd)
 {
@@ -121,11 +122,11 @@ int start(t_exam *exam)
 
     if (april)
     {
-        if (exam->exam_type == 5)
+        if (exam->exam_type == 5 && NEW02 == 1)
         {
                 blank();
     printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m5\x1B[37m - Exam Rank 02\n     \x1B[32m6\x1B[37m - Exam Rank 03\n     \x1B[32m7\x1B[37m - Exam Rank 04\n     \x1B[32m8\x1B[37m - Exam Rank 05\n\n     |  BONUS PART  |\n      --------------\n\n     \x1B[32m9\x1B[37m - Student Specific Exam\n\nEnter your choice: \n");
-            printf("\n\x1B[31m\x1B[37mSorry, the NEW ExamRank02 is on working....\x1B[31m\x1B[37m\n");
+            printf("\n\x1B[31m\x1B[37mSorry, the NEW ExamRank02 is on working (estimate release : 20 may 2022)....\x1B[31m\x1B[37m\n");
             // sleep (3);
                             // blank();
     // printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m5\x1B[37m - Exam Rank 02\n     \x1B[32m6\x1B[37m - Exam Rank 03\n     \x1B[32m7\x1B[37m - Exam Rank 04\n     \x1B[32m8\x1B[37m - Exam Rank 05\n\n     |  BONUS PART  |\n      --------------\n\n     \x1B[32m9\x1B[37m - Student Specific Exam\n\nEnter your choice: \n");
@@ -147,9 +148,16 @@ int start(t_exam *exam)
         hour = 4;
         exam->trace = 0;
     }
-    if (exam->exam_type == 5)
+    if (exam->exam_type == 5 && !april)
     {
         exam->xpperex = 50.0;
+        exam->exbylvl = 1;
+        hour = 3;
+        exam->trace = 1;
+    }
+    if (exam->exam_type == 5 && april)
+    {
+        exam->xpperex = 25.0;
         exam->exbylvl = 1;
         hour = 3;
         exam->trace = 1;
@@ -240,8 +248,10 @@ int start(t_exam *exam)
         exam->folder_num = 5;
     if (exam->exam_type == 4)
         exam->folder_num = 7;
-    if (exam->exam_type == 5)
+    if (exam->exam_type == 5 && !april)
         exam->folder_num = 11;
+    if (exam->exam_type == 5 && april)
+        exam->folder_num = 20;
     if (exam->exam_type == 6)
         exam->folder_num = 13;
     if (exam->exam_type == 7)
