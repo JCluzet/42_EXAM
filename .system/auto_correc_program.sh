@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/05/16 17:19:35 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/05/16 17:24:02 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,6 @@ then
 		then
         printf "        🗝 EXPECTED OUTPUT:\n" >> traceback
 		cat sourcexam >> traceback
-        printf "\n\n" >> traceback
-        printf "         ❌ DIFF :\n" >> traceback
-        printf "${DIFF}\n" >> traceback
 		else
         printf "\n";
         echo "$(cat .dev)" >> traceback
