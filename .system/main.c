@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/05/16 15:09:43 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/05/16 15:21:27 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,10 @@ int start(t_exam *exam)
     }
         }
         if (exam->exam_type == 6)
+        {
               exam->exam_type = 5;
+            april = 0;
+        }
     }
     if (exam->exam_type == 1 || exam->exam_type == 2)
     {
