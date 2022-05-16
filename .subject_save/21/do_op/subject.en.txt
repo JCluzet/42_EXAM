@@ -1,5 +1,5 @@
 Assignment name  : do_op
-Expected files   : *.c, *.h
+Expected files   : do_op.c
 Allowed functions: atoi, printf, write
 --------------------------------------------------------------------------------
 
