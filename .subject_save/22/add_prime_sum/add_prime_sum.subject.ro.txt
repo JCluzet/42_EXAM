@@ -1,0 +1,18 @@
+Exercitiu  : add_prime_sum
+Fisere de iesire   : add_prime_sum.c
+Functii autorizate: write, exit
+--------------------------------------------------------------------------------
+
+Scrieti un program care primeste un numar intreg pozitiv ca si parametru si care afiseaza suma tuturor numerelor prime mai mici sau egale decat parametrul primit, urmata de un terminator de linie.
+
+Dana numarul de argumente nu este 1, sau argumentul nu este un numar pozitiv, afisati doar 0 urmat de terminatorul de linie.
+
+Exemple:
+
+$>./add_prime_sum 5
+10
+$>./add_prime_sum 7 | cat -e
+17$
+$>./add_prime_sum | cat -e
+0$
+$>

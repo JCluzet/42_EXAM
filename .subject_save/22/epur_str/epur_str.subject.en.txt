@@ -15,11 +15,11 @@ program displays \n.
 
 Example:
 
-$> ./epur_str "vous voyez c'est facile d'afficher la meme chose" | cat -e
-vous voyez c'est facile d'afficher la meme chose$
-$> ./epur_str " seulement          la c'est      plus dur " | cat -e
-seulement la c'est plus dur$
-$> ./epur_str "comme c'est cocasse" "vous avez entendu, Mathilde ?" | cat -e
+$> ./epur_str "See? It's easy to print the same thing" | cat -e
+See? It's easy to print the same thing$
+$> ./epur_str " this        time it      will     be    more complex  . " | cat -e
+this time it will be more complex .$
+$> ./epur_str "No S*** Sherlock..." "nAw S*** ShErLaWQ..." | cat -e
 $
 $> ./epur_str "" | cat -e
 $

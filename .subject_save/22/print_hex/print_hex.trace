@@ -1,0 +1,161 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e1z1r6p42.42.us.org
+Darwin 17.5.0 x86_64
+$> date
+Sun Sep  1 22:18:29 PDT 2019
+$> gcc --version
+Configured with: --prefix=/Library/Developer/CommandLineTools/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 9.1.0 (clang-902.0.39.1)
+Target: x86_64-apple-darwin17.5.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+$> clang --version
+Apple LLVM version 9.1.0 (clang-902.0.39.1)
+Target: x86_64-apple-darwin17.5.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2019/c-exam-alone-in-the-dark-beginner/practice-exam_20190902/evjohnst5
+
+= Git history ==================================================================
+$> git -C /var/folders/7n/5dgdv91n4qq_l_1c2slm_5x80000gp/T/tmpyJtln_/user log --pretty='%H - %an, %ad : %s'
+c5cc233c7979a39b77ea954ad68cdf075a567f92 - Evan Johnston, Sun Sep 1 22:16:38 2019 -0700 : .
+3c8641042f371d8f1329f72b6593c1154edc439e - Evan Johnston, Sun Sep 1 22:12:33 2019 -0700 : .
+111a6940e09c0db0e82cffdebb968d96eafc3748 - Evan Johnston, Sun Sep 1 22:05:36 2019 -0700 : .
+0b394cfd162267018468eff08cef2280d51457dc - Evan Johnston, Sun Sep 1 21:35:01 2019 -0700 : .
+3ea22faf29866701ee949f424343493b04486a81 - Evan Johnston, Sun Sep 1 20:50:15 2019 -0700 : .
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/7n/5dgdv91n4qq_l_1c2slm_5x80000gp/T/tmpyJtln_/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  1125 Sep  1 22:18 __GIT_HISTORY
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  1 22:18 inter
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  1 22:18 only_z
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  1 22:18 print_hex
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  1 22:18 search_and_replace
+
+/var/folders/7n/5dgdv91n4qq_l_1c2slm_5x80000gp/T/tmpyJtln_/user/inter:
+total 8
+-rw-r--r--  1 deepthought  deepthought  530 Sep  1 22:18 inter.c
+
+/var/folders/7n/5dgdv91n4qq_l_1c2slm_5x80000gp/T/tmpyJtln_/user/only_z:
+total 8
+-rw-r--r--  1 deepthought  deepthought  104 Sep  1 22:18 only_z.c
+
+/var/folders/7n/5dgdv91n4qq_l_1c2slm_5x80000gp/T/tmpyJtln_/user/print_hex:
+total 8
+-rw-r--r--  1 deepthought  deepthought  425 Sep  1 22:18 print_hex.c
+
+/var/folders/7n/5dgdv91n4qq_l_1c2slm_5x80000gp/T/tmpyJtln_/user/search_and_replace:
+total 8
+-rw-r--r--  1 deepthought  deepthought  427 Sep  1 22:18 search_and_replace.c
+ 
+= print_hex ====================================================================
+$> gcc -Wextra -Wall -Werror print_hex.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./js1tcwm8zot429fbn1hc0pdi 
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./zs3k0z1eql88s5gb19w6huh8 "21" "2313"
+$> diff -U 3 user_output_test2 test2.output | cat -e
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./5jv8xyq9ssi8li9vcb0b248h 2147483647
+$> diff -U 3 user_output_test3 test3.output | cat -e
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./szzw0jgk4mqs8ld2e8968to7 0
+$> diff -U 3 user_output_test4 test4.output | cat -e
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./844eylny4mkbs71cbh5jlaim 577027294
+$> diff -U 3 user_output_test5 test5.output | cat -e
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./g6sp3o8ffvyukaf2th0ac6bo 1812423854
+$> diff -U 3 user_output_test6 test6.output | cat -e
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./m8n1gl071bl3qfhu6ogptmvp 1972840764
+$> diff -U 3 user_output_test7 test7.output | cat -e
+
+Diff OK :D
+= Test 8 ===================================================
+$> ./iajpg1o35tnts2ugj5c2e85e 636903537
+$> diff -U 3 user_output_test8 test8.output | cat -e
+
+Diff OK :D
+= Test 9 ===================================================
+$> ./abwxlb51z1sffju8488ru3iz 260073722
+$> diff -U 3 user_output_test9 test9.output | cat -e
+
+Diff OK :D
+= Test 10 ==================================================
+$> ./22ea3hm3s1czuoav5wroyl59 690960617
+$> diff -U 3 user_output_test10 test10.output | cat -e
+
+Diff OK :D
+= Test 11 ==================================================
+$> ./fzek9i43k2frud6yfp8419pq 1195048816
+$> diff -U 3 user_output_test11 test11.output | cat -e
+
+Diff OK :D
+= Test 12 ==================================================
+$> ./qk1j4jiq92ne0aj4cu20lgce 176206290
+$> diff -U 3 user_output_test12 test12.output | cat -e
+
+Diff OK :D
+= Test 13 ==================================================
+$> ./riyuuu4fa32muc8rfbmel0bs 41856660
+$> diff -U 3 user_output_test13 test13.output | cat -e
+
+Diff OK :D
+= Test 14 ==================================================
+$> ./73gswwx0xxwdxbuj4rtq1kgt 1888545200
+$> diff -U 3 user_output_test14 test14.output | cat -e
+
+Diff OK :D
+= Test 15 ==================================================
+$> ./66e4j0708dxbmd4rgjx6nz0u 1421872998
+$> diff -U 3 user_output_test15 test15.output | cat -e
+
+Diff OK :D
+= Test 16 ==================================================
+$> ./1edpqzde6auh7aewwzai888i 1758500300
+$> diff -U 3 user_output_test16 test16.output | cat -e
+
+Diff OK :D
+= Test 17 ==================================================
+$> ./e8yvnm9be3b8sip9jbs45g2v 1647111999
+$> diff -U 3 user_output_test17 test17.output | cat -e
+
+Diff OK :D
+= Test 18 ==================================================
+$> ./ochgv4fp9qs4mpa5nnxqohcf 663785511
+$> diff -U 3 user_output_test18 test18.output | cat -e
+
+Diff OK :D
+= Test 19 ==================================================
+$> ./0ex1knf3xk8mi10j4ljl7mcp 1717853599
+$> diff -U 3 user_output_test19 test19.output | cat -e
+
+Diff OK :D
+= Test 20 ==================================================
+$> ./1u1xpi4xam3y40n5wst3u88f 853615032
+$> diff -U 3 user_output_test20 test20.output | cat -e
+
+Diff OK :D
+Grade: 1
+
+= Final grade: 1 ===============================================================
