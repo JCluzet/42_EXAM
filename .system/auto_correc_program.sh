@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/05/16 17:24:02 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/05/16 17:26:36 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,6 @@ then
         # echo "        💻 TEST ➪ ./a.out $2 $3 $4 $5 $6 $7 $8 $9" >> traceback
         printf "        🔎 YOUR OUTPUT:\n" >> traceback
         cat finalexam >> traceback
-        printf "\n" >> traceback
 		if [ -e final ]
 		then
         printf "        🗝 EXPECTED OUTPUT:\n" >> traceback
