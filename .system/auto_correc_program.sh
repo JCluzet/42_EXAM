@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/05/16 15:33:57 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/05/16 17:19:35 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,15 +20,14 @@ fi
 
 cd .system/verif
 gcc -o source "$1"
-./source "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" | cat -e > sourcexam       #TESTING
+./source "${@:2}" | cat -e > sourcexam       #TESTING
 rm source
 {
 gcc -o final "$FILE"
 }  2>.dev
 {
-./final "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9" | cat -e > finalexam        #TESTING
+./final "${@:2}" | cat -e > finalexam        #TESTING
 }  &>/dev/null
-
 DIFF=$(diff sourcexam finalexam)
 if [ "$DIFF" != "" ]
 then
