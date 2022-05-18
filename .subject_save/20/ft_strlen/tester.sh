@@ -6,58 +6,29 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/05/18 15:23:21 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/05/18 15:42:13 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILE='first_word.c'
+FILE='ft_strlen.c'
 
-bash .system/auto_correc_program.sh $FILE 
+bash .system/auto_correc_main.sh $FILE "Ceci permet de decouvrir le fonctionnement de ton ft_strlen."
 if [ -e .system/verif/traceback ];then
     mv .system/verif/traceback .
 	exit 1
 fi
 
-bash .system/auto_correc_program.sh $FILE "abc"
+bash .system/auto_correc_main.sh $FILE "OH ! Tu devrais avoir reussi ce test."
 if [ -e .system/verif/traceback ];then
     mv .system/verif/traceback .
 	exit 1
 fi
 
-bash .system/auto_correc_program.sh $FILE "FOR PONY"
+bash .system/auto_correc_main.sh $FILE
 if [ -e .system/verif/traceback ];then
     mv .system/verif/traceback .
 	exit 1
 fi
 
-bash .system/auto_correc_program.sh $FILE "this        ...       is sparta, then again, maybe    not"
-if [ -e .system/verif/traceback ];then
-    mv .system/verif/traceback .
-	exit 1
-fi
-
-bash .system/auto_correc_program.sh $FILE "   "
-if [ -e .system/verif/traceback ];then
-    mv .system/verif/traceback .
-	exit 1
-fi
-
-bash .system/auto_correc_program.sh $FILE "a" "b"
-if [ -e .system/verif/traceback ];then
-    mv .system/verif/traceback .
-	exit 1
-fi
-
-bash .system/auto_correc_program.sh $FILE "  lorem,ipsum  "
-if [ -e .system/verif/traceback ];then
-    mv .system/verif/traceback .
-	exit 1
-fi
-
-bash .system/auto_correc_program.sh $FILE
-if [ -e .system/verif/traceback ];then
-    mv .system/verif/traceback .
-	exit 1
-fi
 
 touch .system/verif/passed;

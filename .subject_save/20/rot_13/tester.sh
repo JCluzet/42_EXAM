@@ -6,11 +6,11 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/05/18 15:23:21 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/05/18 15:49:27 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILE='first_word.c'
+FILE='rot_13.c'
 
 bash .system/auto_correc_program.sh $FILE 
 if [ -e .system/verif/traceback ];then
@@ -54,7 +54,19 @@ if [ -e .system/verif/traceback ];then
 	exit 1
 fi
 
-bash .system/auto_correc_program.sh $FILE
+bash .system/auto_correc_program.sh $FILE "Alex."
+if [ -e .system/verif/traceback ];then
+    mv .system/verif/traceback .
+	exit 1
+fi
+
+bash .system/auto_correc_program.sh $FILE "abacadaba 42!"
+if [ -e .system/verif/traceback ];then
+    mv .system/verif/traceback .
+	exit 1
+fi
+
+bash .system/auto_correc_program.sh $FILE ""
 if [ -e .system/verif/traceback ];then
     mv .system/verif/traceback .
 	exit 1
