@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcspn.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:21:34 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/06 18:37:46 by galpers          ###   ########.fr       */
+/*   Updated: 2022/05/18 18:33:44 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
+// include for size_t
+// #include <stdlib.h>
 
 size_t  ft_strcspn(const char *s, const char *reject)
 {
@@ -35,10 +37,10 @@ size_t  ft_strcspn(const char *s, const char *reject)
 	return (i);
 }
 
-int	main(void)
-{
-	printf("%lu\n", ft_strcspn("test", "es"));
-	printf("%lu\n", strcspn("test", "es"));
-printf("%lu\n", ft_strcspn("test", "f"));
-	printf("%lu\n", strcspn("test", "f"));
-}
+// int	main(void)
+// {
+// 	printf("%lu\n", ft_strcspn("test", "es"));
+// 	printf("%lu\n", strcspn("test", "es"));
+// printf("%lu\n", ft_strcspn("test", "f"));
+// 	printf("%lu\n", strcspn("test", "f"));
+// }

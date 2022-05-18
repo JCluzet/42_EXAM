@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_power_of_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 18:50:02 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/06 19:01:58 by galpers          ###   ########.fr       */
+/*   Updated: 2022/05/18 18:50:15 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int         is_power_of_2(unsigned int n)
 	return (1);
 }
 
-int	main(void)
-{
-	printf("%d\n", is_power_of_2(1024));
-	printf("%d\n", is_power_of_2(1023));
-	printf("%d\n", is_power_of_2(0));
-	printf("%d\n", is_power_of_2(1));
-}
+// int	main(void)
+// {
+// 	printf("%d\n", is_power_of_2(1024));
+// 	printf("%d\n", is_power_of_2(1023));
+// 	printf("%d\n", is_power_of_2(0));
+// 	printf("%d\n", is_power_of_2(1));
+// }
