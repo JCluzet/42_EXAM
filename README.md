@@ -1,5 +1,5 @@
 # 42_EXAM 🎓
- ## A program almost identical to the 42 pool EXAMS & STUDENT EXAM RANK 02 & 03 & 04
+ ## A program almost identical to the 42 pool EXAMS & STUDENT EXAM RANK 02 & 03 & 04 & 05
  
  ## NEW ! 42_EXAM is now part of ➡️  **GRADEME.FR** 📡 
 
@@ -13,12 +13,14 @@
 
  ## Practice like for the 42 exam 🏊‍♂️
 
+ 
+  - [ ] New Subjects ExamRank02 APRIL 2022 ✔️ (soon)
   - [x] Subject drawn at random ✔️
   - [x] Exponential waiting for a correction ✔️
   - [x] X Hours maximum ✔️
   - [x] Automatic correction (without internet) ✔️
   - [x] Traceback available ✔️
-  - [ ] Exam Piscine Week 3 & 4  
+  - [ ] Exam Piscine Week 3 & 4
 
 ![Capture d’écran 2022-03-28 à 15 20 12](https://user-images.githubusercontent.com/55356071/160407323-c4152b9f-a943-4e42-96fd-83fc6cf60739.png)
 
