@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/05/16 00:29:55 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/05/20 17:04:21 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,16 @@ char *fttt_strjoin(char *str, char *str1)
 
 int push(t_exam *exam)
 {
+	FILE *filetest;
+    if ((filetest = ((fopen(".system/verif/tester.sh", "r")))))
+    {
 	int n;
 	float sec;
 
 
 	int temp = 0;
 	n = rand() % 25 + 7;
-	FILE *file;
+    
 	#define INTERVAL (0.7 * CLOCKS_PER_SEC)
 
 	
@@ -85,9 +88,27 @@ int push(t_exam *exam)
         while (clock() < target);
     }
     
+    // if there is no .system/verif/tester.sh file, it means that the correction can't be done
 	system("bash .system/verif/tester.sh");
     printf ("\n");
 
+    }
+    else 
+    {
+        char c = '\0';
+        while (c != 'y' && c != 'n')
+        {
+            printf ("\n\n\nOh no ! There is no correction for this exercice yet !\n");
+            printf ("You can exceptionnally validate it by enter y\n (y/n)\n");
+            scanf ("%c", &c);
+        }
+        if (c == 'y')
+        {
+            system("touch .system/verif/passed");
+            printf ("\n");
+        }
+    }
+	FILE *file;
     if ((file = ((fopen(".system/verif/passed", "r")))))
     {
         system("bash .system/beautiful_grade.sh 0");
@@ -168,7 +189,7 @@ int push(t_exam *exam)
 		time(&exam->timestart);
 		time(&exam->timeend);
 		exam->timeend += exam->failuretime;
-	}
+    }
 	return (0);
 }
 

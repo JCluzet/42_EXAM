@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/05/16 15:21:27 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/05/20 16:59:04 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <readline/readline.h>
 #include <string.h>
 #define LIMIT 5
-#define NEW02 1
+#define NEW02 0
 
 int fstrlen(char *cmd)
 {
