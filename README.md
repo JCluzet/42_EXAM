@@ -3,7 +3,7 @@
  
  ## NEW ! 42_EXAM now compatible NEW APRIL ExamRank02 !
  
- ## NEW ! 42_EXAM is now part of ➡️  **GRADEME.FR** 📡 
+ ## 42_EXAM is part of ➡️  **GRADEME.FR** 📡 
 
  A program almost identical to the 42 pool EXAMS and STUD EXAM (for practice)
 
@@ -16,7 +16,8 @@
  ## Practice like for the 42 exam 🏊‍♂️
 
  
-  - [ ] New Subjects ExamRank02 APRIL 2022 ✔️ (soon)
+  - [x] New Subjects ExamRank02 APRIL 2022 ✔️ (soon)
+  - [ ] Setup of correction of level 3 & 4 ExamRank02
   - [x] Subject drawn at random ✔️
   - [x] Exponential waiting for a correction ✔️
   - [x] X Hours maximum ✔️
