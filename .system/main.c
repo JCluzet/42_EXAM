@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/05/20 16:59:04 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/05/21 01:59:11 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,11 +182,11 @@ int start(t_exam *exam)
     if (exam->exam_type == 9) // Specific exam
     {
         blank();
-        printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam Rank 02 -> INTER.c\n\n     \x1B[32m2\x1B[37m - Exam Rank 02 -> UNION.c\n\n     \x1B[32m3\x1B[37m - Exam Rank 02 -> GET_NEXT_LINE.c\n\n     \x1B[32m4\x1B[37m - Exam Rank 02 -> FT_PRINTF.c\n\n     \x1B[32m5\x1B[37m - Exam Rank 03 -> MICRO_PAINT.c\n\n     \x1B[32m6\x1B[37m - Exam Rank 03 -> MINI_PAINT.c\n\n     \x1B[32m7\x1B[37m - Exam Rank 04 -> MICROSHELL.c\n\n     \x1B[32m8\x1B[37m - Exam Rank 05 -> CPP_MODULE00\n\n     \x1B[32m9\x1B[37m - Exam Rank 05 -> CPP_MODULE01\n\n     \x1B[32m10\x1B[37m - Exam Rank 05 -> CPP_MODULE02\n\nEnter your choice: \n");
+        printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to try?\n\n\n     | PISCINE PART |\n      --------------\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m0\x1B[37m - \x1B[32mNEW\x1B[37m Exam Rank 02 \n\n     \x1B[32m1\x1B[37m - Exam Rank 02 -> INTER.c\n\n     \x1B[32m2\x1B[37m - Exam Rank 02 -> UNION.c\n\n     \x1B[32m3\x1B[37m - Exam Rank 02 -> GET_NEXT_LINE.c\n\n     \x1B[32m4\x1B[37m - Exam Rank 02 -> FT_PRINTF.c\n\n     \x1B[32m5\x1B[37m - Exam Rank 03 -> MICRO_PAINT.c\n\n     \x1B[32m6\x1B[37m - Exam Rank 03 -> MINI_PAINT.c\n\n     \x1B[32m7\x1B[37m - Exam Rank 04 -> MICROSHELL.c\n\n     \x1B[32m8\x1B[37m - Exam Rank 05 -> CPP_MODULE00\n\n     \x1B[32m9\x1B[37m - Exam Rank 05 -> CPP_MODULE01\n\n     \x1B[32m10\x1B[37m - Exam Rank 05 -> CPP_MODULE02\n\nEnter your choice: \n");
         ret = get_next_line(0, &buf);
-        while (atoi(buf) < 1 || atoi(buf) > 10)
+        while (atoi(buf) < 0 || atoi(buf) > 10)
         {
-            printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter number 1,2,3,4,5,6,7,8,9,10\n");
+            printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter number 0,1,2,3,4,5,6,7,8,9,10\n");
             ret = get_next_line(0, &buf);
         }
         exam->exam_type = atoi(buf);
@@ -194,6 +194,92 @@ int start(t_exam *exam)
         exam->exbylvl = 1;
         hour = 3;
         exam->trace = 1;
+        if (exam->exam_type == 0)
+        {
+            blank();
+            printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to try?\n\n\n     | PISCINE PART |\n      --------------\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m0\x1B[37m - first-word");
+            printf("\n     \x1B[32m1\x1B[37m - fizzbuzz");
+            printf("\n     \x1B[32m2\x1B[37m - ft_strcpy");
+            printf("\n     \x1B[32m3\x1B[37m - ft_strlen");
+            printf("\n     \x1B[32m4\x1B[37m - ft_swap");
+            printf("\n     \x1B[32m5\x1B[37m - putstr");
+            printf("\n     \x1B[32m6\x1B[37m - repeat_alpha");
+            printf("\n     \x1B[32m7\x1B[37m - rev_print");
+            printf("\n     \x1B[32m8\x1B[37m - rot_13");
+            printf("\n     \x1B[32m9\x1B[37m - rotone");
+            printf("\n     \x1B[32m10\x1B[37m - searchandreplace");
+            printf("\n     \x1B[32m11\x1B[37m - ulstr");
+            printf("\n\n          SECOND PART");
+
+            printf("\n     \x1B[32m12\x1B[37m - alpha_mirror");
+            printf("\n     \x1B[32m13\x1B[37m - do_op");
+            printf("\n     \x1B[32m14\x1B[37m - ft_atoi");
+            printf("\n     \x1B[32m15\x1B[37m - ft_strcmp");
+            printf("\n     \x1B[32m16\x1B[37m - ft_strcspn");
+            printf("\n     \x1B[32m17\x1B[37m - inter");
+            printf("\n     \x1B[32m18\x1B[37m - last_word");
+            printf("\n     \x1B[32m19\x1B[37m - is_power_of_2");
+            printf("\n     \x1B[32m20\x1B[37m - max");
+            printf("\n     \x1B[32m21\x1B[37m - ft_strdup");
+            
+            printf("\n\nEnter your choice: \n");
+            ret = get_next_line(0, &buf);
+            while (atoi(buf) < 0 || atoi(buf) > 21)
+            {
+                printf("   └--> \x1B[31mError\x1B[37m | Unknown argument, enter number 1 to 21\n");
+                ret = get_next_line(0, &buf);
+            }
+            if (atoi(buf) < 12 && atoi(buf) >= 0)
+                exam->folder_num = 20;
+            if (atoi(buf) < 22 && atoi(buf) > 11)
+                exam->folder_num = 21;
+            if (atoi(buf) == 0)
+                system("bash .system/specific.sh .subject/20 first_word");
+            if (atoi(buf) == 1)
+                system("bash .system/specific.sh .subject/20 fizzbuzz");
+            if (atoi(buf) == 2)
+                system("bash .system/specific.sh .subject/20 ft_strcpy");
+            if (atoi(buf) == 3)
+                system("bash .system/specific.sh .subject/20 ft_strlen");
+            if (atoi(buf) == 4)
+                system("bash .system/specific.sh .subject/20 ft_swap");
+            if (atoi(buf) == 5)
+                system("bash .system/specific.sh .subject/20 putstr");
+            if (atoi(buf) == 6)
+                system("bash .system/specific.sh .subject/20 repeat_alpha");
+            if (atoi(buf) == 7)
+                system("bash .system/specific.sh .subject/20 rev_print");
+            if (atoi(buf) == 8)
+                system("bash .system/specific.sh .subject/20 rot_13");
+            if (atoi(buf) == 9)
+                system("bash .system/specific.sh .subject/20 rotone");
+            if (atoi(buf) == 10)
+                system("bash .system/specific.sh .subject/20 searchandreplace");
+            if (atoi(buf) == 11)
+                system("bash .system/specific.sh .subject/20 ulstr");
+            if (atoi(buf) == 12)
+                system("bash .system/specific.sh .subject/21 alpha_mirror");
+            if (atoi(buf) == 13)
+                system("bash .system/specific.sh .subject/21 do_op");
+            if (atoi(buf) == 14)
+                system("bash .system/specific.sh .subject/21 ft_atoi");
+            if (atoi(buf) == 15)
+                system("bash .system/specific.sh .subject/21 ft_strcmp");
+            if (atoi(buf) == 16)
+                system("bash .system/specific.sh .subject/21 ft_strcspn");
+            if (atoi(buf) == 17)
+                system("bash .system/specific.sh .subject/21 inter");
+            if (atoi(buf) == 18)
+                system("bash .system/specific.sh .subject/21 last_word");
+            if (atoi(buf) == 19)
+                system("bash .system/specific.sh .subject/21 is_power_of_2");
+            if (atoi(buf) == 20)
+                system("bash .system/specific.sh .subject/21 max");
+            if (atoi(buf) == 21)
+                system("bash .system/specific.sh .subject/21 ft_strdup");
+        }
+        else 
+        {
         if (exam->exam_type == 1)
         {
             system("rm -rf .subject/11/union");
@@ -239,6 +325,7 @@ int start(t_exam *exam)
         if (exam->exam_type == 10)
         {
             exam->folder_num = 17;
+        }
         }
     }
     else
