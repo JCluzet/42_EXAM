@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   atoi_base.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbarutel <mbarutel@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 17:43:40 by mbarutel          #+#    #+#             */
-/*   Updated: 2022/01/17 17:48:08 by mbarutel         ###   ########.fr       */
+/*   Updated: 2022/05/21 02:07:52 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,4 @@ int	atoi_base(const char *str, int str_base)
     while (str[0] != '\0')
     
 }
+ // no dispo yet
