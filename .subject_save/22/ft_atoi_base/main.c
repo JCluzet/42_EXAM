@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atoi_base.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/17 17:43:40 by mbarutel          #+#    #+#             */
-/*   Updated: 2022/05/21 02:07:52 by jcluzet          ###   ########.fr       */
+/*   Created: 2022/05/21 02:22:36 by jcluzet           #+#    #+#             */
+/*   Updated: 2022/05/21 02:23:23 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	atoi_base(const char *str, int str_base)
+#include <stdio.h>
+#include <stdlib.h>
+int		ft_atoi_base(const char *str, int str_base);
+
+int main(int argc, char **argv)
 {
-    int     ret;
-    int     sign;
-    char    *char_input;
-    
-    ret = 0;
-    sign = 1;
-    char_input = "0123456789abcdef";
-    if (str[0] == '-' || str[0] == '+')
+    if (argc == 3)
     {
-        if (str[0] == '-')
-            sign = -1;
-        str++;
+        printf("%d\n", ft_atoi_base(argv[1], atoi(argv[2])));
     }
-    while (str[0] != '\0')
-    
+    return (0);
 }
- // no dispo yet
