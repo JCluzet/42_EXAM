@@ -2,12 +2,7 @@
 
 #include <stdlib.h>
 
-int		absolute_value(int n)
-{
-	if (n < 0)
-		return (-n);
-	return (n);
-}
+int		absolute_value(int n);
 
 int		*ft_rrange(int start, int end)
 {
@@ -33,22 +28,3 @@ int		*ft_rrange(int start, int end)
 	}
 	return (array);
 }
-
-//-----------------------------------------------------
-// #include <stdio.h>
-
-// int		main(void)
-// {
-// 	int start = 0;
-// 	int end = -3;
-
-// 	int *arr = ft_rrange(start, end);
-
-// 	int i = 0;
-// 	while (i < 1 + absolute_value(end - start))
-// 	{
-// 		printf("%d, ", arr[i]);
-// 		++i;
-// 	}
-// 	printf("\n");
-// }
