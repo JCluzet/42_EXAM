@@ -3,12 +3,12 @@
 
 int *ft_range(int start, int end);
 
-int main()
+int main(int argc, char **argv)
 {
 	int	*lst;
 	int	*head;
 
-	lst = ft_range(3, 16);
+	lst = ft_range(atoi(argv[1]), atoi(argv[2]));
 	head = lst;
 	while (*lst)
 	{
