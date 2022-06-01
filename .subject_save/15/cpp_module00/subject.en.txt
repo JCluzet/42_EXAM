@@ -49,7 +49,7 @@ So you will write the following function:
 
 It must display:
 
-<NAME>: I am <NAME>, <TITLE> !
+<NAME>: I am <NAME>, <TITLE>!
 
 Here's an example of a test main function and its associated output:
 
