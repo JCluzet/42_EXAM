@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jo <jo@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/05/21 01:12:18 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/06/10 20:37:29 by jo               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int push(t_exam *exam)
 		generate_subject(exam);
     blank();
 		printf("\x1B[32mCongratulation!\x1B[37m Your work as been saved in \x1B[32msuccess/\x1B[37m folder.\n A new subject is now created.\n\n");
-    char *str;
+    char *str = "42_EXAM";
     // get the pwd start with ~/
     char *pwd = getcwd(NULL, 0);
     char *home = getenv("HOME");
@@ -148,8 +148,10 @@ int push(t_exam *exam)
     printf("\nType \x1B[32mtime\x1B[37m to know the remaining time");
     printf("\nType \x1B[32mfeedback\x1B[37m to let a feedback (report a problem)\n\n");
     display_end(exam->depart);
-    free(str);
-		exam->failuretime = 0;
+    if (strstr(pwd, home) != NULL)
+        free(str);
+    
+	exam->failuretime = 0;
 	}
 	else
 	{
@@ -161,7 +163,7 @@ int push(t_exam *exam)
 		if (exam->trace)
 			printf("Normally the traceback is not available for this exam at 42\nbut since it is a training, it is available here :)");
 		printf("\n\n\x1B[37mFind the trace in the file \x1B[31m> traceback\x1B[37m\n\n");
-    char *str;
+    char *str = "42_EXAM";
     // get the pwd start with ~/
     char *pwd = getcwd(NULL, 0);
     char *home = getenv("HOME");
@@ -181,7 +183,8 @@ int push(t_exam *exam)
     printf("\nType \x1B[32mfinish\x1B[37m to left");
     printf("\nType \x1B[32mtime\x1B[37m to know the remaining time\n\n");
     display_end(exam->depart);
-    free(str);
+    if (strstr(pwd, home) != NULL)
+        free(str);
 		exam->nbfail++;
 		if (exam->failuretime == 0)
 			exam->failuretime = 15;
