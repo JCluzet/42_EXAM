@@ -1,7 +1,7 @@
 # 42_EXAM 🎓
  ## A program almost identical to the 42 pool EXAMS & STUDENT EXAM RANK 02 & 03 & 04 & 05
  
- ## NEW ! 42_EXAM now compatible NEW APRIL ExamRank02 !
+ ## NEW APRIL ExamRank02 available !
  
  ## 42_EXAM is part of ➡️  **GRADEME.FR** 📡 
 
@@ -17,7 +17,7 @@
 
  
   - [x] New Subjects ExamRank02 APRIL 2022 ✔️ (soon)
-  - [ ] Setup of correction of level 3 & 4 ExamRank02
+  - [ ] Setup correction level 4 ExamRank02
   - [x] Subject drawn at random ✔️
   - [x] Exponential waiting for a correction ✔️
   - [x] X Hours maximum ✔️
