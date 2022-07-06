@@ -6,7 +6,7 @@
 #    By: jo <jo@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/07/06 23:28:29 by jo               ###   ########.fr        #
+#    Updated: 2022/07/07 00:05:38 by jo               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,37 +27,46 @@ cd .system/verif
 } &>/dev/null
 {
 cp a.out ../../rendu/a.out
-} &>/dev/null || {
-	printf "\n\033[0;31mCompilation error\033[0m"
-}
+} &>/dev/null
+
 cd ../../rendu
 touch sourcexam
 touch finalexam
+sh test.sh &> sourcexam       #TESTING VRAI
 {
-sh test.sh | cat -e > sourcexam       #TESTING VRAI
+rm a.out
 } &>/dev/null
 {
 gcc -Wall -Wextra -Werror $FILE
-}  &>sourcexam
-{
-sh test.sh | cat -e > finalexam        #TESTING STUD
-rm a.out
-}  &>/dev/null
+}  &>.dev
+sh test.sh &> finalexam        #TESTING STUD
+# {
+# }  &>/dev/null
+
+# exit
 
 
 DIFF=$(diff sourcexam finalexam)
-echo "" >> traceback
 if [ "$DIFF" != "" ]
 then
-		index=$(($index + 1))
-		cat sourcexam >> traceback
-		if [ -e finalexam ]
+        echo "----------------8<-------------[ START TEST " >> traceback
+		if [ -e a.out ]
 		then
-		cat finalexam >> traceback
+        printf "        💻 ALL TESTS: \n\n$(cat ../.system/verif/test.sh)\n" >> traceback
+        printf "\n\n        🔎 YOUR OUTPUT:\n" >> traceback
+        cat finalexam >> traceback
+        printf "\n\n        🗝 EXPECTED OUTPUT:\n" >> traceback
+		cat sourcexam >> traceback
 		else
-		echo "" >> traceback
+		printf "        🔎 YOUR OUTPUT:\n" >> traceback
+        cat finalexam >> traceback
+        printf "\n";
+        echo "$(cat .dev)" >> traceback
+        rm .dev
+		printf "\n        ❌ COMPILATION ERROR\n" >> traceback
 		fi
-		echo "-------" >> traceback
+        echo "----------------8<------------- END TEST ]" >> traceback
+		index=$((index+1))
 fi
 {
 mv traceback ../traceback
@@ -67,6 +76,7 @@ rm finalexam
 {
 rm sourcexam
 rm a.out
+rm .dev
 } &>/dev/null
 rm test.sh
 
