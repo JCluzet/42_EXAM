@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 // #include <sys/types.h> //for linux
-// #include <sys/wait.h> //for linux
+#include <sys/wait.h> //for linux
 
 #define STDIN		0
 #define STDOUT		1
