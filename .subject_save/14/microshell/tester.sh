@@ -6,7 +6,7 @@
 #    By: jo <jo@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/07/07 00:05:38 by jo               ###   ########.fr        #
+#    Updated: 2022/07/07 00:23:25 by jo               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ sh test.sh &> finalexam        #TESTING STUD
 # {
 # }  &>/dev/null
 
-# exit
 
 
 DIFF=$(diff sourcexam finalexam)
@@ -59,7 +58,7 @@ then
 		cat sourcexam >> traceback
 		else
 		printf "        🔎 YOUR OUTPUT:\n" >> traceback
-        cat finalexam >> traceback
+        # cat finalexam >> traceback
         printf "\n";
         echo "$(cat .dev)" >> traceback
         rm .dev
@@ -68,6 +67,7 @@ then
         echo "----------------8<------------- END TEST ]" >> traceback
 		index=$((index+1))
 fi
+# exit
 {
 mv traceback ../traceback
 }	&>/dev/null
