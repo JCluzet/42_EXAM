@@ -6,7 +6,7 @@
 #    By: jo <jo@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/07/06 23:18:29 by jo               ###   ########.fr        #
+#    Updated: 2022/07/06 23:23:50 by jo               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ cd .system/verif
 {
 cp a.out ../../rendu/a.out
 } &>/dev/null || {
-	echo "Compilation error"
+	printf "\n\033[0;31mCompilation error\033[0m"
 }
 cd ../../rendu
 touch sourcexam
@@ -80,4 +80,3 @@ fi
 {
 mv traceback ../../traceback
 }	&>/dev/null
-rm sourcexam

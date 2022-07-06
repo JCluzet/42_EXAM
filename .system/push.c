@@ -6,7 +6,7 @@
 /*   By: jo <jo@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/07/06 23:07:42 by jo               ###   ########.fr       */
+/*   Updated: 2022/07/06 23:26:01 by jo               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int push(t_exam *exam)
 
 
 	int temp = 0;
-	n = rand() % 25 + 7;
+	n = rand() % 40 + 11;
     
 	#define INTERVAL (0.7 * CLOCKS_PER_SEC)
 
@@ -78,7 +78,7 @@ int push(t_exam *exam)
         if (temp > 8 && i > 1)
 		{
 			temp = rand() % 3 + 1;
-			if (temp == 3 || temp == 2)
+			if (temp == 3)
 				printf ("waiting...\n");
 		}
         fflush(stdout);
