@@ -6,7 +6,7 @@
 /*   By: jo <jo@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/07/06 23:26:01 by jo               ###   ########.fr       */
+/*   Updated: 2022/07/07 01:23:17 by jo               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,16 +211,33 @@ int		success_exam(t_exam *exam)
     int minutes;
 	time_t arrivee;
 	blank();
-	printf("\x1B[32mCongratulation!\x1B[37m You have completed the exam %d with \x1B[31m%d fail\x1B[37m \nYour work as been saved in success folder.\n\n",exam->exam_type, exam->nbfail);
 	time(&arrivee);
     seconds = difftime(exam->depart, arrivee);
     hours = seconds / 3600;
     minutes = (seconds - (hours * 3600)) / 60;
     sec = seconds - (hours * 3600) - (minutes * 60);
-    printf("\n\x1B[37mWith: \x1B[32m%d H %d M %d S  \x1B[37m time left.\n", hours, minutes, sec);
+	printf("\x1B[32mCongratulation!\x1B[37m You have completed the exam %d with \x1B[31m%d fail\x1B[37m and \x1B[32m%dh %dm %ds\x1B[37m left.\nYour work as been saved in success/ folder.\n\n",exam->exam_type, exam->nbfail, hours, minutes, sec);
 
-    printf("\nHey! If you like this project, why don't give us a star on github ? :) \n\n");
-    // click to open github
+    char resp;
+    printf("\nHey! If you like this project, why don't give us a star on github ? \x1B[31m❤️\x1B[37m \n");
+    // enter y to open page on google with the link, or another char to skip
+    printf("\x1B[37mOpen 42_EXAM on github ? 😎 (y/n)\n");
+    scanf("  %c", &resp);
+    // if on linux use xdg-open to open the page, else use open command
+    int is_linux = 0;
+    #ifdef __linux__
+        is_linux = 1;
+    #endif
+    if (resp == 'y')
+    {
+        if (is_linux)
+            system("xdg-open https://github.com/JCluzet/42_EXAM");
+        else
+            system("open https://github.com/JCluzet/42_EXAM");
+        printf("\nThanks for your contribution! \x1B[31m❤️\x1B[37m \n");
+    }
+    else
+        printf("Maybe an other time.. 😢");
     system("make reset");
     exit(0);
 }
