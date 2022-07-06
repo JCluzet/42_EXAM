@@ -6,7 +6,7 @@
 /*   By: jo <jo@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/07/06 23:11:43 by jo               ###   ########.fr       */
+/*   Updated: 2022/07/07 00:46:57 by jo               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -381,6 +381,13 @@ void instruction(t_exam *exam)
     while (1)
     {
         buf = readline("\n\033[32m$ ➜ \033[00m  ");
+        if(!buf)
+        {
+            header(exam);
+            printf("\n\033[32m$ ➜\033[00m Ctrl+D \n");
+            printf("     └--> \x1B[31mError\x1B[37m: Please use finish to exit\n");
+            continue;
+        }
         add_history(buf);
         if (dispatcheur(exam, buf) == -1)
         {
@@ -469,7 +476,7 @@ int dispatcheur(t_exam *exam, char *buf)
             hours = seconds / 3600;
             minutes = (seconds - (hours * 3600)) / 60;
             sec = seconds - (hours * 3600) - (minutes * 60);
-            printf("\n\x1B[37mHere is your remaining time: \x1B[32m%d H %d M %d S\n\n\x1B[37m", hours, minutes, sec);
+            printf("\n\x1B[37mHere is your remaining time: \x1B[32m%d H %d M %d S\n\x1B[37m", hours, minutes, sec);
             system("make reset");
             exit(0);
             return (0);
