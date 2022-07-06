@@ -6,7 +6,7 @@
 #    By: jo <jo@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/07/06 23:23:50 by jo               ###   ########.fr        #
+#    Updated: 2022/07/06 23:28:29 by jo               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,9 @@ then
 		fi
 		echo "-------" >> traceback
 fi
+{
+mv traceback ../traceback
+}	&>/dev/null
 
 rm finalexam
 {
@@ -77,6 +80,3 @@ then
 	echo "OK"
 	touch passed
 fi
-{
-mv traceback ../../traceback
-}	&>/dev/null
