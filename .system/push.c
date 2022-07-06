@@ -6,7 +6,7 @@
 /*   By: jo <jo@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 01:02:42 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/06/10 20:37:29 by jo               ###   ########.fr       */
+/*   Updated: 2022/07/06 23:07:42 by jo               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,15 +138,18 @@ int push(t_exam *exam)
         str = fttt_strjoin("~/", str);
     }
     free(pwd);
-    printf("    CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[3m\n\n", exam->level);
-    printf("   CURRENT PROJECT\n   ---> \x1B[33m%s      \x1B[37m\n   for :\x1B[32m %.2f\x1B[37m XP 🧪 \n\n", exam->nameofex, exam->xpperex);
-    printf("\x1B[5mAssignement\x1B[0;m  : %s/rendu/", str);
-    printf("\n\x1B[5m\x1B[37mSubject\x1B[0;m      : %s/subject.en.txt\n\n\n\x1B[37m", str);
+    printf(" \x1B[3m   CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[3m\n\n", exam->level);
+    printf("   CURRENT PROJECT\n     \x1B[33m%s      \x1B[37m└->\x1B[32m%.2f\x1B[37mXP \n\n", exam->nameofex, exam->xpperex);
+    printf("\e[0mAssignement\x1B[0m:\n ➤ \e[2m%s/rendu/%s\x1B[37m", str, exam->nameofex);
+
+
+    
+    printf("\e[0m\nSubject\x1B[0m:\n ➤ \e[2m%s/subject.en.txt\n\n\e[0m", str);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
     printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
     printf("\nType \x1B[32mfinish\x1B[37m to left");
     printf("\nType \x1B[32mtime\x1B[37m to know the remaining time");
-    printf("\nType \x1B[32mfeedback\x1B[37m to let a feedback (report a problem)\n\n");
+    printf("\n\x1B[31m NEW \x1B[32mfeedback\x1B[37m to report a problem or questions\n\n");
     display_end(exam->depart);
     if (strstr(pwd, home) != NULL)
         free(str);
@@ -174,14 +177,18 @@ int push(t_exam *exam)
         str = fttt_strjoin("~/", str);
     }
     free(pwd);
-    printf("    CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[3m\n\n", exam->level);
-    printf("   CURRENT PROJECT\n   ---> \x1B[33m%s      \x1B[37m\n   for :\x1B[32m %.2f\x1B[37m XP 🧪 \n\n", exam->nameofex, exam->xpperex);
-    printf("\x1B[5mAssignement\x1B[0;m  : %s/rendu/", str);
-    printf("\n\x1B[5m\x1B[37mSubject\x1B[0;m      : %s/subject.en.txt\n\n\n\x1B[37m", str);
+    printf(" \x1B[3m   CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[3m\n\n", exam->level);
+    printf("   CURRENT PROJECT\n     \x1B[33m%s      \x1B[37m└->\x1B[32m%.2f\x1B[37mXP \n\n", exam->nameofex, exam->xpperex);
+    printf("\e[0mAssignement\x1B[0m:\n ➤ \e[2m%s/rendu/%s\x1B[37m", str, exam->nameofex);
+
+
+    
+    printf("\e[0m\nSubject\x1B[0m:\n ➤ \e[2m%s/subject.en.txt\n\n\e[0m", str);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
     printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
     printf("\nType \x1B[32mfinish\x1B[37m to left");
-    printf("\nType \x1B[32mtime\x1B[37m to know the remaining time\n\n");
+    printf("\nType \x1B[32mtime\x1B[37m to know the remaining time");
+    printf("\n\x1B[31m NEW \x1B[32mfeedback\x1B[37m to report a problem or questions\n\n");
     display_end(exam->depart);
     if (strstr(pwd, home) != NULL)
         free(str);

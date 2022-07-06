@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jo <jo@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/05/21 01:59:11 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/07/06 23:11:43 by jo               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int start(t_exam *exam)
         april = 0;
     // ch = getchar();
     blank();
-    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m5\x1B[37m - Exam Rank 02\n     \x1B[32m6\x1B[37m - Exam Rank 03\n     \x1B[32m7\x1B[37m - Exam Rank 04\n     \x1B[32m8\x1B[37m - Exam Rank 05\n\n     |  BONUS PART  |\n      --------------\n\n     \x1B[32m9\x1B[37m - Student Specific Exam\n\nEnter your choice: \n");
+    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to try?\n\n\n     | PISCINE PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m5\x1B[37m - Exam Rank 02\n     \x1B[32m6\x1B[37m - Exam Rank 03\n     \x1B[32m7\x1B[37m - Exam Rank 04\n     \x1B[32m8\x1B[37m - Exam Rank 05\n\n     |  BONUS PART  |\n      --------------\n\n     \x1B[32m9\x1B[37m - Student Specific Exam\n\nEnter your choice: \n");
     ret = get_next_line(0, &buf);
     while ((atoi(buf) < 1 || atoi(buf) > 2) && atoi(buf) != 5 && atoi(buf) != 6 && atoi(buf) != 7 && atoi(buf) != 8 && atoi(buf) != 9)
     {
@@ -125,7 +125,7 @@ int start(t_exam *exam)
         if (exam->exam_type == 5 && NEW02 == 1)
         {
                 blank();
-    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to test?\n\n\n     | PISCINE PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m5\x1B[37m - Exam Rank 02\n     \x1B[32m6\x1B[37m - Exam Rank 03\n     \x1B[32m7\x1B[37m - Exam Rank 04\n     \x1B[32m8\x1B[37m - Exam Rank 05\n\n     |  BONUS PART  |\n      --------------\n\n     \x1B[32m9\x1B[37m - Student Specific Exam\n\nEnter your choice: \n");
+    printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to try?\n\n\n     | PISCINE PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mSOON\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mSOON\x1B[37m\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m5\x1B[37m - Exam Rank 02\n     \x1B[32m6\x1B[37m - Exam Rank 03\n     \x1B[32m7\x1B[37m - Exam Rank 04\n     \x1B[32m8\x1B[37m - Exam Rank 05\n\n     |  BONUS PART  |\n      --------------\n\n     \x1B[32m9\x1B[37m - Student Specific Exam\n\nEnter your choice: \n");
             printf("\n\x1B[31m\x1B[37mSorry, the NEW ExamRank02 is on working (estimate release : 25 may 2022)....\x1B[31m\x1B[37m\n");
             // sleep (3);
                             // blank();
@@ -583,10 +583,13 @@ void header(t_exam *exam)
     }
     else
         str = pwd;
-    printf("    CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[3m\n\n", exam->level);
-    printf("   CURRENT PROJECT\n   ---> \x1B[33m%s      \x1B[37m\n   for :\x1B[32m %.2f\x1B[37m XP 🧪 \n\n", exam->nameofex, exam->xpperex);
-    printf("\x1B[5mAssignement\x1B[0;m  : %s/rendu/%s", str, exam->nameofex);
-    printf("\n\x1B[5m\x1B[37mSubject\x1B[0;m      : %s/subject.en.txt\n\n\n\x1B[37m", str);
+    printf(" \x1B[3m   CURRENT GRADE\n    --- \x1B[32m%.2f%%\x1B[37m ---  \x1B[3m\n\n", exam->level);
+    printf("   CURRENT PROJECT\n     \x1B[33m%s      \x1B[37m└->\x1B[32m%.2f\x1B[37mXP \n\n", exam->nameofex, exam->xpperex);
+    printf("\e[0mAssignement\x1B[0m:\n ➤ \e[2m%s/rendu/%s\x1B[37m", str, exam->nameofex);
+
+
+    
+    printf("\e[0m\nSubject\x1B[0m:\n ➤ \e[2m%s/subject.en.txt\n\n\e[0m", str);
     printf("\nType \x1B[32mhelp\x1B[37m to get some help");
     printf("\nType \x1B[32mgrademe\x1B[37m to get corrected");
     printf("\nType \x1B[32mfinish\x1B[37m to left");
