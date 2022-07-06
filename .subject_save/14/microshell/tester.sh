@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    tester.sh                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
+#    By: jo <jo@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/01/30 01:10:19 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/07/06 23:18:29 by jo               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,11 @@ cd .system/verif
 {
 	gcc -Wall -Wextra -Werror $FILE
 } &>/dev/null
+{
 cp a.out ../../rendu/a.out
+} &>/dev/null || {
+	echo "Compilation error"
+}
 cd ../../rendu
 touch sourcexam
 touch finalexam
@@ -57,8 +61,10 @@ then
 fi
 
 rm finalexam
+{
 rm sourcexam
 rm a.out
+} &>/dev/null
 rm test.sh
 
 cd ../.system/verif
