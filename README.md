@@ -14,7 +14,7 @@
 This project is not identical to the proposed exams and does not reflect your exams at 42.
 It is only meant to help 42 students to revise some exercises found on Github. 
 It works simply by doing a DIFF on both versions.
-All the subjects have been found on the Github 42-exam-miner. 
+All the subjects have been found on this Github [Github](https://github.com/markveligod/examrank-02-03-04-05-06). 
 
 This project has been created with the sole of helping students understand their mistakes and improve herself, if it does not go in this direction I am ready to make changes on it.
 
