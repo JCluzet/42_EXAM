@@ -1,6 +1,6 @@
 # 42_EXAM 🎓
- ## A program almost identical to the 42 pool EXAMS & STUDENT EXAM RANK 02 & 03 & 04 & 05
- 
+ ##  program almost identical to the 42 pool EXAMS & STUDENT EXAM RANK 02 & 03 & 04 & 05
+ ### 📌 This project is not made by 42, it is not identical to the proposed exams and does not reflect your exams at 42
  ## NEW APRIL ExamRank02 available !
  
  ## 42_EXAM is part of ➡️  **GRADEME.FR** 📡 
@@ -9,6 +9,14 @@
 
 ![Capture d’écran 2022-03-28 à 15 22 28](https://user-images.githubusercontent.com/55356071/160407160-0bd035f9-c5b4-43e1-9c35-92556519eac3.png)
 
+# ❤️ Disclaimer for 42 staff :
+
+This project is not identical to the proposed exams and does not reflect your exams at 42.
+It is only meant to help 42 students to revise some exercises found on Github. 
+It works simply by doing a DIFF on both versions.
+All the subjects have been found on the Github 42-exam-miner. 
+
+This project has been created with the sole of helping students understand their mistakes and improve herself, if it does not go in this direction I am ready to make changes on it.
 
 ## ⚠️ This project is available on MAC and LINUX (the real exam will be on Linux)
 ###     ➡ On Linux, 42_EXAM is on beta, please report any bugs
