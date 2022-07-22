@@ -11,13 +11,13 @@
 
 # ❤️ Disclaimer for 42 staff :
 
-This project is not identical to the proposed exams and does not reflect your exams at 42.
-It is only meant to help 42 students to revise some exercises found on Github. 
-It works simply by doing a DIFF on both versions.
-All the subjects have been found on this [Github](https://github.com/markveligod/examrank-02-03-04-05-06). 
+This project is not identical to the proposed exams and does not reflect 42 official exam. 
+It is only meant to help 42 students to train them on some exercises found on Github. 
+It works simply by doing a DIFF on both versions. 
+All the subjects have been found on Github. 
 During my schooling at 42, this project helped me to understand a lot of notions, to host a website, to do javascript, php and others.
 
-This project has been created with the sole of helping students understand their mistakes and improve herself, if it does not go in this direction I am ready to make changes on it, 42_EXAM/GradeMe has only a lucrative and educational purpose. It is completely free and open-source.
+This project has been created with the sole purpose of helping students to understand their mistakes and improve themselves. If it’s not the case, I am ready to make changes, and corrections on it, 42_EXAM/GradeMe has only a lucrative and educational purpose. It is completely free and open-source. 
 
 ## ⚠️ This project is available on MAC and LINUX (the real exam will be on Linux)
 ###     ➡ On Linux, 42_EXAM is on beta, please report any bugs
