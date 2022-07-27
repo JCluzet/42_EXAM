@@ -1,11 +1,10 @@
 # 42_EXAM 🎓
- ##  program almost identical to the 42 pool EXAMS & STUDENT EXAM RANK 02 & 03 & 04 & 05
- ### 📌 This project is not made by 42, it is not identical to the proposed exams and does not reflect your exams at 42
- ## NEW APRIL ExamRank02 available !
+ ## All 42 exams auto-correct, to practice.
+  ##   👉  42_EXAM is now part on **[GRADEME.FR](grademe.fr)** 😎
+ #### Disclaimer: This project is not made by 42, it is not identical to the proposed exams and does not reflect your exams at 42
+ ### NEW ExamRank02 available 🥳
  
- ## 42_EXAM is part of ➡️  **GRADEME.FR** 📡 
 
- A program almost identical to the 42 pool EXAMS and STUD EXAM (for practice)
 
 ![Capture d’écran 2022-03-28 à 15 22 28](https://user-images.githubusercontent.com/55356071/160407160-0bd035f9-c5b4-43e1-9c35-92556519eac3.png)
 
@@ -18,13 +17,17 @@ All the subjects have been found on Github. During my schooling at 42, this proj
 This project has been created with the sole purpose of helping students to understand their mistakes and improve themselves. 
 If it’s not the case, I am ready to make changes and corrections on it, 42_EXAM/GradeMe has only a non-lucrative and educational purpose. It is completely free and open-source. 
 
-## ⚠️ This project is available on MAC and LINUX (the real exam will be on Linux)
-###     ➡ On Linux, 42_EXAM is on beta, please report any bugs
+-----
 
- ## Practice like for the 42 exam 🏊‍♂️
+### ⚠️ This project is available on MAC and LINUX (the real exam will be on Linux)
+###     ➡ On Linux, 42_EXAM is still on beta, please report any bugs
+
+-----
+
+ ## Practice for the 42 exam 🏊‍♂️
 
  
-  - [x] New Subjects ExamRank02 APRIL 2022 ✔️ (soon)
+  - [x] New Subjects ExamRank02 APRIL 2022 ✔️
   - [ ] Setup correction level 4 ExamRank02
   - [x] Subject drawn at random ✔️
   - [x] Exponential waiting for a correction ✔️
@@ -44,7 +47,7 @@ If it’s not the case, I am ready to make changes and corrections on it, 42_EXA
 
  # Launch in ONE COMMAND : 
 
- ```bash -c "$(curl grademe.fr)"```    --> Visit Grademe.fr
+ ```bash -c "$(curl https://grademe.fr)"```    --> Visit [Grademe.fr](https://grademe.fr)
  
 # RGPD Information :
  Some data may be collected for the sole purpose of improving the service, for example to check if an error is coming from the student and not from the program. 
