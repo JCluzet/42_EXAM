@@ -6,7 +6,7 @@
 /*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:13:03 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/07/22 18:09:20 by jcluzet          ###   ########.fr       */
+/*   Updated: 2022/08/04 21:27:54 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,15 @@ int start(t_exam *exam)
         buf = readline("");
     }
     if (buf[0] == '1')
+    {
         april = 1;
+        system(fstrjoin("bash .system/sendata.sh ", "GOTONEW"));
+    }
     else
+    {
         april = 0;
-    // ch = getchar();
+        system(fstrjoin("bash .system/sendata.sh ", "GOTOOLD"));
+    }// ch = getchar();
     blank();
     printf("\x1B[37m  42EXAM | Made with \x1B[32m♥\x1B[37m by \x1B[32mjcluzet\x1B[37m\n\n\n Which exam would you like to try?\n\n\n     | PISCINE PART |\n      --------------\n\n     \x1B[32m1\x1B[37m - Exam week 1\n     \x1B[32m2\x1B[37m - Exam week 2\n     \x1B[32m3\x1B[37m - Exam week 3   \x1B[31mUNAVAILABLE\x1B[37m\n     \x1B[32m4\x1B[37m - Exam FINAL    \x1B[31mUNAVAILABLE\x1B[37m\n\nExam 3 and 4 are not available to piscine exam to ensure 42 selection equality.\n\n\n     | STUDENT PART |\n      --------------\n\n     \x1B[32m5\x1B[37m - Exam Rank 02\n     \x1B[32m6\x1B[37m - Exam Rank 03\n     \x1B[32m7\x1B[37m - Exam Rank 04\n     \x1B[32m8\x1B[37m - Exam Rank 05\n\n     |  BONUS PART  |\n      --------------\n\n     \x1B[32m9\x1B[37m - Student Specific Exam\n\nEnter your choice: \n");
     ret = get_next_line(0, &buf);
