@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   do_op.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 16:47:02 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/06 17:04:17 by galpers          ###   ########.fr       */
+/*   Updated: 2022/08/22 22:30:55 by jcluzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
 
 int	main(int ac, char **av)
 {
