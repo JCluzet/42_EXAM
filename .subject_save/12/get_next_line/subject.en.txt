@@ -15,8 +15,8 @@ In case of error return NULL. In case of not returning NULL, the pointer should 
 
 Your function must be memory leak free. When you've reached the EOF, your function should keep 0 memory allocated with malloc, except the line that has been returned.
 
-Caling your function get_next_line in a lop will therefore allow you to read the text avaiable on a file descriptor one line at a time until the end of the text, no matter the size od either the text or one of its lines.
+Caling your function get_next_line in a loop will therefore allow you to read the text available on a file descriptor one line at a time until the end of the text, no matter the size od either the text or one of its lines.
 
-Make sure that your function behaves wel when it reads from a file, from the standard output, from a redirection, etc...
+Make sure that your function behaves well when it reads from a file, from the standard output, from a redirection, etc...
 
 No call to another function will be done on the file descriptor between 2 calls of get_next_line. Finally we consider that get_next_line has an undefined behaviour when reading from a binary file.
