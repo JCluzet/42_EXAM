@@ -181,7 +181,6 @@ int main(int argc, char **argv)
 
     if (file_exists("a.out"))
         remove("a.out");
-    system("bash .system/maj.sh");
 
     exam exm;
 

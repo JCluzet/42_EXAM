@@ -20,6 +20,8 @@ spin[1]="\\"
 spin[2]="|"
 spin[3]="/"
 
+bash .system/maj.sh
+
 g++ .system/exercice.cpp .system/main.cpp .system/menu.cpp .system/exam.cpp .system/utils.cpp .system/grade_request.cpp .system/data_persistence.cpp -lreadline -o .system/a.out > .system/.devmake.err 2>.system/.devmake.err &
 PID=$!
 
