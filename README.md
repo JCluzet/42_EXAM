@@ -6,8 +6,7 @@
  ### NEW ExamRank02 available 🥳
  
 
-
-![Capture d’écran 2022-03-28 à 15 22 28](https://user-images.githubusercontent.com/55356071/160407160-0bd035f9-c5b4-43e1-9c35-92556519eac3.png)
+<img width="711" alt="Screenshot 2022-09-06 at 17 00 20" src="https://user-images.githubusercontent.com/55356071/188669215-6681228d-e6b5-4229-b177-45d2699e29ae.png">
 
 -----
 
@@ -27,9 +26,11 @@
   - [x] Automatic correction (without internet) ✔️
   - [x] Traceback available ✔️
 
-![Capture d’écran 2022-03-28 à 15 20 12](https://user-images.githubusercontent.com/55356071/160407323-c4152b9f-a943-4e42-96fd-83fc6cf60739.png)
+<img width="711" alt="Screenshot 2022-09-06 at 17 00 47" src="https://user-images.githubusercontent.com/55356071/188669367-504411a5-5c62-4848-932e-405c9ee05a45.png">
 
-![Capture d’écran 2022-03-28 à 15 21 30](https://user-images.githubusercontent.com/55356071/160407357-b8b6b030-f541-4f43-9f14-415a5d809897.png)
+<img width="711" alt="Screenshot 2022-09-06 at 17 01 15" src="https://user-images.githubusercontent.com/55356071/188669418-04f8bb1b-9cc2-4c07-9d07-5e9c570283b4.png">
+
+
 
 
  # CHEAT code :
