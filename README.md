@@ -1,5 +1,6 @@
-# 42_EXAM 🎓
+# 42_EXAM v2 🎓
  ## All 42 exams auto-correct, to practice.
+ ## ExamRank02, 03, 04, 05, 06 & PiscineExam
   ##   👉  42_EXAM is now part of **[GRADEME.FR](https://grademe.fr)** 😎
  #### Disclaimer: This project is not made by 42, it is not identical to the proposed exams and does not reflect your exams at 42
  ### NEW ExamRank02 available 🥳
@@ -19,13 +20,12 @@
 
  
   - [x] New Subjects ExamRank02 APRIL 2022 ✔️
-  - [ ] Setup correction level 4 ExamRank02
+  - [ ] Setup correction level 4 ExamRank02 
   - [x] Subject drawn at random ✔️
   - [x] Exponential waiting for a correction ✔️
   - [x] X Hours maximum ✔️
   - [x] Automatic correction (without internet) ✔️
   - [x] Traceback available ✔️
-  - [ ] Exam Piscine Week 3 & 4
 
 ![Capture d’écran 2022-03-28 à 15 20 12](https://user-images.githubusercontent.com/55356071/160407323-c4152b9f-a943-4e42-96fd-83fc6cf60739.png)
 
@@ -34,6 +34,8 @@
 
  # CHEAT code :
  (sorry don't work in exam at 42) : Using command **remove_time** to remove waiting time between two push.
+   **remove_grade_time : remove grade time between two push
+   **force_success** : force an exercice to success
    > The maximum time to complete the exam is only information. Here, the exercise can always be corrected even after the time limit.
 
  # Launch in ONE COMMAND : 
