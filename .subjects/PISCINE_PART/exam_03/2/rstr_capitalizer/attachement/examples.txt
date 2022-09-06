@@ -1,0 +1,10 @@
+$> ./rstr_capitalizer | cat -e
+$
+$> ./rstr_capitalizer "Premier PETIT TesT" | cat -e
+premieR petiT tesT$
+$> ./rstr_capitalizer "DeuxiEmE tEST uN PEU moinS  facile" "   attention C'EST pas dur QUAND mEmE" "ALLer UN DeRNier 0123456789pour LA rouTE    E " | cat -e
+deuxiemE tesT uN peU moinS  facilE$
+   attentioN c'esT paS duR quanD memE$
+alleR uN dernieR 0123456789pouR lA routE    E $
+$>
+

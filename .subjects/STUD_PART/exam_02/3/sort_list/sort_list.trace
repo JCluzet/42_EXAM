@@ -1,0 +1,76 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e1z3r4p2.42.us.org
+Darwin 17.4.0 x86_64
+$> date
+Sun Sep  1 16:29:29 PDT 2019
+$> gcc --version
+Configured with: --prefix=/Library/Developer/CommandLineTools/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 9.1.0 (clang-902.0.39.1)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+$> clang --version
+Apple LLVM version 9.1.0 (clang-902.0.39.1)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2019/c-exam-alone-in-the-dark-beginner/practice-exam_20190901/evjohnst10
+
+= Git history ==================================================================
+$> git -C /var/folders/b2/srkgpkk91jqg3mgf4vxzg5hc0000gp/T/tmpsUQrv8/user log --pretty='%H - %an, %ad : %s'
+cfdf9845ad3f695de86ff70d6e36e36386be94fa - Evan Johnston, Sun Sep 1 16:27:43 2019 -0700 : .
+805577921865f06dea3e6bd7f4ef4aa55f794410 - Evan Johnston, Sun Sep 1 16:10:10 2019 -0700 : .
+c4a5790ae8674a66c348b6d7f706efaeaf0edb20 - Evan Johnston, Sun Sep 1 16:07:59 2019 -0700 : .
+f38113c206e10e38aaaec85791927d5e155a29c5 - Evan Johnston, Sun Sep 1 16:07:58 2019 -0700 : .
+d9285b6f6801988a04e89845bd430783259111cc - Evan Johnston, Sun Sep 1 16:05:57 2019 -0700 : .
+80cfeb658a2500963495ddc1c243feccf5c34787 - Evan Johnston, Sun Sep 1 16:05:56 2019 -0700 : .
+76a8e54f6a2f66d2fc41c2a774a8b434caa47e2f - Evan Johnston, Sun Sep 1 16:03:55 2019 -0700 : .
+0fb50def7739ae83788a255ad96ac5063facd7cb - Evan Johnston, Sun Sep 1 16:03:53 2019 -0700 : .
+edf70bfc7e7ca96a011f7e73f82f3407fc65ac4d - Evan Johnston, Sun Sep 1 16:01:52 2019 -0700 : .
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/b2/srkgpkk91jqg3mgf4vxzg5hc0000gp/T/tmpsUQrv8/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  2062 Sep  1 16:29 __GIT_HISTORY
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  1 16:29 ft_putstr
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  1 16:29 is_power_of_2
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  1 16:29 lcm
+drwxr-xr-x  3 deepthought  deepthought   102 Sep  1 16:29 maff_revalpha
+drwxr-xr-x  4 deepthought  deepthought   136 Sep  1 16:29 sort_list
+
+/var/folders/b2/srkgpkk91jqg3mgf4vxzg5hc0000gp/T/tmpsUQrv8/user/ft_putstr:
+total 8
+-rw-r--r--  1 deepthought  deepthought  202 Sep  1 16:29 ft_putstr.c
+
+/var/folders/b2/srkgpkk91jqg3mgf4vxzg5hc0000gp/T/tmpsUQrv8/user/is_power_of_2:
+total 8
+-rw-r--r--  1 deepthought  deepthought  329 Sep  1 16:29 is_power_of_2.c
+
+/var/folders/b2/srkgpkk91jqg3mgf4vxzg5hc0000gp/T/tmpsUQrv8/user/lcm:
+total 8
+-rw-r--r--  1 deepthought  deepthought  396 Sep  1 16:29 lcm.c
+
+/var/folders/b2/srkgpkk91jqg3mgf4vxzg5hc0000gp/T/tmpsUQrv8/user/maff_revalpha:
+total 8
+-rw-r--r--  1 deepthought  deepthought  132 Sep  1 16:29 maff_revalpha.c
+
+/var/folders/b2/srkgpkk91jqg3mgf4vxzg5hc0000gp/T/tmpsUQrv8/user/sort_list:
+total 16
+-rw-r--r--  1 deepthought  deepthought  1198 Sep  1 16:29 sort_list.c
+-rw-r--r--  1 deepthought  deepthought   973 Sep  1 16:29 sort_list.list.h
+ 
+= sort_list ====================================================================
+$> gcc -Wextra -Wall -Werror sort_list.c main.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./5wda1sfa529zp9fufi2rymdi
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+Grade: 1
+
+= Final grade: 1 ===============================================================

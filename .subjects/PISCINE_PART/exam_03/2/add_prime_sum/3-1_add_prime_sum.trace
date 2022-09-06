@@ -1,0 +1,97 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e2r12p15.42.fr
+Darwin 15.6.0 x86_64
+$> date
+Thu Dec  8 17:37:19 CET 2016
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 8.0.0 (clang-800.0.42.1)
+Target: x86_64-apple-darwin15.6.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+$> clang --version
+Apple LLVM version 8.0.0 (clang-800.0.42.1)
+Target: x86_64-apple-darwin15.6.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2016/c-exam-beginner/practice-exam_20161208/angavrel2
+
+= Git history ==================================================================
+$> git -C /var/folders/hb/dl1qxdzx2mq2yhr0knx6nb_40000gq/T/tmpvGZzl1/user log --pretty='%H - %an, %ad : %s'
+1f70ff3d1cd563d53ce0b023b554e6f6a73482a4 - Antonin GAVREL, Thu Dec 8 17:36:35 2016 +0100 : go
+9b4175c660141a9622417af2158086e54c8cc212 - Antonin GAVREL, Thu Dec 8 17:30:22 2016 +0100 : h
+5c643789eec85f2603524a4898d5c907b2e0740e - Antonin GAVREL, Thu Dec 8 17:28:47 2016 +0100 : h
+c6023b1f61bd951dccb1776d93aaeb50dcc183e7 - Antonin GAVREL, Thu Dec 8 17:28:18 2016 +0100 : h
+409c1d48bd0bc8acb4c184f8891b3b728ec673fc - Antonin GAVREL, Thu Dec 8 17:24:29 2016 +0100 : h
+2ec6146fa5881d2b3171bbf5ac23f010e2c41f0f - Antonin GAVREL, Thu Dec 8 17:21:42 2016 +0100 : h
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/hb/dl1qxdzx2mq2yhr0knx6nb_40000gq/T/tmpvGZzl1/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  1383 Dec  8 17:37 __GIT_HISTORY
+drwxr-xr-x  3 deepthought  deepthought   102 Dec  8 17:37 add_prime_sum
+drwxr-xr-x  3 deepthought  deepthought   102 Dec  8 17:37 ft_rrange
+drwxr-xr-x  3 deepthought  deepthought   102 Dec  8 17:37 ft_swap
+drwxr-xr-x  3 deepthought  deepthought   102 Dec  8 17:37 hello
+drwxr-xr-x  3 deepthought  deepthought   102 Dec  8 17:37 print_bits
+
+/var/folders/hb/dl1qxdzx2mq2yhr0knx6nb_40000gq/T/tmpvGZzl1/user/add_prime_sum:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1621 Dec  8 17:37 add_prime_sum.c
+
+/var/folders/hb/dl1qxdzx2mq2yhr0knx6nb_40000gq/T/tmpvGZzl1/user/ft_rrange:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1139 Dec  8 17:37 ft_rrange.c
+
+/var/folders/hb/dl1qxdzx2mq2yhr0knx6nb_40000gq/T/tmpvGZzl1/user/ft_swap:
+total 8
+-rw-r--r--  1 deepthought  deepthought  971 Dec  8 17:37 ft_swap.c
+
+/var/folders/hb/dl1qxdzx2mq2yhr0knx6nb_40000gq/T/tmpvGZzl1/user/hello:
+total 8
+-rw-r--r--  1 deepthought  deepthought  979 Dec  8 17:37 hello.c
+
+/var/folders/hb/dl1qxdzx2mq2yhr0knx6nb_40000gq/T/tmpvGZzl1/user/print_bits:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1039 Dec  8 17:37 print_bits.c
+ 
+= add_prime_sum ================================================================
+$> clang -Wextra -Wall -Werror add_prime_sum.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./k1rm4ba2nsekjzueggukcwhl 
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./8kx14ywkenj3c8286f4rw2u9 "17" "23" "42"
+$> diff -U 3 user_output_test2 test2.output | cat -e
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./8y9qgu8i6h9ko7dua68i5nx1 "-1932"
+$> diff -U 3 user_output_test3 test3.output | cat -e
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./sb3t1eq0083hngibff4byvxi "-1694"
+$> diff -U 3 user_output_test4 test4.output | cat -e
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./yeii1zyoh2ch55gwqvnyabst "46"
+$> diff -U 3 user_output_test5 test5.output | cat -e
+--- user_output_test5	2016-12-08 17:37:23.000000000 +0100$
++++ test5.output	2016-12-08 17:37:23.000000000 +0100$
+@@ -1 +1 @@$
+-$
++281$
+
+Diff KO :(
+Grade: 0
+
+= Final grade: 0 ===============================================================
