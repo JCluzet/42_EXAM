@@ -8,8 +8,8 @@ void exam::exam_help()
     std::cout << LIME << "    status:" << RESET << " display information about the exam" << std::endl;
     std::cout << LIME << "    finish:" << RESET << " exit the exam" << std::endl;
     std::cout << LIME << "    grademe:" << RESET << " grade your exercice" << std::endl;
-    std::cout << LIME << "    repo_git:" << RESET << " visit git repo to discover cheat command" << std::endl;
-    std::cout << "See github repo to find some cheat command" << std::endl;
+    std::cout << LIME << "    repo_git:" << RESET << " visit github repo" << std::endl;
+    std::cout << "See github repo to find some more 'cheat' command" << std::endl;
     if (vip)
     {
         std::cout << BOLD << LIME << "VIP MENU:" << RESET << std::endl;
