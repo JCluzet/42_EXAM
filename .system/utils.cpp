@@ -36,6 +36,18 @@ std::string remaining_time(time_t end_time)
     return (ss.str());
 }
 
+std::string lastupdate(time_t end_time)
+{
+    time_t now = 1662477376;
+    time_t remaining_time = end_time - now;
+    // if (remaining_time < 0)
+    //     return ("0");
+    int day = remaining_time / 86400;
+    int hours = (remaining_time % 86400) / 3600;
+    std::string ret = MAGENTA + std::to_string(day) + RESET + " days and " + MAGENTA + std::to_string(hours) + RESET + " hours";
+    return(ret);
+}
+
 void sigd(void)
 {
     std::cout << std::endl << "You have been disconnected after use Ctrl+D" << std::endl;

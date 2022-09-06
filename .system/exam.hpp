@@ -31,6 +31,7 @@
 
 std::string current_path(void);
 std::string remaining_time(time_t end_time);
+std::string lastupdate(time_t end_time);
 std::string remaining_time(time_t end_time);
 std::string current_path(void);
 exercice    *randomize_exercice(std::map<int, exercice> list);

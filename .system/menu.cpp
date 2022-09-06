@@ -41,6 +41,7 @@ void exam::exam_random_show(void)
 // ==> display of exam status
 void exam::info(void)
 {
+    std::cout << "⚠️  V2 of 42_EXAM was release " << lastupdate(time(0)) << " ago." << std::endl << "If you encounter any problems, please report them on the Github repo."<< std::endl << std::endl;
     std::cout << "==================================================================" << std::endl;
     // std::cout << "Level: " << LIME << level << RESET << " ";
     if (reelmode)
