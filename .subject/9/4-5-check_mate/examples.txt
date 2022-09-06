@@ -1,0 +1,39 @@
+Pion / Pawn (P):
+
+	. . . . . . .
+	. . . . . . .
+	. . X . X . .
+	. . . P . . .
+	. . . . . . .
+	. . . . . . .
+	. . . . . . .
+
+Fou / Bishop (B):
+
+	X . . . . . X
+	. X . . . X .
+	. . X . X . .
+	. . . B . . .
+	. . X . X . .
+	. X . . . X .
+	X . . . . . X
+
+Tour / Rook (R):
+
+	. . . X . . .
+	. . . X . . .
+	. . . X . . .
+	X X X R X X X
+	. . . X . . .
+	. . . X . . .
+	. . . X . . .
+
+Dame / Queen (Q)
+
+	X . . X . . X
+	. X . X . X .
+	. . X X X . .
+	X X X Q X X X
+	. . X X X . .
+	. X . X . X .
+	X . . X . . X 

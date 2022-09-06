@@ -1,0 +1,31 @@
+Assignment name  : biggest_pal
+Expected files   : *.c, *.h
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program named biggest_pal that takes a string as argument and prints the
+biggest palindrome included inside this string, followed by a newline.
+
+This string contains only lowercase characters.
+
+If there is two palindromes of the same length, you have to print the last one.
+
+If there is more or less than 1 argument, your program must print only a newline
+only.
+
+Exemples:
+
+$> biggest_pal "abcba"
+abcba
+$> biggest_pal "aaaaaaaaaabbcbbaaaa"
+aaaabbcbbaaaa
+$> biggest_pal "aooibdaoiwhoihwdoinzeldaisaboyobasiadlezfdsfnslk"
+zeldaisaboyobasiadlez
+$> biggest_pal "aeibaabaammaabaalek"
+aabaammaabaa
+$> biggest_pal abeb qpinqwjobo qkmnwoiq
+
+$> biggest_pal
+
+$>
+
