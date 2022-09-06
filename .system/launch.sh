@@ -5,7 +5,7 @@ if [ -f .system/a.out ]; then
 fi
 
 # if the file .system/data_persistence.txt exists, remove it
-if [ -f .system/.devmake.err]; then
+if [ -f .system/.devmake.err ]; then
     rm .system/.devmake.err
 fi
 
