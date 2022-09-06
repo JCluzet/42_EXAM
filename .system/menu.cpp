@@ -84,8 +84,7 @@ void exam::info(void)
     std::cout << "Left time: " << LIME << remaining_time(end_time) << RESET << std::endl;
     std::cout << std::endl
               << "==================================================================" << std::endl;
-    std::cout << "You can work on your assignement. When you are sure you're done with it," << std::endl;
-    std::cout << "use the \"" << LIME << "grademe" << RESET << "\" command to be graded, or \"" << LIME << "help" << RESET << "\" to get some help." << std::endl;
+    std::cout << "Use the \"" << LIME << "grademe" << RESET << "\" command to be graded, or \"" << LIME << "help" << RESET << "\" to get some help." << std::endl;
     backup = 1;
 }
 
