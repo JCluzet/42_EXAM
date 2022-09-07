@@ -34,10 +34,13 @@
 
 
  # CHEAT code :
- (sorry don't work in exam at 42) : Using command **remove_time** to remove waiting time between two push.
-   **remove_grade_time : remove grade time between two push
+ (sorry don't work in exam at 42)
+   
+   **remove_grade_time** : remove grade time between two push
+   
+      > The maximum time to complete the exam is only information. Here, the exercise can always be corrected even after the time limit.
+      
    **force_success** : force an exercice to success
-   > The maximum time to complete the exam is only information. Here, the exercise can always be corrected even after the time limit.
 
  # Launch in ONE COMMAND : 
 
@@ -47,8 +50,8 @@
  Some data may be collected for the sole purpose of improving the service, for example to check if an error is coming from the student and not from the program. 
 The data that can be collected are : 
 - the host name of your machine.
-- the time of your push, the name of your exercise
-- your code (only in case of failure)
+- the exam number you choose.
+- name of exercice, fail or success, current assignement and level.
 
 # Disclaimer for 42 staff :
 
