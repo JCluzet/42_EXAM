@@ -124,9 +124,9 @@ void exam::infovip(void)
     std::cout << std::endl
               << "Your current assignement is " << LIME << current_ex->get_name() << RESET << " for " << LIME << (int)(((double)level + 1) / (double)level_max * 100) << RESET << " potential points" << std::endl;
     std::cout << "It is assignement " << YELLOW << current_ex->get_assignement() << RESET << " for level " << LIME << level << RESET << std::endl;
-    std::cout << "The subject is located at: " << LIME << current_path() << "/subjects/" << current_ex->get_name() << RESET << std::endl;
+    std::cout << "The subject is located at: " << LIME << current_path() << "/subjects/subject.en.txt" << RESET << std::endl;
     std::cout << "You must turn in your files in a subdirectory with the" << std::endl;
-    std::cout << "same name as the assignement (" << RED << current_path() << "/rendu/" << current_ex->get_name() << RESET << ")." << std::endl;
+    std::cout << "same name as the assignement (" << RED << current_path() << "/rendu/" << current_ex->get_name() << RESET << "/)." << std::endl;
     std::cout << "Here you don't need to use git." << std::endl
               << std::endl;
     std::cout << "The end date for this exam is: " << LIME << std::put_time(std::localtime(&end_time), "%d/%m/%Y %H:%M:%S") << RESET << std::endl;
