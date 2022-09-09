@@ -11,7 +11,6 @@
 -----
 
 ### ⚠️ This project is available on MAC and LINUX (the real exam will be on Linux)
-###     ➡ On Linux, 42_EXAM is still on beta, please report any bugs
 
 -----
 
