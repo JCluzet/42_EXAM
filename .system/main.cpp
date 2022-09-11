@@ -178,10 +178,15 @@ int exam::change_ex(void)
 {
     connexion_need = false;
     backup = false;
+    // if there is only 1 exercice, we can't change it
+    if (list_ex_lvl.size() == 1)
+    {
+        std::cout << "You can't change exercice, there is only one exercice in this level" << std::endl;
+        return (0);
+    }
     clean_all();
     system("clear");
     std::cout << "  > You have generated a new exercice" << std::endl;
-    // level = 0;
     changex = 1;
     delete current_ex;
     start_new_exam();
