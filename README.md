@@ -40,6 +40,8 @@
       > The maximum time to complete the exam is only information. Here, the exercise can always be corrected even after the time limit.
       
    **force_success** : force an exercice to success
+   
+   **new_ex** : generate a new exercice on the same level
 
  # Launch in ONE COMMAND : 
 
