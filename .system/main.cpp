@@ -31,11 +31,7 @@ void exam::exam_prompt(void)
     #ifdef __linux__
         is_linux = 1;
     #endif
-    // std::cout << YELLOW << "examshell" << RESET << "> ";
 
-    // if (!std::getline(std::cin, input))
-    //     sigd();
-    //use of readline
     while(1)
     {
     char *line = readline("\e[93mexamshell\e[0m> ");
@@ -62,6 +58,11 @@ void exam::exam_prompt(void)
             infovip();
         else
             info();
+    }
+    else if (input == "new_ex")
+    {
+        add_history(line);
+        change_ex();
     }
     else if (input == "force_success")
     {
@@ -145,7 +146,7 @@ bool exam::start_new_exam(void)
     std::string enter;
     if (!backup)
     {
-        if (level == 0)
+        if (connexion_need)
             connexion();
         list_ex_lvl = list_dir();
         exercice ex = *randomize_exercice(list_ex_lvl);
@@ -172,12 +173,60 @@ bool exam::start_new_exam(void)
     return (true);
 }
 
+// ==> Function to change exercice
+int exam::change_ex(void)
+{
+    connexion_need = false;
+    backup = false;
+    clean_all();
+    system("clear");
+    std::cout << "  > You have generated a new exercice" << std::endl;
+    // level = 0;
+    changex = 1;
+    delete current_ex;
+    start_new_exam();
+    return (0);
+}
+
+void check_readline()
+{
+    // if readline is not installed
+    int is_linux = 0;
+    #ifdef __linux__
+        is_linux = 1;
+    #endif
+
+
+    if (!file_exists("/usr/include/readline/readline.h") && is_linux)
+    {
+        std::cout << "Error: readline is not installed on your computer" << std::endl << std::endl;
+
+        std::cout << "Auto install readline ? (y/n)" << std::endl;
+        std::string input;
+        std::getline(std::cin, input);
+        if (input == "y")
+        {
+            std::cout << "Installing readline..." << std::endl;
+            system("sudo apt-get install libreadline-dev");
+            std::cout << "Readline installed, please restart the program" << std::endl;
+            exit(0);
+        }
+        else
+        {
+            std::cout << "Readline is required to use this program, please install it and restart the program" << std::endl;
+            exit(0);
+        }
+        exit(0);
+    }
+}
+
 int main(int argc, char **argv)
 {
     signal(SIGINT, sigc);
     signal(SIGQUIT, sigc);
     signal(SIGTERM, sigc);
 
+    // check_readline();
 
     if (file_exists("a.out"))
         remove("a.out");

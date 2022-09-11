@@ -63,7 +63,7 @@ void exam::info(void)
     }
 
     std::cout << "  Level " << LIME << level << RESET << ": " << std::endl;
-    if (current_ex->get_assignement() == 0 && backup == 0)
+    if (current_ex->get_assignement() == 0 && backup == 0 && !changex)
         exam_random_show();
     else
     {
@@ -110,7 +110,7 @@ void exam::infovip(void)
     }
 
     std::cout << "  Level " << LIME << level << RESET << ": " << std::endl;
-    if (current_ex->get_assignement() == 0 && backup == 0)
+    if (current_ex->get_assignement() == 0 && backup == 0 && !changex)
         exam_random_show();
     else
     {

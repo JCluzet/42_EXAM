@@ -70,6 +70,7 @@ class exam
         time_t get_end_time(void);
         time_t get_start_time(void);
         void infovip(void);
+        int change_ex(void);
         void exam_prompt(void);
         bool prepare_current_ex(void);
         bool clean_all(void);
@@ -85,6 +86,7 @@ class exam
         bool student;
         bool waiting_time;
         int level_max;
+        bool changex;
     private :
         void set_max_time(void);
         void grademe(void);

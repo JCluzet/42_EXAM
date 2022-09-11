@@ -23,6 +23,7 @@ class exercice
         void set_time_bef_grade(time_t time_bef_grade);
         int get_lvl(void);
         time_t time_bef_grade;
+        // bool change_ex;
 
     private :
         int assignement;

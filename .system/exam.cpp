@@ -187,6 +187,7 @@ exam::exam(void) : exam_grade(0), level(0), level_max(0), failures(0), student(f
             break;
         }
     }
+    changex = 0;
     system("rm .system/vip_list");
 }
 

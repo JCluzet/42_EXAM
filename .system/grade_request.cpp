@@ -23,6 +23,7 @@ void exam::success_ex()
     if(!std::getline(std::cin, input))
         sigd();
     level_per_ex += level_per_ex_save;
+    changex = 0;
     if(level_per_ex > 100)
         end_exam();
     backup = 0;
