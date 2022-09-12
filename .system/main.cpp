@@ -5,6 +5,7 @@ void exam::exam_help()
 {
     std::cout << "Commands:" << std::endl;
     std::cout << LIME << "    help:" << RESET << " display this help" << std::endl;
+    std::cout << LIME << "    settings: " << RESET << "display settings menu" << std::endl;
     std::cout << LIME << "    status:" << RESET << " display information about the exam" << std::endl;
     std::cout << LIME << "    finish:" << RESET << " exit the exam" << std::endl;
     std::cout << LIME << "    grademe:" << RESET << " grade your exercice" << std::endl;
@@ -16,6 +17,7 @@ void exam::exam_help()
         std::cout << LIME << "    force_success:" << RESET << " force a ex to success" << std::endl;
         std::cout << LIME << "    remove_grade_time:" << RESET << " remove grade time limit between two grademe" << std::endl;
         std::cout << LIME << "    gradenow:" << RESET << " instant grade exercice" << std::endl;
+        std::cout << LIME << "    new_ex:" << RESET << " generate a new exercice for the same level" << std::endl;
     }
 }
 
