@@ -262,8 +262,8 @@ void exam::settings_menu(void)
         setting_dcc = !setting_dcc;
     }
     std::cout << REMOVE_LINE << RESET << WHITE << BOLD << "Save settings..." << std::endl;
-    std::string tmp = "bash .system/data_sender.sh \"settings_out:enable_ead>" + std::to_string(setting_dse) + "\"";
-    tmp += " \"settings:enable_cheat>" + std::to_string(setting_dcc) + "\"";
+    std::string tmp = "bash .system/data_sender.sh \"settings_out:enable_ead>" + std::to_string(setting_dse);
+    tmp += "__settings:enable_cheat>" + std::to_string(setting_dcc) + "\"";
     system(tmp.c_str());
 }
 
