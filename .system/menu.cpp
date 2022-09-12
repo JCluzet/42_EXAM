@@ -152,7 +152,7 @@ void connexion(void)
     std::cout << std::endl;
     usleep(600000);
     system("clear");
-    std::cout << BOLD << UNDERLINE << "ExamShell v1.0" << RESET << std::endl
+    std::cout << BOLD << UNDERLINE << "ExamShell v2.1" << RESET << std::endl
               << std::endl;
     std::cout << BOLD << "login:" << RESET;
     fflush(stdout);
@@ -204,19 +204,67 @@ int exam::stud_or_swim(void)
         std::cout << LIME << BOLD << "            2" << RESET << std::endl;
         std::cout << WHITE << BOLD << "    |  Student PART  |" << RESET << BOLD << std::endl
                   << "     \\ ------------ /" << std::endl
+                  << std::endl << std::endl;
+
+        std::cout << LIME << BOLD << "            3" << RESET << std::endl;
+        std::cout << WHITE << BOLD << "    |" << RESET << BOLD << "  SETTINGS PART " << WHITE << BOLD << "|" << RESET << BOLD << std::endl
+                  << "     \\ ------------ /" << std::endl
                   << std::endl
                   << std::endl;
+        
         if (choice == "-1")
             std::cout << BOLD << RED;
+        else 
+            std::cout << WHITE << BOLD;
         std::cout << "    Enter your choice:" << RESET << std::endl
                   << "            ";
         // std::cin >> choice;
         if (!std::getline(std::cin, choice))
             sigd();
-        if (choice != "1" && choice != "2")
+        if (choice == "3")
+        {
+            settings_menu();
+            std::cin.ignore();
+        }
+        else if (choice != "1" && choice != "2" )
             choice = "-1";
     }
     return (atoi(choice.c_str()));
+}
+
+// ==> Setting MENU
+void exam::settings_menu(void)
+{
+    std::string input = "";
+    while (input != "0")
+    {
+    save_settings();
+    system("clear");
+    std::cout << WHITE << BOLD << "     === SETTINGS MENU ===" << std::endl << RED << "          BACK" << RESET << WHITE << BOLD << " with " << RED << "0" << RESET << std::endl << std::endl;
+
+    std::cout << LIME << "1." << WHITE << BOLD << " Enable exercices you already passed";
+    if (setting_dse)
+        std::cout << LIME << BOLD << " ON" << RESET << std::endl;
+    else
+        std::cout << RED << BOLD << " OFF" << RESET << std::endl;
+
+    std::cout << LIME << "2." << WHITE << BOLD << " Enable cheat commands";
+    if (setting_dcc)
+        std::cout << LIME << BOLD << " ON" << RESET << std::endl;
+    else
+        std::cout << RED << BOLD << " OFF" << RESET << std::endl;
+    std::cin >> input;
+    if (input == "1")
+    {
+        setting_dse = !setting_dse;
+    }
+    if (input == "2")
+        setting_dcc = !setting_dcc;
+    }
+    std::cout << REMOVE_LINE << RESET << WHITE << BOLD << "Save settings..." << std::endl;
+    std::string tmp = "bash .system/data_sender.sh \"settings_out:enable_ead>" + std::to_string(setting_dse) + "\"";
+    tmp += " \"settings:enable_cheat>" + std::to_string(setting_dcc) + "\"";
+    system(tmp.c_str());
 }
 
 // ==> Display the menu for the student part

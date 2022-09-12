@@ -38,13 +38,23 @@ void exam::exam_prompt(void)
     if (line == NULL)
         sigd();
     input = line;
-    // input = buf;
-    if (input == "finish" || input == "exit" || input == "quit")
+    if (input == "remove_grade_time" || input == "new_ex" || input == "force_success" && !setting_dcc)
+        std::cout << "Cheat commands are currently disabled, use " << LIME << BOLD << "settings" << RESET << " command." << std::endl;
+    else if (input == "finish" || input == "exit" || input == "quit")
     {
         if (std::ifstream(".system/exam_token/actuel_token.txt"))
             remove(".system/exam_token/actuel_token.txt");
         exit(0);
-
+    }
+    else if (input == "settings")
+    {
+        add_history(line);
+        changex = 1;
+        settings_menu();
+        if(vip)
+            infovip();
+        else
+            info();
     }
     else if (input == "grademe")
     {
@@ -54,6 +64,7 @@ void exam::exam_prompt(void)
     else if (input == "status")
     {
         add_history(line);
+        changex = 1;
         if(vip)
             infovip();
         else
@@ -144,12 +155,13 @@ bool exam::prepare_current_ex(void)
 bool exam::start_new_exam(void)
 {
     std::string enter;
+    load_settings();
     if (!backup)
     {
         if (connexion_need)
             connexion();
         list_ex_lvl = list_dir();
-        exercice ex = *randomize_exercice(list_ex_lvl);
+        exercice ex = *randomize_exercice(list_ex_lvl, setting_dse);
         current_ex = new exercice(ex);
         prepare_current_ex();
         store_data();

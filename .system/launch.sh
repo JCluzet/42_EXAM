@@ -20,14 +20,21 @@ spin[1]="\\"
 spin[2]="|"
 spin[3]="/"
 
-bash .system/maj.sh
+# check if there is connexion to the internet, else do git pull for maj
+if ! ping -c 1 google.com > /dev/null 2>&1; then
+    clear
+    printf "42_EXAM: Launch without network...\n\n"
+    sleep 2
+else
+    git pull
+fi
 
 g++ .system/exercice.cpp .system/main.cpp .system/menu.cpp .system/exam.cpp .system/utils.cpp .system/grade_request.cpp .system/data_persistence.cpp -lreadline -o .system/a.out > .system/.devmake.err 2>.system/.devmake.err &
 PID=$!
 
 clear
 echo -ne "$WHITE$BOLD"
-echo -ne "Compilation of$BOLD$MANGENTA 42_EXAM v2 $BOLD$WHITE "
+echo -ne "Compilation of$BOLD$MANGENTA 42_EXAM v2.1 $BOLD$WHITE "
 # while there is no a.out file in the current directory, wait
 while [ ! -f .system/a.out ]; do
   for i in "${spin[@]}"
@@ -63,4 +70,3 @@ echo "Done!"
 # rm .system/.devmake.err 2>/dev/null
 cp .system/a.out a.out 
 ./a.out
-

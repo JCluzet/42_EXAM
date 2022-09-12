@@ -8,13 +8,45 @@ exercice::exercice(void) {
 }
 
 // ==> Randomize exercice (give 1 into list)
-exercice *randomize_exercice(std::map<int, exercice> list)
+exercice *randomize_exercice(std::map<int, exercice> list, bool remove_success)
 {
+    // if setting_dse is 1, remove all exercice in list having a name in .system/exam_token/success_ex 
+    if (remove_success == 0)
+    {
+        std::ifstream success_ex("success/success_ex");
+        std::string line;
+        std::string name;
+        int assignement;
+        int level_ex;
+        int time_bef_grade;
+        while (std::getline(success_ex, line))
+        {
+            std::istringstream iss(line);
+            iss >> name;
+            for (std::map<int, exercice>::iterator it = list.begin(); it != list.end(); it++)
+            {
+                if (it->second.get_name() == name)
+                {
+                    list.erase(it);
+                    break;
+                }
+            }
+        }
+        success_ex.close();
+    }
+
+
+
+
+
     std::map<int, exercice>::iterator it = list.begin();
     if (list.size() == 0)
     {
-        std::cout << "Error: no exercice in the list" << std::endl;
-        exit(1);
+        std::cout << "Error: all exercices for this level have been done" << std::endl;
+        std::cout << "Please set to" << RED << BOLD << " OFF " << RESET << "option 1 in settings." << std::endl;
+        std::cout << "Or edit/delete your success/success_ex file" << std::endl;
+        std::cout << "Then relaunch 42_EXAM and recover your exam" << std::endl;
+        exit(0);
     }
     srand(time(NULL));
     int random = rand() % list.size();

@@ -13,6 +13,10 @@ void exam::success_ex()
 {
     // insert current_ex in lvl_ex
     lvl_ex.insert(std::pair<int, exercice>(current_ex->get_lvl(), *current_ex));
+    // insert the success exercice into file .system/exam_token/success_ex
+    std::ofstream file;
+    file.open("success/success_ex", std::ios::app);
+    file << current_ex->get_name() << std::endl;
     // *current_ex;
     std::cout << std::endl << LIME << ">>>>>>>>>> SUCCESS <<<<<<<<<<" << RESET << std::endl << std::endl; 
     std::string tmp = "bash .system/data_sender.sh \"success_ex: " + current_ex->get_name() + " level:" + std::to_string(level) + " assignement:" + std::to_string(current_ex->get_assignement()) + "\"";
@@ -156,6 +160,9 @@ void exam::grade_request(bool i)
         std::string input;
         if(!std::getline(std::cin, input))
             sigd();
-        info();
+        if(vip)
+            infovip();
+        else
+            info();
     }
 }

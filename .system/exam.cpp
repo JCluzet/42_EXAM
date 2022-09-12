@@ -176,9 +176,11 @@ exam::exam(void) : exam_grade(0), level(0), level_max(0), failures(0), student(f
     waiting_time = true;
     vip = 0;
     username = getenv("USER");
+    load_settings();
     system("curl https://user.grademe.fr/vip_list > .system/vip_list 2> /dev/null");
     std::ifstream vip_list(".system/vip_list");
     std::string line;
+    
     while (std::getline(vip_list, line))
     {
         if (line == username)

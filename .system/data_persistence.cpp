@@ -117,3 +117,28 @@ void exam::restore_data(void)
         else
             ask_param();
 }
+
+// ==> Load .settings file into setting_dse bool
+void exam::load_settings(void)
+{
+    std::ifstream file(".system/exam_token/.settings");
+    std::string line;
+    if (file.is_open())
+    {
+        file >> setting_dse;
+        file >> setting_dcc;
+        file.close();
+    }
+}
+
+// ==> Save setting_dse bool into .settings file
+void exam::save_settings(void)
+{
+    std::ofstream file(".system/exam_token/.settings");
+    if (file.is_open())
+    {
+        file << setting_dse << std::endl;
+        file << setting_dcc;
+        file.close();
+    }
+}

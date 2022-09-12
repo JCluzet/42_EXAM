@@ -54,8 +54,21 @@ void sigd(void)
 
 void sigc(int sig)
 {
-    std::cout << WHITE << BOLD << std::endl << "Exit exam..." << std::endl;
-    exit(0);
+    if (sig == SIGINT)
+    {
+        std::cout << std::endl << "You have been disconnected after use Ctrl+C" << std::endl;
+        exit(0);
+    }
+    if (sig == SIGQUIT)
+    {
+        std::cout << std::endl << "You have been disconnected after use Ctrl+\\ (SIGQUIT)" << std::endl;
+        exit(0);
+    }
+    if (sig == SIGTSTP)
+    {
+        std::cout << WHITE << BOLD << std::endl << "Exit exam..." << std::endl;
+        exit(0);
+    }
 }
 
 bool file_exists(std::string path)

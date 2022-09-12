@@ -34,7 +34,7 @@ std::string remaining_time(time_t end_time);
 std::string lastupdate(time_t end_time);
 std::string remaining_time(time_t end_time);
 std::string current_path(void);
-exercice    *randomize_exercice(std::map<int, exercice> list);
+exercice    *randomize_exercice(std::map<int, exercice> list, bool remove_success);
 exam        restore_data(void);
 bool        file_exists(std::string path);
 
@@ -90,13 +90,19 @@ class exam
     private :
         void set_max_time(void);
         void grademe(void);
+        void settings_menu(void);
         void grade_request(bool i);
         void exam_random_show(void);
         void end_exam(void);
         void set_max_lvl(void);
         int stud_menu(void);
+        void load_settings(void);
+        void save_settings(void);
         int piscine_menu(void);
         int stud_or_swim(void);
+        
+        bool setting_dse;
+        bool setting_dcc;
         std::string username;
         bool connexion_need;
 
