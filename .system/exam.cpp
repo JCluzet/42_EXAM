@@ -1,5 +1,6 @@
 #include "exam.hpp"
 
+// ==> Store all possible exercices in a map
 std::map<int, exercice> exam::list_dir(void)
 {
     struct dirent *entry;
@@ -169,7 +170,6 @@ void exam::ask_param(void)
 }
 
 // CONSTRUCTOR/OPERATOR/GETTER/SETTER
-
 exam::exam(void) : exam_grade(0), level(0), level_max(0), failures(0), student(false), backup(false), connexion_need(false)
 {
     reelmode = true;

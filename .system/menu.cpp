@@ -38,6 +38,27 @@ void exam::exam_random_show(void)
     std::cout << "    " << YELLOW << current_ex->get_assignement() << RESET << ": " << LIME << current_ex->get_name() << RESET << " for " << (int)level_per_ex << " potential points (" << CYAN << "Current" << RESET << ")" << std::endl;
 }
 
+// ==> Help section
+void exam::exam_help()
+{
+    std::cout << "Commands:" << std::endl;
+    std::cout << LIME << "    help:" << RESET << " display this help" << std::endl;
+    std::cout << LIME << "    settings: " << RESET << "display settings menu" << std::endl;
+    std::cout << LIME << "    status:" << RESET << " display information about the exam" << std::endl;
+    std::cout << LIME << "    finish:" << RESET << " exit the exam" << std::endl;
+    std::cout << LIME << "    grademe:" << RESET << " grade your exercice" << std::endl;
+    std::cout << LIME << "    repo_git:" << RESET << " visit github repo" << std::endl;
+    std::cout << "See github repo to find some more 'cheat' command" << std::endl;
+    if (vip)
+    {
+        std::cout << BOLD << LIME << "VIP MENU:" << RESET << std::endl;
+        std::cout << LIME << "    force_success:" << RESET << " force a ex to success" << std::endl;
+        std::cout << LIME << "    remove_grade_time:" << RESET << " remove grade time limit between two grademe" << std::endl;
+        std::cout << LIME << "    gradenow:" << RESET << " instant grade exercice" << std::endl;
+        std::cout << LIME << "    new_ex:" << RESET << " generate a new exercice for the same level" << std::endl;
+    }
+}
+
 // ==> display of exam status
 void exam::info(void)
 {

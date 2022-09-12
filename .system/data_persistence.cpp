@@ -92,7 +92,9 @@ void exam::restore_data(void)
         if (answer == "1")
         {
             std::cin.ignore();
-            std::cout << std::endl << "   Restoring exam token..." << RESET << std::endl << std::endl;
+            std::cout << std::endl
+                      << "   Restoring exam token..." << RESET << std::endl
+                      << std::endl;
             this->start_time = backup.get_start_time();
             this->end_time = backup.get_end_time();
             this->exam_number = backup.get_exam_number();
@@ -114,8 +116,8 @@ void exam::restore_data(void)
             ask_param();
         }
     }
-        else
-            ask_param();
+    else
+        ask_param();
 }
 
 // ==> Load .settings file into setting_dse bool
