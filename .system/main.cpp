@@ -15,8 +15,8 @@ void exam::exam_prompt(void)
         if (line == NULL)
             sigd();
         input = line;
-        if (input == "remove_grade_time" || input == "new_ex" || input == "force_success" && !setting_dcc)
-            std::cout << "Cheat commands are currently disabled, use " << LIME << BOLD << "settings" << RESET << " command." << std::endl;
+        if ((input == "remove_grade_time" || input == "new_ex" || input == "force_success") && !setting_dcc)
+            std::cout << " ❌ Cheat commands are currently disabled, use " << LIME << BOLD << "settings" << RESET << " command." << std::endl;
         else if (input == "finish" || input == "exit" || input == "quit")
         {
             if (std::ifstream(".system/exam_token/actuel_token.txt"))
