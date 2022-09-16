@@ -25,7 +25,6 @@ void exam::exam_prompt(void)
         }
         else if (input == "settings")
         {
-            add_history(line);
             changex = 1;
             settings_menu();
             if (vip)
@@ -35,12 +34,10 @@ void exam::exam_prompt(void)
         }
         else if (input == "grademe")
         {
-            add_history(line);
             grademe();
         }
         else if (input == "status")
         {
-            add_history(line);
             changex = 1;
             if (vip)
                 infovip();
@@ -49,13 +46,11 @@ void exam::exam_prompt(void)
         }
         else if (input == "new_ex")
         {
-            add_history(line);
             change_ex();
             using_cheatcode++;
         }
         else if (input == "force_success")
         {
-            add_history(line);
             using_cheatcode++;
             std::string tmp = "bash .system/data_sender.sh \"cheatcode:force_success\"";
             system(tmp.c_str());
@@ -63,12 +58,10 @@ void exam::exam_prompt(void)
         }
         else if (input == "help")
         {
-            add_history(line);
             exam_help();
         }
         else if (input == "repo_git")
         {
-            add_history(line);
             std::string tmp = "bash .system/data_sender.sh \"cheatcode:repo_git\"";
             system(tmp.c_str());
             std::cout << "Opening git repo..." << std::endl;
@@ -79,7 +72,6 @@ void exam::exam_prompt(void)
         }
         else if (input == "remove_grade_time")
         {
-            add_history(line);
             std::string tmp = "bash .system/data_sender.sh \"cheatcode:remove_grade_time\"";
             system(tmp.c_str());
             std::cout << "Time between grading is now removed for this exam" << std::endl;
@@ -88,13 +80,14 @@ void exam::exam_prompt(void)
         }
         else if (input == "gradenow" && vip)
         {
-            add_history(line);
             grade_request(1);
         }
         else if (input == "")
             std::cout << REMOVE_LINE;
         else if (input != "")
             std::cout << "           **Unknown command**     type " << LIME << "help" << RESET << " for more help" << std::endl;
+        if (input != "")
+            add_history(line);
         // info();
     }
 }
