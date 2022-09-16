@@ -56,7 +56,13 @@ void exam::end_exam()
     std::cout << WHITE << BOLD << "🥳 Congratulation! You have finished the Exam Rank 0" << exam_number << " !" << std::endl;
     }
     else
+    {
         std::cout << WHITE << BOLD << "🙁 You have finished the Exam Rank 0" << exam_number << ", " << RED << BOLD << "after using " << using_cheatcode << " cheat command..." << WHITE << BOLD << std::endl;
+    if (student)
+        tmp = "bash .system/data_sender.sh \"exam_success_end_cheat" + std::to_string(using_cheatcode) + ": examrank0" + std::to_string(exam_number) + "\"";
+    else
+        tmp = "bash .system/data_sender.sh \"exam_success_end_cheat" + std::to_string(using_cheatcode) + ": examweek0" + std::to_string(exam_number) + "\"";
+    }
     std::cout << "Love" << MAGENTA << " 42_EXAM" << WHITE << BOLD << " ? Scan this QRCode to star Github repository 👋" << std::endl
               << std::endl;
     // show file .system/qrcode
