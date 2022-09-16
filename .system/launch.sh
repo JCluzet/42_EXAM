@@ -29,12 +29,27 @@ else
     git pull
 fi
 
-g++ .system/exercice.cpp .system/main.cpp .system/menu.cpp .system/exam.cpp .system/utils.cpp .system/grade_request.cpp .system/data_persistence.cpp -lreadline -o .system/a.out > .system/.devmake.err 2>.system/.devmake.err &
-PID=$!
-
 clear
 echo -ne "$WHITE$BOLD"
 echo -ne "Compilation of$BOLD$MANGENTA 42_EXAM v2.1 $BOLD$WHITE "
+
+g++ .system/checkreadline.cpp -o .system/readline_ok 2> .system/.devmake.err
+# if there is no .system/readline_ok file, it means that the readline library is not installed
+if [ ! -f .system/readline_ok ]; then
+    echo -ne "$RED$BOLD"
+    clear
+    echo -ne "Readline library not installed $WHITE$BOLD"
+    echo -e "Auto install in 2 seconds..."
+    sleep 2
+    sudo apt-get install libreadline-dev
+    clear
+else
+    rm .system/readline_ok
+fi
+
+g++ .system/exercice.cpp .system/main.cpp .system/menu.cpp .system/exam.cpp .system/utils.cpp .system/grade_request.cpp .system/data_persistence.cpp -lreadline -o .system/a.out > .system/.devmake.err 2>.system/.devmake.err &
+PID=$!
+
 # while there is no a.out file in the current directory, wait
 while [ ! -f .system/a.out ]; do
   for i in "${spin[@]}"
