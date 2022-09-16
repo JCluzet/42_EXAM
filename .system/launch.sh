@@ -23,13 +23,14 @@ spin[3]="/"
 # check if there is connexion to the internet, else do git pull for maj
 if ! ping -c 1 google.com > /dev/null 2>&1; then
     clear
-    printf "42_EXAM: Launch without network...\n\n"
-    sleep 2
+    # printf "42_EXAM: Launch without network...\n\n"
+    # sleep 2
 else
     git pull
+    clear
 fi
 
-clear
+# clear
 echo -ne "$WHITE$BOLD"
 echo -ne "Compilation of$BOLD$MANGENTA 42_EXAM v2.1 $BOLD$WHITE "
 
@@ -43,6 +44,10 @@ if [ ! -f .system/readline_ok ]; then
     sleep 2
     sudo apt-get install libreadline-dev
     clear
+    echo -ne "Readline is installed, please relaunch the program $WHITE$BOLD"
+    echo -e "Auto exit in 2 seconds..."
+    sleep 2
+    exit 0
 else
     rm .system/readline_ok
 fi
