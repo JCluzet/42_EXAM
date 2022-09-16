@@ -118,6 +118,7 @@ private:
     int level_per_ex_save;
     int time_max;
     int exam_number;
+    int using_cheatcode;
     int exam_grade;
     bool vip;
     int level_per_ex;

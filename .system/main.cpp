@@ -51,10 +51,12 @@ void exam::exam_prompt(void)
         {
             add_history(line);
             change_ex();
+            using_cheatcode++;
         }
         else if (input == "force_success")
         {
             add_history(line);
+            using_cheatcode++;
             std::string tmp = "bash .system/data_sender.sh \"cheatcode:force_success\"";
             system(tmp.c_str());
             success_ex();
@@ -82,6 +84,7 @@ void exam::exam_prompt(void)
             system(tmp.c_str());
             std::cout << "Time between grading is now removed for this exam" << std::endl;
             waiting_time = false;
+            using_cheatcode++;
         }
         else if (input == "gradenow" && vip)
         {

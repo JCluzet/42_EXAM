@@ -45,13 +45,18 @@ void exam::success_ex()
 void exam::end_exam()
 {
     std::string tmp;
+    remove(".system/exam_token/actuel_token.txt");
+    if(using_cheatcode == 0)
+    {
     if (student)
         tmp = "bash .system/data_sender.sh \"exam_success_end: examrank0" + std::to_string(exam_number) + "\"";
     else
         tmp = "bash .system/data_sender.sh \"exam_success_end: examweek0" + std::to_string(exam_number) + "\"";
     system(tmp.c_str());
-    remove(".system/exam_token/actuel_token.txt");
-    std::cout << WHITE << BOLD << "Congratulation! You have finished the Exam Rank 0" << exam_number << " !" << std::endl;
+    std::cout << WHITE << BOLD << "🥳 Congratulation! You have finished the Exam Rank 0" << exam_number << " !" << std::endl;
+    }
+    else
+        std::cout << WHITE << BOLD << "🙁 You have finished the Exam Rank 0" << exam_number << ", " << RED << BOLD << "after using " << using_cheatcode << " cheat command..." << WHITE << BOLD << std::endl;
     std::cout << "Love" << MAGENTA << " 42_EXAM" << WHITE << BOLD << " ? Scan this QRCode to star Github repository 👋" << std::endl
               << std::endl;
     // show file .system/qrcode

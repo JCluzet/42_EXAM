@@ -17,6 +17,7 @@ void exam::store_data()
     file << current_ex->time_bef_grade << std::endl;
     file << level_per_ex << std::endl;
     file << level_per_ex_save << std::endl;
+    file << using_cheatcode << std::endl;
 
     file.close();
 }
@@ -44,6 +45,7 @@ void exam::restore_data(void)
         file >> time_bef_grade;
         file >> backup.level_per_ex;
         file >> backup.level_per_ex_save;
+        file >> backup.using_cheatcode;
 
         backup.current_ex = new exercice(backup.get_lvl(), name, std::stoi(assign), std::stoi(time_bef_grade));
         backup.backup = 1;
@@ -105,6 +107,7 @@ void exam::restore_data(void)
             this->level_max = backup.level_max;
             this->level_per_ex = backup.level_per_ex;
             this->level_per_ex_save = backup.level_per_ex_save;
+            this->using_cheatcode = backup.using_cheatcode;
         }
         else
         {
