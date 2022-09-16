@@ -91,6 +91,6 @@ echo ""
 echo ""
 
 echo "Done!"
-# rm .system/.devmake.err 2>/dev/null
-cp .system/a.out a.out 
-./a.out
+chmod +x .system/a.out
+sleep 1
+./.system/a.out
