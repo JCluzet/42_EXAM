@@ -20,6 +20,8 @@ spin[1]="\\"
 spin[2]="|"
 spin[3]="/"
 
+echo "Checking server availability..."
+
 # check if there is connexion to the internet, else do git pull for maj
 if ! ping -c 1 google.com > /dev/null 2>&1; then
     clear
