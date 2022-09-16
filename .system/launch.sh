@@ -47,7 +47,7 @@ if [ ! -f .system/readline_ok ]; then
     sudo apt-get install libreadline-dev
     clear
     echo -ne "Readline is installed, please relaunch the program $WHITE$BOLD"
-    echo -e "Auto exit in 2 seconds..."
+    echo "Auto exit in 2 seconds..."
     sleep 2
     exit 0
 else
