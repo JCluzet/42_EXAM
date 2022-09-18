@@ -17,13 +17,13 @@
  ## Practice for the 42 exam 🏊‍♂️
 
  
-  - [x] New Subjects ExamRank02 APRIL 2022 ✔️
+  - [x] New Subjects ExamRank02 APRIL 2022 
   - [ ] Add more exercice at level 4 for ExamRank02 
-  - [x] Subject drawn at random ✔️
-  - [x] Exponential waiting for a correction ✔️
-  - [x] X Hours maximum ✔️
-  - [x] Automatic correction (without internet) ✔️
-  - [x] Traceback available ✔️
+  - [x] Subject drawn at random 
+  - [x] Exponential waiting for a correction
+  - [x] X Hours maximum 
+  - [x] Automatic correction (without internet) 
+  - [x] Traceback available 
 
 <img width="711" alt="Screenshot 2022-09-06 at 17 00 47" src="https://user-images.githubusercontent.com/55356071/188669367-504411a5-5c62-4848-932e-405c9ee05a45.png">
 
