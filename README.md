@@ -18,7 +18,7 @@
 
  
   - [x] New Subjects ExamRank02 APRIL 2022 ✔️
-  - [ ] Setup correction level 4 ExamRank02 
+  - [ ] Add more exercice at level 4 for ExamRank02 
   - [x] Subject drawn at random ✔️
   - [x] Exponential waiting for a correction ✔️
   - [x] X Hours maximum ✔️
