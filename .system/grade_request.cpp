@@ -30,8 +30,6 @@ void exam::success_ex()
         sigd();
     level_per_ex += level_per_ex_save;
     changex = 0;
-    if (level_per_ex > 100)
-        end_exam();
     backup = 0;
     if (file_exists("rendu/"))
     {
@@ -39,6 +37,8 @@ void exam::success_ex()
             system("mkdir success");
         system("cp -r rendu/* success/ 2> /dev/null");
     }
+    if (level_per_ex > 100)
+        end_exam();
     start_new_ex();
 }
 
