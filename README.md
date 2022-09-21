@@ -24,6 +24,8 @@
   - [x] X Hours maximum 
   - [x] Automatic correction (without internet) 
   - [x] Traceback available 
+  - [x] Detect infinite loop in your program
+  - [ ] Detect leaks in all exercices
 
 <img width="711" alt="Screenshot 2022-09-06 at 17 00 47" src="https://user-images.githubusercontent.com/55356071/188669367-504411a5-5c62-4848-932e-405c9ee05a45.png">
 
