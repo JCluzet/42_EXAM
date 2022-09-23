@@ -44,6 +44,17 @@
    **force_success** : force an exercice to success
    
    **new_ex** : generate a new exercice on the same level
+   
+ # VIP CHEAT code :
+ [sponsor to become VIP](https://github.com/sponsors/JCluzet)
+ 
+   **gradenow** : Get an instant correction (no waiting)
+   
+  > Being a sponsor brings VIP on GradeMe and 42_EXAM.
+  
+  > VIPs also have exactly the same display as the 42 examshell.
+  
+  > More features coming
 
  # Launch in ONE COMMAND : 
 
