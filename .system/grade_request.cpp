@@ -79,9 +79,9 @@ void exam::end_exam()
         is_linux = 1;
 #endif
         if (is_linux)
-            system("xdg-open http://git.grademe.fr");
+            system("xdg-open https://github.com/jcluzet/42_EXAM");
         else
-            system("open http://git.grademe.fr");
+            system("open https://github.com/jcluzet/42_EXAM");
     }
     std::cout << WHITE << BOLD << "Thanks for studying with us " << LIME << BOLD << username << WHITE << BOLD << " ❤️" << std::endl;
     exit(0);
