@@ -5,6 +5,8 @@ if [ -e traceback ]; then
     rm traceback
 fi
 
+echo "Test may be long, please wait... (a Fatal Error may appear, it's normal, only trust the traceback)"
+
 for port in $(seq 4444 65000); do echo -ne "\035" | telnet 127.0.0.1 $port > /dev/null 2>&1; [ $? -eq 1 ] && break; done
 
 PORT=$port

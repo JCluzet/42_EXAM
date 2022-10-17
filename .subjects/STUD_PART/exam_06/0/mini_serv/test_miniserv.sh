@@ -51,6 +51,9 @@ sleep 0.2
 echo -n "This is a text without \n at the end" | nc localhost $1
 sleep 0.4
 printf "Et voici un texte avec plusieurs\nretours\na\nla\nligne\n" | nc localhost $1
+sleep 0.2
+
+bash test_eof.sh $1
 sleep 1
 
 kill $PID
