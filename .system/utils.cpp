@@ -84,7 +84,7 @@ bool file_exists(std::string path)
 // ==> Reset folder to default
 bool exam::clean_all()
 {
-    if (file_exists("rendu"))
+    if (file_exists("rendu") && level == 0)
         system("rm -rf rendu");
     if (file_exists("subjects"))
         system("rm -rf subjects");
