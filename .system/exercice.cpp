@@ -45,7 +45,17 @@ bool exam::prepare_current_ex(void)
     clean_all();
 
     // create directory for the current exercice
-    system("mkdir rendu && mkdir subjects && mkdir .system/grading");
+    system("mkdir rendu 2> /dev/null");
+    system("mkdir subjects 2> /dev/null");
+    system("mkdir .system/grading 2> /dev/null");
+    if (file_exists(".system/grading"))
+    {
+        std::cout << "EXIST!!!" << std::endl;
+    }
+    else
+    {
+        std::cout << "NOT EXIST!!!" << std::endl;
+    }
 
     // copy all the files in the current get_path() + attachement/* to the subjects directory
     std::string cmd_system_call = "cp -r " + get_path() + "/attachement/*" + " subjects/";
