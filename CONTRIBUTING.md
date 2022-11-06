@@ -5,20 +5,39 @@ You can add your own exercises simply by creating a folder for the exercise in t
 👉 42_EXAM automatically detects the exercises available in the folders, so you don't have to change anything in the program.
 
 To add an exercise, you have to create a folder with the name of the exercise in the folder corresponding to the level (browse the .subjects folder to understand)
+
+--------
  
-For an exercise to be complete, you must add :
+🔖 For an exercise to be complete, you must add :
 
 - A subject named `subject.en.txt` in a folder `attachments` (you can add other files that will be given to the student during the exercise)
 - The exercise in question (example : fprime.c) 
 ⚠️ WARNING: the exercise must be perfect because it will be used by 42_EXAM to know if the rendering is correct.
 - The correction file `tester.sh` This is the file that allows you to send the tests you want. 
 
-There are two types of `tester.sh` files.
+``` 
+fprime
+ |
+ |__attachements
+ |    |__subjects.en.txt
+ |    |__(other files give to students)
+ |
+ |__fprime.c (The exercice must be perfect)
+ |
+ |__main.c (if exercice is a function and not a program)
+ |
+ |__tester.sh (details below)
+
+``` 
+
+
+
+🔎 There are two types of `tester.sh` files.
 You should use the first one if your exercise is a **program**, and therefore does not need a main.
 
 You must use the second if your exercise is a **function**, and therefore needs a main (you will have to provide the main in your exercise file)
 
-Here is what the first tester.sh file looks like (PROGRAM EXERCICE):
+Here is what the first tester.sh file looks like *(PROGRAM EXERCICE)*:
 
 ``` 
 FILE='fprime.c'                                                  # exercice filename
@@ -47,7 +66,9 @@ fi
 touch .system/grading/passed;     # This line must be at the end of your file
 ```
 
-And Here is what the second tester.sh file looks like (FUNCTION EXERCICE):
+And Here is what the second tester.sh file looks like *(FUNCTION EXERCICE)*:
+
+ `👉 The only change is auto_correc_program who become auto_correc_main`
 
 ``` 
 FILE='fprime.c'                                                  # exercice filename
@@ -75,15 +96,17 @@ fi
 
 touch .system/grading/passed;     # This line must be at the end of your file
 ```
-(There is just the auto_correc_program who become auto_correc_main)
 
 
 
-Once you have added a new exercise, you can test it using 42_EXAM (If you don't find it, use the command new_ex until you find it)
+✅ Once you have added a new exercise, you can test it using 42_EXAM (If you don't find it, use the command new_ex until you find it)
 
-Once the exercise is perfectly added, you can ask for it to be added to the program on Github by making a pull request! 
-Here is a video that will help you : [How to make a pull request easily](https://www.youtube.com/watch?v=rgbCcBNZcdQ)
+Once the exercise is perfectly added, you can ask for it to be added to the program on Github by making a pull request 😎
+🔎 Here is a video that will help you : [How to make a pull request easily](https://www.youtube.com/watch?v=rgbCcBNZcdQ)
 
-If your pull request is accepted, you will have your name in the ReadMe as a contributor ;)
+If your pull request is accepted, you will have your name in the ReadMe as a contributor 🥳
 
-Thanks for your contribution <3 
+😩 If you have any problem during the creation of an exercise, do not hesitate to ask a question.
+I will usually answer within the hour.
+
+Thanks for your contribution ❤️
