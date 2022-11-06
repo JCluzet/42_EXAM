@@ -72,7 +72,7 @@ The data that can be collected are :
 
 You can contribute by adding new exercises very easily with 42_EXAM. 
 
-📄 Read this documentation: [Contribution DOCS](CONTRIBUTING.md)
+📄 Read this documentation: [Contribution DOC](CONTRIBUTING.md)
 
 🥳 If your contribution is accepted, your name will be listed in the ReadMe as a contributor, thanks!
 
