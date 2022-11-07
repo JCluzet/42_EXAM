@@ -35,7 +35,7 @@
 
 
 
- # CHEAT code :
+ # 👓 CHEAT code :
  (sorry don't work in exam at 42)
    
    **remove_grade_time** : remove grade time between two push
@@ -46,7 +46,7 @@
    
    **new_ex** : generate a new exercice on the same level
    
- # VIP CHEAT code :
+ # 🕶 VIP CHEAT code :
  [sponsor to become VIP](https://github.com/sponsors/JCluzet)
  
    **gradenow** : Get an instant correction (no waiting)
@@ -61,12 +61,20 @@
 
  ```bash -c "$(curl https://grademe.fr)"```    --> Visit [Grademe.fr](https://grademe.fr)
  
-# RGPD Information :
+# 👮‍♀️ RGPD Information :
  Some data may be collected for the sole purpose of improving the service, for example to check if an error is coming from the student and not from the program. 
 The data that can be collected are : 
 - the host name of your machine.
 - the exam number you choose.
 - name of exercice, fail or success, current assignement and level.
+
+# Contribution by adding more exercices :
+
+You can contribute by adding new exercises very easily with 42_EXAM. 
+
+📄 Read this documentation: [Contribution DOC](CONTRIBUTING.md)
+
+🥳 If your contribution is accepted, your name will be listed in the ReadMe as a contributor, thanks!
 
 # Disclaimer for 42 staff :
 
