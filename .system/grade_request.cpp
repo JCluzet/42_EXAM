@@ -90,7 +90,21 @@ void exam::end_exam()
 // ==> Grademe function call by enter grademe on prompt
 void exam::grademe(void)
 {
-    // std::cout << "time before grading: " << current_ex->time_bef_grade << " seconds" << std::endl;
+    if (file_exists(".system/grading/beta"))
+    {
+        std::cout << std::endl;
+        std::cout << YELLOW << " ⚠️  Warning: "<< RESET << "This exercice is a contribution by ";
+        // output what is on .system/grading/beta
+        std::ifstream file;
+        file.open(".system/grading/beta");
+        std::string line;
+        std::getline(file, line);
+        std::cout << YELLOW << line << RESET;
+        std::cout << ", it's still in " << YELLOW << "beta testing" << RESET << "." << std::endl;
+        std::cout << "If you want to add your contribution, visit the Github ReadME 👋" << std::endl;
+        std::cout << " If you find any " << RED << "bug" << RESET << ", please report it on the Github repository." << std::endl;
+    }
+
     std::cout << std::endl
               << "Before continuing, please make " << RED << "ABSOLUTELY SURE" << RESET << " that you are in the right directory," << std::endl;
     std::cout << "that you didn't forget anything, etc..." << std::endl;
@@ -125,6 +139,7 @@ void exam::grademe(void)
 // ==> Functiion that call the bash grade system
 void exam::grade_request(bool i)
 {
+
     if (!i)
     {
         std::cout << std::endl
@@ -141,6 +156,7 @@ void exam::grade_request(bool i)
             usleep(random);
         }
     }
+
 
     if (!file_exists(".system/grading/tester.sh"))
     {
