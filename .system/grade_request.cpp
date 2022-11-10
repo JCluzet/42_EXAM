@@ -101,7 +101,7 @@ void exam::grademe(void)
         std::getline(file, line);
         std::cout << YELLOW << line << RESET;
         std::cout << ", it's still in " << YELLOW << "beta testing" << RESET << "." << std::endl;
-        std::cout << "If you want to add your contribution, visit the Github ReadME 👋" << std::endl;
+        std::cout << " If you want to add your contribution, visit the Github ReadME 👋" << std::endl;
         std::cout << " If you find any " << RED << "bug" << RESET << ", please report it on the Github repository." << std::endl;
     }
 
