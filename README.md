@@ -76,6 +76,8 @@ You can contribute by adding new exercises very easily with 42_EXAM.
 
 🥳 If your contribution is accepted, your name will be listed in the ReadMe as a contributor, thanks!
 
+Contributor : pandaero
+
 # Disclaimer for 42 staff :
 
 This project is not identical to the proposed exams and does not reflect 42 official exam. 
