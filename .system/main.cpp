@@ -15,6 +15,13 @@ void exam::exam_prompt(void)
         if (line == NULL)
             sigd();
         input = line;
+        while (input.back() == ' ')
+            input.pop_back();
+        while (input.front() == ' ')
+            input.erase(input.begin());
+        if (input.empty())
+            continue;
+        add_history(input.c_str());
         if ((input == "remove_grade_time" || input == "new_ex" || input == "force_success") && !setting_dcc)
             std::cout << " ❌ Cheat commands are currently disabled, use " << LIME << BOLD << "settings" << RESET << " command." << std::endl;
         else if (input == "finish" || input == "exit" || input == "quit")
@@ -86,8 +93,6 @@ void exam::exam_prompt(void)
             std::cout << REMOVE_LINE;
         else if (input != "")
             std::cout << "           **Unknown command**     type " << LIME << "help" << RESET << " for more help" << std::endl;
-        if (input != "")
-            add_history(line);
         // info();
     }
 }
