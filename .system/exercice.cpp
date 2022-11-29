@@ -10,7 +10,6 @@ exercice::exercice(void) {
 // ==> Function to change exercice
 int exam::change_ex(void)
 {
-    connexion_need = false;
     backup = false;
     // if there is only 1 exercice, we can't change it
     if (list_ex_lvl.size() == 1)

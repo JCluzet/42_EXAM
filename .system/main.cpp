@@ -112,29 +112,14 @@ void exam::exam_prompt(void)
 // ==> Starting a new exercice/exam
 bool exam::start_new_ex(void)
 {
-    std::string enter;
     load_settings();
     if (!backup)
     {
-        if (connexion_need)
-            connexion();
         list_ex_lvl = list_dir();
         exercice ex = *randomize_exercice(list_ex_lvl, setting_dse);
         current_ex = new exercice(ex);
         prepare_current_ex();
         store_data();
-    }
-    if (connexion_need)
-    {
-        std::cout << "You're connected " << LIME << username << RESET << "!" << std::endl;
-        std::cout << "You can log out at any time. If this program tells you you earned points,\nthen they will be counted whatever happens.\n"
-                  << std::endl;
-        std::cout << BOLD << WHITE << "You are about to start the project " << LIME << BOLD << "ExamRank0" << exam_number << BOLD << WHITE << ", in " << MAGENTA << "REAL" << BOLD << WHITE << " mode, at level " << YELLOW << level << BOLD << WHITE << "." << RESET << std::endl;
-        std::cout << WHITE << BOLD << "You would have " << LIME << BOLD << (time_max / 60) << "hrs " << BOLD << WHITE << "to complete this project." << RESET << std::endl
-                  << "Press a key to start exam 🏁" << std::endl;
-        if (!std::getline(std::cin, enter))
-            sigd();
-        connexion_need = false;
     }
     if (vip)
         infovip();
@@ -149,8 +134,6 @@ int main(int argc, char **argv)
     signal(SIGINT, sigc);
     signal(SIGQUIT, sigc);
     signal(SIGTERM, sigc);
-
-    // check_readline();
 
     if (file_exists("a.out"))
         remove("a.out");

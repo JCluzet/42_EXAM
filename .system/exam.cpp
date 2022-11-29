@@ -145,8 +145,34 @@ void exam::ask_param(void)
         if (confirm == "y" || confirm == "Y")
             break;
     }
+
     set_max_lvl();
+    level_per_ex = ((double)level + 1) / (double)level_max * 100;
+    level_per_ex_save = level_per_ex;
+
+    // SEND DATA ABOUT CHOOSEN EXAM
+    std::string tmp;
+    std::string enter;
+    if (student)
+        tmp = "bash .system/data_sender.sh \"choose_examrank0" + std::to_string(exam_number) + "\"";
+    else
+        tmp = "bash .system/data_sender.sh \"choose_examweek0" + std::to_string(exam_number) + "\"";
+    system(tmp.c_str());
+    explanation();
+    // =============================
+
+    // CONNEXION ANIMATION
+    connexion();
     set_max_time();
+    std::cout << "You're connected " << LIME << username << RESET << "!" << std::endl;
+    std::cout << "You can log out at any time. If this program tells you you earned points,\nthen they will be counted whatever happens.\n"
+              << std::endl;
+    std::cout << BOLD << WHITE << "You are about to start the project " << LIME << BOLD << "ExamRank0" << exam_number << BOLD << WHITE << ", in " << MAGENTA << "REAL" << BOLD << WHITE << " mode, at level " << YELLOW << level << BOLD << WHITE << "." << RESET << std::endl;
+    std::cout << WHITE << BOLD << "You would have " << LIME << BOLD << (time_max / 60) << "hrs " << BOLD << WHITE << "to complete this project." << RESET << std::endl
+              << "Press a key to start exam 🏁" << std::endl;
+    if (!std::getline(std::cin, enter))
+        sigd();
+    // ====================
 
     // TIME SETUP
     start_time = time(0);
@@ -154,23 +180,12 @@ void exam::ask_param(void)
     struct tm temp;
     memset(&temp, '\0', sizeof(struct tm));
     localtime_r(&end_time, &temp);
-    // usleep(1000);
+    // ============
 
-    level_per_ex = ((double)level + 1) / (double)level_max * 100;
-    level_per_ex_save = level_per_ex;
-
-    explanation();
-    std::string tmp;
-    if (student)
-        tmp = "bash .system/data_sender.sh \"choose_examrank0" + std::to_string(exam_number) + "\"";
-    else
-        tmp = "bash .system/data_sender.sh \"choose_examweek0" + std::to_string(exam_number) + "\"";
-    connexion_need = 1;
-    system(tmp.c_str());
 }
 
 // CONSTRUCTOR/OPERATOR/GETTER/SETTER
-exam::exam(void) : exam_grade(0), level(0), level_max(0), failures(0), student(false), backup(false), connexion_need(false), using_cheatcode(0)
+exam::exam(void) : exam_grade(0), level(0), level_max(0), failures(0), student(false), backup(false), using_cheatcode(0)
 {
     reelmode = true;
     waiting_time = true;

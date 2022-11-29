@@ -109,7 +109,6 @@ private:
     bool setting_dse;
     bool setting_dcc;
     std::string username;
-    bool connexion_need;
 
     time_t start_time;
     time_t end_time;
