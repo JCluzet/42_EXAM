@@ -26,9 +26,20 @@ void exam::exam_prompt(void)
             std::cout << " ❌ Cheat commands are currently disabled, use " << LIME << BOLD << "settings" << RESET << " command." << std::endl;
         else if (input == "finish" || input == "exit" || input == "quit")
         {
-            if (std::ifstream(".system/exam_token/actuel_token.txt"))
-                remove(".system/exam_token/actuel_token.txt");
-            exit(0);
+            std::cout << "Are you sure you want to" << RED << " exit" << RESET << " the exam?" << std::endl;
+            std::cout << "All your progress will be " << RED << "lost" << RESET << "." << std::endl;
+            std::cout << "Type " << LIME << BOLD << "yes" << RESET << " to confirm." << std::endl;
+            // read input
+            std::string input;
+            std::getline(std::cin, input);
+            if (input == "yes")
+            {
+                if (std::ifstream(".system/exam_token/actuel_token.txt"))
+                    remove(".system/exam_token/actuel_token.txt");
+                exit(0);
+            }
+            else
+                std::cout << " ** Abort ** " << std::endl;
         }
         else if (input == "settings")
         {
