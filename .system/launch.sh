@@ -32,12 +32,11 @@ else
     clear
 fi
 
-# clear
-echo -ne "$WHITE$BOLD"
-echo -ne "Compilation of$BOLD$MANGENTA 42_EXAM v2.1 $BOLD$WHITE "
+echo -ne "Checking readline library..."
 
+
+# Check if readline is installed, if not, install it
 g++ .system/checkreadline.cpp -o .system/readline_ok 2> .system/.devmake.err
-# if there is no .system/readline_ok file, it means that the readline library is not installed
 if [ ! -f .system/readline_ok ]; then
     echo -ne "$RED$BOLD"
     clear
@@ -46,6 +45,23 @@ if [ ! -f .system/readline_ok ]; then
     sleep 2
     sudo apt-get install libreadline-dev
     clear
+    g++ .system/checkreadline.cpp -o .system/readline_ok 2> .system/.devmake.err
+        # if there is no .system/readline_ok file, it means that the readline library is not installed
+    if [ ! -f .system/readline_ok ]; then
+        echo -ne "$RED$BOLD"
+        clear
+        echo -ne "Readline installation error using apt-get... $WHITE$BOLD"
+        echo -e "Try to install with yum..."
+        sleep 1
+        sudo yum install readline
+        clear
+        if [ ! -f .system/readline_ok ]; then
+]           echo -ne "Can't install readline library... $WHITE$BOLD"
+            echo -e "Please install it manually or put an Issue in Github..."
+            exit 1
+        fi
+        clear
+    fi
     echo -ne "Readline is installed, please relaunch the program $WHITE$BOLD"
     echo "Auto exit in 2 seconds..."
     sleep 2
@@ -53,6 +69,11 @@ if [ ! -f .system/readline_ok ]; then
 else
     rm .system/readline_ok
 fi
+
+clear
+echo -ne "$WHITE$BOLD"
+echo -ne "Compilation of$BOLD$MANGENTA 42_EXAM v2.1 $BOLD$WHITE "
+# ===============================================
 
 g++ .system/exercice.cpp .system/main.cpp .system/menu.cpp .system/exam.cpp .system/utils.cpp .system/grade_request.cpp .system/data_persistence.cpp -lreadline -o .system/a.out > .system/.devmake.err 2>.system/.devmake.err &
 PID=$!
