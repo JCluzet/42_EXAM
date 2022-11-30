@@ -103,7 +103,7 @@ void exam::explanation(void)
               << std::endl
               << std::endl;
 
-    std::cout << RED << "     ‼️ DICLAIMER ‼️" << WHITE << std::endl;
+    std::cout << RED << "     ‼️  DICLAIMER" << WHITE << std::endl;
     std::cout << "         This program is " << RED << "not" << WHITE << " the real 42 exam and is " << RED << "not" << WHITE << " made by 42." << std::endl;
     std::cout << "         It is created by a student, free and open-source." << std::endl << std::endl;
     std::cout << RESET << "     (Press enter to continue...)" << std::endl
