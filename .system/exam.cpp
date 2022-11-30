@@ -102,7 +102,11 @@ void exam::explanation(void)
     std::cout << "     📌 Nice reminder : Here you don't need to use GIT.\n         Remember that during the exam you will have to use it to push your project !\n\n"
               << std::endl
               << std::endl;
-    std::cout << "     (Press enter to continue...)" << std::endl
+
+    std::cout << RED << "     ‼️ DICLAIMER ‼️" << WHITE << std::endl;
+    std::cout << "         This program is " << RED << "not" << WHITE << " the real 42 exam and is " << RED << "not" << WHITE << " made by 42." << std::endl;
+    std::cout << "         It is created by a student, free and open-source." << std::endl << std::endl;
+    std::cout << RESET << "     (Press enter to continue...)" << std::endl
               << "      ";
     if (!std::getline(std::cin, enter))
         sigd();
