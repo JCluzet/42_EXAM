@@ -6,11 +6,13 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/09/21 13:28:19 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/12/14 15:24:12 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FILE="../../rendu/$2/$1"
+
+# echo ""
 
 tmp=""
 timeout=1
@@ -53,8 +55,13 @@ DIFF=$(diff sourcexam finalexam)
 if [ "$DIFF" != "" ]
 then
         echo "----------------8<-------------[ START TEST " >> traceback
-        printf "        💻 TEST\n./a.out ${@:3}\n" >> traceback
-        printf "        🔎 YOUR OUTPUT:\n" >> traceback
+        printf "        💻 TEST\n./a.out " >> traceback
+        # print all the arguments, begin by the 3rd
+        for i in "${@:3}"
+        do
+            printf "\"$i\" " >> traceback
+        done
+        printf "\n        🔎 YOUR OUTPUT:\n" >> traceback
         cat finalexam >> traceback
         if [ $timeout -eq 1 ]
         then

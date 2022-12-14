@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/09/21 13:28:22 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/12/14 15:24:37 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,12 @@ DIFF=$(diff sourcexam finalexam)
 if [ "$DIFF" != "" ] || [ $timeout -eq 1 ]
 then
         echo "----------------8<-------------[ START TEST " >> traceback
-        printf "        💻 TEST\n./a.out ${@:3}\n" >> traceback
+        printf "        💻 TEST\n./a.out " >> traceback
+        # print all the arguments, begin by the 3rd
+        for i in "${@:3}"
+        do
+            printf "\"$i\" " >> traceback
+        done
         printf "        🔎 YOUR OUTPUT:\n" >> traceback
         cat finalexam >> traceback
         if [ $timeout -eq 1 ]
