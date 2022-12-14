@@ -1,37 +1,82 @@
-// Passed Moulinette 2019.09.01
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rev_wstr.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/22 15:16:31 by jcharloi          #+#    #+#             */
+/*   Updated: 2022/12/14 17:54:50 by jcluzet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <unistd.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <ctype.h>
 
-void	rev_wstr(char *str)
+int		ft_strlen(char *str)
 {
-	int i = 0;
-	int j;
-	int first_word = 1;
+	int	i = 0;
 
 	while (str[i] != '\0')
-		++i;
-
-	while (i >= 0)
-	{
-		while (i >= 0 && (str[i] == '\0' || str[i] == ' ' || str[i] == '\t'))
-			--i;
-		j = i;
-		while (j >= 0 && str[j] != ' ' && str[j] != '\t')
-			--j;
-		if (first_word == 0)
-			write(1, " ", 1);
-		write(1, str + j + 1, i - j);
-		first_word = 0;
-		i = j;
-	}
+		i++;
+	return (i);
 }
 
-int		main(int argc, char **argv)
+void	ft_putstr(char *str)
 {
-	if (argc == 2)
-		rev_wstr(argv[1]);
+	write(1, str, ft_strlen(str));
+}
 
-	write(1, "\n", 1);
+void	fonction(char *str)
+{
+	char *copy;
+	int	size;
+	int	i;
+	int	o;
+	int mot;
+	
+	size = 1;
+	o = 0;
+	mot = 0;
+	if (!(copy = (char *)malloc(sizeof(char) * ft_strlen(str) + 1)))
+		return ;
+	i = ft_strlen(str) - 1;
+	while (i >= 0)
+	{
+		while (str[i] != ' ' && i >= 0)
+		{
+			size++;
+			i--;
+		}
+		size++;
+		i++;
+		while (str[i] != '\0' && str[i] != ' ')
+		{
+			copy[o] = str[i];
+			o++;
+			i++;
+		}
+		if (size <= ft_strlen(str) + 1)
+			copy[o++] = ' ';
+		mot++;
+		i = ft_strlen(str) - size;
+	}
+	//copy[i] = '\0';
+	ft_putstr(copy);
+	//noublie pas le \0
+}
+
+int main(int argc, char **argv)
+{
+	char *str;
+
+	if (argc == 2)
+	{
+		str = argv[1];
+		fonction(str);		
+	}
+	ft_putstr("\n");
 	return (0);
 }
