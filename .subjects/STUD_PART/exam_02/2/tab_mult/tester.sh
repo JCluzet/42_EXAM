@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/09/01 23:46:34 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/12/14 15:27:08 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ if [ -e .system/grading/traceback ];then
 	exit 1
 fi
 
-bash .system/auto_correc_program.sh $FILE $ASSIGN  "-4"
+bash .system/auto_correc_program.sh $FILE $ASSIGN  "4"
 if [ -e .system/grading/traceback ];then
     mv .system/grading/traceback .
 	exit 1
