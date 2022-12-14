@@ -70,9 +70,7 @@ void exam::exam_prompt(void)
         else if (input == "force_success")
         {
             using_cheatcode++;
-            std::string tmp = "bash .system/data_sender.sh \"cheatcode:force_success\"";
-            system(tmp.c_str());
-            success_ex();
+            success_ex(1);
         }
         else if (input == "help")
         {

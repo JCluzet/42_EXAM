@@ -63,7 +63,7 @@ public:
     void info(void);
     void ask_param(void);
     void fail_ex(void);
-    void success_ex(void);
+    void success_ex(bool force);
     void explanation(void);
     int get_exam_number(void);
     int get_lvl(void);

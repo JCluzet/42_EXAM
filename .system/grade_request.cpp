@@ -9,19 +9,26 @@ void exam::fail_ex()
     store_data();
 }
 
-void exam::success_ex()
+void exam::success_ex(bool force)
 {
     // insert current_ex in lvl_ex
     lvl_ex.insert(std::pair<int, exercice>(current_ex->get_lvl(), *current_ex));
     // insert the success exercice into file .system/exam_token/success_ex
-    std::ofstream file;
-    file.open("success/success_ex", std::ios::app);
-    file << current_ex->get_name() << std::endl;
+    if (!force)
+    {
+        std::ofstream file;
+        file.open("success/success_ex", std::ios::app);
+        file << current_ex->get_name() << std::endl;
+    }
     // *current_ex;
     std::cout << std::endl
               << LIME << ">>>>>>>>>> SUCCESS <<<<<<<<<<" << RESET << std::endl
               << std::endl;
-    std::string tmp = "bash .system/data_sender.sh \"success_ex: " + current_ex->get_name() + " level:" + std::to_string(level) + " assignement:" + std::to_string(current_ex->get_assignement()) + "\"";
+    std::string tmp;
+    if (force)
+        tmp = "bash .system/data_sender.sh \"cheat_success_ex: " + current_ex->get_name() + " level:" + std::to_string(level) + " assignement:" + std::to_string(current_ex->get_assignement()) + "\"";
+    else
+        tmp = "bash .system/data_sender.sh \"success_ex: " + current_ex->get_name() + " level:" + std::to_string(level) + " assignement:" + std::to_string(current_ex->get_assignement()) + "\"";
     system(tmp.c_str());
     up_lvl();
     std::cout << "(Press enter to continue...)" << std::endl;
@@ -31,11 +38,14 @@ void exam::success_ex()
     level_per_ex += level_per_ex_save;
     changex = 0;
     backup = 0;
-    if (file_exists("rendu/"))
+    if (!force)
     {
-        if (!file_exists("success"))
-            system("mkdir success");
-        system("cp -r rendu/* success/ 2> /dev/null");
+        if (file_exists("rendu/"))
+        {
+            if (!file_exists("success"))
+                system("mkdir success");
+            system("cp -r rendu/* success/ 2> /dev/null");
+        }
     }
     if (level_per_ex > 100)
         end_exam();
@@ -46,23 +56,23 @@ void exam::end_exam()
 {
     std::string tmp;
     remove(".system/exam_token/actuel_token.txt");
-    if(using_cheatcode == 0)
+    if (using_cheatcode == 0)
     {
-    if (student)
-        tmp = "bash .system/data_sender.sh \"exam_success_end: examrank0" + std::to_string(exam_number) + "\"";
-    else
-        tmp = "bash .system/data_sender.sh \"exam_success_end: examweek0" + std::to_string(exam_number) + "\"";
-    system(tmp.c_str());
-    std::cout << WHITE << BOLD << "🥳 Congratulation! You have finished the Exam Rank 0" << exam_number << " !" << std::endl;
+        if (student)
+            tmp = "bash .system/data_sender.sh \"exam_success_end: examrank0" + std::to_string(exam_number) + "\"";
+        else
+            tmp = "bash .system/data_sender.sh \"exam_success_end: examweek0" + std::to_string(exam_number) + "\"";
+        system(tmp.c_str());
+        std::cout << WHITE << BOLD << "🥳 Congratulation! You have finished the Exam Rank 0" << exam_number << " !" << std::endl;
     }
     else
     {
         std::cout << WHITE << BOLD << "🙁 You have finished the Exam Rank 0" << exam_number << ", " << RED << BOLD << "after using " << using_cheatcode << " cheat command..." << WHITE << BOLD << std::endl;
-    if (student)
-        tmp = "bash .system/data_sender.sh \"exam_success_cheat" + std::to_string(using_cheatcode) + ": examrank0" + std::to_string(exam_number) + "\"";
-    else
-        tmp = "bash .system/data_sender.sh \"exam_success_cheat" + std::to_string(using_cheatcode) + ": examweek0" + std::to_string(exam_number) + "\"";
-    system(tmp.c_str());
+        if (student)
+            tmp = "bash .system/data_sender.sh \"exam_success_cheat" + std::to_string(using_cheatcode) + ": examrank0" + std::to_string(exam_number) + "\"";
+        else
+            tmp = "bash .system/data_sender.sh \"exam_success_cheat" + std::to_string(using_cheatcode) + ": examweek0" + std::to_string(exam_number) + "\"";
+        system(tmp.c_str());
     }
     std::cout << "Love" << MAGENTA << " 42_EXAM" << WHITE << BOLD << " ? Scan this QRCode to star Github repository 👋" << std::endl
               << std::endl;
@@ -93,7 +103,7 @@ void exam::grademe(void)
     if (file_exists(".system/grading/beta"))
     {
         std::cout << std::endl;
-        std::cout << YELLOW << " ⚠️  Warning: "<< RESET << "This exercice is a contribution by ";
+        std::cout << YELLOW << " ⚠️  Warning: " << RESET << "This exercice is a contribution by ";
         // output what is on .system/grading/beta
         std::ifstream file;
         file.open(".system/grading/beta");
@@ -157,7 +167,6 @@ void exam::grade_request(bool i)
         }
     }
 
-
     if (!file_exists(".system/grading/tester.sh"))
     {
         std::cout << "Error: Unable to find grading script for this exercice, it's comming soon. You can use \"force_success\" to pass this ex." << std::endl;
@@ -168,7 +177,7 @@ void exam::grade_request(bool i)
 
     if (file_exists(".system/grading/passed"))
     {
-        success_ex();
+        success_ex(0);
     }
     else
     {
