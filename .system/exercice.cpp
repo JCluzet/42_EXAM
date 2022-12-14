@@ -98,7 +98,15 @@ exercice *randomize_exercice(std::map<int, exercice> list, bool remove_success)
         std::cout << "Then relaunch 42_EXAM and recover your exam" << std::endl;
         exit(0);
     }
-    srand(time(NULL));
+    bool dosrandom = true;
+    // if list contain rostring, remove it
+    for (std::map<int, exercice>::iterator it = list.begin(); it != list.end(); it++)
+    {
+        if (it->second.get_name() == "rostring")
+            dosrandom = false;
+    }
+    if (dosrandom)
+        srand(time(NULL));
     int random = rand() % list.size();
     for (int i = 0; i < random; i++)
         it++;
