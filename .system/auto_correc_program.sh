@@ -3,12 +3,15 @@
 #                                                         :::      ::::::::    #
 #    auto_correc_program.sh                             :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
+#    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/12/14 15:24:12 by jcluzet          ###   ########.fr        #
+#    Updated: 2022/12/15 17:01:47 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+source .system/git_logic.sh
+source .system/file_logic.sh
 
 FILE="../../rendu/$2/$1"
 
@@ -22,6 +25,8 @@ if [ -e .system/grading/traceback ];then
 fi
 
 cd .system/grading
+pull_files
+check_files $FILE
 gcc -o source "$1"
 ./source "${@:3}" | cat -e > sourcexam       #TESTING
 rm source
@@ -62,6 +67,8 @@ then
             printf "\"$i\" " >> traceback
         done
         printf "\n        🔎 YOUR OUTPUT:\n" >> traceback
+		git_print_error_if_needed
+		files_print_error_if_needed $FILE
         cat finalexam >> traceback
         if [ $timeout -eq 1 ]
         then

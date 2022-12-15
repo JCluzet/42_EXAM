@@ -44,9 +44,8 @@ bool exam::prepare_current_ex(void)
     clean_all();
 
     // create directory for the current exercice
-    system("mkdir rendu 2> /dev/null");
+    system(".system/create_git_server.sh");
     system("mkdir subjects 2> /dev/null");
-    system("mkdir .system/grading 2> /dev/null");
 
     // copy all the files in the current get_path() + attachement/* to the subjects directory
     std::string cmd_system_call = "cp -r " + get_path() + "/attachement/*" + " subjects/";

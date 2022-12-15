@@ -1,31 +1,33 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    file_logic.sh                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/04/21 01:05:24 by jcluzet           #+#    #+#              #
-#    Updated: 2022/12/15 17:08:08 by yrabby           ###   ########.fr        #
+#    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
+#    Updated: 2022/12/15 17:10:51 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-export GIT_NO_PUSH_ERR = 0
-export NO_FILE_ERR = 0
-export ROOT = $(shell pwd)
+check_files()
+{
+	local FILE="$1"
 
-all:
-	@bash .system/launch.sh
+	if [ $GIT_NO_PUSH_ERR -eq 1 ] ; then
+		return 
+	fi
+	if [ ! -e "$FILE" ]; then
+		NO_FILE_ERR=1
+	fi
+}
 
-re: clean
-	@bash .system/launch.sh
+files_print_error_if_needed()
+{
+	local FILE="$1"
 
-clean:
-	@rm -rf .system/a.out
-	@rm -rf .system/a.out.dSYM
-
-fclean:
-	@rm .system/a.out
-
-help:
-	@echo "\x1B[37mType \x1B[32m> make \x1B[37mto start the exam"
+	if [ $NO_FILE_ERR -eq 1 ] ; then
+		printf "FILE ERROR:\nfile '%s' does not exist make sure you pushed!\n" $FILE >> traceback
+	fi
+	NO_FILE_ERR=0
+}
