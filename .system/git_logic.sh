@@ -1,31 +1,27 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    git_logic.sh                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/04/21 01:05:24 by jcluzet           #+#    #+#              #
-#    Updated: 2022/12/15 17:08:08 by yrabby           ###   ########.fr        #
+#    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
+#    Updated: 2022/12/15 17:01:20 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-export GIT_NO_PUSH_ERR = 0
-export NO_FILE_ERR = 0
-export ROOT = $(shell pwd)
+pull_files()
+{
+	git pull origin master &>/dev/null
+	if [ $? -ne 0 ]; then
+		GIT_NO_PUSH_ERR=1
+	fi
+}
 
-all:
-	@bash .system/launch.sh
-
-re: clean
-	@bash .system/launch.sh
-
-clean:
-	@rm -rf .system/a.out
-	@rm -rf .system/a.out.dSYM
-
-fclean:
-	@rm .system/a.out
-
-help:
-	@echo "\x1B[37mType \x1B[32m> make \x1B[37mto start the exam"
+git_print_error_if_needed()
+{
+	if [ $GIT_NO_PUSH_ERR -eq 1 ] ; then
+		printf "GIT ERROR:\nwe pulled but there was nothing there...\n" >> traceback
+	fi
+	GIT_NO_PUSH_ERR=0
+}
