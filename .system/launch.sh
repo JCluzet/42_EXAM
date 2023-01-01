@@ -41,7 +41,7 @@ PID=$!
 while [ -d /proc/$PID ]; do
   for i in "${spin[@]}"
   do
-        echo -ne "$LINE_UP$BLUE$i$RESET Checking server availability\n"
+        echo -ne "$LINE_UP$WHITE$i$RESET Checking server availability\n"
         for i in {1..32}
         do
             printf "\b"
@@ -57,7 +57,7 @@ echo -ne "  ➫ Local launch\n\n"
 else
     git pull
     clear
-    printf "$GREEN"
+    printf "$GREEN$BOLD"
     echo -ne "✔$RESET You have the last version$GREEN$BOLD v$version\n\n" 
 
 fi
@@ -73,7 +73,7 @@ g++ .system/checkreadline.cpp -o .system/readline_ok 2> .system/.devmake.err &
 while [ ! -f .system/readline_ok ]; do
     for i in "${spin[@]}"
     do
-        echo -ne "$LINE_UP$BLUE$i$RESET Checking readline library\n"
+        echo -ne "$LINE_UP$WHITE$i$RESET Checking readline library\n"
         for i in {1..29}
         do
             printf "\b"
@@ -81,7 +81,7 @@ while [ ! -f .system/readline_ok ]; do
         sleep 0.1
     done
 done
-printf "$LINE_UP$CLEAR_LINE$GREEN"
+printf "$LINE_UP$CLEAR_LINE$GREEN$BOLD"
 echo -ne "✔$RESET Checking readline library$WHITE$BOLD\n\n"
 
 
@@ -118,10 +118,9 @@ if [ ! -f .system/readline_ok ]; then
     echo "Auto exit in 2 seconds..."
     sleep 2
     exit 0
-else
-    rm .system/readline_ok
 fi
 
+rm -rf .system/readline_ok
 # sleep 1000
 # clear
 # echo -ne "$RESET"
@@ -135,7 +134,7 @@ PID=$!
 while [ ! -f .system/a.out ]; do
   for i in "${spin[@]}"
   do
-        echo -ne "$LINE_UP$BLUE$i$RESET Compilation of$BOLD$MANGENTA 42_EXAM $RESET\n"
+        echo -ne "$LINE_UP$WHITE$i$RESET Compilation of$BOLD$MANGENTA 42_EXAM $RESET\n"
         if [ -f .system/.devmake.err ]; then
         result=$(awk '{t+=length($0)}END{print t}' .system/.devmake.err)
         # echo "$result<<<<"
@@ -165,7 +164,7 @@ while [ ! -f .system/a.out ]; do
   done
 done
 
-printf "$LINE_UP$CLEAR_LINE$GREEN"
+printf "$LINE_UP$CLEAR_LINE$GREEN$BOLD"
 echo -ne "✔$RESET Compilation of$BOLD$MANGENTA 42_EXAM $RESET\n"
 
 # echo "Done!"
