@@ -1,3 +1,6 @@
+version="2.1"
+
+
 # if there is a a.out file in the current directory, delete it
 if [ -f .system/a.out ]; then
     ./.system/a.out
@@ -11,35 +14,84 @@ fi
 
 MANGENTA="\033[35m"
 BOLD="\033[1m"
+CLEAR_LINE="\033[2K"
+LINE_UP="\033[1A"
 RED="\033[31m"
 WHITE="\033[37m"
 GRAY="\033[90m"
+BLUE="\033[34m"
+GREEN="\033[32m"
 RESET="\033[0m"
-spin[0]="-"
-spin[1]="\\"
-spin[2]="|"
-spin[3]="/"
+spin[0]="⠁"
+spin[1]="⠃"
+spin[2]="⠇"
+spin[3]="⠧"
+spin[4]="⠷"
+spin[5]="⠿"
+spin[6]="⠷"
+spin[7]="⠧"
+spin[8]="⠇"
+spin[9]="⠃"
 
-echo "Checking server availability..."
+clear
 
-# check if there is connexion to the internet, else do git pull for maj
+ping -c 1 google.com > /dev/null 2>&1 &
+PID=$!
+
+while [ -d /proc/$PID ]; do
+  for i in "${spin[@]}"
+  do
+        echo -ne "$LINE_UP$BLUE$i$RESET Checking server availability\n"
+        for i in {1..32}
+        do
+            printf "\b"
+        done
+        sleep 0.1
+  done
+done
+
 if ! ping -c 1 google.com > /dev/null 2>&1; then
-    clear
-    # printf "42_EXAM: Launch without network...\n\n"
-    # sleep 2
+printf "$LINE_UP$CLEAR_LINE$RED"
+echo -ne "✗$RESET Checking server availability$WHITE$BOLD\n"
+echo -ne "  ➫ Local launch\n\n"
 else
     git pull
     clear
+    printf "$GREEN"
+    echo -ne "✔$RESET You have the last version$GREEN$BOLD v$version\n\n" 
+
 fi
 
-echo -ne "Checking readline library..."
 
+# sleep 1000
+
+# check if there is connexion to the internet, else do git pull for maj
 
 # Check if readline is installed, if not, install it
-g++ .system/checkreadline.cpp -o .system/readline_ok 2> .system/.devmake.err
+g++ .system/checkreadline.cpp -o .system/readline_ok 2> .system/.devmake.err &
+
+while [ ! -f .system/readline_ok ]; do
+    for i in "${spin[@]}"
+    do
+        echo -ne "$LINE_UP$BLUE$i$RESET Checking readline library\n"
+        for i in {1..29}
+        do
+            printf "\b"
+        done
+        sleep 0.1
+    done
+done
+printf "$LINE_UP$CLEAR_LINE$GREEN"
+echo -ne "✔$RESET Checking readline library$WHITE$BOLD\n\n"
+
+
+
+
 if [ ! -f .system/readline_ok ]; then
+    # clear
+    printf "$LINE_UP$CLEAR_LINE$RED"
+    echo -ne "✗$RESET Checking readline library$WHITE$BOLD\n\n"
     echo -ne "$RED$BOLD"
-    clear
     echo -ne "Readline library not installed $WHITE$BOLD"
     echo -e "Auto install in 2 seconds..."
     sleep 2
@@ -70,9 +122,10 @@ else
     rm .system/readline_ok
 fi
 
-clear
-echo -ne "$WHITE$BOLD"
-echo -ne "Compilation of$BOLD$MANGENTA 42_EXAM v2.1 $BOLD$WHITE "
+# sleep 1000
+# clear
+# echo -ne "$RESET"
+# echo -ne "Compilation of$BOLD$MANGENTA 42_EXAM v2.1 $RESET "
 # ===============================================
 
 g++ .system/exercice.cpp .system/main.cpp .system/menu.cpp .system/exam.cpp .system/utils.cpp .system/grade_request.cpp .system/data_persistence.cpp -lreadline -o .system/a.out > .system/.devmake.err 2>.system/.devmake.err &
@@ -82,15 +135,14 @@ PID=$!
 while [ ! -f .system/a.out ]; do
   for i in "${spin[@]}"
   do
-        echo -ne "\b$i"
-        # if the file .system/data_persistence.txt having more than 1 line, exit
+        echo -ne "$LINE_UP$BLUE$i$RESET Compilation of$BOLD$MANGENTA 42_EXAM $RESET\n"
         if [ -f .system/.devmake.err ]; then
         result=$(awk '{t+=length($0)}END{print t}' .system/.devmake.err)
         # echo "$result<<<<"
         if [ "$result" != "" ]; then
             sending=$(cat .system/.devmake.err)
-            echo ""
-            echo ""
+        printf "$LINE_UP$CLEAR_LINE$RED"
+        echo -ne "✗$RESET Compilation of$BOLD$MANGENTA 42_EXAM $RESET\n"
             printf "$RED$BOLD"
             printf "Oops !$WHITE$BOLD Something went wrong during the compilation...\n"
             echo "Please make a report on Github repo, make sure to include this :"
@@ -106,12 +158,18 @@ while [ ! -f .system/a.out ]; do
         fi
         fi
         sleep 0.1
+        for i in {1..30}
+        do
+            printf "\b"
+        done
   done
 done
-echo ""
-echo ""
 
-echo "Done!"
+printf "$LINE_UP$CLEAR_LINE$GREEN"
+echo -ne "✔$RESET Compilation of$BOLD$MANGENTA 42_EXAM $RESET\n"
+
+# echo "Done!"
 chmod +x .system/a.out
-sleep 1
+# sleep 1
+
 ./.system/a.out
