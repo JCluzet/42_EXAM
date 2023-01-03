@@ -33,7 +33,7 @@ spin[7]="⠧"
 spin[8]="⠇"
 spin[9]="⠃"
 
-if [ "$1" != "grade" ]; then
+if [ "$1" != "grade" && "$1" != "gradejustinstall" ]; then
     clear
 fi
 
