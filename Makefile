@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/21 01:05:24 by jcluzet           #+#    #+#              #
-#    Updated: 2023/01/03 16:20:03 by jcluzet          ###   ########.fr        #
+#    Updated: 2023/01/03 16:51:23 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,9 @@ all:
 
 re: clean
 	@bash .system/launch.sh
+
+gradejustinstall:
+	@bash .system/launch.sh gradejustinstall
 
 grade:
 	@bash .system/launch.sh grade
