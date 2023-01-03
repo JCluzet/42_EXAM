@@ -75,7 +75,7 @@ g++ .system/checkreadline.cpp -o .system/readline_ok 2> .system/.devmake.err &
 while [ ! -f .system/readline_ok ]; do
     for i in "${spin[@]}"
     do
-        echo -ne "$LINE_UP$WHITE$i$RESET Checking readline library\n"
+        echo -ne "$LINE_UP$WHITE$i$WHITE$BOLD Checking readline library\n"
         for i in {1..29}
         do
             printf "\b"
@@ -136,7 +136,7 @@ PID=$!
 while [ ! -f .system/a.out ]; do
   for i in "${spin[@]}"
   do
-        echo -ne "$LINE_UP$WHITE$i$RESET Compilation of$BOLD$MANGENTA 42_EXAM $RESET\n"
+        echo -ne "$LINE_UP$WHITE$i$WHITE$BOLD Compilation of$BOLD$MANGENTA 42_EXAM $RESET\n"
         if [ -f .system/.devmake.err ]; then
         result=$(awk '{t+=length($0)}END{print t}' .system/.devmake.err)
         # echo "$result<<<<"
