@@ -1,6 +1,5 @@
 version="2.1"
 
-
 # if there is a a.out file in the current directory, delete it
 if [ -f .system/a.out ]; then
     ./.system/a.out
@@ -33,38 +32,38 @@ spin[7]="⠧"
 spin[8]="⠇"
 spin[9]="⠃"
 
-if [ "$1" != "grade" && "$1" != "gradejustinstall" ]; then
-    clear
+if [ "$1" != "grade" ]; then
+    if [ "$1" != "gradejustinstall" ]; then
+        clear
+    fi
 fi
 
-ping -c 1 google.com > /dev/null 2>&1 &
+ping -c 1 google.com >/dev/null 2>&1 &
 PID=$!
 
 while [ -d /proc/$PID ]; do
-  for i in "${spin[@]}"
-  do
+    for i in "${spin[@]}"; do
         echo -ne "$LINE_UP$WHITE$i$RESET Checking server availability\n"
-        for i in {1..32}
-        do
+        for i in {1..32}; do
             printf "\b"
         done
         sleep 0.1
-  done
+    done
 done
 
 if [ "$1" != "gradejustinstall" ]; then
 
-if ! ping -c 1 google.com > /dev/null 2>&1; then
-printf "$LINE_UP$CLEAR_LINE$RED"
-echo -ne "✗$RESET Checking server availability$WHITE$BOLD\n"
-echo -ne "  ➫ Local launch\n\n"
-else
-    git pull > /dev/null 2>&1 &
-    # clear 
-    printf "$GREEN$BOLD"
-    echo -ne "✔$RESET You have the last version$GREEN$BOLD v$version\n\n" 
+    if ! ping -c 1 google.com >/dev/null 2>&1; then
+        printf "$LINE_UP$CLEAR_LINE$RED"
+        echo -ne "✗$RESET Checking server availability$WHITE$BOLD\n"
+        echo -ne "  ➫ Local launch\n\n"
+    else
+        git pull >/dev/null 2>&1 &
+        # clear
+        printf "$GREEN$BOLD"
+        echo -ne "✔$RESET You have the last version$GREEN$BOLD v$version\n\n"
 
-fi
+    fi
 
 fi
 
@@ -73,14 +72,12 @@ fi
 # check if there is connexion to the internet, else do git pull for maj
 
 # Check if readline is installed, if not, install it
-g++ .system/checkreadline.cpp -o .system/readline_ok 2> .system/.devmake.err &
+g++ .system/checkreadline.cpp -o .system/readline_ok 2>.system/.devmake.err &
 
 while [ ! -f .system/readline_ok ]; do
-    for i in "${spin[@]}"
-    do
+    for i in "${spin[@]}"; do
         echo -ne "$LINE_UP$WHITE$i$WHITE$BOLD Checking readline library\n"
-        for i in {1..29}
-        do
+        for i in {1..29}; do
             printf "\b"
         done
         sleep 0.1
@@ -88,9 +85,6 @@ while [ ! -f .system/readline_ok ]; do
 done
 printf "$LINE_UP$CLEAR_LINE$GREEN$BOLD"
 echo -ne "✔$RESET Checking readline library$WHITE$BOLD\n\n"
-
-
-
 
 if [ ! -f .system/readline_ok ]; then
     # clear
@@ -102,8 +96,8 @@ if [ ! -f .system/readline_ok ]; then
     sleep 2
     sudo apt-get install libreadline-dev
     clear
-    g++ .system/checkreadline.cpp -o .system/readline_ok 2> .system/.devmake.err
-        # if there is no .system/readline_ok file, it means that the readline library is not installed
+    g++ .system/checkreadline.cpp -o .system/readline_ok 2>.system/.devmake.err
+    # if there is no .system/readline_ok file, it means that the readline library is not installed
     if [ ! -f .system/readline_ok ]; then
         echo -ne "$RED$BOLD"
         clear
@@ -113,7 +107,7 @@ if [ ! -f .system/readline_ok ]; then
         sudo yum install readline
         clear
         if [ ! -f .system/readline_ok ]; then
-]           echo -ne "Can't install readline library... $WHITE$BOLD"
+            ] echo -ne "Can't install readline library... $WHITE$BOLD"
             echo -e "Please install it manually or put an Issue in Github..."
             exit 1
         fi
@@ -132,41 +126,39 @@ rm -rf .system/readline_ok
 # echo -ne "Compilation of$BOLD$MANGENTA 42_EXAM v2.1 $RESET "
 # ===============================================
 
-g++ .system/exercice.cpp .system/main.cpp .system/menu.cpp .system/exam.cpp .system/utils.cpp .system/grade_request.cpp .system/data_persistence.cpp -lreadline -o .system/a.out > .system/.devmake.err 2>.system/.devmake.err &
+g++ .system/exercice.cpp .system/main.cpp .system/menu.cpp .system/exam.cpp .system/utils.cpp .system/grade_request.cpp .system/data_persistence.cpp -lreadline -o .system/a.out >.system/.devmake.err 2>.system/.devmake.err &
 PID=$!
 
 # while there is no a.out file in the current directory, wait
 while [ ! -f .system/a.out ]; do
-  for i in "${spin[@]}"
-  do
+    for i in "${spin[@]}"; do
         echo -ne "$LINE_UP$WHITE$i$WHITE$BOLD Compilation of$BOLD$MANGENTA 42_EXAM $RESET\n"
         if [ -f .system/.devmake.err ]; then
-        result=$(awk '{t+=length($0)}END{print t}' .system/.devmake.err)
-        # echo "$result<<<<"
-        if [ "$result" != "" ]; then
-            sending=$(cat .system/.devmake.err)
-        printf "$LINE_UP$CLEAR_LINE$RED"
-        echo -ne "✗$RESET Compilation of$BOLD$MANGENTA 42_EXAM $RESET\n"
-            printf "$RED$BOLD"
-            printf "Oops !$WHITE$BOLD Something went wrong during the compilation...\n"
-            echo "Please make a report on Github repo, make sure to include this :"
-            echo ""
-            printf "      - Your OS:$RESET$GRAY $(uname -a)$WHITE$BOLD\n"
-            printf "      - The error message:$RESET$GRAY\n"
-            cat .system/.devmake.err
-            printf "$WHITE$BOLD"
-            echo ""
-            echo "Thanks for your contribution !"
-            curl -X POST -F "user=$LOGNAME" -F "os=$(uname)" -F "using=42_EXAM_compil_error" -F "fail=$sending" "https://user.grademe.fr/indexerror.php" > /dev/null 2>&1
-            exit 0
-        fi
+            result=$(awk '{t+=length($0)}END{print t}' .system/.devmake.err)
+            # echo "$result<<<<"
+            if [ "$result" != "" ]; then
+                sending=$(cat .system/.devmake.err)
+                printf "$LINE_UP$CLEAR_LINE$RED"
+                echo -ne "✗$RESET Compilation of$BOLD$MANGENTA 42_EXAM $RESET\n"
+                printf "$RED$BOLD"
+                printf "Oops !$WHITE$BOLD Something went wrong during the compilation...\n"
+                echo "Please make a report on Github repo, make sure to include this :"
+                echo ""
+                printf "      - Your OS:$RESET$GRAY $(uname -a)$WHITE$BOLD\n"
+                printf "      - The error message:$RESET$GRAY\n"
+                cat .system/.devmake.err
+                printf "$WHITE$BOLD"
+                echo ""
+                echo "Thanks for your contribution !"
+                curl -X POST -F "user=$LOGNAME" -F "os=$(uname)" -F "using=42_EXAM_compil_error" -F "fail=$sending" "https://user.grademe.fr/indexerror.php" >/dev/null 2>&1
+                exit 0
+            fi
         fi
         sleep 0.1
-        for i in {1..30}
-        do
+        for i in {1..30}; do
             printf "\b"
         done
-  done
+    done
 done
 
 printf "$LINE_UP$CLEAR_LINE$GREEN$BOLD"
