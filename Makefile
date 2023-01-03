@@ -6,16 +6,19 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/21 01:05:24 by jcluzet           #+#    #+#              #
-#    Updated: 2022/09/12 20:25:33 by jcluzet          ###   ########.fr        #
+#    Updated: 2023/01/03 16:20:03 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 all:
-	@bash .system/launch.sh
+	@bash .system/launch.sh all
 
 re: clean
 	@bash .system/launch.sh
+
+grade:
+	@bash .system/launch.sh grade
 
 clean:
 	@rm -rf .system/a.out

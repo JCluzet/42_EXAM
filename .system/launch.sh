@@ -33,7 +33,9 @@ spin[7]="⠧"
 spin[8]="⠇"
 spin[9]="⠃"
 
-clear
+if [ "$1" != "grade" ]; then
+    clear
+fi
 
 ping -c 1 google.com > /dev/null 2>&1 &
 PID=$!
@@ -55,8 +57,8 @@ printf "$LINE_UP$CLEAR_LINE$RED"
 echo -ne "✗$RESET Checking server availability$WHITE$BOLD\n"
 echo -ne "  ➫ Local launch\n\n"
 else
-    git pull
-    clear
+    git pull > /dev/null 2>&1 &
+    # clear 
     printf "$GREEN$BOLD"
     echo -ne "✔$RESET You have the last version$GREEN$BOLD v$version\n\n" 
 
