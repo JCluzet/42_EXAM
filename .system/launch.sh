@@ -52,6 +52,8 @@ while [ -d /proc/$PID ]; do
   done
 done
 
+if [ "$1" != "gradejustinstall" ]; then
+
 if ! ping -c 1 google.com > /dev/null 2>&1; then
 printf "$LINE_UP$CLEAR_LINE$RED"
 echo -ne "✗$RESET Checking server availability$WHITE$BOLD\n"
@@ -64,6 +66,7 @@ else
 
 fi
 
+fi
 
 # sleep 1000
 
