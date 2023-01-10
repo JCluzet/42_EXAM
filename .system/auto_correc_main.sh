@@ -37,7 +37,7 @@ do
     sleep 1
     # if PID is not running, then exit
     # if i is 5, 10, 15, 19 then echo "waiting..."
-    if [ $i -eq 5 ] || [ $i -eq 10 ] || [ $i -eq 15 ] || [ $i -eq 19 ]; then
+    if [ "$i" -eq 5 ] || [ "$i" -eq 10 ] || [ "$i" -eq 15 ] || [ "$i" -eq 19 ]; then
         echo "waiting..."
     fi
     if ! ps -p $PID > /dev/null
