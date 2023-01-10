@@ -56,7 +56,7 @@ then
         # print all the arguments, begin by the 3rd
         for i in "${@:3}"
         do
-            printf "\"$i\" " >> traceback
+            printf "\"%s\" " "$i" >> traceback
         done
         printf "        🔎 YOUR OUTPUT:\n" >> traceback
         cat finalexam >> traceback
