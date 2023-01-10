@@ -19,7 +19,7 @@ if [ -e .system/grading/traceback ];then
     rm .system/grading/traceback;
 fi
 
-cd .system/grading
+cd .system/grading || exit
 gcc -o source "$1" $MAIN
 ./source "${@:3}" | cat -e > sourcexam       #TESTING
 rm source
