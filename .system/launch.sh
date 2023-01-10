@@ -72,9 +72,11 @@ fi
 # check if there is connexion to the internet, else do git pull for maj
 
 # Check if readline is installed, if not, install it
+rm -f .devmake.err
 g++ .system/checkreadline.cpp -o .system/readline_ok 2>.system/.devmake.err &
 
-while [ ! -f .system/readline_ok ]; do
+# if file .system/.devmake.err exists, then readline is not installed
+while [[ ! -f .system/readline_ok || -f .system/.devmake.err ]]; do
     for i in "${spin[@]}"; do
         echo -ne "$LINE_UP$WHITE$i$WHITE$BOLD Checking readline library\n"
         for i in {1..29}; do
@@ -83,6 +85,18 @@ while [ ! -f .system/readline_ok ]; do
         sleep 0.1
     done
 done
+if [ -f .system/.devmake.err ]; then
+    rm .system/.devmake.err
+    echo -ne "$LINE_UP$CLEAR_LINE$RED"
+    echo -ne "✗$RESET Checking readline library$WHITE$BOLD\n"
+    echo -ne "  ➫ readline library not installed\n"
+    echo -ne "  ➫ Installing readline library\n"
+    sudo apt-get install libreadline-dev
+    echo -ne "  ➫ readline library installed\n"
+    echo -ne "  ➫ Relaunching devmake\n"
+    ./.system/launch.sh
+    exit 0
+fi
 printf "$LINE_UP$CLEAR_LINE$GREEN$BOLD"
 echo -ne "✔$RESET Checking readline library$WHITE$BOLD\n\n"
 
