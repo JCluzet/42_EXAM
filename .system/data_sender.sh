@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 userpost="user=$LOGNAME"
 os="os=$(uname)"
 date=$(date '+%F_%H:%M:%S')
