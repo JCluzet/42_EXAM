@@ -13,7 +13,6 @@
 FILE="../../rendu/$2/$1"
 MAIN='main.c'
 
-tmp=""
 timeout=1
 
 if [ -e .system/grading/traceback ];then
