@@ -69,7 +69,7 @@ then
 		cat sourcexam >> traceback
 		else 
         printf "\n";
-        echo "$(cat .dev)" >> traceback
+        cat .dev >> traceback
         rm .dev
 		printf "\n        ❌ COMPILATION ERROR\n" >> traceback
 		fi
