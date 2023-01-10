@@ -149,7 +149,6 @@ void exam::grademe(void)
 // ==> Functiion that call the bash grade system
 void exam::grade_request(bool i)
 {
-
     if (!i)
     {
         std::cout << std::endl
