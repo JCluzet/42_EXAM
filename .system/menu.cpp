@@ -1,6 +1,6 @@
 #include "exam.hpp"
 
-// ==> Animation of exercice name
+// ==> Animation of exercise name
 void exam::exam_random_show(void)
 {
     int pot_pts;
@@ -8,7 +8,7 @@ void exam::exam_random_show(void)
         pot_pts = 0;
     else
         pot_pts = level_per_ex;
-    std::map<int, exercice>::iterator it = list_ex_lvl.begin();
+    std::map<int, exercise>::iterator it = list_ex_lvl.begin();
     std::cout << "    " << YELLOW << current_ex->get_assignement() << RESET << ": " << LIME << it->second.get_name() << RESET << " for " << pot_pts << " potential points (" << CYAN << "Current" << RESET << ")" << std::endl;
     double time = 100000;
     for (int i = 0; i < 20; i++)
@@ -46,7 +46,7 @@ void exam::exam_help()
     std::cout << LIME << "    settings: " << RESET << "display settings menu" << std::endl;
     std::cout << LIME << "    status:" << RESET << " display information about the exam" << std::endl;
     std::cout << LIME << "    finish:" << RESET << " exit the exam" << std::endl;
-    std::cout << LIME << "    grademe:" << RESET << " grade your exercice" << std::endl;
+    std::cout << LIME << "    grademe:" << RESET << " grade your exercise" << std::endl;
     std::cout << LIME << "    repo_git:" << RESET << " visit github repo" << std::endl;
     std::cout << "See github repo to find some more 'cheat' command" << std::endl;
     if (vip)
@@ -54,8 +54,8 @@ void exam::exam_help()
         std::cout << BOLD << LIME << "VIP MENU:" << RESET << std::endl;
         std::cout << LIME << "    force_success:" << RESET << " force a ex to success" << std::endl;
         std::cout << LIME << "    remove_grade_time:" << RESET << " remove grade time limit between two grademe" << std::endl;
-        std::cout << LIME << "    gradenow:" << RESET << " instant grade exercice" << std::endl;
-        std::cout << LIME << "    new_ex:" << RESET << " generate a new exercice for the same level" << std::endl;
+        std::cout << LIME << "    gradenow:" << RESET << " instant grade exercise" << std::endl;
+        std::cout << LIME << "    new_ex:" << RESET << " generate a new exercise for the same level" << std::endl;
     }
 }
 
@@ -73,7 +73,7 @@ void exam::info(void)
     // std::cout << "Assignments: " << std::endl;
     std::cout << std::endl;
 
-    for (std::map<int, exercice>::iterator it = lvl_ex.begin(); it != lvl_ex.end(); it++)
+    for (std::map<int, exercise>::iterator it = lvl_ex.begin(); it != lvl_ex.end(); it++)
     {
         std::cout << "  Level " << LIME << it->second.get_lvl() << RESET << ": " << std::endl;
         for (unsigned int i = 0; i < it->second.get_assignement(); i++)
@@ -95,10 +95,10 @@ void exam::info(void)
         std::cout << "    " << YELLOW << current_ex->get_assignement() << RESET << ": " << LIME << current_ex->get_name() << RESET << " for " << (int)(((double)level + 1) / (double)level_max * 100) << " potential points (" << CYAN << "Current" << RESET << ")" << std::endl;
     }
     std::cout << std::endl
-              << "Assignement: " << LIME << current_ex->get_name() << RESET << " for " << LIME << BOLD << (double)(((double)level + 1) / (double)level_max * 100) << RESET << "xp" <<RESET << ", ";
+              << "Assignment: " << LIME << current_ex->get_name() << RESET << " for " << LIME << BOLD << (double)(((double)level + 1) / (double)level_max * 100) << RESET << "xp" <<RESET << ", ";
     std::cout << "try: " << YELLOW << current_ex->get_assignement() << RESET << std::endl << std::endl;
     std::cout << "Subject location:  " << LIME << current_path() << "/subjects/subject.en.txt" << RESET << std::endl;
-    std::cout << "Exercice location: " << RED << current_path() << "/rendu/" << current_ex->get_name() << "/" << RESET << std::endl;
+    std::cout << "Exercise location: " << RED << current_path() << "/rendu/" << current_ex->get_name() << "/" << RESET << std::endl;
     std::cout << "Here you " << RED << BOLD << "don't need" << RESET <<" to use git." << std::endl
               << std::endl;
     std::cout << "End date: " << LIME << std::put_time(std::localtime(&end_time), "%d/%m/%Y %H:%M:%S") << RESET << std::endl;
@@ -120,7 +120,7 @@ void exam::infovip(void)
     std::cout << "Your current grade is " << LIME << level_per_ex_save * level << RESET << "/100" << std::endl;
     std::cout << "Assignments: " << std::endl;
 
-    for (std::map<int, exercice>::iterator it = lvl_ex.begin(); it != lvl_ex.end(); it++)
+    for (std::map<int, exercise>::iterator it = lvl_ex.begin(); it != lvl_ex.end(); it++)
     {
         std::cout << "  Level " << LIME << it->second.get_lvl() << RESET << ": " << std::endl;
         for (unsigned int i = 0; i < it->second.get_assignement(); i++)
@@ -143,18 +143,18 @@ void exam::infovip(void)
     }
 
     std::cout << std::endl
-              << "Your current assignement is " << LIME << current_ex->get_name() << RESET << " for " << LIME << (int)(((double)level + 1) / (double)level_max * 100) << RESET << " potential points" << std::endl;
-    std::cout << "It is assignement " << YELLOW << current_ex->get_assignement() << RESET << " for level " << LIME << level << RESET << std::endl;
+              << "Your current assignment is " << LIME << current_ex->get_name() << RESET << " for " << LIME << (int)(((double)level + 1) / (double)level_max * 100) << RESET << " potential points" << std::endl;
+    std::cout << "It is assignment " << YELLOW << current_ex->get_assignement() << RESET << " for level " << LIME << level << RESET << std::endl;
     std::cout << "The subject is located at: " << LIME << current_path() << "/subjects/subject.en.txt" << RESET << std::endl;
     std::cout << "You must turn in your files in a subdirectory with the" << std::endl;
-    std::cout << "same name as the assignement (" << RED << current_path() << "/rendu/" << current_ex->get_name() << RESET << "/)." << std::endl;
+    std::cout << "same name as the assignment (" << RED << current_path() << "/rendu/" << current_ex->get_name() << RESET << "/)." << std::endl;
     std::cout << "Here you don't need to use git." << std::endl
               << std::endl;
     std::cout << "The end date for this exam is: " << LIME << std::put_time(std::localtime(&end_time), "%d/%m/%Y %H:%M:%S") << RESET << std::endl;
     std::cout << "You have " << LIME << remaining_time(end_time) << RESET << " remaining" << std::endl;
     std::cout << std::endl
               << "=============================================================================" << std::endl;
-    std::cout << "You can work on your assignement. When you are sure you're done with it," << std::endl;
+    std::cout << "You can work on your assignment. When you are sure you're done with it," << std::endl;
     std::cout << "use the \"" << LIME << "grademe" << RESET << "\" command to be graded, or \"" << LIME << "help" << RESET << "\" to get some help." << std::endl;
 }
 
@@ -263,7 +263,7 @@ void exam::settings_menu(void)
     system("clear");
     std::cout << WHITE << BOLD << "     === SETTINGS MENU ===" << std::endl << RED << "          BACK" << RESET << WHITE << BOLD << " with " << RED << "0" << RESET << std::endl << std::endl;
 
-    std::cout << LIME << "1." << WHITE << BOLD << " Enable exercices you already passed";
+    std::cout << LIME << "1." << WHITE << BOLD << " Enable exercises you already passed";
     if (setting_dse)
         std::cout << LIME << BOLD << " ON" << RESET << std::endl;
     else

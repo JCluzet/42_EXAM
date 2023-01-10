@@ -107,15 +107,15 @@ void exam::exam_prompt(void)
 }
 // jo je taime
 
-// ==> Starting a new exercice/exam
+// ==> Starting a new exercise/exam
 bool exam::start_new_ex(void)
 {
     load_settings();
     if (!backup)
     {
         list_ex_lvl = list_dir();
-        exercice ex = *randomize_exercice(list_ex_lvl, setting_dse);
-        current_ex = new exercice(ex);
+        exercise ex = *randomize_exercise(list_ex_lvl, setting_dse);
+        current_ex = new exercise(ex);
         prepare_current_ex();
         store_data();
     }

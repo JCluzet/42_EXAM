@@ -1,25 +1,25 @@
 #include "exam.hpp"
 
-exercice::exercice(void) {
+exercise::exercise(void) {
     this->name = "UNKNOWN";
     assignement = 0;
     level_ex = 0;
     time_bef_grade = time(NULL);
 }
 
-// ==> Function to change exercice
+// ==> Function to change exercise
 int exam::change_ex(void)
 {
     backup = false;
-    // if there is only 1 exercice, we can't change it
+    // if there is only 1 exercise, we can't change it
     if (list_ex_lvl.size() == 1)
     {
-        std::cout << "You can't change exercice, there is only one exercice in this level" << std::endl;
+        std::cout << "You can't change exercise, there is only one exercise in this level" << std::endl;
         return (0);
     }
     clean_all();
     system("clear");
-    std::cout << "  > You have generated a new exercice" << std::endl;
+    std::cout << "  > You have generated a new exercise" << std::endl;
     changex = 1;
     delete current_ex;
     start_new_ex();
@@ -36,14 +36,14 @@ bool exam::prepare_current_ex(void)
     }
     if (!file_exists(get_path()))
     {
-        std::cout << "Error: Cannot load exercice, unable to find valid path" << std::endl;
+        std::cout << "Error: Cannot load exercise, unable to find valid path" << std::endl;
         return (false);
     }
 
     // clean all old files
     clean_all();
 
-    // create directory for the current exercice
+    // create directory for the current exercise
     system("mkdir rendu 2> /dev/null");
     system("mkdir subjects 2> /dev/null");
     system("mkdir .system/grading 2> /dev/null");
@@ -59,10 +59,10 @@ bool exam::prepare_current_ex(void)
     return (false);
 }
 
-// ==> Randomize exercice (give 1 into list)
-exercice *randomize_exercice(std::map<int, exercice> list, bool remove_success)
+// ==> Randomize exercise (give 1 into list)
+exercise *randomize_exercise(std::map<int, exercise> list, bool remove_success)
 {
-    // if setting_dse is 1, remove all exercice in list having a name in .system/exam_token/success_ex 
+    // if setting_dse is 1, remove all exercise in list having a name in .system/exam_token/success_ex 
     if (remove_success == 0)
     {
         std::ifstream success_ex("success/success_ex");
@@ -75,7 +75,7 @@ exercice *randomize_exercice(std::map<int, exercice> list, bool remove_success)
         {
             std::istringstream iss(line);
             iss >> name;
-            for (std::map<int, exercice>::iterator it = list.begin(); it != list.end(); it++)
+            for (std::map<int, exercise>::iterator it = list.begin(); it != list.end(); it++)
             {
                 if (it->second.get_name() == name)
                 {
@@ -88,11 +88,11 @@ exercice *randomize_exercice(std::map<int, exercice> list, bool remove_success)
     }
 
 
-    // Check if there is still exercice in the list
-    std::map<int, exercice>::iterator it = list.begin();
+    // Check if there is still exercise in the list
+    std::map<int, exercise>::iterator it = list.begin();
     if (list.size() == 0)
     {
-        std::cout << "Error: all exercices for this level have been done" << std::endl;
+        std::cout << "Error: all exercises for this level have been done" << std::endl;
         std::cout << "Please set to" << RED << BOLD << " OFF " << RESET << "option 1 in settings." << std::endl;
         std::cout << "Or edit/delete your success/success_ex file" << std::endl;
         std::cout << "Then relaunch 42_EXAM and recover your exam" << std::endl;
@@ -100,7 +100,7 @@ exercice *randomize_exercice(std::map<int, exercice> list, bool remove_success)
     }
     bool dosrandom = true;
     // if list contain rostring, remove it
-    for (std::map<int, exercice>::iterator it = list.begin(); it != list.end(); it++)
+    for (std::map<int, exercise>::iterator it = list.begin(); it != list.end(); it++)
     {
         if (it->second.get_name() == "rostring")
             dosrandom = false;
@@ -113,31 +113,31 @@ exercice *randomize_exercice(std::map<int, exercice> list, bool remove_success)
     return (&it->second);
 }
 
-exercice::exercice(int level, std::string ex_name) {
+exercise::exercise(int level, std::string ex_name) {
     this->name = ex_name;
     level_ex = level;
     assignement = 0;
     time_bef_grade = time(NULL);
 }
 
-exercice::exercice(int level, std::string ex_name, int assign, time_t tbg) {
+exercise::exercise(int level, std::string ex_name, int assign, time_t tbg) {
     this->name = ex_name;
     level_ex = level;
     assignement = assign;
     time_bef_grade = tbg;
 }
 
-exercice::exercice(exercice const & src) {
+exercise::exercise(exercise const & src) {
     this->name = src.name;
     level_ex = src.level_ex;
     assignement = src.assignement;
     time_bef_grade = src.time_bef_grade;
 }
 
-exercice::~exercice(void) {
+exercise::~exercise(void) {
 }
 
-exercice&  exercice::operator=(exercice const & src) {
+exercise&  exercise::operator=(exercise const & src) {
     this->name = src.name;
     level_ex = src.level_ex;
     assignement = src.assignement;
@@ -147,36 +147,36 @@ exercice&  exercice::operator=(exercice const & src) {
 
 
 // ==> GETTER/SETTER
-void exercice::set_time_bef_grade(time_t time)
+void exercise::set_time_bef_grade(time_t time)
 {
     time_bef_grade = time;
 }
 
-std::string exercice::get_name(void) {
+std::string exercise::get_name(void) {
     return (this->name);
 }
 
-void exercice::reset_assignement(void)
+void exercise::reset_assignement(void)
 {
     assignement = 0;
 }
 
-void exercice::up_assignement(void) {
+void exercise::up_assignement(void) {
     this->assignement++;
 }
 
-int exercice::get_lvl(void) {
+int exercise::get_lvl(void) {
     return (this->level_ex);
 }
 
-void exercice::up_lvl(void) {
+void exercise::up_lvl(void) {
     level_ex++;
 }
 
-int exercice::get_assignement(void) {
+int exercise::get_assignement(void) {
     return (this->assignement);
 }
 
-void exercice::set_assignement(int assignement) {
+void exercise::set_assignement(int assignement) {
     this->assignement = assignement;
 }
