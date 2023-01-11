@@ -74,7 +74,7 @@ fi
 # Check if readline is installed, if not, install it
 g++ .system/checkreadline.cpp -o .system/readline_ok 2>.system/.devmake.err &
 
-while [ ! -f .system/readline_ok ]; do
+if [ ! -f .system/readline_ok ]; then
     for i in "${spin[@]}"; do
         echo -ne "$LINE_UP$WHITE$i$WHITE$BOLD Checking readline library\n"
         for i in {1..29}; do
@@ -82,7 +82,7 @@ while [ ! -f .system/readline_ok ]; do
         done
         sleep 0.1
     done
-done
+fi
 printf "$LINE_UP$CLEAR_LINE$GREEN$BOLD"
 echo -ne "✔$RESET Checking readline library$WHITE$BOLD\n\n"
 
