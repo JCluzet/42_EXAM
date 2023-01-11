@@ -138,8 +138,7 @@ void exam::grademe(void)
             return;
         }
         std::cout << "Ok, making grading request to server now." << std::endl;
-		// this should be graded properly by the server
-        grade_request(O);
+        grade_request(0);
     }
     else
     {
