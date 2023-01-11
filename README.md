@@ -49,7 +49,8 @@
  [sponsor to become VIP](https://github.com/sponsors/JCluzet)
  OR
  [Contribute to become VIP](CONTRIBUTING.md)
- You an contribute by adding new exercices or improve the program 
+ 
+ You can contribute by adding new exercices or improve the program 
  
    **gradenow** : Get an instant correction (no waiting)
    
