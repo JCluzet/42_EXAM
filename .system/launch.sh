@@ -11,6 +11,10 @@ if [ -f .system/.devmake.err ]; then
     rm .system/.devmake.err
 fi
 
+if [ -f .system/readline_ok ]; then
+    rm .system/readline_ok
+fi
+
 MANGENTA="\033[35m"
 BOLD="\033[1m"
 CLEAR_LINE="\033[2K"
@@ -59,6 +63,7 @@ if [ "$1" != "gradejustinstall" ]; then
         echo -ne "  ➫ Local launch\n\n"
     else
         git pull >/dev/null 2>&1 &
+        printf "$LINE_UP$CLEAR_LINE$RED"
         # clear
         printf "$GREEN$BOLD"
         echo -ne "✔$RESET You have the last version$GREEN$BOLD v$version\n\n"
@@ -72,11 +77,9 @@ fi
 # check if there is connexion to the internet, else do git pull for maj
 
 # Check if readline is installed, if not, install it
-rm -f .devmake.err
 g++ .system/checkreadline.cpp -o .system/readline_ok 2>.system/.devmake.err &
 
-# if file .system/.devmake.err exists, then readline is not installed
-while [[ ! -f .system/readline_ok || -f .system/.devmake.err ]]; do
+if [ ! -f .system/readline_ok ]; then
     for i in "${spin[@]}"; do
         echo -ne "$LINE_UP$WHITE$i$WHITE$BOLD Checking readline library\n"
         for i in {1..29}; do
@@ -84,18 +87,6 @@ while [[ ! -f .system/readline_ok || -f .system/.devmake.err ]]; do
         done
         sleep 0.1
     done
-done
-if [ -f .system/.devmake.err ]; then
-    rm .system/.devmake.err
-    echo -ne "$LINE_UP$CLEAR_LINE$RED"
-    echo -ne "✗$RESET Checking readline library$WHITE$BOLD\n"
-    echo -ne "  ➫ readline library not installed\n"
-    echo -ne "  ➫ Installing readline library\n"
-    sudo apt-get install libreadline-dev
-    echo -ne "  ➫ readline library installed\n"
-    echo -ne "  ➫ Relaunching devmake\n"
-    ./.system/launch.sh
-    exit 0
 fi
 printf "$LINE_UP$CLEAR_LINE$GREEN$BOLD"
 echo -ne "✔$RESET Checking readline library$WHITE$BOLD\n\n"
@@ -103,18 +94,34 @@ echo -ne "✔$RESET Checking readline library$WHITE$BOLD\n\n"
 if [ ! -f .system/readline_ok ]; then
     # clear
     printf "$LINE_UP$CLEAR_LINE$RED"
-    echo -ne "✗$RESET Checking readline library$WHITE$BOLD\n\n"
+    printf "$LINE_UP$CLEAR_LINE$RED"
+    echo -ne "✗$RESET Readline is not installed$WHITE$BOLD\n"
     echo -ne "$RED$BOLD"
-    echo -ne "Readline library not installed $WHITE$BOLD"
-    echo -e "Auto install in 2 seconds..."
+    echo -ne "Readline library not installed $WHITE$BOLD\n"
+    echo -e " ➫ Auto install in 2 seconds...\n"
     sleep 2
-    sudo apt-get install libreadline-dev
-    clear
+    sudo apt-get install libreadline-dev 2>.system/.devmake.err 1>.system/.devmake.err &
+    PID=$!
+
+    while [ -d /proc/$PID ]; do
+        for i in "${spin[@]}"; do
+            echo -ne "$LINE_UP$WHITE$i$WHITE$BOLD libreadline-dev installation using apt-get\n"
+            for i in {1..44}; do
+                printf "\b"
+            done
+            sleep 0.1
+        done
+    done
+
+    printf "$LINE_UP$CLEAR_LINE$GREEN$BOLD"
+    # echo -ne "✔$RESET Readline installation using apt-get$WHITE$BOLD\n\n"
+
+    # clear
     g++ .system/checkreadline.cpp -o .system/readline_ok 2>.system/.devmake.err
     # if there is no .system/readline_ok file, it means that the readline library is not installed
     if [ ! -f .system/readline_ok ]; then
         echo -ne "$RED$BOLD"
-        clear
+        # clear
         echo -ne "Readline installation error using apt-get... $WHITE$BOLD"
         echo -e "Try to install with yum..."
         sleep 1
@@ -125,12 +132,13 @@ if [ ! -f .system/readline_ok ]; then
             echo -e "Please install it manually or put an Issue in Github..."
             exit 1
         fi
-        clear
+        # clear
     fi
-    echo -ne "Readline is installed, please relaunch the program $WHITE$BOLD"
-    echo "Auto exit in 2 seconds..."
-    sleep 2
-    exit 0
+    echo -ne "✔$RESET libreadline-dev installation using apt-get$WHITE$BOLD\n\n"
+    # echo -ne "Readline is installed, please relaunch the program $WHITE$BOLD"
+    # echo "Auto exit in 2 seconds..."
+    # sleep 2
+    # exit 0
 fi
 
 rm -rf .system/readline_ok
@@ -140,7 +148,7 @@ rm -rf .system/readline_ok
 # echo -ne "Compilation of$BOLD$MANGENTA 42_EXAM v2.1 $RESET "
 # ===============================================
 
-g++ .system/exercise.cpp .system/main.cpp .system/menu.cpp .system/exam.cpp .system/utils.cpp .system/grade_request.cpp .system/data_persistence.cpp -lreadline -o .system/a.out >.system/.devmake.err 2>.system/.devmake.err &
+g++ .system/exercice.cpp .system/main.cpp .system/menu.cpp .system/exam.cpp .system/utils.cpp .system/grade_request.cpp .system/data_persistence.cpp -lreadline -o .system/a.out >.system/.devmake.err 2>.system/.devmake.err &
 PID=$!
 
 # while there is no a.out file in the current directory, wait
