@@ -8,7 +8,7 @@ server: client 3 just left
 server: client 4 just arrived
 client 4: Voici un texte sans retour a la ligneserver: client 4 just left
 server: client 5 just arrived
-client 5: This is a text without n at the endserver: client 5 just left
+client 5: This is a text without backline at the endserver: client 5 just left
 server: client 6 just arrived
 client 6: Et voici un texte avec plusieurs
 client 6: retours

@@ -48,7 +48,7 @@ echo "Ceci est un message" | nc localhost $1
 sleep 0.2
 printf "Voici un texte sans retour a la ligne" | nc localhost $1
 sleep 0.2
-echo -n "This is a text without \n at the end" | nc localhost $1
+echo -n "This is a text without backline at the end" | nc localhost $1
 sleep 0.4
 printf "Et voici un texte avec plusieurs\nretours\na\nla\nligne\n" | nc localhost $1
 sleep 0.2
