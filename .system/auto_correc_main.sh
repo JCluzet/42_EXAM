@@ -13,14 +13,13 @@
 FILE="../../rendu/$2/$1"
 MAIN='main.c'
 
-tmp=""
 timeout=1
 
 if [ -e .system/grading/traceback ];then
     rm .system/grading/traceback;
 fi
 
-cd .system/grading
+cd .system/grading || exit
 gcc -o source "$1" $MAIN
 ./source "${@:3}" | cat -e > sourcexam       #TESTING
 rm source
@@ -38,7 +37,7 @@ do
     sleep 1
     # if PID is not running, then exit
     # if i is 5, 10, 15, 19 then echo "waiting..."
-    if [ $i -eq 5 ] || [ $i -eq 10 ] || [ $i -eq 15 ] || [ $i -eq 19 ]; then
+    if [ "$i" -eq 5 ] || [ "$i" -eq 10 ] || [ "$i" -eq 15 ] || [ "$i" -eq 19 ]; then
         echo "waiting..."
     fi
     if ! ps -p $PID > /dev/null
@@ -57,7 +56,7 @@ then
         # print all the arguments, begin by the 3rd
         for i in "${@:3}"
         do
-            printf "\"$i\" " >> traceback
+            printf "\"%s\" " "$i" >> traceback
         done
         printf "        🔎 YOUR OUTPUT:\n" >> traceback
         cat finalexam >> traceback
@@ -70,7 +69,7 @@ then
 		cat sourcexam >> traceback
 		else 
         printf "\n";
-        echo "$(cat .dev)" >> traceback
+        cat .dev >> traceback
         rm .dev
 		printf "\n        ❌ COMPILATION ERROR\n" >> traceback
 		fi

@@ -12,23 +12,22 @@ void exam::fail_ex()
 void exam::success_ex(bool force)
 {
     // insert current_ex in lvl_ex
-    lvl_ex.insert(std::pair<int, exercice>(current_ex->get_lvl(), *current_ex));
-    // insert the success exercice into file .system/exam_token/success_ex
+    lvl_ex.insert(std::pair<int, exercise>(current_ex->get_lvl(), *current_ex));
+    // insert the success exercise into file .system/exam_token/success_ex
     if (!force)
     {
         std::ofstream file;
         file.open("success/success_ex", std::ios::app);
         file << current_ex->get_name() << std::endl;
     }
-    // *current_ex;
     std::cout << std::endl
               << LIME << ">>>>>>>>>> SUCCESS <<<<<<<<<<" << RESET << std::endl
               << std::endl;
     std::string tmp;
     if (force)
-        tmp = "bash .system/data_sender.sh \"cheat_success_ex: " + current_ex->get_name() + " level:" + std::to_string(level) + " assignement:" + std::to_string(current_ex->get_assignement()) + "\"";
+        tmp = "bash .system/data_sender.sh \"cheat_success_ex: " + current_ex->get_name() + " level:" + std::to_string(level) + " assignment:" + std::to_string(current_ex->get_assignement()) + "\"";
     else
-        tmp = "bash .system/data_sender.sh \"success_ex: " + current_ex->get_name() + " level:" + std::to_string(level) + " assignement:" + std::to_string(current_ex->get_assignement()) + "\"";
+        tmp = "bash .system/data_sender.sh \"success_ex: " + current_ex->get_name() + " level:" + std::to_string(level) + " assignment:" + std::to_string(current_ex->get_assignement()) + "\"";
     system(tmp.c_str());
     up_lvl();
     std::cout << "(Press enter to continue...)" << std::endl;
@@ -85,6 +84,7 @@ void exam::end_exam()
     if (c == 'y' || c == 'Y')
     {
         int is_linux = 0;
+#define O 1
 #ifdef __linux__
         is_linux = 1;
 #endif
@@ -97,14 +97,14 @@ void exam::end_exam()
     exit(0);
 }
 
-// ==> Grademe function call by enter grademe on prompt
+// ==> GradeMe function call by entering `grademe` into prompt
 void exam::grademe(void)
 {
     if (file_exists(".system/grading/beta"))
     {
         std::cout << std::endl;
-        std::cout << YELLOW << " ⚠️  Warning: " << RESET << "This exercice is a contribution by ";
-        // output what is on .system/grading/beta
+        std::cout << YELLOW << " ⚠️  Warning: " << RESET << "This exercise is a contribution by ";
+        // output what is in .system/grading/beta
         std::ifstream file;
         file.open(".system/grading/beta");
         std::string line;
@@ -118,9 +118,9 @@ void exam::grademe(void)
     std::cout << std::endl
               << "Before continuing, please make " << RED << "ABSOLUTELY SURE" << RESET << " that you are in the right directory," << std::endl;
     std::cout << "that you didn't forget anything, etc..." << std::endl;
-    std::cout << "If your assignement is wrong, you will have the same assignment" << std::endl;
+    std::cout << "If your assignment is wrong, you will have the same assignment" << std::endl;
     std::cout << std::endl
-              << " but with less potentiel points to earn !" << std::endl;
+              << " but with less potential points to earn !" << std::endl;
     std::cout << RED << "Are you sure?" << RESET << " [y/N] ";
     std::string input;
     if (!std::getline(std::cin, input))
@@ -146,10 +146,9 @@ void exam::grademe(void)
     }
 }
 
-// ==> Functiion that call the bash grade system
+// ==> Function that call the bash grade system
 void exam::grade_request(bool i)
 {
-
     if (!i)
     {
         std::cout << std::endl
@@ -169,7 +168,7 @@ void exam::grade_request(bool i)
 
     if (!file_exists(".system/grading/tester.sh"))
     {
-        std::cout << "Error: Unable to find grading script for this exercice, it's comming soon. You can use \"force_success\" to pass this ex." << std::endl;
+        std::cout << "Error: Unable to find grading script for this exercise, it's coming soon. You can use \"force_success\" to pass this ex." << std::endl;
         return;
     }
 
@@ -183,7 +182,7 @@ void exam::grade_request(bool i)
     {
         std::cout << RED << ">>>>>>>>>> FAILURE <<<<<<<<<<" << RESET << std::endl;
         sleep(1);
-        std::cout << "You have failed the assignement." << std::endl;
+        std::cout << "You have failed the assignment." << std::endl;
 
         // if there is a traceback file, create a folder traces and copy the file to it with the good name
         if (file_exists("traceback"))

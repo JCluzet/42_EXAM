@@ -24,7 +24,7 @@ fi
 cd .system/grading
 gcc -o source "$1"
 ./source "${@:3}" | cat -e > sourcexam       #TESTING
-rm source
+rm -f source
 {
 gcc -o final "$FILE"
 }  2>.dev

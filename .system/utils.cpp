@@ -49,7 +49,7 @@ std::string lastupdate(time_t end_time)
 void sigd(void)
 {
     std::cout << std::endl
-              << "You have been disconnected after use Ctrl+D" << std::endl;
+              << "You have been disconnected after using Ctrl+D" << std::endl;
     exit(0);
 }
 
@@ -58,13 +58,13 @@ void sigc(int sig)
     if (sig == SIGINT)
     {
         std::cout << std::endl
-                  << "You have been disconnected after use Ctrl+C" << std::endl;
+                  << "You have been disconnected after using Ctrl+C" << std::endl;
         exit(0);
     }
     if (sig == SIGQUIT)
     {
         std::cout << std::endl
-                  << "You have been disconnected after use Ctrl+\\ (SIGQUIT)" << std::endl;
+                  << "You have been disconnected after using Ctrl+\\ (SIGQUIT)" << std::endl;
         exit(0);
     }
     if (sig == SIGTSTP)
@@ -108,7 +108,7 @@ void reset_folder(void)
 }
 
 // ==> Return the minutes to wait relative to assignement number
-double exercice::grade_time(void)
+double exercise::grade_time(void)
 {
     // do a vector contain all the fibonnaci numbers
     std::vector<double> fib;

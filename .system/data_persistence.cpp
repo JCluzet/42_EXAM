@@ -5,7 +5,7 @@ void exam::store_data()
 {
     std::ofstream file;
 
-    file.open(".system/exam_token/actuel_token.txt");
+    file.open(".system/exam_token/actual_token.txt");
     file << get_start_time() << std::endl;
     file << get_end_time() << std::endl;
     file << get_exam_number() << std::endl;
@@ -31,7 +31,7 @@ void exam::restore_data(void)
     std::string assign;
     std::string time_bef_grade;
     time_t t;
-    file.open(".system/exam_token/actuel_token.txt", std::ios::in);
+    file.open(".system/exam_token/actual_token.txt", std::ios::in);
     if (file.is_open())
     {
         file >> backup.start_time;
@@ -47,7 +47,7 @@ void exam::restore_data(void)
         file >> backup.level_per_ex_save;
         file >> backup.using_cheatcode;
 
-        backup.current_ex = new exercice(backup.get_lvl(), name, std::stoi(assign), std::stoi(time_bef_grade));
+        backup.current_ex = new exercise(backup.get_lvl(), name, std::stoi(assign), std::stoi(time_bef_grade));
         backup.backup = 1;
         file.close();
     }
@@ -114,7 +114,7 @@ void exam::restore_data(void)
             std::cout << "   Exam token deteled" << std::endl;
             std::cin.ignore();
             // delete file and return to menu
-            system("rm .system/exam_token/actuel_token.txt");
+            system("rm .system/exam_token/actual_token.txt");
             system("clear");
             ask_param();
         }

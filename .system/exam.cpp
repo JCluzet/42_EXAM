@@ -1,11 +1,11 @@
 #include "exam.hpp"
 
-// ==> Store all possible exercices in a map
-std::map<int, exercice> exam::list_dir(void)
+// ==> Store all possible exercises in a map
+std::map<int, exercise> exam::list_dir(void)
 {
     struct dirent *entry;
     int i = 0;
-    std::map<int, exercice> list;
+    std::map<int, exercise> list;
     std::string path;
     if (student)
         path = ".subjects/STUD_PART/exam_0" + std::to_string(exam_number) + "/" + std::to_string(level) + "/";
@@ -25,7 +25,7 @@ std::map<int, exercice> exam::list_dir(void)
         folder = entry->d_name;
         if (folder != "." && folder != ".." && folder != ".DS_Store")
         {
-            list.insert(std::pair<int, exercice>(i, exercice(get_lvl(), folder)));
+            list.insert(std::pair<int, exercise>(i, exercise(get_lvl(), folder)));
             i++;
         }
     }
@@ -33,7 +33,7 @@ std::map<int, exercice> exam::list_dir(void)
     return (list);
 }
 
-// ==> Get path of actuel exercice
+// ==> Get path of actual exercise
 std::string exam::get_path(void)
 {
     std::string path_exam;
@@ -193,21 +193,21 @@ exam::exam(void) : exam_grade(0), level(0), level_max(0), failures(0), student(f
 {
     reelmode = true;
     waiting_time = true;
-    vip = 0;
+	vip = 0;
     username = getenv("USER");
     load_settings();
-    system("curl https://user.grademe.fr/vip_list > .system/vip_list 2> /dev/null");
-    std::ifstream vip_list(".system/vip_list");
-    std::string line;
-    
-    while (std::getline(vip_list, line))
-    {
-        if (line == username)
-        {
-            vip = 1;
-            break;
-        }
-    }
+	system("curl https://user.grademe.fr/vip_list > .system/vip_list 2> /dev/null");
+	std::ifstream vip_list(".system/vip_list");
+	std::string line;
+
+	while (std::getline(vip_list, line))
+	{
+		if (line == username)
+		{
+			vip = 1;
+			break;
+		}
+	}
     changex = 0;
     system("rm .system/vip_list");
 }

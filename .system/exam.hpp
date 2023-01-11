@@ -1,6 +1,6 @@
 #pragma once
 
-#include "exercice.hpp"
+#include "exercise.hpp"
 #include <iostream>
 #include <map>
 
@@ -39,7 +39,7 @@ std::string remaining_time(time_t end_time);
 std::string lastupdate(time_t end_time);
 std::string remaining_time(time_t end_time);
 std::string current_path(void);
-exercice *randomize_exercice(std::map<int, exercice> list, bool remove_success);
+exercise *randomize_exercise(std::map<int, exercise> list, bool remove_success);
 exam restore_data(void);
 bool file_exists(std::string path);
 
@@ -58,7 +58,6 @@ class exam
 public:
     exam(void);
     exam(exam const &src);
-    exam(bool t);
     ~exam(void);
     void info(void);
     void ask_param(void);
@@ -81,12 +80,10 @@ public:
     void restore_data(void);
     bool start_new_ex(void);
     exam &operator=(exam const &src);
-    std::map<int, exercice> list_dir();
-
-    std::map<int, exercice> list_ex_lvl;
-
-    std::map<int, exercice> lvl_ex;
-    exercice *current_ex;
+    std::map<int, exercise> list_dir();
+    std::map<int, exercise> list_ex_lvl;
+    std::map<int, exercise> lvl_ex;
+    exercise *current_ex;
     bool student;
     bool waiting_time;
     int level_max;

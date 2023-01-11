@@ -3,16 +3,16 @@
 
 class exam;
 
-class exercice
+class exercise
 {
     public:
-        exercice(void);
-        exercice(int level, std::string ex_name);
-        exercice(int level, std::string ex_name, int assign, time_t tbg);
-        exercice(exercice const & src);
-        ~exercice(void);
+        exercise(void);
+        exercise(int level, std::string ex_name);
+        exercise(int level, std::string ex_name, int assign, time_t tbg);
+        exercise(exercise const & src);
+        ~exercise(void);
 
-        exercice&     operator=(exercice const & src);
+        exercise&     operator=(exercise const & src);
         std::string get_name(void);
         int get_assignement(void);
         void reset_assignement(void);
