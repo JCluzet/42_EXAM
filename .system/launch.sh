@@ -2,7 +2,8 @@ version="2.1"
 
 # if there is a a.out file in the current directory, delete it
 if [ -f .system/a.out ]; then
-    ./.system/a.out
+    sleep 0.1
+    rm ./.system/a.out
     exit 0
 fi
 
@@ -88,6 +89,7 @@ if [ ! -f .system/readline_ok ]; then
         sleep 0.1
     done
 fi
+
 printf "$LINE_UP$CLEAR_LINE$GREEN$BOLD"
 echo -ne "✔$RESET Checking readline library$WHITE$BOLD\n\n"
 
@@ -128,8 +130,8 @@ if [ ! -f .system/readline_ok ]; then
         sudo yum install readline
         clear
         if [ ! -f .system/readline_ok ]; then
-            ] echo -ne "Can't install readline library... $WHITE$BOLD"
-            echo -e "Please install it manually or put an Issue in Github..."
+            echo -ne "Can't install readline library... $WHITE$BOLD"
+            echo -e "Please install it manually or write an Issue in Github..."
             exit 1
         fi
         # clear
