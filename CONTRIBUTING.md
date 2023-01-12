@@ -74,19 +74,22 @@ And Here is what the second tester.sh file looks like *(FUNCTION EXERCICE)*:
 FILE='fprime.c'                                                  # exercice filename
 ASSIGN='fprime'                                                  # folder name
 
-bash .system/auto_correc_main.sh.sh $FILE $ASSIGN                # This partition is a test, just add as much arguments you need (Here there is no arguments)
+bash .system/auto_correc_main.sh 
+$FILE $ASSIGN                # This partition is a test, just add as much arguments you need (Here there is no arguments)
 if [ -e .system/grading/traceback ];then
     mv .system/grading/traceback .
 	exit 1
 fi
 
-bash .system/auto_correc_main.sh.sh $FILE $ASSIGN  "225225"       # A test with 1 argument who is "225225"
+bash .system/auto_correc_main.sh 
+$FILE $ASSIGN  "225225"       # A test with 1 argument who is "225225"
 if [ -e .system/grading/traceback ];then
     mv .system/grading/traceback .
 	exit 1
 fi
 
-bash .system/auto_correc_main.sh.sh $FILE $ASSIGN "8333325" "42"  # A test with 2 arguments who is "8333325" and "42"
+bash .system/auto_correc_main.sh 
+$FILE $ASSIGN "8333325" "42"  # A test with 2 arguments who is "8333325" and "42"
 if [ -e .system/grading/traceback ];then
     mv .system/grading/traceback .
 	exit 1
