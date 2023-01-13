@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mainboc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 16:29:19 by jcluzet           #+#    #+#             */
-/*   Updated: 2022/09/03 17:52:19 by jcluzet          ###   ########.fr       */
+/*   Updated: 2023/01/13 02:19:28 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 
 char *get_next_line(int fd);
 
-int
-	main(void)
+int main(void)
 {
 	char	*line;
 

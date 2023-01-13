@@ -2,7 +2,7 @@
  ## All 42 exams auto-correct, to practice.
  ## ExamRank02, 03, 04, 05, 06 & PiscineExam
   ##   👉  42_EXAM is now part of **[GRADEME.FR](https://grademe.fr)** 😎
- #### Disclaimer: This project is not made by 42, it is not identical to the proposed exams and does not reflect your exams at 42
+ #### Disclaimer: This project is not made by 42School, it's not identical to the proposed exams and does not reflect your exams at 42
  ### NEW ExamRank02 available 🥳
  
 
@@ -39,20 +39,21 @@
    
    **remove_grade_time** : remove grade time between two push
    
-      > The maximum time to complete the exam is only information. Here, the exercise can always be corrected even after the time limit.
+      > The maximum time to complete the exam is only information. 
+      Here, the exercise can always be corrected even after the time limit.
       
    **force_success** : force an exercice to success
    
    **new_ex** : generate a new exercice on the same level
    
  # 🕶 VIP CHEAT code :
- [sponsor to become VIP](https://github.com/sponsors/JCluzet)
+ [Sponsor to become VIP](https://github.com/sponsors/JCluzet)
  OR
  [Contribute to become VIP](CONTRIBUTING.md)
  
- You can contribute by adding new exercices or improve the program 
+ You can contribute by adding new exercises or improving the program 
  
-   **gradenow** : Get an instant correction (no waiting)
+   **gradenow** : Get an instant correction (no grademe cooldown)
    
   > Being a sponsor brings VIP on GradeMe and 42_EXAM.
   
@@ -60,18 +61,18 @@
   
   > More features coming
 
- # Launch in ONE COMMAND : 
+ # Launch 42_EXAM in ONE COMMAND : 
 
  ```bash -c "$(curl https://grademe.fr)"```    --> Visit [Grademe.fr](https://grademe.fr)
  
 # 👮‍♀️ RGPD Information :
  Some data may be collected for the sole purpose of improving the service, for example to check if an error is coming from the student and not from the program. 
 The data that can be collected are : 
-- the host name of your machine.
-- the exam number you choose.
-- name of exercice, fail or success, current assignement and level.
+- The host name of your machine.
+- The exam number you choose.
+- Name of exercise, fail or success, current assignement and level.
 
-# Contribution by adding more exercices :
+# Contribution by adding more exercises :
 
 You can contribute by adding new exercises very easily with 42_EXAM. 
 
@@ -86,13 +87,13 @@ Contributor : pandaero
 This project is not identical to the proposed exams and does not reflect 42 official exam. 
 It is only meant to help 42 students to train on some exercises found on Github. 
 It works simply by doing a DIFF on both versions. 
-All the subjects have been found on Github. During my schooling at 42, this project helped me to understand a lot of notions like to host a website, to do javascript, php and others.
+All the subjects have been found on Github. During my schooling at 42, this project helped me to understand a lot of notions like how to host a website, working with javascript, php and others.
 This project has been created with the sole purpose of helping students to understand their mistakes and improve themselves. 
-If it’s not the case, I am ready to make changes and corrections on it, 42_EXAM/GradeMe has only a non-lucrative and educational purpose. It is completely free and open-source. 
+If It’s not the case, I am ready to make changes and corrections on it, 42_EXAM/GradeMe has only a non-lucrative and educational purpose. It is completely free and open-source. 
 
 
 # Your help is welcome
 
-👋 If you have any problem with the test, it would be nice to create an "Issue", it will take 3 minutes of your time and it will help me to make the test accessible to more people.
+👋 If you have any problem with any test, please create an "Issue" here on Github, it will only take 3 minutes of your time and it will help me to make the test more accurate.
 
-📌 Remember that if you encounter an error, you are probably not the only one and your "Issue" will surely help other people.
+📌 Remember that if you encounter an error, you're probably not the only one and your "Issue" will surely help other people.

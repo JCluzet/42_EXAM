@@ -1,43 +1,21 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 17:09:13 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/06 17:25:25 by galpers          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdio.h>
 
 int     ft_atoi(const char *str)
 {
-	int	i;
 	int	nbr;
-	int neg;
+	int sig;
+	int	i;
 
-
-	i = 0;
 	nbr = 0;
-	neg = 1;
-	if(str[0] == '-' || str[0] == '+')
-			i++;
-	if(str[0] == '-')
-		neg = -1;
-	while (str[i] != '\0' && str[i]>= '0' && str[i] <= '9')
+	sig = 1;
+	i = 0;
+	if (str[0] == '-' || str[0] == '+')
 	{
-		nbr = nbr * 10 + str[i] - '0';
-		i++;
+		if (str[0] == '-')
+			sig = -1;
+		i += 1;
 	}
-	return (neg * nbr);
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
+		nbr = (nbr * 10) + (str[i++] - '0');
+	return (nbr * sig);
 }
-
-/*int	main(void)
-{
-	int	result;
-
-	result = ft_atoi("-42abc");
-	printf("%d\n", result);
-} 	*/

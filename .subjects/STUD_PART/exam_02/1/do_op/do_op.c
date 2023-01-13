@@ -4,13 +4,10 @@
 
 int	main(int ac, char **av)
 {
-	int	n1;
-	int n2;
-	int	res;
+	int	n1 = 0;
+	int n2 = 0;
+	int	res = 0;
 
-	n1 = 0;
-	n2 = 0;
-	res = 0;
 	if (ac == 4)
 	{
 		n1 = atoi(av[1]);
@@ -28,5 +25,5 @@ int	main(int ac, char **av)
 		printf("%d\n", res);
 	}
 	else
-		write (1, "\n", 1);
+		write(1, "\n", 1);
 }

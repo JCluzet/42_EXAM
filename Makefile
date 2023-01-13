@@ -3,13 +3,12 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
+#    By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/21 01:05:24 by jcluzet           #+#    #+#              #
-#    Updated: 2023/01/03 17:00:31 by jcluzet          ###   ########.fr        #
+#    Updated: 2023/01/13 02:33:46 by nnuno-ca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 all:
 	@bash .system/launch.sh all
