@@ -5,7 +5,7 @@ int		max(int* tab, unsigned int len);
 
 int main(int argc, char **argv)
 {
-    if(argc < 3)
+    if (argc < 3)
         return(0);
     int *tab = malloc(sizeof(int) * (argc - 1));
     

@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 int     ft_strlen(char *str)
 {
@@ -30,19 +31,11 @@ char    *ft_strjoin(char *remains, char *buffer)
     if (remains)
     {
         while (remains[i])
-        {
-            array[j] = remains[i];
-            i++;
-            j++;
-        }
+            array[j++] = remains[i++];
         i = 0;
     }
     while (buffer[i])
-    {
-        array[j] = buffer[i];
-        i++;
-        j++;
-    }
+        array[j++] = buffer[i++];
     array[size] = '\0';
     free((void *)remains);
     return (array);
@@ -55,10 +48,8 @@ char    *push_line(char *remains)
 
     i = 0;
     while (remains[i] && remains[i] != '\n')
-	{
         i++;
-	}	
-if(remains[i] == '\n')
+    if (remains[i] == '\n')
 		i++;
     if (!(array = (char *)malloc(sizeof(char) * (i + 1))))
         return (NULL);
@@ -72,7 +63,7 @@ if(remains[i] == '\n')
 	{
 		array[i] = '\n';
 		array[i + 1] = '\0';
-		return(array);
+		return (array);
 	}
     array[i] = '\0';
     return (array);
@@ -106,25 +97,23 @@ char    *cut_next_line(char *remains)
     free(remains);
     return (array);
 }
-int ft_strchr(char *line)
+
+bool ft_strchr(char *line)
 {
 	int i = 0;
-	while(line[i])
+
+	while (line[i])
 	{
 		if (line[i] == '\n')
-			return(1);
-		i++;
+			return (true);
+		i += 1;
 	}
-	return(0);
+	return (false);
 }
 
 char     *get_next_line(int fd)
 {
-    if (fd < 0 || read(fd, NULL, 0) < 0)
-    {
-        return (NULL);
-    }
-    if (BUFFER_SIZE <= 0)
+    if (fd < 0 || read(fd, NULL, 0) < 0 || BUFFER_SIZE <= 0)
         return (NULL);
     char buffer[BUFFER_SIZE + 1];
     buffer[0] = '\0';
@@ -142,10 +131,10 @@ char     *get_next_line(int fd)
     }
     line = push_line(remains);
     remains = cut_next_line(remains);
-	if(line[0] == '\0')
+	if (line[0] == '\0') 
     {
         free(line);
         return (NULL);
     }
-    return(line);
+    return (line);
 }

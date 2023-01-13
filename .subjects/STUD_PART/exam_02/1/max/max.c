@@ -1,40 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   max.c                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: galpers <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 19:22:07 by galpers           #+#    #+#             */
-/*   Updated: 2022/04/06 19:31:43 by galpers          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdio.h>
-
-int             max(int* tab, unsigned int len)
+int	max(int* tab, unsigned int len)
 {
-	unsigned int	i;
-	int res;
-
-	i = 0;
 	if (len == 0)
 		return (0);
-	res = tab[0];
-
-	while (i < len)
+	int res = tab[0];
+	for (unsigned int i = 0; i < len; i += 1)
 	{
-		if (tab[i] > res)
+		if (res < tab[i])
 			res = tab[i];
-		i++;
 	}
 	return (res);
 }
-
-/*int main(void)
-{
-	int	tab[] = {-42, 0, -5, -64, -2, -68, -1};
-
-	printf("max : %d\n", max(tab, 7));
-	return (0);
-}*/
