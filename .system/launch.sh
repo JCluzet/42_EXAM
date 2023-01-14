@@ -102,6 +102,7 @@ if [ ! -f .system/readline_ok ]; then
     echo -ne "Readline library not installed $WHITE$BOLD\n"
     echo -e " ➫ Auto install in 2 seconds...\n"
     sleep 2
+    sudo apt-get update
     sudo apt-get install libreadline-dev 2>.system/.devmake.err 1>.system/.devmake.err &
     PID=$!
 
