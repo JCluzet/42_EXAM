@@ -82,6 +82,7 @@ You can contribute by adding new exercises very easily with 42_EXAM.
 
 Contributor : pandaero
               Kuninoto
+              ComlanGiovanni
 
 # Disclaimer for 42 staff :
 
