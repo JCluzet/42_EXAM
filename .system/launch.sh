@@ -75,7 +75,7 @@ fi
 
 # sleep 1000
 
-# check if there is connexion to the internet, else do git pull for maj
+# check if there is connection to the internet, else do git pull for maj
 
 # Check if readline is installed, if not, install it
 g++ .system/checkreadline.cpp -o .system/readline_ok 2>.system/.devmake.err &
@@ -132,7 +132,7 @@ if [ ! -f .system/readline_ok ]; then
         clear
         if [ ! -f .system/readline_ok ]; then
             echo -ne "Can't install readline library... $WHITE$BOLD"
-            echo -e "Please install it manually or write an Issue in Github..."
+            echo -e "Please install it manually or write an Issue on Github..."
             exit 1
         fi
         # clear

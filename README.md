@@ -81,6 +81,7 @@ You can contribute by adding new exercises very easily with 42_EXAM.
 🥳 If your contribution is accepted, your name will be listed in the ReadMe as a contributor, thanks!
 
 Contributor : pandaero
+              Kuninoto
 
 # Disclaimer for 42 staff :
 

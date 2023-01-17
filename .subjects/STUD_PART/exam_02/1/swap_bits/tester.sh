@@ -6,145 +6,29 @@
 #    By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2023/01/13 02:15:37 by nnuno-ca         ###   ########.fr        #
+#    Updated: 2023/01/16 22:11:03 by nnuno-ca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FILE='swap_bits.c'
-MAIN='main.c'
-MAIN1='../.system/grading/main.c'
 ASSIGN='swap_bits'
 
-index=0
-
-if [ -e traceback ]
-then
-    rm traceback
+bash .system/auto_correc_main.sh $FILE $ASSIGN "a"
+if [ -e .system/grading/traceback ];then
+    mv .system/grading/traceback .
+	exit 1
 fi
 
-cd .system/grading
-gcc -o source $FILE $MAIN
-./source "a" | cat -e > sourcexam       #TESTING
-rm source
-cd ../../rendu
-{
-gcc -o final $ASSIGN $MAIN1
-}  &>../.system/grading/traceback
-{
-./final "a" | cat -e > finalexam        #TESTING
-mv finalexam ../.system/grading/
-rm final
-}  &>/dev/null
-cd ../.system/grading
-DIFF=$(diff sourcexam finalexam)
-echo "" >> traceback
-if [ "$DIFF" != "" ]
-then
-		index=$(($index + 1))
-		cat sourcexam >> traceback
-		echo '\n' >> traceback
-		if [ -e finalexam ]
-		then
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
-		echo '\n' >> traceback
-		echo "-------" >> traceback
-fi
-rm finalexam
-
-
-
-gcc -o source $FILE $MAIN
-./source "1" | cat -e > sourcexam    #TESTING
-rm source
-cd ../../rendu
-{
-gcc -o final $ASSIGN $MAIN1
-./final "1" | cat -e > finalexam     #TESTING
-mv finalexam ../.system/grading/
-rm final
-}  &>/dev/null
-cd ../.system/grading
-DIFF=$(diff sourcexam finalexam)
-echo "" >> traceback
-if [ "$DIFF" != "" ]
-then
-		index=$(($index + 1))
-		cat sourcexam >> traceback
-		echo '\n' >> traceback
-		if [ -e finalexam ]
-		then
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
-		echo '\n' >> traceback
-		echo "-------" >> traceback
+bash .system/auto_correc_main.sh $FILE $ASSIGN "0"
+if [ -e .system/grading/traceback ];then
+    mv .system/grading/traceback .
+	exit 1
 fi
 
-gcc -o source $FILE $MAIN
-./source "3" | cat -e > sourcexam    #TESTING
-rm source
-cd ../../rendu
-{
-gcc -o final $ASSIGN $MAIN1
-./final "3" | cat -e > finalexam     #TESTING
-mv finalexam ../.system/grading/
-rm final
-}  &>/dev/null
-cd ../.system/grading
-DIFF=$(diff sourcexam finalexam)
-echo "" >> traceback
-if [ "$DIFF" != "" ]
-then
-		index=$(($index + 1))
-		cat sourcexam >> traceback
-		echo '\n' >> traceback
-		if [ -e finalexam ]
-		then
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
-		echo '\n' >> traceback
-		echo "-------" >> traceback
+bash .system/auto_correc_main.sh $FILE $ASSIGN "P"
+if [ -e .system/grading/traceback ];then
+    mv .system/grading/traceback .
+	exit 1
 fi
 
-gcc -o source $FILE $MAIN
-./source "w" | cat -e > sourcexam    #TESTING
-rm source
-cd ../../rendu
-{
-gcc -o final $ASSIGN $MAIN1
-./final "w" | cat -e > finalexam     #TESTING
-mv finalexam ../.system/grading/
-rm final
-}  &>/dev/null
-cd ../.system/grading
-DIFF=$(diff sourcexam finalexam)
-echo "" >> traceback
-if [ "$DIFF" != "" ]
-then
-		index=$(($index + 1))
-		cat sourcexam >> traceback
-		echo '\n' >> traceback
-		if [ -e finalexam ]
-		then
-		cat finalexam >> traceback
-		else
-		echo "" >> traceback
-		fi
-		echo '\n' >> traceback
-		echo "-------" >> traceback
-fi
-
-if [ $index -eq 0 ]
-then
-	touch passed
-fi
-{
-mv traceback ../../traceback
-}	&>/dev/null
-rm sourcexam
+touch .system/grading/passed;
