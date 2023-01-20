@@ -3,80 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   rev_wstr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aarbaoui <aarbaoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/22 15:16:31 by jcharloi          #+#    #+#             */
-/*   Updated: 2022/12/14 17:54:50 by jcluzet          ###   ########.fr       */
+/*   Created: 2023/01/18 14:03:03 by aarbaoui          #+#    #+#             */
+/*   Updated: 2023/01/18 14:50:08 by aarbaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
-#include <ctype.h>
 
-int		ft_strlen(char *str)
+void ft_putchar(char c)
 {
-	int	i = 0;
+	write(1, &c, 1);
+}
 
-	while (str[i] != '\0')
+int ft_strlen(char *str)
+{
+	int i = 0;
+	
+	while (str[i])
 		i++;
 	return (i);
 }
 
-void	ft_putstr(char *str)
+int main(int ac, char *av[])
 {
-	write(1, str, ft_strlen(str));
-}
+	char *tmp;
+	char *rev;
+	int len;
 
-void	fonction(char *str)
-{
-	char *copy;
-	int	size;
-	int	i;
-	int	o;
-	int mot;
-	
-	size = 1;
-	o = 0;
-	mot = 0;
-	if (!(copy = (char *)malloc(sizeof(char) * ft_strlen(str) + 1)))
-		return ;
-	i = ft_strlen(str) - 1;
-	while (i >= 0)
+	if (ac == 2)
 	{
-		while (str[i] != ' ' && i >= 0)
+		tmp = av[1];
+		len = ft_strlen(tmp);
+		rev = NULL;
+		len--;
+		while (tmp[len])
 		{
-			size++;
-			i--;
+			if (tmp[len - 1] == ' ')
+			{
+				rev = &tmp[len];
+				while (*rev && *rev != ' ')
+				{
+					ft_putchar(*rev);
+					rev++;
+				}
+				ft_putchar(' ');
+			}
+			else if (len == 0)
+			{
+				rev = &tmp[len];
+				while (*rev && *rev != ' ')
+				{
+					ft_putchar(*rev);
+					rev++;
+				}
+			}
+			len--;
 		}
-		size++;
-		i++;
-		while (str[i] != '\0' && str[i] != ' ')
-		{
-			copy[o] = str[i];
-			o++;
-			i++;
-		}
-		if (size <= ft_strlen(str) + 1)
-			copy[o++] = ' ';
-		mot++;
-		i = ft_strlen(str) - size;
 	}
-	//copy[i] = '\0';
-	ft_putstr(copy);
-	//noublie pas le \0
-}
-
-int main(int argc, char **argv)
-{
-	char *str;
-
-	if (argc == 2)
-	{
-		str = argv[1];
-		fonction(str);		
-	}
-	ft_putstr("\n");
-	return (0);
+	ft_putchar('\n');
 }
