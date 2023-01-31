@@ -138,7 +138,7 @@ int main(int argc, char **argv)
 
     exam exm;
 
-    if (file_exists(".system/exam_token/actuel_token.txt"))
+    if (file_exists(".system/exam_token/current_token.txt"))
         exm.restore_data();
     else
         exm.ask_param();
