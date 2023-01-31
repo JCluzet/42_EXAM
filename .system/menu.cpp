@@ -78,9 +78,9 @@ void exam::info(void)
         std::cout << "  Level " << LIME << it->second.get_lvl() << RESET << ": " << std::endl;
         for (unsigned int i = 0; i < it->second.get_assignement(); i++)
         {
-            std::cout << "    " << YELLOW << i << RESET << ": " << LIME << it->second.get_name() << RESET << " for " << (int)level_per_ex_save * (it->second.get_lvl() + 1) << " potential points (" << RED << "Failure" << RESET << ")" << std::endl;
+            std::cout << "    " << YELLOW << i << RESET << ": " << LIME << it->second.get_name() << RESET << " for " << (int)level_per_ex_save  << " potential points (" << RED << "Failure" << RESET << ")" << std::endl;
         }
-        std::cout << "    " << YELLOW << it->second.get_assignement() << RESET << ": " << LIME << it->second.get_name() << RESET << " for " << (int)level_per_ex_save * (it->second.get_lvl() + 1) << " potential points (" << LIME << "Success" << RESET << ")" << std::endl;
+        std::cout << "    " << YELLOW << it->second.get_assignement() << RESET << ": " << LIME << it->second.get_name() << RESET << " for " << (int)level_per_ex_save << " potential points (" << LIME << "Success" << RESET << ")" << std::endl;
     }
 
     std::cout << "  Level " << LIME << level << RESET << ": " << std::endl;
@@ -90,9 +90,9 @@ void exam::info(void)
     {
         for (unsigned int i = 0; i < current_ex->get_assignement(); i++)
         {
-            std::cout << "    " << YELLOW << i << RESET << ": " << LIME << current_ex->get_name() << RESET << " for " << (int)(((double)level + 1) / (double)level_max * 100) << " potential points (" << RED << "Failure" << RESET << ")" << std::endl;
+            std::cout << "    " << YELLOW << i << RESET << ": " << LIME << current_ex->get_name() << RESET << " for " << (int)level_per_ex_save << " potential points (" << RED << "Failure" << RESET << ")" << std::endl;
         }
-        std::cout << "    " << YELLOW << current_ex->get_assignement() << RESET << ": " << LIME << current_ex->get_name() << RESET << " for " << (int)(((double)level + 1) / (double)level_max * 100) << " potential points (" << CYAN << "Current" << RESET << ")" << std::endl;
+        std::cout << "    " << YELLOW << current_ex->get_assignement() << RESET << ": " << LIME << current_ex->get_name() << RESET << " for " << (int)level_per_ex_save << " potential points (" << CYAN << "Current" << RESET << ")" << std::endl;
     }
     std::cout << std::endl
               << "Assignment: " << LIME << current_ex->get_name() << RESET << " for " << LIME << BOLD << (double)(((double)level + 1) / (double)level_max * 100) << RESET << "xp" <<RESET << ", ";
