@@ -1,0 +1,19 @@
+#a demo token
+
+
+1662208475 #starting time
+1662219275 #ending time
+2          #exam_number
+1          #student or not
+0          #actual level
+0          #actual assignement
+ulstr      #name of current ex
+4          #level max of the exam
+1662208487 #time of last grademe
+25         #potentiel points after success
+25         #xp by level
+0          #number of cheat command used
+
+
+# Parsing can't parse # comments
+# file must be the name actuel_token.txt
