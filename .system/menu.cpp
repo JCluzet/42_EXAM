@@ -7,7 +7,7 @@ void exam::exam_random_show(void)
     if (level == 0)
         pot_pts = 0;
     else
-        pot_pts = level_per_ex;
+        pot_pts = level_per_ex_save;
     std::map<int, exercise>::iterator it = list_ex_lvl.begin();
     std::cout << "    " << YELLOW << current_ex->get_assignement() << RESET << ": " << LIME << it->second.get_name() << RESET << " for " << pot_pts << " potential points (" << CYAN << "Current" << RESET << ")" << std::endl;
     double time = 100000;
@@ -27,7 +27,7 @@ void exam::exam_random_show(void)
     std::cout << "    " << YELLOW << current_ex->get_assignement() << RESET << ": " << LIME << current_ex->get_name() << RESET << " for " << pot_pts << " potential points (" << CYAN << "Current" << RESET << ")" << std::endl;
     if (level_per_ex != 100)
     {
-        for (int i = 0; i < level_per_ex && level == 0; i++)
+        for (int i = 0; i < level_per_ex_save && level == 0; i++)
         {
             std::cout << REMOVE_LINE;
             std::cout << "    " << YELLOW << current_ex->get_assignement() << RESET << ": " << LIME << current_ex->get_name() << RESET << " for " << i << " potential points (" << CYAN << "Current" << RESET << ")" << std::endl;
@@ -35,7 +35,7 @@ void exam::exam_random_show(void)
         }
     }
     std::cout << REMOVE_LINE;
-    std::cout << "    " << YELLOW << current_ex->get_assignement() << RESET << ": " << LIME << current_ex->get_name() << RESET << " for " << (int)level_per_ex << " potential points (" << CYAN << "Current" << RESET << ")" << std::endl;
+    std::cout << "    " << YELLOW << current_ex->get_assignement() << RESET << ": " << LIME << current_ex->get_name() << RESET << " for " << (int)level_per_ex_save << " potential points (" << CYAN << "Current" << RESET << ")" << std::endl;
 }
 
 // ==> Help section
