@@ -3,15 +3,40 @@
 #                                                         :::      ::::::::    #
 #    tester.sh                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
+#    By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/09/01 23:45:25 by jcluzet          ###   ########.fr        #
+#    Updated: 2023/02/21 01:29:54 by nnuno-ca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FILE='ft_range.c'
 ASSIGN='ft_range'
+
+bash .system/auto_correc_main.sh $FILE $ASSIGN "1" "3"
+if [ -e .system/grading/traceback ];then
+    mv .system/grading/traceback .
+	exit 1
+fi
+
+bash .system/auto_correc_main.sh $FILE $ASSIGN "-1" "2"
+if [ -e .system/grading/traceback ];then
+    mv .system/grading/traceback .
+	exit 1
+fi
+
+bash .system/auto_correc_main.sh $FILE $ASSIGN "0" "0"
+if [ -e .system/grading/traceback ];then
+    mv .system/grading/traceback .
+	exit 1
+fi
+
+bash .system/auto_correc_main.sh $FILE $ASSIGN "0" "-3"
+if [ -e .system/grading/traceback ];then
+    mv .system/grading/traceback .
+	exit 1
+fi
+
 
 bash .system/auto_correc_main.sh $FILE $ASSIGN "1" "2"
 if [ -e .system/grading/traceback ];then
