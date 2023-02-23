@@ -4,25 +4,31 @@
 int	*ft_range(int start, int end)
 {
 	int	size;
-	int	*ret;
-	int	*ptr;
+	int	*res;
+	int	i;
 
-	size = end - start;
-	if (size)
+	size = abs((end - start)) + 1;
+	res = malloc(size * sizeof(int));
+	if (!res)
+		return (NULL);
+	i = 0;
+	if (start < end)
 	{
-		ptr = (int *)malloc(sizeof(int) * size);
-		if (ptr)
+		while (start <= end)
 		{
-			ret = ptr;
-			while (start <= end)
-			{
-				*ptr = start;
-				ptr++;
-				start++;
-			}
-			return (ret);
+			res[i] = start;
+			start += 1;
+			i += 1;
 		}
 	}
-	return (NULL);
+	else
+	{
+		while (start >= end)
+		{
+			res[i] = start;
+			start -= 1;
+			i += 1;
+		}
+	}
+	return (res);
 }
-

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    tester.sh                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
+#    By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/12/14 15:27:08 by jcluzet          ###   ########.fr        #
+#    Updated: 2023/02/21 00:56:07 by nnuno-ca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,13 @@ if [ -e .system/grading/traceback ];then
 	exit 1
 fi
 
-bash .system/auto_correc_program.sh $FILE $ASSIGN "12" "9"
+bash .system/auto_correc_program.sh $FILE $ASSIGN "12"
+if [ -e .system/grading/traceback ];then
+    mv .system/grading/traceback .
+	exit 1
+fi
+
+bash .system/auto_correc_program.sh $FILE $ASSIGN "1"
 if [ -e .system/grading/traceback ];then
     mv .system/grading/traceback .
 	exit 1
