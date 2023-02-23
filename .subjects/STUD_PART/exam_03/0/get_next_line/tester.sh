@@ -22,7 +22,7 @@ then
     rm traceback
 fi
 
-cp .subjects/STUD_PART/exam_03/1/get_next_line/test .
+cp .subjects/STUD_PART/exam_03/0/get_next_line/test .
 
 cd .system/grading
 cp test ../../rendu/test
