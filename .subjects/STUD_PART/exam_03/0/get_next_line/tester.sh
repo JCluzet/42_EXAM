@@ -6,7 +6,7 @@
 #    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/09/03 17:48:42 by jcluzet          ###   ########.fr        #
+#    Updated: 2023/03/03 21:14:20 by jcluzet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -212,6 +212,11 @@ then
 	touch passed
 fi
 {
+# if the file "traceback" is empty, delete it
+if [ ! -s traceback ]
+then
+echo "Traceback of get_next_line seems to be broken, find your error by yourself <3" >> traceback
+fi
 mv traceback ../../traceback
 }	&>/dev/null
 #rm sourcexam
