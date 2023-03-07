@@ -119,6 +119,10 @@ if [ ! -f .system/readline_ok ]; then
     printf "$LINE_UP$CLEAR_LINE$GREEN$BOLD"
     # echo -ne "✔$RESET Readline installation using apt-get$WHITE$BOLD\n\n"
 
+    # check if the compilator c++ is installed
+
+
+
     # clear
     g++ .system/checkreadline.cpp -o .system/readline_ok 2>.system/.devmake.err
     # if there is no .system/readline_ok file, it means that the readline library is not installed
@@ -130,8 +134,18 @@ if [ ! -f .system/readline_ok ]; then
         sleep 1
         sudo yum install readline
         clear
+
+
+        g++ .system/checkreadline.cpp -o .system/readline_ok 2>.system/.devmake.err
+
+
+
+
+
         if [ ! -f .system/readline_ok ]; then
             echo -ne "Can't install readline library... $WHITE$BOLD"
+            echo -ne "1. Check if clang++ is installed\n"
+            echo -ne "2. Check if libreadline-dev is installed\n"
             echo -e "Please install it manually or write an Issue on Github..."
             exit 1
         fi
