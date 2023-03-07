@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <unistd.h>
 
 int main(int argc, char **argv)
@@ -9,12 +10,12 @@ int main(int argc, char **argv)
 			if (argv[1][i] >= 'A' 
 			&& argv[1][i] <= 'Z')
 			{
-				write(1, "_", 1);
+				write(STDOUT_FILENO, "_", 1);
 				argv[1][i] += 32;
 			}
-			write(1, &argv[1][i], 1);
+			write(STDOUT_FILENO, &argv[1][i], 1);
 		}
 	}
-	write(1, "\n", 1);
-	return (0);
+	write(STDOUT_FILENO, "\n", 1);
+	return EXIT_SUCCESS;
 }
