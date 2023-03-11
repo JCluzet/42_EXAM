@@ -10,7 +10,7 @@ To add an exercise you have to create a folder with the name of the exercise in 
  
 🔖 For an exercise to be complete, you must add:
 
-- A subject named `subject.en.txt` in a folder `attachement` (you can add other files that will be given to the student during the exercise)
+- A subject named `subject.en.txt` in a folder `attachment` (you can add other files that will be given to the student during the exercise)
 - The exercise solution (example : fprime.c) 
 ⚠️ WARNING: The exercise must be perfect because it will be used by 42_EXAM to know if the rendering is correct.
 - The correction file `tester.sh` which is the file that allows you to send the inputs to test what you want. 
@@ -18,7 +18,7 @@ To add an exercise you have to create a folder with the name of the exercise in 
 ``` 
 fprime
  |
- |__attachement
+ |__attachment
  |    |__subjects.en.txt
  |    |__(other files give to students)
  |

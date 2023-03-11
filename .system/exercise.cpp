@@ -48,11 +48,11 @@ bool exam::prepare_current_ex(void)
     system("mkdir subjects 2> /dev/null");
     system("mkdir .system/grading 2> /dev/null");
 
-    // copy all the files in the current get_path() + attachement/* to the subjects directory
-    std::string cmd_system_call = "cp -r " + get_path() + "/attachement/*" + " subjects/";
+    // copy all the files in the current get_path() + attachment/* to the subjects directory
+    std::string cmd_system_call = "cp -r " + get_path() + "/attachment/*" + " subjects/";
     system(cmd_system_call.c_str());
 
-    // copy all the files in the current get_path() without the attachement folder to the .system/grading/ directory
+    // copy all the files in the current get_path() without the attachment folder to the .system/grading/ directory
     cmd_system_call = "cp " + get_path() + "* .system/grading/ >/dev/null 2>&1";
     system(cmd_system_call.c_str());
 
