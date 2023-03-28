@@ -207,4 +207,21 @@ echo -ne "✔$RESET Compilation of$BOLD$MANGENTA 42_EXAM $RESET\n"
 chmod +x .system/a.out
 # sleep 1
 
+# check if USER is set, if not, set it
+if [ -z "$USER" ]; then
+    #if there is a .system/.env file, read it and set the variable USER
+    if [ -f .system/.env ]; then
+        export USER=$(cat .system/.env)
+        echo "Variable USER set to $USER ✅"
+        ./.system/a.out
+        exit 0
+    fi
+    echo "USER is not set, you must enter your 42 login to use this program "
+    echo -ne "Enter your 42 login : "
+    read -r user_login        # Lire le login entré par l'utilisateur
+    export USER="$user_login" # Créer la variable d'environnement USER
+    echo "USER=$user_login" >.system/.env
+    echo "Variable USER set to $USER ✅"
+fi
+
 ./.system/a.out
