@@ -144,7 +144,7 @@ if [ ! -f .system/readline_ok ]; then
 
         if [ ! -f .system/readline_ok ]; then
             echo -ne "Can't install readline library... $WHITE$BOLD"
-            echo -ne "1. Check if clang++ is installed\n"
+            echo -ne "1. Check if g++ is installed\n"
             echo -ne "2. Check if libreadline-dev is installed\n"
             echo -e "Please install it manually or write an Issue on Github..."
             exit 1
