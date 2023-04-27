@@ -200,12 +200,48 @@ while [ ! -f .system/a.out ]; do
     done
 done
 
+check_package() {
+    if ! command -v "$1" &>/dev/null; then
+        return 1
+    fi
+}
+
+# Vérification de clang
+if ! check_package "clang"; then
+    echo "Le compilateur clang n'est pas installé sur votre système."
+    echo "Veuillez l'installer pour continuer."
+    exit 1
+fi
+
+# Vérification de clang++
+if ! check_package "clang++"; then
+    echo "Le compilateur clang++ n'est pas installé sur votre système."
+    echo "Veuillez l'installer pour continuer."
+    exit 1
+fi
+
+# Vérification de gcc
+if ! check_package "gcc"; then
+    echo "Le compilateur gcc n'est pas installé sur votre système."
+    echo "Veuillez l'installer pour continuer."
+    exit 1
+fi
+
+# Vérification de g++
+if ! check_package "g++"; then
+    echo "Le compilateur g++ n'est pas installé sur votre système."
+    echo "Veuillez l'installer pour continuer."
+    exit 1
+fi
+
 printf "$LINE_UP$CLEAR_LINE$GREEN$BOLD"
 echo -ne "✔$RESET Compilation of$BOLD$MANGENTA 42_EXAM $RESET\n"
 
 # echo "Done!"
 chmod +x .system/a.out
 # sleep 1
+
+
 
 # check if USER is set, if not, set it
 if [ -z "$USER" ]; then
