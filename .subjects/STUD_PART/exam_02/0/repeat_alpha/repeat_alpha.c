@@ -26,8 +26,6 @@ int	main(int ac, char **av)
 		while (str[i] != '\0')
 		{
 			k = 1;
-			if (str[i] >= 'A' && str[i] <= 'Z')
-				k = str[i] - 64;
 			if (str[i] >= 'a' && str[i] <= 'z')
 				k = str[i] - 96;
 			while (k >= 1)
