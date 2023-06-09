@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 FILE='ft_countdown.c'
-ASSIGN='ft_countdown'
+ASSIGN='ft_countdown/ft_countdown.c'
 
 index=0
 
