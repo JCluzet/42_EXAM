@@ -298,7 +298,7 @@ void exam::settings_menu(void)
         {
             setting_an = !setting_an;
             if (setting_an)
-                setenv("LOGNAMELOG42EXAM", "XXX", 1);
+                setenv("LOGNAMELOG42EXAM", generate_unique_id().c_str(), 1);
             else 
                 setenv("LOGNAMELOG42EXAM", logname, 1);
         }

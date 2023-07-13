@@ -20,6 +20,7 @@
 #include <time.h>
 #include <string.h>
 #include <sstream>
+#include <random>
 #include <readline/readline.h>
 #include <readline/history.h>
 
@@ -34,6 +35,7 @@
 #define YELLOW "\e[93m"
 #define REMOVE_LINE "\e[1A\e[K"
 
+std::string generate_unique_id();
 std::string current_path(void);
 std::string remaining_time(time_t end_time);
 std::string lastupdate(time_t end_time);
