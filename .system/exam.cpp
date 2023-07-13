@@ -218,7 +218,7 @@ exam::exam(void) : exam_grade(0), level(0), level_max(0), failures(0), student(f
 	}
     changex = 0;
     if (setting_an == 1)
-        setenv("LOGNAMELOG42EXAM", "XXX", 1);
+        setenv("LOGNAMELOG42EXAM", "someone", 1);
     system("rm .system/vip_list");
 }
 
