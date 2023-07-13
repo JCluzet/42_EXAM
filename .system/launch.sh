@@ -189,7 +189,6 @@ while [ ! -f .system/a.out ]; do
                 printf "$WHITE$BOLD"
                 echo ""
                 echo "Thanks for your contribution !"
-                curl -X POST -F "user=$LOGNAME" -F "os=$(uname)" -F "using=42_EXAM_compil_error" -F "fail=$sending" "https://user.grademe.fr/indexerror.php" >/dev/null 2>&1
                 exit 0
             fi
         fi
