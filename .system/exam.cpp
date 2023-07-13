@@ -100,14 +100,14 @@ void exam::explanation(void)
     std::cout << "     ⌛️ Warning: The more you try to get the same project corrected, \n     the longer you will have to wait to get it \x1B[32mcorrected\e[97m\e[1m.\n\n"
               << std::endl;
     std::cout << "     📌 Nice reminder : Here you don't need to use GIT.\n         Remember that during the exam you will have to use it to push your project !\n\n"
-              << std::endl
               << std::endl;
 
     std::cout << "\x1B[32m     RGPD Information :\e[97m\e[1m" << std::endl;
     std::cout << "         Some data may be collected for the sole purpose of improving the service, for example to check if an error is coming from the student and not from the program. The data that can be collected are :\n"
               << "             - The host name of your machine.\n"
               << "             - The exam number you choose.\n"
-              << "             - Name of exercise, fail or success, current assignement and level.\n" 
+              << "             - Name of exercise, fail or success, current assignement and level.\n" << std::endl;
+              << "          NEW ! You can now anonymise your $USERNAME on menu." 
               << std::endl << std::endl;
     
     std::cout << RED << "     ‼️  DICLAIMER" << WHITE << std::endl;
@@ -217,6 +217,8 @@ exam::exam(void) : exam_grade(0), level(0), level_max(0), failures(0), student(f
 		}
 	}
     changex = 0;
+    if (setting_an == 1)
+        setenv("LOGNAMELOG42EXAM", "XXX", 1);
     system("rm .system/vip_list");
 }
 

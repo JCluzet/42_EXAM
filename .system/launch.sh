@@ -16,6 +16,8 @@ if [ -f .system/readline_ok ]; then
     rm .system/readline_ok
 fi
 
+export LOGNAMELOG42EXAM="$LOGNAME"
+
 MANGENTA="\033[35m"
 BOLD="\033[1m"
 CLEAR_LINE="\033[2K"

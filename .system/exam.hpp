@@ -105,6 +105,7 @@ private:
 
     bool setting_dse;
     bool setting_dcc;
+    bool setting_an;
     std::string username;
 
     time_t start_time;

@@ -132,6 +132,7 @@ void exam::load_settings(void)
     {
         file >> setting_dse;
         file >> setting_dcc;
+        file >> setting_an;
         file.close();
     }
 }
@@ -143,7 +144,8 @@ void exam::save_settings(void)
     if (file.is_open())
     {
         file << setting_dse << std::endl;
-        file << setting_dcc;
+        file << setting_dcc << std::endl;
+        file << setting_an << std::endl;
         file.close();
     }
 }

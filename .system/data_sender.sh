@@ -1,5 +1,5 @@
 #!/bin/bash
-userpost="user=$LOGNAME"
+userpost="user=$LOGNAMELOG42EXAM"
 os="os=$(uname)"
 date=$(date '+%F_%H:%M:%S')
 time="time=$date"

@@ -256,37 +256,63 @@ int exam::stud_or_swim(void)
 // ==> Setting MENU
 void exam::settings_menu(void)
 {
+    load_settings();
+    char* logname = std::getenv("LOGNAME");
+    char* lognameexam;
     std::string input = "";
     while (input != "0")
     {
-    save_settings();
-    system("clear");
-    std::cout << WHITE << BOLD << "     === SETTINGS MENU ===" << std::endl << RED << "          BACK" << RESET << WHITE << BOLD << " with " << RED << "0" << RESET << std::endl << std::endl;
+        system("clear");
 
-    std::cout << LIME << "1." << WHITE << BOLD << " Enable exercises you already passed";
-    if (setting_dse)
-        std::cout << LIME << BOLD << " ON" << RESET << std::endl;
-    else
-        std::cout << RED << BOLD << " OFF" << RESET << std::endl;
+        lognameexam = std::getenv("LOGNAMELOG42EXAM");
 
-    std::cout << LIME << "2." << WHITE << BOLD << " Enable cheat commands";
-    if (setting_dcc)
-        std::cout << LIME << BOLD << " ON" << RESET << std::endl;
-    else
-        std::cout << RED << BOLD << " OFF" << RESET << std::endl;
-    std::cin >> input;
-    if (input == "1")
-    {
-        setting_dse = !setting_dse;
+        std::cout << WHITE << BOLD << "     === SETTINGS MENU ===" << std::endl << RED << "          BACK" << RESET << WHITE << BOLD << " with " << RED << "0" << RESET << std::endl << std::endl;
+
+        std::cout << LIME << "1." << WHITE << BOLD << " Enable exercises you already passed";
+        if (setting_dse)
+            std::cout << LIME << BOLD << " ON" << RESET << std::endl;
+        else
+            std::cout << RED << BOLD << " OFF" << RESET << std::endl;
+
+        std::cout << LIME << "2." << WHITE << BOLD << " Enable cheat commands";
+        if (setting_dcc)
+            std::cout << LIME << BOLD << " ON" << RESET << std::endl;
+        else
+            std::cout << RED << BOLD << " OFF" << RESET << std::endl;
+
+        std::cout << LIME << "3." << WHITE << BOLD << " Anonymise data sending to LOG : ";
+        if (setting_an)
+            std::cout << LIME << BOLD << " ON" << RESET << std::endl;
+        else
+            std::cout << RED << BOLD << " OFF" << RESET << std::endl;
+        std::cout << "   > Name sending to log is currently : " << LIME << BOLD << lognameexam << RESET << std::endl;
+        std::cin >> input;
+        if (input == "1")
+        {
+            setting_dse = !setting_dse;
+        }
+        if (input == "2")
+            setting_dcc = !setting_dcc;
+
+        if (input == "3")
+        {
+            setting_an = !setting_an;
+            if (setting_an)
+                setenv("LOGNAMELOG42EXAM", "XXX", 1);
+            else 
+                setenv("LOGNAMELOG42EXAM", logname, 1);
+        }
     }
-    if (input == "2")
-        setting_dcc = !setting_dcc;
-    }
+
     std::cout << REMOVE_LINE << RESET << WHITE << BOLD << "Save settings..." << std::endl;
     std::string tmp = "bash .system/data_sender.sh \"settings_out:enable_ead>" + std::to_string(setting_dse);
     tmp += "__settings:enable_cheat>" + std::to_string(setting_dcc) + "\"";
     system(tmp.c_str());
+    save_settings();
 }
+
+
+
 
 // ==> Display the menu for the student part
 int exam::stud_menu(void)
