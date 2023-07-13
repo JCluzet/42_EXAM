@@ -106,7 +106,7 @@ void exam::explanation(void)
     std::cout << "         Some data may be collected for the sole purpose of improving the service, for example to check if an error is coming from the student and not from the program. The data that can be collected are :\n"
               << "             - The host name of your machine.\n"
               << "             - The exam number you choose.\n"
-              << "             - Name of exercise, fail or success, current assignement and level.\n" << std::endl;
+              << "             - Name of exercise, fail or success, current assignement and level.\n" << std::endl
               << "          NEW ! You can now anonymise your $USERNAME on menu." 
               << std::endl << std::endl;
     
