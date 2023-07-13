@@ -103,6 +103,13 @@ void exam::explanation(void)
               << std::endl
               << std::endl;
 
+    std::cout << "\x1B[32m     RGPD Information :\e[97m\e[1m" << std::endl;
+    std::cout << "         Some data may be collected for the sole purpose of improving the service, for example to check if an error is coming from the student and not from the program. The data that can be collected are :\n"
+              << "             - The host name of your machine.\n"
+              << "             - The exam number you choose.\n"
+              << "             - Name of exercise, fail or success, current assignement and level.\n" 
+              << std::endl << std::endl;
+    
     std::cout << RED << "     ‼️  DICLAIMER" << WHITE << std::endl;
     std::cout << "         This program is " << RED << "not" << WHITE << " the real 42 exam and is " << RED << "not" << WHITE << " made by 42." << std::endl;
     std::cout << "         It is created by a student, free and open-source." << std::endl << std::endl;
@@ -111,6 +118,7 @@ void exam::explanation(void)
     if (!std::getline(std::cin, enter))
         sigd();
 }
+
 
 // ==> First menu asking examrank number
 void exam::ask_param(void)
