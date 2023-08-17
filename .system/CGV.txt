@@ -1,0 +1,15 @@
+Use GrademeEXAM responsibly for practice purposes.
+Success comes from understanding the code, there are no shortcuts.
+This tools has been created to help you review your errors and better understand your code issues.
+Be aware that the content of GrademeEXAM may not match the ExamShell of 42, the corrections from the Moulinette can differ significantly, and exam topics can change at any time.
+You are responsible for your exam preparation and results.
+By typing "agree" and using Grademe, you accept these terms.
+
+---
+
+Utilisez GrademeEXAM de manière responsable à des fins d'entraînement.
+L'apprentisage vient de la compréhension du code, il n'y a pas de raccourcis.
+Cet outil a été créé pour vous aider à revoir vos erreurs et mieux comprendre votre code.
+Sachez que le contenu de GrademeEXAM peut ne pas correspondre à l'ExamShell de 42, les corrections de la Moulinette peuvent différer considérablement, et les sujets d'examen peuvent changer à tout moment.
+Vous êtes responsable de votre préparation et de vos résultats d'examen.
+En tapant "agree" et en utilisant Grademe, vous acceptez ces termes.
