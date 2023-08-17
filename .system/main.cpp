@@ -28,6 +28,9 @@ void CGVAcceptation(void)
         std::ofstream file(".system/acceptCGV");
         file << "1";
         file.close();
+        // thanks for accepting
+        std::cout << "Thanks for accepting theses rules, and good luck for your exam!" << std::endl;
+        sleep(2);
     }
 }
 
