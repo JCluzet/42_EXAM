@@ -51,10 +51,13 @@ sleep 0.2
 echo -n "This is a text without backline at the end" | telnet localhost $1
 sleep 0.4
 printf "Et voici un texte avec plusieurs\nretours\na\nla\nligne\n" | telnet localhost $1
-sleep 0.2
+sleep 0.4
 
 bash test_eof.sh $1
 sleep 1
+
+cat very_long_msg.txt | telnet localhost $1
+sleep 0.2
 
 kill $PID
 kill $PID2
