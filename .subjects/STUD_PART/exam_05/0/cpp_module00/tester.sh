@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    tester.sh                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcluzet <jcluzet@student.42.fr>            +#+  +:+       +#+         #
+#    By: tfregni <tfregni@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/20 02:26:11 by jcluzet           #+#    #+#              #
-#    Updated: 2022/09/01 23:50:56 by jcluzet          ###   ########.fr        #
+#    Updated: 2023/11/05 01:00:46 by tfregni          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAIN='main.cpp'
-MAIN1='../.system/grading/main.cpp'
+MAIN1='cpp_module00/main.cpp'
 
 index=0
 
@@ -24,10 +24,12 @@ cd .system/grading
 clang++ -Wall -Wextra -Werror -std=c++98 -o source $MAIN Warlock.cpp
 ./source | cat -e > sourcexam       #TESTING
 rm source
+cp main.cpp ../../rendu/cpp_module00
 cd ../../rendu
 {
 clang++ -Wall -Wextra -Werror -std=c++98 -o final $MAIN1 cpp_module00/Warlock.cpp
 }  &>../.system/grading/traceback
+rm -f cpp_module00/main.cpp
 # if there is a traceback file, exit this script
 # if [ -e ../.system/grading/traceback ]
 # then
