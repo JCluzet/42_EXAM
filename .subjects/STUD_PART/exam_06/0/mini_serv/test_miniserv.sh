@@ -58,6 +58,10 @@ sleep 1
 
 cat very_long_msg.txt | nc -q 0 localhost $1
 
+sleep 1
+
+cat other_long_msg.txt | nc -q 0 localhost $1
+
 sleep 2
 
 killall final
