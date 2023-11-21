@@ -1,7 +1,6 @@
 #!/bin/bash
-IP=$1
-first_port=$2
-last_port=$3
+first_port=$1
+last_port=$2
 goodport=0;
 if [ -z "$first_port" ]
 then
@@ -16,7 +15,11 @@ function scanner
 {
 for ((port="$first_port"; port<="$last_port"; port++))
         do
-                (echo >/dev/tcp/"$IP"/"$port")> /dev/null 2>&1 || goodport=$port
+            checkport=`ss -tuln | grep $port`
+            if [ -z "$checkport" ]; then
+                goodport=$port
+                break
+            fi
         done
 }
 
