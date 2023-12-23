@@ -54,6 +54,24 @@ sleep 1
 sleep 1
 pkill --signal SIGKILL -f $KILLABLE_PNAME
 
+# pipe fd leak test
+test_fd_leak()
+{
+	# similar test to "cat | cat | ls" on minishell
+	( $KILLABLE_PNAME /bin/cat "|" /bin/cat "|" /bin/echo -n < /dev/zero &)
+	sleep 1 # assuming that code should exit because of SIGPIPE during this 1 second of sleep if there is no fd leak
+	FDL_PGREP_OUTPUT=$(pgrep -f $KILLABLE_PNAME)
+	if [ -z $FDL_PGREP_OUTPUT ]; then
+		echo "test_fd_leak: OK (Program (most likely) does not have an fd leak)"
+	else
+		echo "test_fd_leak: KO (Program (most likely) does     have an fd leak)"
+	fi
+	pkill --signal SIGKILL -f $KILLABLE_PNAME
+}
+
+test_fd_leak
+
+# pipe buffer capacity test
 GPC_SOURCE=/tmp/get_pipe_capacity.c
 GPC_BINARY=/tmp/get_pipe_capacity.out
 PIPE_FILLER=/tmp/pipe_filler
@@ -93,10 +111,10 @@ test_full_pipe_buffer()
 		echo "test_full_pipe_buffer: KO (Program does    rely on pipe buffer capacity (Hint: Pipes need to get read from)"
 		pkill -f /bin/cat
 	fi
+	pkill --signal SIGKILL -f $KILLABLE_PNAME
 }
 
 test_full_pipe_buffer
-pkill --signal SIGKILL -f $KILLABLE_PNAME
 rm -f $KILLABLE_PNAME
 rm -f $GPC_SOURCE
 rm -f $GPC_BINARY

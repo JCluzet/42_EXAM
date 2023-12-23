@@ -167,10 +167,20 @@ void exec_cmd(t_base *temp, char **env)
 		exit_fatal();
 	else if (temp->pid == 0) //child
 	{
-		if (temp->type == TYPE_PIPE && dup2(temp->fd[STDOUT], STDOUT) < 0)
-			exit_fatal();
-		if (temp->prev && temp->prev->type == TYPE_PIPE && dup2(temp->prev->fd[STDIN], STDIN) < 0)
-			exit_fatal();
+		if (temp->type == TYPE_PIPE)
+		{
+			if (dup2(temp->fd[STDOUT], STDOUT) < 0)
+				exit_fatal();
+			if (close(temp->fd[STDIN]) || close(temp->fd[STDOUT]))
+				exit_fatal();
+		}
+		if (temp->prev && temp->prev->type == TYPE_PIPE)
+		{
+		 	if (dup2(temp->prev->fd[STDIN], STDIN) < 0)
+				exit_fatal();
+			if (close(temp->prev->fd[STDIN]))
+				exit_fatal();
+		}
 		if ((execve(temp->argv[0], temp->argv, env)) < 0)
 			exit_execve(temp->argv[0]);
 		exit(EXIT_SUCCESS);
