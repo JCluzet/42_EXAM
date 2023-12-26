@@ -10,12 +10,18 @@ if [ -z "$last_port" ]
 then
         last_port=9999
 fi
-function scanner
 
+if [ $(uname) == "Darwin" ]; then
+	checkport_tool='lsof -i -n -P'
+else
+	checkport_tool='ss -tuln'
+fi
+
+function scanner
 {
 for ((port="$first_port"; port<="$last_port"; port++))
         do
-            checkport=`ss -tuln | grep $port`
+            checkport=`eval $checkport_tool | grep $port`
             if [ -z "$checkport" ]; then
                 goodport=$port
                 break
