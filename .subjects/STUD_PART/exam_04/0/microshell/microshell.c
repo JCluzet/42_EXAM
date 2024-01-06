@@ -19,7 +19,6 @@ typedef struct s_base
     int size;
 	int type;
 	int fd[2];
-	pid_t pid;
 	struct s_base *prev;
     struct s_base *next;
 } t_base;
@@ -159,36 +158,39 @@ int parser_argv(t_base **ptr, char **av)
 
 void exec_cmd(t_base *temp, char **env)
 {
-	if (temp->type == TYPE_PIPE)
+	pid_t pid;
+	int status;
+	int pipe_open;
+
+	pipe_open = 0;
+	if (temp->type == TYPE_PIPE || (temp->prev && temp->prev->type == TYPE_PIPE))
+	{
+		pipe_open = 1;
 		if (pipe(temp->fd))
 			exit_fatal();
-	temp->pid = fork();
-	if (temp->pid < 0)
+	}
+	pid = fork();
+	if (pid < 0)
 		exit_fatal();
-	else if (temp->pid == 0) //child
+	else if (pid == 0) //child
 	{
-		if (temp->type == TYPE_PIPE)
-		{
-			if (dup2(temp->fd[STDOUT], STDOUT) < 0)
-				exit_fatal();
-			if (close(temp->fd[STDIN]) || close(temp->fd[STDOUT]))
-				exit_fatal();
-		}
-		if (temp->prev && temp->prev->type == TYPE_PIPE)
-		{
-		 	if (dup2(temp->prev->fd[STDIN], STDIN) < 0)
-				exit_fatal();
-			if (close(temp->prev->fd[STDIN]))
-				exit_fatal();
-		}
+		if (temp->type == TYPE_PIPE && dup2(temp->fd[STDOUT], STDOUT) < 0)
+			exit_fatal();
+		if (temp->prev && temp->prev->type == TYPE_PIPE && dup2(temp->prev->fd[STDIN], STDIN) < 0)
+			exit_fatal();
 		if ((execve(temp->argv[0], temp->argv, env)) < 0)
 			exit_execve(temp->argv[0]);
 		exit(EXIT_SUCCESS);
 	}
 	else //parent
 	{
-		if (temp->type == TYPE_PIPE)
+		waitpid(pid, &status, 0);
+		if (pipe_open)
+		{
 			close(temp->fd[STDOUT]);
+			if (!temp->next || temp->type == TYPE_BREAK)
+				close(temp->fd[STDIN]);
+		}
 		if (temp->prev && temp->prev->type == TYPE_PIPE)
 			close(temp->prev->fd[STDIN]);
 	}
@@ -203,7 +205,7 @@ void exec_cmds(t_base *ptr, char **env)
 	{
 		if (strcmp("cd", temp->argv[0]) == 0)
 		{
-			if (temp->size != 2)
+			if (temp->size < 2)
 				exit_cd_1();
 			else if (chdir(temp->argv[1]))
 				exit_cd_2(temp->argv[1]);
@@ -214,39 +216,28 @@ void exec_cmds(t_base *ptr, char **env)
 	}
 }
 
-void wait_childs(t_base *temp)
-{
-	while (temp)
-	{
-		waitpid(temp->pid, NULL, 0);
-		temp = temp->next;
-	}
-}
-
 /*
 **====================================
 **============Part main===============
 **====================================
 */
 
-void free_all(t_base **ptr)
+void free_all(t_base *ptr)
 {
-	t_base *curr;
-	t_base *next;
+	t_base *temp;
 	int i;
 
-	curr = *ptr;
-	while (curr)
+	while (ptr)
 	{
-		next = curr->next;
+		temp = ptr->next;
 		i = 0;
-		while (i < curr->size)
-			free(curr->argv[i++]);
-		free(curr->argv);
-		free(curr);
-		curr = next;
+		while (i < ptr->size)
+			free(ptr->argv[i++]);
+		free(ptr->argv);
+		free(ptr);
+		ptr = temp;
 	}
-	*ptr = NULL;
+	ptr = NULL;
 }
 
 int main(int ac, char **av, char **env)
@@ -254,37 +245,38 @@ int main(int ac, char **av, char **env)
 	t_base *ptr = NULL;
 	int i;
 
-	if (ac == 1)
-		return (0);
 	i = 1;
-	while (av[i]) //pipeline loop
+	if (ac > 1)
 	{
-		if (strcmp(av[i], ";") == 0)
-		{
-			i++;
-			continue ;
-		}
-		while (av[i] && strcmp(av[i], ";") != 0) //cmd loop
+		while (av[i])
     	{
+            if (strcmp(av[i], ";") == 0)
+            {
+                i++;
+                continue ;
+            }
     	    i += parser_argv(&ptr, &av[i]);
-    	    if (av[i] && !strcmp(av[i], "|"))
+    	    if (!av[i])
+    	        break;
+    	    else
     	        i++;
     	}
-		/*while (ptr)
-		{
-			printf("=================\n");
-			for (i = 0; i < ptr->size; i++)
-				printf("%s\n", ptr->argv[i]);
-			printf("TYPE: %d\n", ptr->type);
-			printf("SIZE: %d\n", ptr->size);
-			printf("=================\n");
-			ptr = ptr->next;
-		}
-		(void)**env;
-		printf("END\n");*/
-		exec_cmds(ptr, env);
-		wait_childs(ptr);
-		free_all(&ptr);
+	/*while (ptr)
+	{
+		
+		printf("=================\n");
+		for (i = 0; i < ptr->size; i++)
+			printf("%s\n", ptr->argv[i]);
+		printf("TYPE: %d\n", ptr->type);
+		printf("SIZE: %d\n", ptr->size);
+		printf("=================\n");
+		ptr = ptr->next;
+	}
+	(void)**env;
+	printf("END\n");*/
+		if (ptr)
+			exec_cmds(ptr, env);
+		free_all(ptr);
 	}
 	return (0);
 }
