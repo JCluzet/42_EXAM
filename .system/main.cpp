@@ -49,9 +49,9 @@ void exam::exam_prompt(void)
         if (line == NULL)
             sigd();
         input = line;
-        while (input.back() == ' ')
+        while (!input.empty() && input.back() == ' ')
             input.pop_back();
-        while (input.front() == ' ')
+        while (!input.empty() && input.front() == ' ')
             input.erase(input.begin());
         if (input.empty())
             continue;
