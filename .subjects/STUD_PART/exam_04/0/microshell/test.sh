@@ -99,11 +99,11 @@ test_full_pipe_buffer()
 	dd if=/dev/zero of=$PIPE_FILLER bs=1 count=$PIPE_CAPACITY_P1 > /dev/null 2>&1
 
 	cp a.out $KILLABLE_PNAME
-	($KILLABLE_PNAME /bin/cat $PIPE_FILLER "|" /bin/tee /dev/null &)
+	($KILLABLE_PNAME /bin/cat $PIPE_FILLER "|" /bin/cat > /dev/null &)
 	# assumptions:
 	# 1 - 'cat' can write all the bytes into the pipe and 'tee' can read all of them then both cmds exit. all under 1 second
 	# 2 - process uses waitpid() properly (last 2 checks above)
-	sleep 1 
+	sleep 1
 	PC_PGREP_OUTPUT=$(pgrep -f $KILLABLE_PNAME)
 	if [ -z $PC_PGREP_OUTPUT ]; then
 		echo "test_full_pipe_buffer: OK (Program doesn't rely on pipe buffer capacity)"
