@@ -79,6 +79,28 @@ fi
 
 # check if there is connection to the internet, else do git pull for maj
 
+# Check if compilers installation is done
+
+check_compilers() {
+    if ! command -v g++ &> /dev/null; then
+    echo "g++ not found."
+    return 1
+    fi
+
+    if ! command -v clang &> /dev/null; then
+    echo "clang not found"
+    return 1
+    fi
+
+    return 0
+}
+
+check_compilers
+if [$? -ne 0]; then
+echo "Error during compiler check"
+exit 1
+fi
+
 # Check if readline is installed, if not, install it
 g++ .system/checkreadline.cpp -o .system/readline_ok 2>.system/.devmake.err &
 
