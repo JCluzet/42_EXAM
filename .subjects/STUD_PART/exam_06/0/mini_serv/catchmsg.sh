@@ -6,5 +6,5 @@ exec 6</dev/tcp/localhost/"$1"
 
 while read -r <&6
 do
-    echo "$REPLY" >> bim
+    echo "$REPLY"
 done
