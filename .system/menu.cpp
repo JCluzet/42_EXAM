@@ -43,20 +43,18 @@ void exam::exam_help()
 {
     std::cout << "Commands:" << std::endl;
     std::cout << LIME << "    help:" << RESET << " display this help" << std::endl;
+    std::cout << LIME << "    sponsor" << RESET << " Visit Sponsor Page to become VIP" << std::endl;
     std::cout << LIME << "    settings: " << RESET << "display settings menu" << std::endl;
     std::cout << LIME << "    status:" << RESET << " display information about the exam" << std::endl;
     std::cout << LIME << "    finish:" << RESET << " exit the exam" << std::endl;
     std::cout << LIME << "    grademe:" << RESET << " grade your exercise" << std::endl;
     std::cout << LIME << "    repo_git:" << RESET << " visit github repo" << std::endl;
-    std::cout << "See github repo to find some more 'cheat' command" << std::endl;
-    if (vip)
-    {
-        std::cout << BOLD << LIME << "VIP MENU:" << RESET << std::endl;
-        std::cout << LIME << "    force_success:" << RESET << " force a ex to success" << std::endl;
-        std::cout << LIME << "    remove_grade_time:" << RESET << " remove grade time limit between two grademe" << std::endl;
-        std::cout << LIME << "    gradenow:" << RESET << " instant grade exercise" << std::endl;
-        std::cout << LIME << "    new_ex:" << RESET << " generate a new exercise for the same level" << std::endl;
-    }
+    std::cout << "See github repo to find some more 'cheat' command" << std::endl << std::endl;
+    std::cout << BOLD << LIME << "VIP MENU (sponsor or contribute): " << RESET << std::endl;
+    std::cout << LIME << "    force_success:" << RESET << " force a ex to success" << std::endl;
+    std::cout << LIME << "    remove_grade_time:" << RESET << " remove grade time limit between two grademe" << std::endl;
+    std::cout << LIME << "    gradenow:" << RESET << " instant grade exercise" << std::endl;
+    std::cout << LIME << "    new_ex:" << RESET << " generate a new exercise for the same level" << std::endl;
 }
 
 // ==> display of exam status
