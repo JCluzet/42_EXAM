@@ -1,0 +1,28 @@
+Assignment name: Title
+
+Expected files: title.c
+
+Allowed functions: write
+
+--------------------------------------------------------------------------------
+
+Write a program called title that takes a string and displays the same string with the first letter of each word capitalized. Words are separated by spaces, and all non-alphabetical characters remain unchanged.
+
+The output should be followed by a newline.
+
+If the number of arguments is not 1, display only a newline.
+
+Examples:
+
+$> ./title "hello world"
+Hello World
+$> ./title "this is a test"
+This Is A Test
+$> ./title "this is 42a test"
+This Is 42a Test
+$> ./title "my title 2024"
+My Title 2024
+$> ./title "MY TITLE"
+MY TITLE
+$> ./title "" | cat -e
+$

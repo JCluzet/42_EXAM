@@ -1,0 +1,19 @@
+Assignment name: ft_swapcases
+Expected files: ft_swapcases.c  
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that takes a string as an argument and prints it to the standard output, with each alphabetical character's case swapped (lowercase becomes uppercase and vice versa). Non-alphabetical characters should remain unchanged.
+
+If no argument is provided, the program should print a newline (`\n`).
+
+Examples:
+
+$> ./ft_swapcases "Hello World!" | cat -e
+hELLO wORLD!$
+$> ./ft_swapcases "42School" | cat -e
+42sCHOOL$
+$> ./ft_swapcases "" | cat -e
+$
+$> ./ft_swapcases | cat -e
+$

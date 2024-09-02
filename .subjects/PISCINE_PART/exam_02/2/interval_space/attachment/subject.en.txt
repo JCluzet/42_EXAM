@@ -1,0 +1,25 @@
+Assignment name: interval_spaces
+Expected files: interval_spaces.c
+Allowed functions: write
+
+--------------------------------------------------------------------------------
+
+Write a program called interval_spaces that takes a string and displays each of 
+its alphabetical characters separated by three spaces. 
+The last character should be followed directly by a newline,
+without any trailing spaces. Non-alphabetical characters should be ignored.
+
+If the number of arguments is not 1, display only a newline.
+
+Examples:
+
+$> ./interval_space abc | cat -e
+a   b   c$
+$> ./interval_space "abc def" | cat -e
+a   b   c   d   e   f$
+$> ./interval_space "a1b2c3" | cat -e
+a   b   c$
+$> ./interval_space "Hello, World!" | cat -e
+H   e   l   l   o   W   o   r   l   d$
+$> ./interval_space "" | cat -e
+$
