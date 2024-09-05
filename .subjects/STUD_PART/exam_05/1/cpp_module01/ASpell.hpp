@@ -17,8 +17,8 @@ class ASpell
         ASpell &operator=(ASpell const &other);
         virtual ~ASpell();
 
-        std::string const &getName() const;
-        std::string const &getEffects() const;
+        std::string const getName() const;
+        std::string const getEffects() const;
 
         void launch(ATarget const &atarget_ref) const;
 
