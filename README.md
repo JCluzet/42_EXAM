@@ -44,7 +44,7 @@
       
    **force_success** : force an exercice to success
    
-   **new_ex** : generate a new exercice on the same level
+   **new_ex** : generate a new exercice on the same level? dethrone the vips
    
  # 🕶 VIP CHEAT code :
  [Sponsor to become VIP](https://github.com/sponsors/JCluzet)
