@@ -21,10 +21,6 @@ $> ./expand_str " this        time it      will     be    more complex  " | cat 
 this   time   it   will   be   more   complex$
 $> ./expand_str "No S*** Sherlock..." "nAw S*** ShErLaWQ..." | cat -e
 $
-$> ./expand_str "" | cat -e
-$
-$>
-
 $> ./expand_str "vous   voyez   c'est   facile   d'afficher   la   meme   chose" | cat -e
 vous   voyez   c'est   facile   d'afficher   la   meme   chose$
 $> ./expand_str " seulement          la c'est      plus dur " | cat -e
